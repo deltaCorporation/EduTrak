@@ -1,0 +1,19 @@
+/* Reset all shit */
+
+*{
+    margin: 0;
+    padding: 0;
+    color: black;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all .2s ease-in-out;
+    list-style: none;
+}
+
+*:hover{
+    transition: all .2s ease-in-out;
+}
+
+*:focus{
+    outline: none;
+}
