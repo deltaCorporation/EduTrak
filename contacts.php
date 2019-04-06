@@ -15,7 +15,7 @@ if($user->isLoggedIn()){
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>CRM</title>
+        <title>EduTrak</title>
 
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">

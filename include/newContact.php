@@ -118,8 +118,8 @@
             <button id="contactDefaultOpen" onclick="openWindowTab(event, 'contactMainInfo')" type="button" class="add-window-tab defaultOpen">Main Fields</button>
             <div></div>
             <div></div>
-            <button type="reset" class="add-window-button window-close">Cancel</button>
-            <button type="submit" class="add-window-button">Save</button>
+            <button type="reset" class="add-window-button-cancel window-close">Cancel</button>
+            <button type="submit" class="add-window-button-save">Save</button>
         </div>
     </div>
 </form>

@@ -98,7 +98,7 @@
             </div>
             <div class="contact-form-information-cell info-form-x-6">
                 <label>Customer Name</label>
-                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input" type="text" name="customer" value="<?php echo $contact->data()->customer; ?>">
+                <input id="updateCustomer" onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input" type="text" name="customer" value="<?php echo $contact->data()->customer; ?>">
                 <div style="width: 100%" class="autocomplete-wrapper"></div>
             </div>
             <div class="contact-form-information-cell info-form-x-3">
@@ -498,7 +498,6 @@ for (i = 0; i < acc.length; i++) {
 
 function connect(){
 	var input = document.getElementById('updateCustomer').value;
-
 	
 		var xmlhttp = new XMLHttpRequest();
 	        xmlhttp.onreadystatechange = function() {

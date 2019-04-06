@@ -5,6 +5,8 @@
         </div>
         <div class="ntf-sidebar-content" id="ntf-sidebar-content">
         <div id='ntf-sidebar-subcontent'>
+
+
         <?php 
         
         
@@ -12,6 +14,14 @@
         
         if(count($ntf->getNotifications()) == 0){
         	echo '<div class="no-ntf">There are no new notifications! </div>';
+        }
+
+        if (count($ntf->getUnseenUserNotifications($user->data()->id)) != 0){
+            echo "
+                <div class='ntf-clear-all'>
+                    <button type='button' onclick='clearAll()'>Clear all</button>
+                </div>
+            ";
         }
         
         $seen = 0;
@@ -58,13 +68,7 @@
         }
         
         if($seen == 0){
-        	
 	        echo '<div class="no-ntf">There are no new notifications! </div>';
-	        
-	        
-	        
-	        
-	        
         }
         
         
@@ -73,23 +77,39 @@
         
         
           ?>
-       
-       <script type="text/javascript" >
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script type="text/javascript" >
 
-function deleteNtf(id){
-var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                $('#ntf-sidebar-content').load(document.URL +  ' #ntf-sidebar-subcontent');
-                $('#ntf').load(document.URL +  ' #ntf');
-            }
-        };
-        xmlhttp.open("GET", "deleteNtf.php?id=" + id, true);
-        xmlhttp.send();
-}
-       
-       
-        
+                function deleteNtf(id){
+                    $.ajax({
+                        url: 'deleteNtf.php',
+                        type: 'POST',
+                        data: {
+                            id: id
+                        },
+                        success: function () {
+                            $('#ntf-sidebar-content').load(document.URL +  ' #ntf-sidebar-subcontent');
+                            $('#ntf').load(document.URL +  ' #ntf');
+                        }
+
+                    })
+                }
+
+                function clearAll() {
+
+                    $.ajax({
+                        url: 'deleteNtf.php',
+                        type: 'POST',
+                        data: {
+                            type: 'all'
+                        },
+                        success: function () {
+                            $('#ntf-sidebar-content').load(document.URL +  ' #ntf-sidebar-subcontent');
+                            $('#ntf').load(document.URL +  ' #ntf');
+                        }
+                    });
+
+                }
  </script>
 </div>
 </div>

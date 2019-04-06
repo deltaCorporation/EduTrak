@@ -51,7 +51,11 @@ class Notification{
 
     public function getNotifications(){
         $this->_notifications = $this->_db->query('SELECT * FROM notifications ORDER BY id DESC', array());
+        return $this->_db->results();
+    }
 
+    public function getUnseenUserNotifications($id){
+        $this->_notifications = $this->_db->query('SELECT * FROM notifications WHERE seen = 0 AND userID = '.$id.' ORDER BY id DESC', array());
         return $this->_db->results();
     }
 

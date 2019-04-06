@@ -98,7 +98,7 @@ if($user->isLoggedIn()){
                     foreach ($users->getUsers() as $item){
                         if($user->hasPermission('admin') && $item->id != $user->data()->id || $user->hasPermission('superAdmin') && $item->id != $user->data()->id){
                             $ntf->create(array(
-                                'content' => $user->data()->firstName.' created new event for customer ' .Input::get('customerName'),
+                                'content' => $user->data()->firstName.' created new event for customer ' .Input::get('customer'),
                                 'ntfDate' => date('m/j/Y h:i A'),
                                 'ntfLink' => 'info.php?case=customer&id='.$customerID,
                                 'seen' => 0,
@@ -108,7 +108,7 @@ if($user->isLoggedIn()){
                     }
 
                     Session::flash('home', 'New Event has been created!');
-                    Redirect::to('calendar.php');
+                    Redirect::to('info.php?case=customer&id='.$customerID.'&tab=event');
 
                 }catch (Exception $e){
                     die($e->getMessage());
