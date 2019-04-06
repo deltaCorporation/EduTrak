@@ -616,7 +616,7 @@ if ($customer->exists()) {
                             </div>
                             <div>
                                 <div>
-                                    <i onclick='openEventWindow( <?php echo $event->id ?>)' class='far fa-edit'></i>
+                                    <i onclick='openEventWindow(<?php echo $event->id ?>)' class='far fa-edit'></i>
                                     <i onclick='deleteEvent(<?php echo $event->id ?>)' class='far fa-trash-alt'></i>
                                 </div>
                             </div>

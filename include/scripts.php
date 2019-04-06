@@ -322,6 +322,43 @@ $inventory = new Inventory();
             input.style.borderBottomRightRadius = '.25rem';
         }
 
+
+    function getPartner(input) {
+
+        var autocompleteWrapper = input.nextElementSibling;
+
+        if(input.value.length === ''){
+            autocompleteWrapper.style.display = 'none';
+            input.style.borderBottomLeftRadius = '.25rem';
+            input.style.borderBottomRightRadius = '.25rem';
+        }else {
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    autocompleteWrapper.style.display = 'block';
+                    autocompleteWrapper.innerHTML = this.responseText;
+                    input.style.borderBottomLeftRadius = 0;
+                    input.style.borderBottomRightRadius = 0;
+                }
+            };
+            xmlhttp.open("GET", "getPartners.php?q=" + input.value, true);
+            xmlhttp.send();
+
+        }
+
+    }
+
+    function selectPartner(link) {
+        var input = link.parentElement.previousElementSibling;
+        var autocompleteWrapper = link.parentElement;
+
+        input.value = link.innerHTML;
+        autocompleteWrapper.style.display = 'none';
+        input.style.borderBottomLeftRadius = '.25rem';
+        input.style.borderBottomRightRadius = '.25rem';
+    }
+
         function getUsers(input) {
 
             var autocompleteWrapper = input.nextElementSibling;
