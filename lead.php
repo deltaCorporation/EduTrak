@@ -131,11 +131,13 @@
         <div class="contact-form-information-row">
             <div class="contact-form-information-cell info-form-x-5">
                 <label>Partner</label>
-                <input type="text" name="partner" value="<?php echo $lead->data()->partner; ?>">
+                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input" type="text" name="partner" value="<?php echo $lead->data()->partner; ?>">
+                <div class="autocomplete-wrapper"></div>
             </div>
             <div class="contact-form-information-cell info-form-x-5">
                 <label>Partner Rep</label>
-                <input type="text" name="partnerRep" value="<?php echo $lead->data()->partnerRep; ?>">
+                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input" type="text" name="partnerRep" value="<?php echo $lead->data()->partnerRep; ?>">
+                <div class="autocomplete-wrapper"></div>
             </div>
         </div>
 

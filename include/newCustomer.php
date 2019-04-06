@@ -58,11 +58,13 @@
         <div class="add-window-form-section-row">
             <div class="add-window-form-section-cell form-x-4">
                 <label>Partner</label>
-                <input type="text" onfocus="getPartner(this)"  onkeyup="getPartner(this)"  style="width:90%;"  name="partner" class="autocomplete-input" placeholder="">
+                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input" type="text" name="partner" placeholder="">
+                <div class="autocomplete-wrapper"></div>
             </div>
             <div class="add-window-form-section-cell form-x-4">
                 <label>Partner Rep</label>
-                <input type="text" name="partnerRep" placeholder="">
+                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input"  type="text" name="partnerRep" placeholder="">
+                <div class="autocomplete-wrapper"></div>
             </div>
             <div class="add-window-form-section-cell form-x-6">
                 <label>Account Payable Info</label>

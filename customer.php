@@ -99,7 +99,7 @@ if ($customer->exists()) {
             </button>
 
             <button class="contact-tablinks" onclick="openCity(event, 'contact-event')"
-                    id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id)?>)
+                    id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)
             </button>
 
         </div>
@@ -166,11 +166,13 @@ if ($customer->exists()) {
             <div class="contact-form-information-row">
                 <div class="contact-form-information-cell info-form-x-4">
                     <label>Partner</label>
-                    <input type="text" name="partner" value="<?php echo $customer->data()->partner; ?>">
+                    <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input" type="text" name="partner" value="<?php echo $customer->data()->partner; ?>">
+                    <div class="autocomplete-wrapper"></div>
                 </div>
                 <div class="contact-form-information-cell info-form-x-4">
                     <label>Partner Rep</label>
-                    <input type="text" name="partnerRep" value="<?php echo $customer->data()->partnerRep; ?>">
+                    <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input" type="text" name="partnerRep" value="<?php echo $customer->data()->partnerRep; ?>">
+                    <div class="autocomplete-wrapper"></div>
                 </div>
                 <div class="contact-form-information-cell info-form-x-4">
                     <label>Account Payable Info</label>
@@ -615,7 +617,7 @@ if ($customer->exists()) {
                             <div>
                                 <div>
                                     <i onclick='openEventWindow(<?php echo $event->id ?>)' class='far fa-edit'></i>
-                                    <i onclick='deleteEvent( <?php echo $event->id ?>)' class='far fa-trash-alt'></i>
+                                    <i onclick='deleteEvent(<?php echo $event->id ?>)' class='far fa-trash-alt'></i>
                                 </div>
                             </div>
                         </div>

@@ -2951,35 +2951,34 @@ height: 2.5vh !important;
 }
 
 .contact-sidebar-information-h6 a{
-	color: #F78E1E;
+	  color: #002D62;
     font-weight: bolder;
-	
 }
 
 .contact-sidebar-information-h6 a:hover{
-	color: #002D62;
+	color:  #F78E1E;
 }
 
 /* Contact tabs Style */
 
 .contact-tab button{
 	border: none;
-	border-bottom: 2px solid #eee;
+	border-bottom: 2px solid darkgray;
 	font-size: 1.8vh;
-	color: rgba(0,0,0,.2);
+	color: rgba(0,0,0,.6);
 	cursor: pointer;
 	background-color: transparent;
 }
 
 .contact-tab button i{
-	color: rgba(0,0,0,.2);
+	color: darkgray;
 	margin-right: 1.5vh;
 	font-size: 2vh;
 }
 
 .contact-tab button.contact-active{
 	background-color: white;
-	color: dimgray;
+	color: rgba(0,0,0,.9);
 	border-bottom: 2px solid steelblue;
 	font-size: 2vh;
 }
@@ -4880,13 +4879,19 @@ font-size: 2vh;
              0 1px 5px 0 rgba(0, 0, 0, .12),
              0 3px 1px -2px rgba(0, 0, 0, .2);
  }
- 
+
  .pup-up-window-button:hover{
-    box-shadow:
+     box-shadow:
              0 4px 5px 0 rgba(0, 0, 0, .14),
              0 1px 10px 0 rgba(0, 0, 0, .12),
              0 2px 4px -1px rgba(0, 0, 0, .4);
-
+ }
+ 
+ .pup-up-window-button:hover{
+      box-shadow:
+             0 4px 5px 0 rgba(0, 0, 0, .14),
+             0 1px 10px 0 rgba(0, 0, 0, .12),
+             0 2px 4px -1px rgba(0, 0, 0, .4);
 }
 
 
