@@ -211,7 +211,7 @@
         <button id="additional-info-button" onclick="openWindowTab(event, 'additionalInfo')" type="button" class="add-window-tab">Additional Fields</button>
         <div id="replace-block"></div>
         <div></div>
-        <button type="reset" class="add-window-button window-close">Cancel</button>
-        <button type="submit" class="add-window-button">Save</button>
+        <button type="reset" class="add-window-button-cancel window-close">Cancel</button>
+        <button type="submit" class="add-window-button-save">Save</button>
     </div>
 </form>

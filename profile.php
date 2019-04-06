@@ -31,7 +31,7 @@ if($user->isLoggedIn()){
                 <html lang="en">
                 <head>
                     <meta charset="UTF-8">
-                    <title>CRM</title>
+                    <title>EduTrak</title>
 
                     <link href="view/css/reset.css" rel="stylesheet">
                     <link href="view/css/style.css" rel="stylesheet">
@@ -165,7 +165,7 @@ if($user->isLoggedIn()){
 
                 <aside id="index-sidebar">
                     <div class="sidebar-header">
-                        <div id="logo">Eduscape CRM</div>
+                        <div id="logo">EduTrak</div>
                         <button id="close-nav" onclick="w3_close()">&times;</button>
                     </div>
 

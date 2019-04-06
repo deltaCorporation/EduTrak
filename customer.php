@@ -95,8 +95,7 @@ if ($customer->exists()) {
             <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')"
                     id="<?php if ($_GET['tab'] == 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)
             </button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i
-                        class="fas fa-envelope"></i>Email
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-poll-h"></i>Censeo
             </button>
 
             <button class="contact-tablinks" onclick="openCity(event, 'contact-event')"
@@ -548,7 +547,8 @@ if ($customer->exists()) {
         </div>
 
         <div id="contact-mails" class="contact-mails contact-tabcontent">
-            <h3>Mails</h3>
+            <h3>Censeo</h3>
+
         </div>
 
         <div id="contact-event" class="contact-event contact-tabcontent">
@@ -562,90 +562,82 @@ if ($customer->exists()) {
                     <div>Instructors</div>
                     <div>Attendees</div>
                     <div> Link to Asana</div>
-                    <div></div>
+                    <div onclick="show('add-item-window', 'itemDefaultOpen')">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
                 </div>
 
-                <?php
+                <?php $i = 0; ?>
 
-                $i = 0;
+                <?php foreach ($events->getEvents() as $event): ?>
 
-                foreach ($events->getEvents() as $event) {
+                    <?php if($customer->data()->id == $event->customerID): ?>
 
-                    if ($customer->data()->id == $event->customerID) {
+                        <?php
 
-                        $date = date("m/d/Y", strtotime($event->date));
+                            $date = date("m/d/Y", strtotime($event->date));
 
-                        $status = array(
-                            '1002' => 'Pending',
-                            '1001' => 'Confirmed',
-                            '1000' => 'Delivered',
-                            '1003' => 'On Hold',
-                            '1004' => 'Cancelled'
-                        );
+                            $status = array(
+                                '1002' => 'Pending',
+                                '1001' => 'Confirmed',
+                                '1000' => 'Delivered',
+                                '1003' => 'On Hold',
+                                '1004' => 'Cancelled'
+                            );
 
-                        $i++;
-                        echo "
-	<div class='contact-event-row'>
-	    <div>{$event->id}</div>
-        <div>{$event->workshopTitle}</div>
-        <div>{$date}</div>
-        ";
+                            $i++;
 
+                        ?>
 
-                        foreach ($status as $key => $item) {
-                            if ($event->statusID == $key) {
-                                echo "<div>{$item}</div>";
-                            }
-                        }
+	                    <div class='contact-event-row'>
+                            <div><?php echo $event->id ?></div>
+                            <div><?php echo $event->workshopTitle ?></div>
+                            <div><?php echo $date ?></div>
 
-                        echo "
-  
-        <div>
-        
-        ";
+                            <?php foreach ($status as $key => $item): ?>
+                                <?php if ($event->statusID == $key): ?>
+                                    <div><?php echo $item ?></div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
 
+                            <div>
 
-                        foreach ($events->getInstructors($event->id) as $instructor) {
-                            echo "<div class='contact-event-attendee'>{$instructor->firstName} {$instructor->lastName}</div>";
-                        }
+                                <?php foreach ($events->getInstructors($event->id) as $instructor): ?>
+                                    <div class='contact-event-attendee'><?php echo $instructor->firstName .' '. $instructor->lastName ?></div>
+                                <?php endforeach; ?>
 
-                        echo "
-        </div>
-        <div>{$event->attendeesNumber}</div>
-        <div><a target='_blank' href='{$event->linkToAsanaTask}' >Link to asana</a> </div>
-        <div>
-            <div>
-                <i onclick='openEventWindow({$event->id})' class='far fa-edit'></i>
-                <i onclick='deleteEvent(" . $event->id . ")' class='far fa-trash-alt'></i>
-            </div>
-        </div>
-    </div>
+                            </div>
 
-	";
-                    }
-                }
+                            <div><?php echo $event->attendeesNumber ?></div>
+                            <div>
+                                <a target='_blank' href='<?php echo $event->linkToAsanaTask ?>'>Link to asana</a>
+                            </div>
+                            <div>
+                                <div>
+                                    <i onclick='openEventWindow({$event->id})' class='far fa-edit'></i>
+                                    <i onclick='deleteEvent(" . $event->id . ")' class='far fa-trash-alt'></i>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
 
-                if ($i == 0) {
-                    echo "
-	<div class='contact-event-row'>
-	<div>-</div>
-  <div>-</div>
-  <div>-</div>
-  <div>-</div>
-<div>-</div>
-  <div>-</div>
-  <div>-</div>
-<div></div>
-</div>
+                <?php if ($i == 0): ?>
 
-	";
-                }
+	                <div class='contact-event-row'>
+	                    <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div>-</div>
+                        <div></div>
+                    </div>
 
-                ?>
+                <?php endif; ?>
 
 
-            </div>
-        </div>
     </div>
 
     <div class="remodal" data-remodal-id="delete">
