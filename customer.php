@@ -562,7 +562,7 @@ if ($customer->exists()) {
                     <div>Instructors</div>
                     <div>Attendees</div>
                     <div> Link to Asana</div>
-                    <div onclick="show('add-item-window', 'itemDefaultOpen')">
+                    <div onclick="show('add-event-window', 'eventDefaultOpen')">
                         <i class="fas fa-plus-circle"></i>
                     </div>
                 </div>
@@ -614,8 +614,8 @@ if ($customer->exists()) {
                             </div>
                             <div>
                                 <div>
-                                    <i onclick='openEventWindow({$event->id})' class='far fa-edit'></i>
-                                    <i onclick='deleteEvent(" . $event->id . ")' class='far fa-trash-alt'></i>
+                                    <i onclick='openEventWindow(<?php echo $event->id ?>)' class='far fa-edit'></i>
+                                    <i onclick='deleteEvent( <?php echo $event->id ?>)' class='far fa-trash-alt'></i>
                                 </div>
                             </div>
                         </div>
