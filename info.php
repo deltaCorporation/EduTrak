@@ -26,7 +26,7 @@ if($user->isLoggedIn()){
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>CRM</title>
+        <title>EduTrak</title>
 
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
@@ -36,6 +36,7 @@ if($user->isLoggedIn()){
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="view/js/remodal.js"></script>
 

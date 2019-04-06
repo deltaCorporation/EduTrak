@@ -665,6 +665,28 @@ border-radius: 50%;
     overflow-y: scroll;
 }
 
+
+.ntf-clear-all button{
+    padding: 0.4rem;
+    border: none;
+    color: dimgray;
+    font-size: 0.8rem;
+    margin: 0.6vh;
+    cursor: pointer;
+
+
+}
+
+ .ntf-clear-all button:hover{
+     text-decoration: underline;
+ }
+
+
+
+.ntf-clear-all{
+    text-align: right;
+}
+
 .add-sidebar-element{
     height: 7vh;
     cursor: pointer;
@@ -2324,8 +2346,10 @@ height: 2.5vh !important;
  .contact-form-information-cell label{
      display: block;
      height: 1rem;
-     font-size: .7rem;
+     font-size: .8rem;
      padding-left: .3rem;
+     font-weight: bolder;
+     margin-bottom: 2px;
  }
 
  .contact-form-information-cell input{
@@ -2336,7 +2360,7 @@ height: 2.5vh !important;
      height: 2rem;
      padding: 0 .5rem;
      font-size: 1rem;
-
+     background-color: #eeeeee;
  }
 
  .contact-form-information-cell input:hover,
@@ -2356,6 +2380,7 @@ height: 2.5vh !important;
      font-size: 1rem;
      background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="rgba(0,0,0,.7)" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"/></svg>') top .2rem right .7em no-repeat;
      background-size: .7rem;
+     background-color: #eeeeee;
  }
 
  .contact-form-information-cell select:hover,
@@ -2371,6 +2396,7 @@ height: 2.5vh !important;
      border-radius: .25rem;
      padding: .5rem;
      font-size: .9rem;
+     background-color: #eeeeee;
  }
 
  .contact-form-information-cell textarea:hover,
@@ -2460,6 +2486,7 @@ height: 2.5vh !important;
      cursor: pointer;
      border-radius: .25rem;
  }
+
 
  .contact-form-information-cancel{
      border: none;
@@ -2924,34 +2951,35 @@ height: 2.5vh !important;
 }
 
 .contact-sidebar-information-h6 a{
-	color: #F78E1E;
+	color: #002D62 ;
+    font-weight: bolder;
 	
 }
 
 .contact-sidebar-information-h6 a:hover{
-	color: #002D62;
+	color:  #F78E1E;
 }
 
 /* Contact tabs Style */
 
 .contact-tab button{
 	border: none;
-	border-bottom: 2px solid #eee;
+	border-bottom: 2px solid darkgray;
 	font-size: 1.8vh;
-	color: rgba(0,0,0,.2);
+	color: rgba(0,0,0,.6);
 	cursor: pointer;
 	background-color: transparent;
 }
 
 .contact-tab button i{
-	color: rgba(0,0,0,.2);
+	color: darkgray;
 	margin-right: 1.5vh;
 	font-size: 2vh;
 }
 
 .contact-tab button.contact-active{
 	background-color: white;
-	color: dimgray;
+	color: rgba(0,0,0,.9);
 	border-bottom: 2px solid steelblue;
 	font-size: 2vh;
 }
@@ -3246,8 +3274,8 @@ display: none;
     display: grid;
     grid-template-columns: 10vh auto 17vh;
     align-items: center;
-    border: 1px solid #002D62;
-    border-top: 1vh solid #002D62;
+    border: 1px solid darkgray;
+    border-top: 1vh solid darkgray;
     border-radius: .5vh;
     margin-bottom: 1vh;
 }
@@ -3258,12 +3286,12 @@ display: none;
 }
 
 .mail-box-icon-green {
-    color: #6D9A3F;
+    color: mediumseagreen;
 }
 
 
 .mail-box-icon-red {
-    color: #F78E1E;
+    color: indianred;
 }
 .contact-mail-box-icon {
     text-align: center;
@@ -3314,25 +3342,31 @@ display: none;
 /* Customer Event Table */
 
 .contact-event-header {
-display: grid;
- grid-template-columns: 8% 20% 12% 12% 15% 10% 15% 8%;
- font-size: 1.8vh;
-background-color: #6D9A3F !important;
-border-top-left-radius: .5vh;
-border-top-right-radius: .5vh;
-text-align: center;
-
+    display: grid;
+    grid-template-columns: 8% 20% 12% 12% 15% 10% 15% 8%;
+    font-size: 1.8vh;
+    background-color: darkgray !important;
+    border-top-left-radius: .5vh;
+    border-top-right-radius: .5vh;
+    text-align: center;
 }
 
 .contact-event-header div{
-color:white !important;
-border-right: 1px solid white;
-padding: 2vh 0;
+    color: white !important;
+    border-right: 1px solid white;
+    padding: 2vh 0;
 }
 
 .contact-event-header div:last-of-type{
 border: none;
 }
+
+.contact-event-header div i{
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
 
 .contact-event-row{
 display: grid;
@@ -4583,7 +4617,7 @@ font-size: 2vh;
      height: 2rem;
      padding: 0 .5rem;
      font-size: 1rem;
-
+    background-color: #eeeeee;
  }
 
  .add-window-form-section-cell > input:hover,
@@ -4601,7 +4635,7 @@ font-size: 2vh;
      height: 2rem;
      padding: 0 .5rem;
      font-size: 1rem;
-     background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="rgba(0,0,0,.7)" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"/></svg>') top .2rem right .7em no-repeat;
+     background: #eeeeee url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="rgba(0,0,0,.7)" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"/></svg>') top .2rem right .7em no-repeat;
      background-size: .7rem;
  }
 
@@ -4617,6 +4651,7 @@ font-size: 2vh;
      border: 1px solid rgba(0, 0, 0, 0.1);
      border-radius: .25rem;
      padding: .5rem;
+     background-color: #eeeeee;
      font-size: .9rem;
  }
 
@@ -4705,14 +4740,50 @@ font-size: 2vh;
      color: grey;
  }
 
- .add-window-footer .add-window-button{
+ .add-window-footer .add-window-button-save{
      height: 1.5rem;
      font-size: .8rem;
-     border: 1px solid darkgrey;
+     border: none;
      border-radius: .25rem;
-     color: dimgrey;
+     color: white;
      cursor: pointer;
      margin-left: .5rem;
+     background-color: mediumseagreen;
+     box-shadow:
+             0 2px 2px 0 rgba(0, 0, 0, .14),
+             0 1px 5px 0 rgba(0, 0, 0, .12),
+             0 3px 1px -2px rgba(0, 0, 0, .2);
+ }
+
+ .add-window-footer .add-window-button-save:hover{
+     box-shadow:
+             0 4px 5px 0 rgba(0, 0, 0, .14),
+             0 1px 10px 0 rgba(0, 0, 0, .12),
+             0 2px 4px -1px rgba(0, 0, 0, .4);
+ }
+
+ .add-window-footer .add-window-button-cancel:hover{
+     box-shadow:
+             0 4px 5px 0 rgba(0, 0, 0, .14),
+             0 1px 10px 0 rgba(0, 0, 0, .12),
+             0 2px 4px -1px rgba(0, 0, 0, .4);
+ }
+
+
+ .add-window-footer .add-window-button-cancel{
+     height: 1.5rem;
+     font-size: .8rem;
+     border: none;
+     border-radius: .25rem;
+     color: white;
+     cursor: pointer;
+     margin-left: .5rem;
+     background-color: indianred;
+     box-shadow:
+             0 2px 2px 0 rgba(0, 0, 0, .14),
+             0 1px 5px 0 rgba(0, 0, 0, .12),
+             0 3px 1px -2px rgba(0, 0, 0, .2);
+
  }
 
  .active-tab{
@@ -4797,11 +4868,24 @@ font-size: 2vh;
  .pup-up-window-button{
      height: 1.5rem;
      font-size: .8rem;
-     border: 1px solid darkgrey;
+     border: none;
      border-radius: .25rem;
-     color: dimgrey;
+     color: white;
      cursor: pointer;
      margin-left: .5rem;
+     background-color: mediumseagreen;
+     box-shadow:
+             0 2px 2px 0 rgba(0, 0, 0, .14),
+             0 1px 5px 0 rgba(0, 0, 0, .12),
+             0 3px 1px -2px rgba(0, 0, 0, .2);
+ }
+
+ .pup-up-window-button:hover{
+     box-shadow:
+             0 4px 5px 0 rgba(0, 0, 0, .14),
+             0 1px 10px 0 rgba(0, 0, 0, .12),
+             0 2px 4px -1px rgba(0, 0, 0, .4);
+
  }
 
 
@@ -4839,7 +4923,7 @@ font-size: 2vh;
 
 
  .travel-info-table-header{
-     background-color: #6D9A3F;
+     background-color: darkgray;
 
  }
 

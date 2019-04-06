@@ -58,11 +58,13 @@
         <div class="add-window-form-section-row">
             <div class="add-window-form-section-cell form-x-4">
                 <label>Partner</label>
-                <input type="text" name="partner" placeholder="">
+                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input" type="text" name="partner" placeholder="">
+                <div class="autocomplete-wrapper"></div>
             </div>
             <div class="add-window-form-section-cell form-x-4">
                 <label>Partner Rep</label>
-                <input type="text" name="partnerRep" placeholder="">
+                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)"  style="width:90%;" class="autocomplete-input"  type="text" name="partnerRep" placeholder="">
+                <div class="autocomplete-wrapper"></div>
             </div>
             <div class="add-window-form-section-cell form-x-6">
                 <label>Account Payable Info</label>
@@ -181,8 +183,8 @@
             <button id="customer-additional-info-button" onclick="openWindowTab(event, 'customerAdditionalInfo')" type="button" class="add-window-tab">Additional Fields</button>
         <div id="customer-replace-block"></div>
         <div></div>
-        <button type="reset" class="add-window-button window-close">Cancel</button>
-        <button type="submit" class="add-window-button">Save</button>
+        <button type="reset" class="add-window-button-cancel window-close">Cancel</button>
+        <button type="submit" class="add-window-button-save">Save</button>
         </div>
     </div>
 </form>

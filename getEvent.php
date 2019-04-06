@@ -52,7 +52,7 @@ if($user->isLoggedIn()) {
                 </div>
             </div>
             
-            <div id='instructor-row-update' class='add-window-form-section-row'>
+                <div id='instructor-row-update' class='add-window-form-section-row'>
                 
             ";
 
@@ -114,7 +114,7 @@ if($user->isLoggedIn()) {
                
                <div class='pup-up-window-footer'>
                     <div></div>
-                    <button type='submit' class='pup-up-window-button'>Save</button>
+                    <button type='submit' class='pup-up-window-button '>Save</button>
                </div>
             ";
 
