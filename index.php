@@ -371,6 +371,9 @@ include_once __DIR__ . '/include/addSidebar.php';
     ?>
 
     </body>
+    <script>
+        $('#home').addClass('link-selected');
+    </script>
     </html>
 
     
