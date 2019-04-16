@@ -131,9 +131,9 @@ if($user->isLoggedIn()){
 
                     </div>
                     <div class="contact-header-information contact-tab">
-                        <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){}else{echo 'defaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
-                        <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (-)</button>
-                        <button class="contact-tablinks" onclick="openCity(event, 'contact-travelInfo', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-plane"></i>Travel info</button>
+                        <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){}else{echo 'employeeDefaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
+                        <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'employeeDefaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (-)</button>
+                        <button class="contact-tablinks" onclick="openCity(event, 'contact-travelInfo', 'grid')" id="<?php if(Session::exists('home')){ echo 'employeeDefaultOpen';} ?>"><i class="fas fa-plane"></i>Travel info</button>
                     </div>
 
                     <form action="updateEmployee.php" method="post" class="contact-form-information contact-tabcontent" id="contact-information">
@@ -386,64 +386,27 @@ if($user->isLoggedIn()){
                     </div>
 
                     <div id="contact-travelInfo" class="contact-mails contact-tabcontent">
-                        <div class="table">
-                            <div class="row travel-info-table-header">
-                                <div class="travel-info-header-cell">Company</div>
-                                <div class="travel-info-header-cell">Account Number</div>
-                                <div class="travel-info-header-cell">Login</div>
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">Alaska</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">American</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">Delta</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">Southwest</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">United</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">TSA/Known Traveler Number</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">Global Entry</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">Hilton Honors</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">IHG</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                            <div class="row">
-                                <div class="travel-info-cell">National</div>
-                                <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
-                            </div>
-                        </div>
+                        <?php if($user->getUserTravelInfo($id)): ?>
+                            <div class="table">
+                                <div class="row travel-info-table-header">
+                                    <div class="travel-info-header-cell">Company</div>
+                                    <div class="travel-info-header-cell">Account Number</div>
+                                    <div class="travel-info-header-cell">Login</div>
+                                </div>
 
+                                <?php foreach ($user->getUserTravelInfo($id) as $info): ?>
+
+                                    <div class="row" id="<?php echo $info->id ?>">
+                                        <div class="travel-info-cell"><?php echo $info->company ?></div>
+                                        <input onkeyup="saveTravelInfo(this)" name="accNo" class="travel-info-cell" value="<?php echo $info->accNo ? $info->accNo : '' ?>" placeholder="<?php echo $info->accNo ? 'N/A' : 'N/A' ?>">
+                                        <input onkeyup="saveTravelInfo(this)" name="login" class="travel-info-cell" value="<?php echo $info->login ? $info->login : '' ?>" placeholder="<?php echo $info->login ? 'N/A' : 'N/A' ?>">
+                                    </div>
+
+                                <?php endforeach; ?>
+                            </div>
+                        <?php else: ?>
+                            <p>No data</p>
+                        <?php endif; ?>
                     </div>
 
 
@@ -515,7 +478,7 @@ if($user->isLoggedIn()){
                     // Get the element with id="defaultOpen" and click on it
                     document.getElementById("employeeDefaultOpen").click();
 
-
+                    $('#employees').addClass('link-selected');
 
                 </script>
 

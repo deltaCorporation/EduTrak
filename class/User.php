@@ -124,6 +124,22 @@ class User{
         return $this->_db->results();
     }
 
+    public function getUserTravelInfo($userID){
+        $this->_db->query('SELECT * FROM travel_info WHERE userID = '.$userID, array());
+        return$this->_db->results();
+    }
+
+    public function updateUserTravelInfo($fields = array(), $id = null){
+        if(!$this->_db->update('travel_info', $id, $fields)){
+            throw new Exception('There was a problem updating.');
+        }
+    }
+
+    public function createUserTravelInfo($fields = array()){
+        if(!$this->_db->insert('travel_info', $fields)){
+            throw new Exception('There was a problem creating an user.');
+        }
+    }
 
     public function exists(){
         return (!empty($this->_data)) ? true : false;

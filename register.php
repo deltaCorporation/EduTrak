@@ -90,7 +90,27 @@ if(Input::exists()){
                     ));
                 }
 
+                //Add travel Info table
 
+                $travelCompanies = array(
+                    'Alaska',
+                    'American',
+                    'Delta',
+                    'Southwest',
+                    'United',
+                    'TSA/Known Traveler Number',
+                    'Global Entry',
+                    'Hilton Honors',
+                    'IHG',
+                    'National'
+                );
+
+                foreach ($travelCompanies as $company){
+                    $user->createUserTravelInfo(array(
+                        'company' => $company,
+                        'userID' => $id
+                    ));
+                }
 
                 Session::flash('home', 'New Employee has been created!');
                 Redirect::to('index.php');
