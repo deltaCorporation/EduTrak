@@ -28,5 +28,9 @@
                 <i class="fas fa-boxes"></i>
                 <div class="add-sidebar-element-name">Item</div>
             </article>
+            <article onclick="show('add-hardware-window', 'itemDefaultOpen')" class="add-sidebar-element">
+                <i class="fas fa-robot"></i>
+                <div class="add-sidebar-element-name">Hardware Item</div>
+            </article>
         </div>
     </aside>

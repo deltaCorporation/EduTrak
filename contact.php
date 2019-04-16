@@ -511,7 +511,7 @@ function connect(){
 
 }
 
-
+$('#contacts').addClass('link-selected');
 
 </script>
 

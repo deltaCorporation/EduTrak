@@ -646,6 +646,8 @@ function extendExistingLead() {
     }
 }
 
+$('#leads').addClass('link-selected');
+
 </script>
 
 <?php
