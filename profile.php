@@ -49,111 +49,7 @@ if($user->isLoggedIn()){
                 </head>
                 <body>
 
-                <header id="header">
-                    <button id="open-nav" onclick="w3_open()">&#9776;</button>
-                    <li>
-                        <a href="index.php" class="tooltip">
-                            <i class="fas fa-home"></i>
-                            <span class="tooltiptext">Dashboard</span>
-                        </a>
-                        <a href="calendar.php" class="tooltip">
-                            <i class="far fa-calendar-alt"></i>
-                            <span class="tooltiptext">Calendar</span>
-                        </a>
-                        <?php
-
-                        if ($user->hasPermission('superAdmin') || $user->hasPermission('admin') ){
-                            echo '
-              <a href="employees.php" class="link-selected tooltip">
-<i class="fas fa-users"></i>
-                <span class="tooltiptext">Employees</span>
-            </a>
-
-            
-            ';
-
-
-                        } ?>            <a href="leads.php" class="tooltip">
-                            <i class="far fa-dot-circle"></i>
-                            <span class="tooltiptext">Leads</span>
-                        </a>
-                        <a href="contacts.php" class="tooltip">
-                            <i class="far fa-address-book"></i>
-                            <span class="tooltiptext">Contacts</span>
-                        </a>
-                        <a href="customers.php" class="tooltip">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span class="tooltiptext">Customers</span>
-                        </a>
-                        <a href="inventory.php" class="tooltip">
-                            <i class="fas fa-boxes"></i>
-                            <span class="tooltiptext">Inventory</span>
-                        </a>
-                    </li>
-                    <form class="search" action="#" method="get">
-                        <input id="txt1" class="search-input" type="text" name="search" placeholder="Search" onkeyup="showHint(this.value)">
-                        <div id="txtHint" class="search-box">
-
-                        </div>
-
-                        <script>
-                            function showHint(str) {
-                                var xhttp;
-                                if (str.length == 0) {
-                                    document.getElementById("txtHint").innerHTML = "";
-                                    return;
-                                }
-                                xhttp = new XMLHttpRequest();
-                                xhttp.onreadystatechange = function() {
-                                    if (this.readyState == 4 && this.status == 200) {
-                                        document.getElementById("txtHint").innerHTML = this.responseText;
-                                    }
-                                };
-                                xhttp.open("GET", "search.php?q="+str, true);
-                                xhttp.send();
-                            }
-                        </script>
-                    </form>
-                    <div class="tooltip msg-open">
-                        <i class="fas fa-envelope"></i>
-                        <span class="tooltiptext">Inbox</span>
-                    </div>
-                    <div class="tooltip ntf-open" id="ntf">
-                        <i class="fas fa-bell">
-                            <?php
-
-                            $ntf = new Notification();
-
-                            $i = 0;
-
-                            foreach($ntf->getNotifications() as $ntf){
-                                if($ntf->userID == $user->data()->id && $ntf->seen == 0){
-                                    $i++;
-                                }
-                            }
-
-                            if($i != 0){
-                                echo '<span class="ntf-count">'.$i.'</span>';
-                            }
-
-                            ?>
-
-
-
-
-
-                        </i>
-                        <span class="tooltiptext">Notifications</span>
-                    </div>
-                    <div class="tooltip add-open">
-                        <i class="fas fa-plus-circle"></i>
-                        <span class="tooltiptext">Add</span>
-                    </div>
-                    <div class="profile">
-                        <div class="profile-name drop-menu" onclick="myFunction()"><?php echo escape($user->data()->firstName).' '.escape($user->data()->lastName)?></div>
-                        <div class="profile-image drop-menu" onclick="myFunction()" style="background: url('<?php echo 'view/img/profile/'.escape($user->data()->img) ?>') no-repeat center; background-size: 5vh;"></div>
-                    </div>
-                </header>
+                <?php include __DIR__.'/include/header.php'; ?>
 
                 <div class="dropdown">
                     <div id="myDropdown" class="dropdown-content">
@@ -495,11 +391,9 @@ if($user->isLoggedIn()){
                                 <div class="travel-info-header-cell">Company</div>
                                 <div class="travel-info-header-cell">Account Number</div>
                                 <div class="travel-info-header-cell">Login</div>
-                                <div class="travel-info-header-cell">Password</div>
                             </div>
                             <div class="row">
                                 <div class="travel-info-cell">Alaska</div>
-                                <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                             </div>
@@ -507,11 +401,9 @@ if($user->isLoggedIn()){
                                 <div class="travel-info-cell">American</div>
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
                             </div>
                             <div class="row">
                                 <div class="travel-info-cell">Delta</div>
-                                <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                             </div>
@@ -519,11 +411,9 @@ if($user->isLoggedIn()){
                                 <div class="travel-info-cell">Southwest</div>
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
                             </div>
                             <div class="row">
                                 <div class="travel-info-cell">United</div>
-                                <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                             </div>
@@ -531,11 +421,9 @@ if($user->isLoggedIn()){
                                 <div class="travel-info-cell">TSA/Known Traveler Number</div>
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
                             </div>
                             <div class="row">
                                 <div class="travel-info-cell">Global Entry</div>
-                                <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                             </div>
@@ -543,17 +431,14 @@ if($user->isLoggedIn()){
                                 <div class="travel-info-cell">Hilton Honors</div>
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
                             </div>
                             <div class="row">
                                 <div class="travel-info-cell">IHG</div>
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
-                                <input class="travel-info-cell" value="n/a">
                             </div>
                             <div class="row">
                                 <div class="travel-info-cell">National</div>
-                                <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                                 <input class="travel-info-cell" value="n/a">
                             </div>
@@ -600,6 +485,8 @@ if($user->isLoggedIn()){
                 include_once __DIR__ . '/include/newItem.php';
 
                 include_once __DIR__ . '/include/infoProfile.php';
+
+                include_once __DIR__ . '/include/newHardware.php';
 
                 ?>
 

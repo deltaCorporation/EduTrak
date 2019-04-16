@@ -755,6 +755,8 @@ if ($customer->exists()) {
             }
         }
 
+        $('#customers').addClass('link-selected');
+
     </script>
 
 
