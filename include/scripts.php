@@ -466,5 +466,21 @@ $inventory = new Inventory();
         }
     }
 
+    function saveTravelInfo(link) {
+        $.ajax({
+            url: 'updateTravelInfo.php',
+            type: 'POST',
+            data: {
+                id: link.parentElement.id,
+                field: link.name,
+                value: link.value
+            },
+            success: function () {
+                console.log('success');
+            }
+
+        });
+    }
+
 
 </script>

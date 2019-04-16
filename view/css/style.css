@@ -1545,6 +1545,14 @@ tr:nth-child(even) {
     background-color: lightgrey;
 }
 
+ tr:nth-child(odd) {
+     background-color: #eee;
+ }
+
+ tr:first-of-type{
+     background-color: white;
+ }
+
 .fa-sort-amount-up{
     color: #4484CE !important;
 }
