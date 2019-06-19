@@ -2807,7 +2807,16 @@ height: 2.5vh !important;
     grid-area: website;
 }
 
+ #lead-report-link{
+     display: block;
+     height: 20px;
+     text-align: center;
+ }
 
+ #lead-report-link i{
+     font-size: 18px;
+     color: dimgray;
+ }
 
 /* All contacts notes */
 

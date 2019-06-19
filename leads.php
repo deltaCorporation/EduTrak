@@ -8,6 +8,7 @@ require_once __DIR__ . '/core/ini.php';
 $user = new User();
 $lead = new Lead();
 
+
 $maintenance = false;
 
 if($user->isLoggedIn()){
@@ -22,7 +23,7 @@ if($user->isLoggedIn()){
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
 
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
@@ -104,7 +105,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
 
         <table id="myTable">
             <tr class='lead-table-header'>
-            	<th></th>
+            	<th><a id="lead-report-link" href="leadsReport.php"><i class="fas fa-file-csv"></i></a></th>
                 <th onclick="sortTable(1), changeIcon(0)">Full Name  <i id="sort-icon-0" class=" fas fa-sort"></i></th>
                 <th onclick="sortTable(2), changeIcon(1)">Company <i id="sort-icon-1"  class=" fas fa-sort"></i></th>
                 <th onclick="sortTable(3), changeIcon(2)">Partner <i id="sort-icon-2"  class=" fas fa-sort"></i></th>

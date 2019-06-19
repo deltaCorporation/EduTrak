@@ -151,6 +151,11 @@ class User{
         return $this->_db->results();
     }
 
+    public function getUserByID($userID){
+        $this->_db->query('SELECT * FROM `users` WHERE id = '.$userID, array());
+        var_dump($this->_db->results());die;
+    }
+
     public function logOut(){
 
         $this->_db->delete('users_session', array('user_id', '=', $this->data()->id));
