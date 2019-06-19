@@ -3,6 +3,10 @@
 $customer = new Customer($id);
 $note = new Note();
 $events = new Event();
+$inventory = new Inventory();
+$proposal = new ProposalAndQuotes();
+$quotes = new ProposalAndQuotes();
+$users = new User();
 
 if ($customer->exists()) {
 
@@ -10,11 +14,90 @@ if ($customer->exists()) {
 
     ?>
 
+<div class="overlay">
+
+</div>
+
+<div id="quote-modal">
+    <div class="quote-popup-header">
+        <h2>Generate Quote</h2>
+        <div>
+            <button class="quote-popup-close"></button>
+        </div>
+    </div>
+    <form class="quote-popup-content" action="createQuote.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
+
+        <!-- Tab links -->
+        <div class="quote-tab">
+            <button id="default-tab" type="button" class="quote-tablinks" onclick="openQuoteTab(event, 'workshop-1')">Quote Information</button>
+            <button id="add-new-quote-tab" type="button" class="quote-tablinks" onclick="addQuoteTab(this)">add workshop</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="workshop-1" class="quote-tabcontent">
+            <input type="text" name="title" placeholder="Quote Title">
+        </div>
+
+
+
+        <div class="quote-popup-footer">
+            <button type="submit">Generate</button>
+        </div>
+    </form>
+</div>
+
+<div id="proposal-modal">
+    <div class="proposal-popup-header">
+        <h2>Generate Proposal</h2>
+        <div>
+            <button class="proposal-popup-close"></button>
+        </div>
+    </div>
+    <form class="proposal-popup-content" action="createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
+
+        <!-- Tab links -->
+        <div class="proposal-tab">
+            <button id="proposal-default-tab" type="button" class="proposal-tablinks" onclick="openProposalTab(event, 'proposal-workshop-1')">Workshop 1</button>
+            <button id="add-new-proposal-tab" type="button" class="proposal-tablinks" onclick="addProposalTab(this)">add workshop</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="proposal-workshop-1" class="proposal-tabcontent proposal-details">
+
+            <input type="text" name="title" placeholder="Proposal Title">
+
+            <textarea name="introduction" placeholder="Introducion"></textarea>
+            <textarea name="requiredInvestment" placeholder="Required Investment"></textarea>
+            <textarea name="webinarFollowUpSessions" placeholder="Webinar Follow Up Sessions"></textarea>
+
+            <select class="js-example-basic-single" name="user">
+                <option disabled selected>Select User</option>
+                <?php foreach ($users->getUsers() as $person): ?>
+                    <option value="<?php echo $person->id ?>"><?php echo $person->firstName . ' ' . $person->lastName?></option>
+                <?php endforeach; ?>
+            </select>
+
+        </div>
+
+
+
+        <div class="proposal-popup-footer">
+            <button type="submit">Generate</button>
+        </div>
+    </form>
+</div>
+
     <div class="contact-information">
         <div class="contact-sidebar-information">
 
             <div class="contact-sidebar-information-name">
-                <i class="fas fa-id-badge"></i>
+                <div>
+                    <?php if($customer->data()->logo): ?>
+                        <img src="view/img/logos/<?php echo $customer->data()->logo ?>">
+                    <?php else: ?>
+                        <i class="fas fa-id-badge"></i>
+                    <?php endif; ?>
+                </div>
                 <span><?php echo $customer->data()->name ?></span>
             </div>
 
@@ -25,7 +108,6 @@ if ($customer->exists()) {
                    target="_blank"><i class="fas fa-envelope"></i></a>
 
                 <a href="#delete"><i class="fas fa-trash"></i></a>
-                <a href="#"><i class="fas fa-receipt"></i></a>
 
             </div>
 
@@ -95,13 +177,68 @@ if ($customer->exists()) {
             <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')"
                     id="<?php if ($_GET['tab'] == 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)
             </button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-proposal', 'block')"><i class="fas fa-file-invoice-dollar"></i>Proposals
+            </button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-quote', 'block')"><i class="fas fa-receipt"></i>Quotes
+            </button>
             <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-poll-h"></i>Censeo
             </button>
 
             <button class="contact-tablinks" onclick="openCity(event, 'contact-event')"
                     id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)
             </button>
+        </div>
 
+        <div id="contact-proposal" class="contact-proposal contact-tabcontent">
+            <div class="proposal-create-new">
+                <button onclick="openProposalModal()">Create New Proposal</button>
+                <div class="clear"></div>
+            </div>
+            <?php foreach ($proposal->getProposals((int)$customer->data()->id) as $proposal) : ?>
+
+
+                <div class="proposal-request-header">
+                    <h4><?php echo $proposal->title ?> | <span><?php echo $proposal->dateCreated ?></span></h4>
+                    <a href="changeToQuote.php?id=<?php echo $proposal->ID ?>&customerID=<?php echo $customer->data()->id ?>" class="">
+                        <i class="fas fa-receipt"></i>
+                    </a>
+                    <a href="generateProposal.php?id=<?php echo $proposal->ID ?>" class="">
+                        <i class="fas fa-file-download"></i>
+                    </a>
+                    <a class="more">
+                        <i class="far fa-caret-square-down"></i>
+                    </a>
+                </div>
+
+                <div class="proposal-panel">
+
+                </div>
+
+            <?php endforeach; ?>
+        </div>
+
+        <div id="contact-quote" class="contact-quote contact-tabcontent">
+            <div class="quote-create-new">
+                <button onclick="openQuoteModal()">Create New Quote</button>
+                <div class="clear"></div>
+            </div>
+            <?php foreach ($quotes->getQuotes((int)$customer->data()->id) as $quote) : ?>
+
+                <div class="quote-request-header">
+                    <h4><?php echo $quote->title ?> | <span><?php echo $quote->dateCreated ?></span></h4>
+                    <a href="generateQuote.php?id=<?php echo $quote->ID ?>" class="">
+                        <i class="fas fa-file-download"></i>
+                    </a>
+                    <a class="more">
+                        <i class="far fa-caret-square-down"></i>
+                    </a>
+                </div>
+
+                <div class="quote-panel">
+
+                </div>
+
+            <?php endforeach; ?>
         </div>
 
         <form action="updateCustomer.php" method="post" class="contact-form-information contact-tabcontent"
@@ -667,8 +804,231 @@ if ($customer->exists()) {
         </div>
     </div>
 
-
     <script>
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+        
+        $('.overlay').on('click', function () {
+            $('#quote-modal').hide();
+            $('#proposal-modal').hide();
+            $('.overlay').hide();
+        });
+
+        function showWorkshop(link, num) {
+            $.ajax({
+                method: "GET",
+                url: "getWorkshop.php",
+                data: {
+                    workShopID: link.value
+                }
+            })
+                .done(function(result) {
+
+                    let content = $('#workshop-'+num+'-content');
+                    let data = JSON.parse(result);
+
+                    console.log(data);
+
+                    html =  '<div class="workshop-textareas">' +
+                                '<div>' +
+                                    '<label>Description</label>' +
+                                    '<textarea name="data['+num+'][description]">'+ data.description +'</textarea>' +
+                                '</div>' +
+                                '<div>' +
+                                    '<label>Learner Outcomes</label>' +
+                                    '<textarea name="data['+num+'][learnerOutcomes]">'+ data.learnerOutcomes +'</textarea>' +
+                                '</div>' +
+                                '<div>' +
+                                    '<label>Prerequisites</label>' +
+                                    '<textarea name="data['+num+'][prerequisites]">'+ data.prerequisites +'</textarea>' +
+                                '</div>' +
+                                '<div>' +
+                                    '<label>MSRP</label>' +
+                                    '<input name="data['+num+'][msrp]" value="'+ data.msrp +'">' +
+                        '       </div>' +
+                                '<input type="hidden" name="data['+num+'][title]" value="'+ data.titleOfOffering +'" >' +
+                            '</div>';
+
+                    content.html(html);
+                });
+        }
+
+        function openQuoteModal() {
+            $('.overlay').show();
+            $('#quote-modal').show();
+        }
+
+        function openProposalModal() {
+            $('.overlay').show();
+            $('#proposal-modal').show();
+        }
+
+        $('.quote-popup-close').on('click', function () {
+            $('#quote-modal').hide();
+            $('.overlay').hide();
+        });
+
+        $('.proposal-popup-close').on('click', function () {
+            $('#proposal-modal').hide();
+            $('.overlay').hide();
+        });
+
+        function addQuoteTab(link) {
+
+            let count = $('.quote-tablinks').length;
+
+            let button = document.createElement('button');
+            button.classList.add('quote-tablinks');
+            button.id = 'workshop-button-' + count;
+            button.type = 'button';
+            button.textContent = 'Workshop ' + (count - 1);
+
+            let footer = $('.quote-popup-footer');
+
+            let content = document.createElement('div');
+            content.id = 'workshop-' + count;
+            content.classList.add('quote-tabcontent');
+
+            footer.before(content);
+
+            button.addEventListener("click", function (event) {
+                openQuoteTab(event, 'workshop-' + count)
+            });
+
+            link.before(button);
+
+            $('#workshop-button-' + count).click();
+
+            $.ajax({
+                method: "GET",
+                url: "getWorkshopList.php",
+                data: {
+                    status: 'ok'
+                }
+            })
+                .done(function(result) {
+
+                    let data = JSON.parse(result);
+
+                    let html = '';
+                    html += '<select onchange="showWorkshop(this, ' + count +')" class="js-example-basic-single">';
+
+                    $.each(data, function (index, item) {
+                        html += '<option value="'+ item.ID +'">'+ item.titleOfOffering +'</option>';
+                    });
+
+                    html += '</select>'
+
+                    let workshopCOntent = '<div id="workshop-'+count+'-content"></div>';
+
+                    $('#workshop-' + count).append(html);
+                    $('#workshop-' + count).append(workshopCOntent);
+                    $('#workshop-' + count + ' select').select2();
+
+                });
+        }
+
+        function openQuoteTab(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("quote-tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("quote-tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function addProposalTab(link) {
+
+            let count = $('.proposal-tablinks').length;
+
+            let button = document.createElement('button');
+            button.classList.add('proposal-tablinks');
+            button.id = 'proposal-workshop-button-' + count;
+            button.type = 'button';
+            button.textContent = 'Workshop ' + count;
+
+            let footer = $('.proposal-popup-footer');
+
+            let content = document.createElement('div');
+            content.id = 'proposal-workshop-' + count;
+            content.classList.add('proposal-tabcontent');
+
+            footer.before(content);
+
+            button.addEventListener("click", function (event) {
+                openProposalTab(event, 'proposal-workshop-' + count)
+            });
+
+            link.before(button);
+
+            $('#proposal-workshop-button-' + count).click();
+
+            $.ajax({
+                method: "GET",
+                url: "getWorkshopList.php",
+                data: {
+                    status: 'ok'
+                }
+            })
+                .done(function(result) {
+
+                    let data = JSON.parse(result);
+
+                    let html = '';
+                    html += '<select onchange="showWorkshop(this, ' + count +')" class="js-example-basic-single">';
+
+                    $.each(data, function (index, item) {
+                        html += '<option value="'+ item.ID +'">'+ item.titleOfOffering +'</option>';
+                    });
+
+                    html += '</select>'
+
+                    let workshopCOntent = '<div id="workshop-'+count+'-content"></div>';
+
+                    $('#proposal-workshop-' + count).append(html);
+                    $('#proposal-workshop-' + count).append(workshopCOntent);
+                    $('#proposal-workshop-' + count + ' select').select2();
+
+                });
+        }
+
+        function openProposalTab(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("proposal-tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("proposal-tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("default-tab").click();
+        document.getElementById("proposal-default-tab").click();
 
         function save(link, field, id, customer) {
             var option = link.options[link.selectedIndex].value;
@@ -757,6 +1117,21 @@ if ($customer->exists()) {
 
         $('#customers').addClass('link-selected');
 
+        // Accordion
+        var acc = document.getElementsByClassName("more");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.parentElement.classList.toggle("active");
+                var panel = this.parentElement.nextElementSibling;
+                if (panel.style.maxHeight){
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
     </script>
 
 

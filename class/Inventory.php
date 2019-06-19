@@ -70,7 +70,7 @@ class Inventory{
     }
 
     public function getWorkshops(){
-        $this->_db->query('SELECT DISTINCT inventory.titleOfOffering FROM inventory', array());
+        $this->_db->query('SELECT DISTINCT inventory.titleOfOffering, inventory.ID FROM inventory', array());
 
         return $this->_db->results();
     }

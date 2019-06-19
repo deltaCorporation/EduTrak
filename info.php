@@ -28,10 +28,12 @@ if($user->isLoggedIn()){
         <meta charset="UTF-8">
         <title>EduTrak</title>
 
+
+
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
 
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
@@ -40,6 +42,8 @@ if($user->isLoggedIn()){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="view/js/remodal.js"></script>
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
 
     </head>
@@ -201,7 +205,7 @@ $user = new User();
         <meta charset="UTF-8">
         <title>EduTrak | Login page</title>
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
 
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/login-style.css" rel="stylesheet">

@@ -2,7 +2,7 @@
 	$customer = new Customer();
 ?>
 
-<form action="addCustomer.php" method="post" id="add-customer-window" class="add-window">
+<form action="addCustomer.php" method="post" enctype="multipart/form-data" id="add-customer-window" class="add-window">
     <div class="add-window-header customer-bg-color">
         <div class="add-window-header-icon customer-icon"></div>
         <div class="add-window-header-title">Create new customer</div>
@@ -29,6 +29,10 @@
                     }
                     ?>
                 </select>
+            </div>
+            <div class="add-window-form-section-cell-file form-x-4">
+                <label>Company Logo</label>
+                <input type="file" name="logo" placeholder="">
             </div>
         </div>
 

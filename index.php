@@ -4,14 +4,32 @@
  * Require ini file with settings
  */
 require_once __DIR__ . '/core/ini.php';
-require_once __DIR__ . '/google/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+// ********************************************************  //
+// Get these values from https://console.developers.google.com
+// Be sure to enable the Analytics API
+// ********************************************************    //
+$client_id = '79089015940-tgbv8mgfkf0vahefgo35r0hevlflig3g.apps.googleusercontent.com';
+$client_secret = 'zqkm4eq_B6wFkmHz1s7EJvt7';
+$redirect_uri = 'http://localhost:8888/EduTrak/index.php';
 
 $client = new Google_Client();
+$client->setApplicationName("Client_Library_Examples");
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->setAccessType('offline');   // Gets us our refreshtoken
 
+$client->setScopes(array('https://www.googleapis.com/auth/calendar.readonly'));
 
+if (isset($_GET['code'])) {
 
-$client->setAuthConfig('client_secret.json');
-$client->addScope(Google_Service_Calendar::CALENDAR);
+    $client->authenticate($_GET['code']);
+    $_SESSION['token'] = $client->getAccessToken();
+    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+}
 
 $user = new User();
 
@@ -36,11 +54,6 @@ if($user->isLoggedIn()){
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="view/js/remodal.js"></script>
-
-	  
-
-
-	  
 
     </head>
     <body>
