@@ -69,7 +69,7 @@ class Lead{
     }
 
     public function getLeads(){
-        $this->_leads = $this->_db->query('SELECT leads.id, leads.prefix, leads.firstName, leads.lastName, leads.jobTitle, leads.category, leads.company, leads.reachedUsBy, leads.partner, leads.partnerRep, leads.description, leads.tags, leads.lastContacted, leads.followUpDescription, leads.followUpDate, leads.officePhone, leads.phoneExt, leads.mobilePhone, leads.email, leads.street, leads.city, leads.district, leads.country, leads.state, leads.zip, leads.facebook, leads.twitter, leads.linkedIn, leads.website, leads.createdBy, leads.modifiedBy, leads.createdOn, leads.modifiedOn, CONCAT(users.firstName, " ", users.lastName) AS assignedTo FROM `leads` INNER JOIN users ON leads.assignedTo = users.id ORDER BY leads.id DESC', array());
+        $this->_leads = $this->_db->query('SELECT leads.id, leads.prefix, leads.firstName, leads.lastName, leads.jobTitle, leads.category, leads.company, leads.reachedUsBy, leads.partner, leads.partnerRep, leads.description, leads.tags, leads.lastContacted, leads.followUpDescription, leads.followUpDate, leads.officePhone, leads.phoneExt, leads.mobilePhone, leads.email, leads.street, leads.city, leads.district, leads.country, leads.state, leads.zip, leads.facebook, leads.twitter, leads.linkedIn, leads.website, leads.createdBy, leads.modifiedBy, leads.createdOn, leads.modifiedOn, CONCAT(users.firstName, " ", users.lastName) AS assignedTo FROM `leads` LEFT JOIN users ON leads.assignedTo = users.id ORDER BY leads.id DESC', array());
 
         return $this->_db->results();
     }

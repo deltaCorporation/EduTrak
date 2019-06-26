@@ -2807,6 +2807,11 @@ height: 2.5vh !important;
     grid-area: website;
 }
 
+#eventName,
+#addLeadEventName{
+    display: none;
+}
+
  #lead-report-link{
      display: block;
      height: 20px;

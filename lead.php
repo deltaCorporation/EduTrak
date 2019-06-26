@@ -8,7 +8,7 @@
 
         
     // $prefixes = array('Mr.','Ms.','Mrs.','Fr.','Sr.','Dr.','');
-        $reachedUsBy = array('Event','Email Campaign','Partner'.'Social Media','Association','Print Campaign','Referral');
+        $reachedUsBy = array('Event','Email Campaign','Partner','Social Media','Association','Print Campaign','Referral');
 
 ?>
 
@@ -202,7 +202,7 @@
                 <label>Follow up date</label>
                 <input type="date" name="followUpDate" value="<?php echo $lead->data()->followUpDate; ?>">
             </div>
-            <div class="contact-form-information-cell form-x-3">
+            <div id="reachedUsBy" class="contact-form-information-cell form-x-3">
                 <label>Reached us by</label>
                 <select name="reachedUsBy">
                     <?php
@@ -211,10 +211,10 @@
 
                         foreach ($reachedUsBy as $item){
                             if($item == $lead->data()->reachedUsBy){
-                                echo '<option selected>'.$item.'</option>';
+                                echo '<option value="'.$item.'" selected>'.$item.'</option>';
                                 $i++;
                             }else{
-                                echo '<option>'.$item.'</option>';
+                                echo '<option value="'.$item.'">'.$item.'</option>';
                             }
                         }
 
@@ -225,7 +225,11 @@
                     ?>
                 </select>
             </div>
-            <div class="contact-form-information-cell form-x-4">
+            <div id="eventName" <?php echo $lead->data()->reachedUsBy === 'Event' ? 'style="display: block"' : ''  ?> class="contact-form-information-cell info-form-x-3">
+                <label>Event Name</label>
+                <input type="input" name="eventName" value="<?php echo $lead->data()->eventName; ?>">
+            </div>
+            <div class="contact-form-information-cell form-x-3">
                 <label>Assigned to</label>
                 <select name="assignedTo">
 
@@ -647,6 +651,19 @@ function extendExistingLead() {
 }
 
 $('#leads').addClass('link-selected');
+
+$('#reachedUsBy select').on('change', function () {
+
+    let eventName = $('#eventName');
+    let eventNameInput = $('#addLeadEventName input');
+
+    if(this.value === 'Event'){
+        eventName.show();
+    }else{
+        eventName.hide();
+        eventNameInput.html('');
+    }
+});
 
 </script>
 

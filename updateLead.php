@@ -24,6 +24,7 @@ if(Input::exists()){
                     'category' => Input::get('category'),
                     'company' => Input::get('customer'),
                     'reachedUsBy' => Input::get('reachedUsBy'),
+                    'eventName' => Input::get('eventName'),
                     'partner' => Input::get('partner'),
                     'partnerRep' => Input::get('partnerRep'),
                     'assignedTo' => Input::get('assignedTo'),

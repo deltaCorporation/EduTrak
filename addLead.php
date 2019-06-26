@@ -27,6 +27,7 @@ if(Input::exists()){
                     'category' => Input::get('category'),
                     'company' => Input::get('customer'),
                     'reachedUsBy' => Input::get('reachedUsBy'),
+                    'eventName' => Input::get('eventName'),
                     'partner' => Input::get('partner'),
                     'partnerRep' => Input::get('partnerRep'),
                     'assignedTo' => Input::get('assignedTo'),
@@ -76,7 +77,7 @@ if(Input::exists()){
                     ));
 
                 }
-                
+
                 if(Input::get('assignedTo') != ''){
                 	
                 	$ntf = new Notification();
@@ -86,7 +87,7 @@ if(Input::exists()){
                 		'ntfDate' => date('m/j/Y h:i A'),
                 		'ntfLink' => 'info.php?case=lead&id='.$id,
                 		'seen' => 0,
-                		'userID' => Input::get('assignedTo')
+                		'userID' => (int)Input::get('assignedTo')
              
                 	));
                 	
