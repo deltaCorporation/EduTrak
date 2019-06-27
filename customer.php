@@ -53,7 +53,7 @@ if ($customer->exists()) {
             <button class="proposal-popup-close"></button>
         </div>
     </div>
-    <form class="proposal-popup-content" action="createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
+    <form name="form" class="proposal-popup-content" action="createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
 
         <!-- Tab links -->
         <div class="proposal-tab">
@@ -68,7 +68,6 @@ if ($customer->exists()) {
 
             <textarea name="introduction" placeholder="Introducion"></textarea>
             <textarea name="requiredInvestment" placeholder="Required Investment"></textarea>
-            <textarea name="webinarFollowUpSessions" placeholder="Webinar Follow Up Sessions"></textarea>
 
             <select class="js-example-basic-single" name="user">
                 <option disabled selected>Select User</option>
@@ -82,6 +81,7 @@ if ($customer->exists()) {
 
 
         <div class="proposal-popup-footer">
+            <button type="submit" onclick="this.form.target='_blank'; form.action='previewProposal.php';">Preview</button>
             <button type="submit">Generate</button>
         </div>
     </form>
@@ -990,6 +990,8 @@ if ($customer->exists()) {
 
                     let html = '';
                     html += '<select onchange="showWorkshop(this, ' + count +')" class="js-example-basic-single">';
+
+                    html += '<option selected disabled>Select Workshop</option>';
 
                     $.each(data, function (index, item) {
                         html += '<option value="'+ item.ID +'">'+ item.titleOfOffering +'</option>';

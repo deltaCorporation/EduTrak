@@ -32,7 +32,6 @@ if(Input::get('id')) {
             'userID' => (int) $user->data()->id,
             'introduction' => Input::get('introduction'),
             'requiredInvestment' => Input::get('requiredInvestment'),
-            'webinarFollowUpSessions' => Input::get('webinarFollowUpSessions'),
             'dateCreated' => date("m/d/Y")
         ]);
 
