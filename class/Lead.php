@@ -5,7 +5,8 @@ class Lead{
     private $_db,
             $_data,
             $_leads,
-            $_categories;
+            $_categories,
+            $_listNo = 15;
 
 
     public function __construct($lead = null){
@@ -68,10 +69,69 @@ class Lead{
         return false;
     }
 
-    public function getLeads(){
-        $this->_leads = $this->_db->query('SELECT leads.id, leads.prefix, leads.firstName, leads.lastName, leads.jobTitle, leads.category, leads.company, leads.reachedUsBy, leads.partner, leads.partnerRep, leads.description, leads.tags, leads.lastContacted, leads.followUpDescription, leads.followUpDate, leads.officePhone, leads.phoneExt, leads.mobilePhone, leads.email, leads.street, leads.city, leads.district, leads.country, leads.state, leads.zip, leads.facebook, leads.twitter, leads.linkedIn, leads.website, leads.createdBy, leads.modifiedBy, leads.createdOn, leads.modifiedOn, CONCAT(users.firstName, " ", users.lastName) AS assignedTo FROM `leads` LEFT JOIN users ON leads.assignedTo = users.id ORDER BY leads.id DESC', array());
+    public function getLeads($case = null, $page = null, $sort = array(), $order = null,  $filters = null){
+
+        switch ($case){
+            case 'list':
+
+                $sql = "SELECT leads.*, CONCAT(users.firstName, ' ', users.lastName) as assignedToUser FROM leads ";
+                $sql .= "LEFT JOIN users ON leads.assignedTo = users.id ";
+
+                $offset = $page * $this->_listNo;
+
+                if($filters){
+
+                    $sql .= "HAVING ";
+
+                    foreach ($filters as $index => $filter){
+                        foreach ($filter as $key => $value){
+                            $sql .= "{$key} = '{$value}' ";
+                        }
+
+                        if($index !== count($filters) - 1){
+                            $sql .= "OR ";
+                        }
+                    }
+                }
+
+                if($sort && $order){
+                    $sql.= "ORDER BY {$sort} {$order} ";
+                }else{
+                    $sql.= "ORDER BY id DESC ";
+                }
+
+                if($page !== null){
+                    $sql .= "LIMIT {$offset}, {$this->_listNo}";
+                }
+
+//                echo $sql;die;
+
+                $this->_leads = $this->_db->query($sql);
+                break;
+
+            default:
+                $this->_leads = $this->_db->query('SELECT leads.id, leads.prefix, leads.firstName, leads.lastName, leads.jobTitle, leads.category, leads.company, leads.reachedUsBy, leads.partner, leads.partnerRep, leads.description, leads.tags, leads.lastContacted, leads.followUpDescription, leads.followUpDate, leads.officePhone, leads.phoneExt, leads.mobilePhone, leads.email, leads.street, leads.city, leads.district, leads.country, leads.state, leads.zip, leads.facebook, leads.twitter, leads.linkedIn, leads.website, leads.createdBy, leads.modifiedBy, leads.createdOn, leads.modifiedOn, CONCAT(users.firstName, " ", users.lastName) AS assignedTo FROM `leads` LEFT JOIN users ON leads.assignedTo = users.id ORDER BY leads.id DESC', array());
+                break;
+        }
+
 
         return $this->_db->results();
+    }
+
+    public function getFilters(){
+
+        $data = [
+            'assignedToUser' => [
+                'title' => 'Assigned To',
+                'content' => $this->_db->query('SELECT DISTINCT(CONCAT(users.firstName, \' \', users.lastName)) as assignedToUser FROM leads LEFT JOIN users ON leads.assignedTo = users.id WHERE assignedTo IS NOT NULL')->results()
+            ],
+            'eventName' => [
+                'title' => 'Event',
+                'content' => $this->_db->query('SELECT DISTINCT(eventName) FROM leads WHERE eventName IS NOT NULL')->results()
+            ]
+        ];
+
+        return $data;
     }
 
     public function getAdditionalInfo($leadID){

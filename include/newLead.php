@@ -36,6 +36,10 @@
                     ?>
                 </select>
             </div>
+            <div id="new-lead-arch-diocese" class="add-window-form-section-cell form-x-3" style="display: none">
+                <label>Arch/Diocese</label>
+                <input type="text" name="archDiocese">
+            </div>
             <div class="add-window-form-section-cell form-x-5">
                 <label>Company Name</label>
                 <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" type="text" style="width:90%;" class="autocomplete-input" name="customer">

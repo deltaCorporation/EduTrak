@@ -23,6 +23,7 @@ if(Input::exists()){
                     'jobTitle' => Input::get('title'),
                     'category' => Input::get('category'),
                     'company' => Input::get('customer'),
+                    'archDiocese' => Input::get('archDiocese'),
                     'reachedUsBy' => Input::get('reachedUsBy'),
                     'eventName' => Input::get('eventName'),
                     'partner' => Input::get('partner'),

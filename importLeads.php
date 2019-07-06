@@ -45,13 +45,19 @@ if($user->isLoggedIn()) {
                     'firstName' => $data[$i][1],
                     'lastName' => $data[$i][2],
                     'jobTitle' => $data[$i][4],
+                    'category' => 'Private School',
                     'company' => $data[$i][5],
                     'email' => $data[$i][6],
                     'city' => $data[$i][7],
                     'state' => $data[$i][8],
+                    'archDiocese' => $data[$i][9],
                     'reachedUsBy' => 'Event',
                     'eventName' => explode('.', $fileName)[0],
                     'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
+                    'createdOn' => date('n/j/y'),
+                    'lastContacted' => 'Not contacted',
+                    'modifiedBy' => '-',
+                    'modifiedOn' => '-',
                 ]);
             }
         }

@@ -25,6 +25,7 @@ if(Input::exists()){
                     'lastName' => Input::get('lastName'),
                     'jobTitle' => Input::get('title'),
                     'category' => Input::get('category'),
+                    'archDiocese' => Input::get('archDiocese'),
                     'company' => Input::get('customer'),
                     'reachedUsBy' => Input::get('reachedUsBy'),
                     'eventName' => Input::get('eventName'),

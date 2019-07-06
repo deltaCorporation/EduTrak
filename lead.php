@@ -9,7 +9,6 @@
         
     // $prefixes = array('Mr.','Ms.','Mrs.','Fr.','Sr.','Dr.','');
         $reachedUsBy = array('Event','Email Campaign','Partner','Social Media','Association','Print Campaign','Referral');
-
 ?>
 
 <div class="contact-information">
@@ -99,8 +98,12 @@
                     ?>
                 </select>
             </div>
+            <div id="arch-diocese" class="contact-form-information-cell info-form-x-3" <?php if($lead->data()->category !== 'Diocese' && $lead->data()->category !== 'Private School') echo 'style="display: none"' ?>>
+                <label>Arch/Diocese</label>
+                <input type="text" name="archDiocese" value="<?php echo $lead->data()->archDiocese ?>">
+            </div>
             <div class="contact-form-information-cell info-form-x-6">
-                <label>Company Name</label>
+                <label>Company/School Name</label>
                 <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input"  type="text" name="customer" value="<?php echo $lead->data()->company; ?>">
                 <div style="width: 100%" class="autocomplete-wrapper"></div>
             </div>
@@ -640,13 +643,21 @@ document.getElementById("defaultOpen").click();
 function extendExistingLead() {
     var cat = document.getElementById("existing-lead-category").value;
     var extendedContent = document.getElementById("extended-lead-content");
+    let archDiocese = document.getElementById('arch-diocese');
 
     if(cat === 'Public School' || cat === 'Private School' || cat === 'Diocese' || cat === 'District'){
+
+        if(cat === 'Diocese' || cat === 'Private School'){
+            archDiocese.style.display = 'block';
+        }else{
+            archDiocese.style.display = 'none';
+        }
 
         extendedContent.style.display = 'block';
 
     }else {
         extendedContent.style.display = 'none';
+        archDiocese.style.display = 'none';
     }
 }
 
