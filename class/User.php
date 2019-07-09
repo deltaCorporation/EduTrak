@@ -7,7 +7,8 @@ class User{
             $_cookieName,
             $_isLoggedIn,
             $_users,
-            $_usersWithPermission;
+            $_usersWithPermission,
+            $_listNo = 15;
 
     public function __construct($user = null){
         $this->_db = DB::getInstance();
@@ -144,9 +145,51 @@ class User{
     public function exists(){
         return (!empty($this->_data)) ? true : false;
     }
-    
-    public function getUsers(){
-        $this->_users = $this->_db->get('users', array());
+
+    public function getUsers($case = null, $page = null, $sort = array(), $order = null,  $filters = null){
+
+        switch ($case){
+            case 'list':
+
+                $sql = "SELECT users.* FROM users ";
+
+                $offset = $page * $this->_listNo;
+
+                if($filters){
+
+                    $sql .= "HAVING ";
+
+                    foreach ($filters as $index => $filter){
+                        foreach ($filter as $key => $value){
+                            $sql .= "{$key} = '{$value}' ";
+                        }
+
+                        if($index !== count($filters) - 1){
+                            $sql .= "OR ";
+                        }
+                    }
+                }
+
+                if($sort && $order){
+                    $sql.= "ORDER BY {$sort} {$order} ";
+                }else{
+                    $sql.= "ORDER BY id DESC ";
+                }
+
+                if($page !== null){
+                    $sql .= "LIMIT {$offset}, {$this->_listNo}";
+                }
+
+//                echo $sql;die;
+
+                $this->_users = $this->_db->query($sql);
+                break;
+
+            default:
+                $this->_users = $this->_db->query('SELECT * FROM `users` ORDER BY id DESC', array());
+                break;
+        }
+
 
         return $this->_db->results();
     }

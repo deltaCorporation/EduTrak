@@ -5,7 +5,8 @@ class Contact{
     private $_db,
             $_data,
             $_contacts,
-            $_categories;
+            $_categories,
+            $_listNo = 15;
 
 
     public function __construct($contact = null){
@@ -49,8 +50,68 @@ class Contact{
         return false;
     }
 
-    public function getContacts(){
-        $this->_contacts = $this->_db->query('SELECT * FROM contacts ORDER BY id DESC', array());
+//    public function getContacts(){
+//        $this->_contacts = $this->_db->query('SELECT * FROM contacts ORDER BY id DESC', array());
+//
+//        return $this->_db->results();
+//    }
+
+    public function getContacts($case = null, $page = null, $sort = array(), $order = null,  $filters = null){
+
+        switch ($case){
+            case 'list':
+
+                $sql = "
+                  SELECT 
+                    TRIM(contacts.id) as id,
+                    TRIM(contacts.firstName) as firstName, 
+                    TRIM(contacts.lastName) as lastName,
+                    TRIM(contacts.jobTitle) as jobTitle,
+                    TRIM(contacts.category) as category,
+                    TRIM(contacts.customer) as customer,
+                    TRIM(contacts.officePhone) as officePhone,
+                    TRIM(contacts.email) as email,
+                    TRIM(contacts.lastContacted) as lastContacted
+                  FROM 
+                    contacts ";
+
+                $offset = $page * $this->_listNo;
+
+                if($filters){
+
+                    $sql .= "HAVING ";
+
+                    foreach ($filters as $index => $filter){
+                        foreach ($filter as $key => $value){
+                            $sql .= "{$key} = '{$value}' ";
+                        }
+
+                        if($index !== count($filters) - 1){
+                            $sql .= "OR ";
+                        }
+                    }
+                }
+
+                if($sort && $order){
+                    $sql.= "ORDER BY {$sort} {$order} ";
+                }else{
+                    $sql.= "ORDER BY id DESC ";
+                }
+
+                if($page !== null){
+                    $sql .= "LIMIT {$offset}, {$this->_listNo}";
+                }
+
+//                echo $sql;die;
+
+                $this->_contacts = $this->_db->query($sql);
+                break;
+
+            default:
+                $this->_contacts = $this->_db->query('SELECT * FROM contacts ORDER BY id DESC', array());
+                break;
+        }
+
 
         return $this->_db->results();
     }

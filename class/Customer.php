@@ -6,7 +6,8 @@ class Customer{
             $_data,
             $_customer,
             $_contact,
-            $_categories;
+            $_categories,
+            $_listNo = 15;
           
 
 
@@ -67,8 +68,62 @@ class Customer{
         return false;
     }
 
-    public function getCustomers(){
-        $this->_customer = $this->_db->query('SELECT * FROM customers ORDER BY id DESC', array());
+    public function getCustomers($case = null, $page = null, $sort = array(), $order = null,  $filters = null){
+
+        switch ($case){
+            case 'list':
+
+                $sql = "
+                  SELECT 
+                    TRIM(customers.id) as id, 
+                    TRIM(customers.name) as name, 
+                    TRIM(customers.category) as category, 
+                    TRIM(customers.partnerRep) as partnerRep, 
+                    TRIM(customers.partner) as partner, 
+                    TRIM(customers.parentCustomer) as parentCustomer, 
+                    TRIM(customers.officePhone) as officePhone, 
+                    TRIM(customers.email) as email, 
+                    TRIM(customers.lastContacted) as lastContacted
+                  FROM 
+                    customers ";
+
+                $offset = $page * $this->_listNo;
+
+                if($filters){
+
+                    $sql .= "HAVING ";
+
+                    foreach ($filters as $index => $filter){
+                        foreach ($filter as $key => $value){
+                            $sql .= "{$key} = '{$value}' ";
+                        }
+
+                        if($index !== count($filters) - 1){
+                            $sql .= "OR ";
+                        }
+                    }
+                }
+
+                if($sort && $order){
+                    $sql.= "ORDER BY {$sort} {$order} ";
+                }else{
+                    $sql.= "ORDER BY id DESC ";
+                }
+
+                if($page !== null){
+                    $sql .= "LIMIT {$offset}, {$this->_listNo}";
+                }
+
+//                echo $sql;die;
+
+                $this->_customer = $this->_db->query($sql);
+                break;
+
+            default:
+                $this->_customer = $this->_db->query('SELECT * FROM customers ORDER BY id DESC', array());
+                break;
+        }
+
 
         return $this->_db->results();
     }

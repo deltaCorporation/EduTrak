@@ -150,20 +150,26 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
 
 ?>
 
-    <div class="table-list">
-        <ul class="table-list-header">
-            <li class="sort" onclick="loadMore(0, 'firstName', this)">Full Name</li>
-            <li class="sort" onclick="loadMore(0, 'company', this)">Company</li>
-            <li class="sort" onclick="loadMore(0, 'reachedUsBy', this)">Reached Us By</li>
-            <li class="sort" onclick="loadMore(0, 'partnerRep', this)">Partner Rep</li>
-            <li class="sort" onclick="loadMore(0, 'assignedTo', this)">Assigned to</li>
-            <li class="sort" onclick="loadMore(0, 'officePhone', this)">Office Phone</li>
-            <li class="sort" onclick="loadMore(0, 'email', this)">Email</li>
-            <li class="sort" onclick="loadMore(0, 'lastContacted', this)">Last Contacted</li>
-        </ul>
-        <div id="table-list-content">
+    <div id="table-wrapper">
+        <table class="table-list">
+            <thead class="table-list-header">
+            <tr>
+                <th class="sort" onclick="loadMore(0, 'firstName', this)">Full Name</th>
+                <th class="sort" onclick="loadMore(0, 'company', this)">Company</th>
+                <th class="sort" onclick="loadMore(0, 'reachedUsBy', this)">Reached Us By</th>
+                <th class="sort" onclick="loadMore(0, 'partnerRep', this)">Partner Rep</th>
+                <th class="sort" onclick="loadMore(0, 'assignedTo', this)">Assigned to</th>
+                <th class="sort" onclick="loadMore(0, 'officePhone', this)">Office Phone</th>
+                <th class="sort" onclick="loadMore(0, 'email', this)">Email</th>
+                <th class="sort" onclick="loadMore(0, 'followUpDate', this)">Follow Up Date</th>
+                <th class="sort" onclick="loadMore(0, 'lastContacted', this)">Last Contacted</th>
+            </tr>
+            </thead>
+            <tbody id="table-list-content">
 
-        </div>
+            </tbody>
+        </table>
+        <div id="load-more"></div>
     </div>
 
 <?php } ?>
@@ -288,7 +294,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
               }
           }
 
-          $('#load-more').remove();
+          $('#load-more').html('');
 
           $.ajax({
               url: 'loadLeads.php',
@@ -314,18 +320,20 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                           let officePhone = value.officePhone === null ? '-' : value.officePhone;
                           let email = value.email;
                           let lastContacted = value.lastContacted;
+                          let followUpDate = value.followUpDate === null ? '-' : value.followUpDate;
 
-                          html += '<a href="info.php?case=lead&id='+ value.id +'">' +
-                                      '<ul class="table-list-row">' +
-                                          '<li>'+ name +'</li>' +
-                                          '<li>'+ company +'</li>' +
-                                          '<li>'+ reachedUsBy +'</li>' +
-                                          '<li>'+ partnerRep +'</li>' +
-                                          '<li>'+ assignedToUser +'</li>' +
-                                          '<li>'+ officePhone +'</li>' +
-                                          '<li>'+ email +'</li>' +
-                                          '<li>'+ lastContacted +'</li>' +
-                                      '</ul>' +
+                          html += '<a href="">' +
+                                      '<tr onclick="window.location = \'info.php?case=lead&id='+ value.id +'\'" class="table-list-row">' +
+                                          '<td>'+ name +'</td>' +
+                                          '<td>'+ company +'</td>' +
+                                          '<td>'+ reachedUsBy +'</td>' +
+                                          '<td>'+ partnerRep +'</td>' +
+                                          '<td>'+ assignedToUser +'</td>' +
+                                          '<td>'+ officePhone +'</td>' +
+                                          '<td>'+ email +'</td>' +
+                                          '<td>'+ followUpDate +'</td>' +
+                                          '<td>'+ lastContacted +'</td>' +
+                                      '</tr>' +
                                   '</a>';
 
                       });
@@ -338,7 +346,8 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
 
                       if(sort || checkedFilters){
                           if(result.length === 15) {
-                              html += '<div id="load-more"><a onclick="loadMore(' + pageNo + ',\'' + sort + '\', this)">Load more leads</a></div>';
+                              console.log($('#load-more'))
+                              $('#load-more').append('<a onclick="loadMore(' + pageNo + ',\'' + sort + '\', this)">Load more leads</a>');
                           }
                           if(page === 0){
                               $('#table-list-content').html(html);
@@ -347,7 +356,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                           }
                       }else{
                           if(result.length === 15){
-                              html += '<div id="load-more"><a onclick="loadMore('+ pageNo +', null, this)">Load more leads</a></div>';
+                              $('#load-more').append('<a onclick="loadMore('+ pageNo +', null, this)">Load more leads</a>');
                           }
 
                           html += '<div id="load-more"></div>';
