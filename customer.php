@@ -57,7 +57,7 @@ if ($customer->exists()) {
 
         <!-- Tab links -->
         <div class="proposal-tab">
-            <button id="proposal-default-tab" type="button" class="proposal-tablinks" onclick="openProposalTab(event, 'proposal-workshop-1')">Workshop 1</button>
+            <button id="proposal-default-tab" type="button" class="proposal-tablinks" onclick="openProposalTab(event, 'proposal-workshop-1')">Proposal Information</button>
             <button id="add-new-proposal-tab" type="button" class="proposal-tablinks" onclick="addProposalTab(this)">add workshop</button>
         </div>
 
@@ -81,7 +81,7 @@ if ($customer->exists()) {
 
 
         <div class="proposal-popup-footer">
-            <button type="submit" onclick="this.form.target='_blank'; form.action='previewProposal.php';">Preview</button>
+            <button type="submit" onclick="this.form.target='_blank'; form.action='previewProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Preview</button>
             <button type="submit">Generate</button>
         </div>
     </form>
@@ -959,7 +959,7 @@ if ($customer->exists()) {
             button.classList.add('proposal-tablinks');
             button.id = 'proposal-workshop-button-' + count;
             button.type = 'button';
-            button.textContent = 'Workshop ' + count;
+            button.textContent = 'Workshop ' + (count - 1);
 
             let footer = $('.proposal-popup-footer');
 

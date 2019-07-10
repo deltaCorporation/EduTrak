@@ -5097,12 +5097,13 @@ font-size: 2vh;
  .quote-tabcontent input,
  .proposal-tabcontent input{
      width: 90%;
+     margin-bottom: 10px;
      padding: 10px 15px;
      font-size: 14px;
  }
 
  .proposal-tabcontent textarea{
-     margin-top: 10px;
+     margin-bottom: 10px;
      width: 90%;
      padding: 10px 15px;
      font-size: 14px;
@@ -5148,7 +5149,7 @@ font-size: 2vh;
  .workshop-textareas{
      display: grid;
      grid-template-columns: 1fr 1fr;
-     grid-gap: 10px;
+     grid-column-gap: 10px;
      margin-top: 20px;
  }
 
@@ -5160,6 +5161,7 @@ font-size: 2vh;
  }
 
  .workshop-textareas textarea{
+     margin-bottom: 10px;
      padding: 10px;
      font-size: .9rem;
      height: 200px;
