@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d75e4cb5-7537-48b2-b5d0-2d87d1453de8" name="Default Changelist" comment="Initial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/previewProposal.php" beforeDir="false" afterPath="$PROJECT_DIR$/previewProposal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/previewProposal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="112" column="107" selection-start-line="112" selection-start-column="107" selection-end-line="112" selection-end-column="107" />
+            <state relative-caret-position="549">
+              <caret line="183" column="35" selection-start-line="183" selection-start-column="35" selection-end-line="183" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -39,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/customer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="66" column="42" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="42" />
+            <state relative-caret-position="-3509">
+              <caret line="69" column="46" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
               </folding>
@@ -51,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generateProposal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="-941">
               <caret line="10" column="58" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="58" />
             </state>
           </provider>
@@ -67,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/createProposal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+            <state relative-caret-position="497">
+              <caret line="46" column="71" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -282,7 +280,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70978000" />
+    <option name="totallyTimeSpent" value="73271000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -608,39 +606,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/generateProposal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-941">
+          <caret line="10" column="58" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/generateQuote.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2062" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/createProposal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generateProposal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="10" column="58" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/customer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="66" column="42" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="42" />
+        <state relative-caret-position="-3509">
+          <caret line="69" column="46" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/createProposal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="46" column="71" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/previewProposal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="112" column="107" selection-start-line="112" selection-start-column="107" selection-end-line="112" selection-end-column="107" />
+        <state relative-caret-position="549">
+          <caret line="183" column="35" selection-start-line="183" selection-start-column="35" selection-end-line="183" selection-end-column="35" />
         </state>
       </provider>
     </entry>

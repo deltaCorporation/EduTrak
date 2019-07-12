@@ -73,6 +73,36 @@ if(Input::get('id')){
                 float: right;
             }
             
+            #investments h4,
+            #introduction h4,
+            #workshops h4{
+                font-size: 15px;
+                font-family: Arial, sans-serif;
+            }
+            
+            #investments p,
+            #introduction p,
+            #workshops p{
+                font-size: 13px;
+                font-family: Arial, sans-serif;
+            }
+            
+            #workshops h5{
+                font-size: 13px;
+                font-family: Arial, sans-serif;
+                padding: 4px;
+                background-color: rgba(0,0,0,.1);
+            }
+            
+            #workshops h6{
+                font-size: 13px;
+                font-family: Arial, sans-serif;
+            }
+            
+            .learner-outcomes{
+                padding: 0 20px;
+             }
+            
         </style>
     
     ";
@@ -115,13 +145,68 @@ if(Input::get('id')){
                 <span>M. ". $user->data()->phone ."</span><br>
             </div>
         </div>
-        
-        
-    
+    ";
+
+    // Introduction
+
+    $mpdf->WriteHTML($html);
+    $mpdf->AddPage();
+
+    $html = "
+        <div id='introduction'>
+            <h4>INTRODUCTION</h4>
+            <p>". nl2br(Input::get('introduction'))."</p>
+        </div>
     ";
 
     $mpdf->WriteHTML($html);
-    $mpdf->Output($fileName.'.pdf');
+
+    // Workshops
+
+    $data = Input::get('data');
+    $mpdf->AddPage();
+
+    $html = "
+        <div id='workshops'>
+            <h4>Workshop Descriptions</h4>
+            ";
+
+    foreach ($data as $workshop){
+
+        if($workshop['learnerOutcomes'] !== ''){
+            $learnerOutcomesTitle = '<h6>Learner Outcomes</h6>';
+        }
+
+        $html .= "
+            <h5>".$workshop['title']."</h5>  
+            <p>".nl2br($workshop['description'])."</p>  
+            
+            ".$learnerOutcomesTitle."
+            <p class='learner-outcomes'>".nl2br($workshop['learnerOutcomes'])."</p>
+        ";
+
+    }
+
+    $html .= "
+        </div>
+    ";
+
+    $mpdf->WriteHTML($html);
+
+    // Required Investment
+
+    $mpdf->AddPage();
+
+    $html = "
+        <div id='investments'>
+            <h4>Required Investment</h4>
+            <p>". nl2br(Input::get('requiredInvestment'))."</p>
+        </div>
+    ";
+
+    $mpdf->WriteHTML($html);
+
+    $mpdf->Output($fileName.'.pdf', 'I');
 }
 
 
