@@ -314,7 +314,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
 
                           let name = value.firstName + ' ' + value.lastName;
                           let jobTitle = value.jobTitle === null ? '-' : value.jobTitle;
-                          let company = value.company === null ? '-' : value.company;
+                          let company = value.company === null || value.company === '' ? '-' : value.company;
                           let reachedUsBy = value.reachedUsBy === null ? '-' : value.reachedUsBy;
                           let assignedToUser = value.assignedToUser === null ? '-' : value.assignedToUser;
                           let officePhone = value.officePhone === null ? '-' : value.officePhone;
