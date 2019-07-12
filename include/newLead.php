@@ -36,6 +36,10 @@
                     ?>
                 </select>
             </div>
+            <div id="new-lead-arch-diocese" class="add-window-form-section-cell form-x-3" style="display: none">
+                <label>Arch/Diocese</label>
+                <input type="text" name="archDiocese">
+            </div>
             <div class="add-window-form-section-cell form-x-5">
                 <label>Company Name</label>
                 <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" type="text" style="width:90%;" class="autocomplete-input" name="customer">
@@ -131,10 +135,11 @@
             </div>
         </div>
 
-        <div class="add-window-form-section-row">
+        <div id="addLeadReachedUsBy" class="add-window-form-section-row">
             <div class="add-window-form-section-cell form-x-3">
                 <label>Reached us by</label>
                 <select name="reachedUsBy">
+                    <option disabled selected>Not Selected</option>
                     <option>Event</option>
                     <option>Email Campaign</option>
                     <option>Partner</option>
@@ -143,6 +148,10 @@
                     <option>Print Campaign</option>
                     <option>Referral</option>
                 </select>
+            </div>
+            <div id="addLeadEventName" class="add-window-form-section-cell form-x-4">
+                <label>Event Name</label>
+                <input type="text" name="eventName" placeholder="">
             </div>
             <div class="add-window-form-section-cell form-x-4">
                 <label>Assigned to</label>
@@ -223,3 +232,17 @@
         <button type="submit" class="add-window-button-save">Save</button>
     </div>
 </form>
+<script>
+    $('#addLeadReachedUsBy select').on('change', function () {
+
+        let eventName = $('#addLeadEventName');
+        let eventNameInput = $('#addLeadEventName input');
+
+        if(this.value === 'Event'){
+            eventName.show();
+        }else{
+            eventName.hide();
+            eventNameInput.html('');
+        }
+    });
+</script>

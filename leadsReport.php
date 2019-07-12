@@ -113,10 +113,10 @@ if($user->isLoggedIn()){
             $lead->twitter,
             $lead->linkedIn,
             $lead->website,
-            $lead->createdBy,
-            $lead->createdOn,
             $lead->modifiedBy,
             $lead->modifiedOn,
+            $lead->createdBy,
+            $lead->createdOn,
         ]);
     }
 
