@@ -155,9 +155,9 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
             <thead class="table-list-header">
             <tr>
                 <th class="sort" onclick="loadMore(0, 'firstName', this)">Full Name</th>
+                <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Title</th>
                 <th class="sort" onclick="loadMore(0, 'company', this)">Company</th>
                 <th class="sort" onclick="loadMore(0, 'reachedUsBy', this)">Reached Us By</th>
-                <th class="sort" onclick="loadMore(0, 'partnerRep', this)">Partner Rep</th>
                 <th class="sort" onclick="loadMore(0, 'assignedTo', this)">Assigned to</th>
                 <th class="sort" onclick="loadMore(0, 'officePhone', this)">Office Phone</th>
                 <th class="sort" onclick="loadMore(0, 'email', this)">Email</th>
@@ -313,9 +313,9 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                       $.each(result, function (index, value) {
 
                           let name = value.firstName + ' ' + value.lastName;
+                          let jobTitle = value.jobTitle === null ? '-' : value.jobTitle;
                           let company = value.company === null ? '-' : value.company;
                           let reachedUsBy = value.reachedUsBy === null ? '-' : value.reachedUsBy;
-                          let partnerRep = value.partnerRep === null ? '-' : value.partnerRep;
                           let assignedToUser = value.assignedToUser === null ? '-' : value.assignedToUser;
                           let officePhone = value.officePhone === null ? '-' : value.officePhone;
                           let email = value.email;
@@ -325,9 +325,9 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                           html += '<a href="">' +
                                       '<tr onclick="window.location = \'info.php?case=lead&id='+ value.id +'\'" class="table-list-row">' +
                                           '<td>'+ name +'</td>' +
+                                            '<td>'+ jobTitle +'</td>' +
                                           '<td>'+ company +'</td>' +
                                           '<td>'+ reachedUsBy +'</td>' +
-                                          '<td>'+ partnerRep +'</td>' +
                                           '<td>'+ assignedToUser +'</td>' +
                                           '<td>'+ officePhone +'</td>' +
                                           '<td>'+ email +'</td>' +
