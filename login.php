@@ -25,7 +25,8 @@ if (Input::exists()){
             $login = $user->login(Input::get('email'), Input::get('password'), $remember);
 
             if ($login){
-                Redirect::to('connect.php');
+                $authUrl = $client->createAuthUrl();
+                Redirect::to($authUrl);
             }else{
                 $loginErrors = array(
                     'email' => 'Wrong email or password',
