@@ -8,8 +8,7 @@
 
         
     // $prefixes = array('Mr.','Ms.','Mrs.','Fr.','Sr.','Dr.','');
-        $reachedUsBy = array('Event','Email Campaign','Partner'.'Social Media','Association','Print Campaign','Referral');
-
+        $reachedUsBy = array('Event','Email Campaign','Partner','Social Media','Association','Print Campaign','Referral');
 ?>
 
 <div class="contact-information">
@@ -99,8 +98,12 @@
                     ?>
                 </select>
             </div>
+            <div id="arch-diocese" class="contact-form-information-cell info-form-x-3" <?php if($lead->data()->category !== 'Diocese' && $lead->data()->category !== 'Private School') echo 'style="display: none"' ?>>
+                <label>Arch/Diocese</label>
+                <input type="text" name="archDiocese" value="<?php echo $lead->data()->archDiocese ?>">
+            </div>
             <div class="contact-form-information-cell info-form-x-6">
-                <label>Company Name</label>
+                <label>Company/School Name</label>
                 <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input"  type="text" name="customer" value="<?php echo $lead->data()->company; ?>">
                 <div style="width: 100%" class="autocomplete-wrapper"></div>
             </div>
@@ -202,7 +205,7 @@
                 <label>Follow up date</label>
                 <input type="date" name="followUpDate" value="<?php echo $lead->data()->followUpDate; ?>">
             </div>
-            <div class="contact-form-information-cell form-x-3">
+            <div id="reachedUsBy" class="contact-form-information-cell form-x-3">
                 <label>Reached us by</label>
                 <select name="reachedUsBy">
                     <?php
@@ -211,10 +214,10 @@
 
                         foreach ($reachedUsBy as $item){
                             if($item == $lead->data()->reachedUsBy){
-                                echo '<option selected>'.$item.'</option>';
+                                echo '<option value="'.$item.'" selected>'.$item.'</option>';
                                 $i++;
                             }else{
-                                echo '<option>'.$item.'</option>';
+                                echo '<option value="'.$item.'">'.$item.'</option>';
                             }
                         }
 
@@ -225,7 +228,11 @@
                     ?>
                 </select>
             </div>
-            <div class="contact-form-information-cell form-x-4">
+            <div id="eventName" <?php echo $lead->data()->reachedUsBy === 'Event' ? 'style="display: block"' : ''  ?> class="contact-form-information-cell info-form-x-3">
+                <label>Event Name</label>
+                <input type="input" name="eventName" value="<?php echo $lead->data()->eventName; ?>">
+            </div>
+            <div class="contact-form-information-cell form-x-3">
                 <label>Assigned to</label>
                 <select name="assignedTo">
 
@@ -636,17 +643,38 @@ document.getElementById("defaultOpen").click();
 function extendExistingLead() {
     var cat = document.getElementById("existing-lead-category").value;
     var extendedContent = document.getElementById("extended-lead-content");
+    let archDiocese = document.getElementById('arch-diocese');
 
     if(cat === 'Public School' || cat === 'Private School' || cat === 'Diocese' || cat === 'District'){
+
+        if(cat === 'Diocese' || cat === 'Private School'){
+            archDiocese.style.display = 'block';
+        }else{
+            archDiocese.style.display = 'none';
+        }
 
         extendedContent.style.display = 'block';
 
     }else {
         extendedContent.style.display = 'none';
+        archDiocese.style.display = 'none';
     }
 }
 
 $('#leads').addClass('link-selected');
+
+$('#reachedUsBy select').on('change', function () {
+
+    let eventName = $('#eventName');
+    let eventNameInput = $('#addLeadEventName input');
+
+    if(this.value === 'Event'){
+        eventName.show();
+    }else{
+        eventName.hide();
+        eventNameInput.html('');
+    }
+});
 
 </script>
 

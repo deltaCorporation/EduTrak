@@ -48,15 +48,24 @@ $inventory = new Inventory();
         var cat = document.getElementById("lead-category").value;
         var test = document.getElementById("additional-info-button");
         var replace = document.getElementById("replace-block");
+        let archDiocese = document.getElementById('new-lead-arch-diocese');
 
         if(cat === 'Public School' || cat === 'Private School' || cat === 'Diocese' || cat === 'District'){
 
             test.style.display = 'block';
             replace.style.display = 'none';
 
+            if(cat === 'Diocese' || cat === 'Private School'){
+                archDiocese.style.display = 'block';
+            }else{
+                archDiocese.style.display = 'none';
+            }
+
         }else {
             test.style.display = 'none';
             replace.style.display = 'block';
+
+            archDiocese.style.display = 'none';
         }
     }
     

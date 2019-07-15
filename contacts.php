@@ -92,68 +92,45 @@ include_once __DIR__ . '/include/addSidebar.php';
 
 ?>
 
-    <section id="content">
-        <table id="myTable">
-            <tr class="contact-table-header">
-            	<th></th>
-                <th onclick="sortTable(1), changeIcon(0)">Full Name  <i id="sort-icon-0" class=" fas fa-sort"></i></th>
-                <th onclick="sortTable(2), changeIcon(1)">Job Title <i id="sort-icon-1"  class=" fas fa-sort"></i></th>
-                <th onclick="sortTable(3), changeIcon(2)">Category <i id="sort-icon-2"  class=" fas fa-sort"></i></th>
-                <th onclick="sortTable(3), changeIcon(3)">Customer <i id="sort-icon-2"  class=" fas fa-sort"></i></th>
-                <th onclick="sortTable(5), changeIcon(4)">Office Phone <i id="sort-icon-4"  class=" fas fa-sort"></i></th>
-                <th onclick="sortTable(6), changeIcon(5)">Email <i id="sort-icon-6"  class=" fas fa-sort"></i></th>
-                <th onclick="sortTable(7), changeIcon(6)">Last Contacted <i id="sort-icon-6"  class=" fas fa-sort"></i></th>
-            </tr>
+    <div id="filter-menu">
+        <div id="filter-menu-header">
+            <h2>Filters</h2>
+            <a onclick="closeFilters()">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+    </div>
 
-        <?php
+    <section id="content-contacts">
 
-        if(!empty($contact->getContacts())) {
+        <ul id="side-menu">
+            <li onclick="openFilters()">
+                <a id="filters-link">
+                    <i class="fas fa-sliders-h"></i>
+                </a>
+            </li>
+        </ul>
 
-            foreach ($contact->getContacts() as $contact) {
-
-                if ($contact->lastContacted == null)
-                    $lastContacted = '-';
-                else
-                    $lastContacted = $contact->lastContacted;
-
-
-                echo "
-                    
-                        <tr class='contact-table-row'>
-                        <td><a href='info.php?case=contact&id={$contact->id}'><i class='fas fa-external-link-alt' style='color: rgba(0,0,0,.8)'></i></a></td>
-                        <td>{$contact->firstName} {$contact->lastName}</td>
-                    <td>{$contact->jobTitle}</td>
-                    <td>{$contact->category}</td>
-             <td>{$contact->customer}</td>
-                    <td>{$contact->officePhone}</td>
-                    <td>{$contact->email}</td>
-                    <td>{$contact->lastContacted}</td>
+        <div id="table-wrapper">
+            <table class="table-list">
+                <thead class="table-list-header">
+                <tr>
+                    <th class="sort" onclick="loadMore(0, 'firstName', this)">Full Name</th>
+                    <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Job Title</th>
+                    <th class="sort" onclick="loadMore(0, 'category', this)">Category</th>
+                    <th class="sort" onclick="loadMore(0, 'customer', this)">Customer</th>
+                    <th class="sort" onclick="loadMore(0, 'officePhone', this)">Office Phone</th>
+                    <th class="sort" onclick="loadMore(0, 'email', this)">Email</th>
+                    <th class="sort" onclick="loadMore(0, 'lastContacted', this)">Last Contacted</th>
                 </tr>
-                    
-                    ";
+                </thead>
+                <tbody id="table-list-content">
 
+                </tbody>
+            </table>
+            <div id="load-more"></div>
+        </div>
 
-            }
-        }else{
-            echo "
-                
-                    <tr>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-                
-                ";
-        }
-
-        ?>
-
-        </table>
     </section>
 
     <footer id="footer">
@@ -201,103 +178,151 @@ include_once __DIR__ . '/include/addSidebar.php';
     </body>
     </html>
 
-<script>
+    <script>
 
-/* Table sort */
+        /* Open Filters Menu */
 
-        function changeIcon(n) {
+        function openFilters(){
+            $('#filter-menu').animate({left: '0'}, 0, 'swing');
+        }
 
-
-            if(document.getElementById("sort-icon-"+n).classList.contains('fa-sort-up')){
-                document.getElementById("sort-icon-"+n).classList.remove('fa-sort-up');
-                document.getElementById("sort-icon-"+n).classList.add('fa-sort-down');
-            }else{
-                document.getElementById("sort-icon-"+n).classList.remove('fa-sort-down');
-                document.getElementById("sort-icon-"+n).classList.add('fa-sort-up');
-            }
-
-
-
-                for(i=0;i<9;i++){
-                    if(i !== n){
-                        if(document.getElementById("sort-icon-"+i).classList.contains('fa-sort-up')){
-                            document.getElementById("sort-icon-"+i).classList.remove('fa-sort-up');
-                        }else if(document.getElementById("sort-icon-"+i).classList.contains('fa-sort-down')){
-                            document.getElementById("sort-icon-"+i).classList.remove('fa-sort-down');
-                        }
-
-                    }
-                }
+        function closeFilters(){
+            $('#filter-menu').animate({left: '-250px'}, 0, 'swing');
 
         }
 
+        /* Load Leads List */
+
+        let pageNo = 0;
+        let order = 'ASC';
+        let column = '';
+
+        loadMore(0, null, null);
+
+        let filters = $('.filter');
+        $.each(filters, function (index, filter) {
+            filter.addEventListener('change', function () {
+                loadMore(0, null, null);
+            })
+        });
 
 
+        function loadMore(page, sort, link){
 
+            let filters = $('.filter');
+            let checkedFilters = [];
 
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("myTable");
-            switching = true;
-            //Set the sorting direction to ascending:
-            dir = "asc";
-            /*Make a loop that will continue until
-            no switching has been done:*/
-            while (switching) {
-                //start by saying: no switching is done:
-                switching = false;
-                rows = table.getElementsByTagName("TR");
-                /*Loop through all table rows (except the
-                first, which contains table headers):*/
-                for (i = 1; i < (rows.length - 1); i++) {
-                    //start by saying there should be no switching:
-                    shouldSwitch = false;
-                    /*Get the two elements you want to compare,
-                    one from current row and one from the next:*/
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    /*check if the two rows should switch place,
-                    based on the direction, asc or desc:*/
-                    if (dir == "asc") {
-
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-
-                            //if so, mark as a switch and break the loop:
-                            shouldSwitch= true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-
-
-
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            //if so, mark as a switch and break the loop:
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
+            $.each(filters, function (index, filter) {
+                if(filter.checked){
+                    checkedFilters.push(JSON.parse(filter.value));
                 }
-                if (shouldSwitch) {
-                    /*If a switch has been marked, make the switch
-                    and mark that a switch has been done:*/
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    //Each time a switch is done, increase this count by 1:
-                    switchcount ++;
-                } else {
-                    /*If no switching has been done AND the direction is "asc",
-                    set the direction to "desc" and run the while loop again.*/
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
+            });
+
+            if(sort && page === 0){
+                if(sort !== column){
+                    column = sort;
+                    order = 'ASC';
+
+                    let sorts = $('.sort');
+
+                    $.each(sorts, function (index, item) {
+                        item.classList.remove('sort-up');
+                        item.classList.remove('sort-down');
+                    });
+
+                    link.classList.add('sort-up');
+                }else{
+                    if(order === 'ASC'){
+                        order = 'DESC';
+
+                        link.classList.remove('sort-up');
+                        link.classList.add('sort-down');
+                    }else{
+                        order = 'ASC';
+
+                        link.classList.remove('sort-down');
+                        link.classList.add('sort-up');
                     }
                 }
             }
+
+            $('#load-more').html('');
+
+            $.ajax({
+                url: 'loadContacts.php',
+                type: 'GET',
+                data: {
+                    page: page,
+                    sort: sort,
+                    order: order,
+                    filters: checkedFilters
+                },
+                success: function (result) {
+                    if(result.length > 0){
+
+                        let html = '';
+
+                        $.each(result, function (index, value) {
+
+                            let name = value.firstName + ' ' + value.lastName;
+                            let jobTitle = value.jobTitle === null || value.jobTitle === '' ? '-' : value.jobTitle;
+                            let category = value.category === null || value.category === '' ? '-' : value.category;
+                            let customer = value.customer === null || value.customer === '' ? '-' : value.customer;
+                            let officePhone = value.officePhone === null || value.officePhone === '' ? '-' : value.officePhone;
+                            let email = value.email === null || value.email === '' ? '-' : value.email;
+                            let lastContacted = value.lastContacted === null ? 'Not Contacted' : value.lastContacted;
+
+                            html += '<a href="">' +
+                                '<tr onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'" class="table-list-row">' +
+                                '<td>'+ name +'</td>' +
+                                '<td>'+ jobTitle +'</td>' +
+                                '<td>'+ category +'</td>' +
+                                '<td>'+ customer +'</td>' +
+                                '<td>'+ officePhone +'</td>' +
+                                '<td>'+ email +'</td>' +
+                                '<td>'+ lastContacted +'</td>' +
+                                '</tr>' +
+                                '</a>';
+
+                        });
+
+                        if(page === 0){
+                            pageNo = 1;
+                        }else{
+                            pageNo++;
+                        }
+
+                        if(sort || checkedFilters){
+                            if(result.length === 15) {
+                                console.log($('#load-more'))
+                                $('#load-more').append('<a onclick="loadMore(' + pageNo + ',\'' + sort + '\', this)">Load more contacts</a>');
+                            }
+                            if(page === 0){
+                                $('#table-list-content').html(html);
+                            }else{
+                                $('#table-list-content').append(html);
+                            }
+                        }else{
+                            if(result.length === 15){
+                                $('#load-more').append('<a onclick="loadMore('+ pageNo +', null, this)">Load more contacts</a>');
+                            }
+
+                            html += '<div id="load-more"></div>';
+                            $('#table-list-content').append(html);
+                        }
+
+                    }else{
+                        let html = '<div id="load-more"><a>No results</a></div>';
+                        $('#table-list-content').html(html);
+                    }
+                }
+
+            });
         }
 
-    $('#contacts').addClass("link-selected");
+        $('#contacts').addClass("link-selected");
 
-</script>
+    </script>
     
     
 

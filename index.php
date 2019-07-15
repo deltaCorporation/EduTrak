@@ -425,13 +425,6 @@ include __DIR__ . '/include/scripts.php';
 
             <h1 class="title">Welcome to <br> EduTrak</h1>
 
-            <p class="text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non porttitor sem, a tempor dui.
-                Aenean sagittis faucibus nisl, eu tempus felis elementum quis. Pellentesque dapibus eu tellus nec viverra.
-                Sed sit amet nisl ut massa malesuada consequat. Maecenas hendrerit orci risus, et lacinia eros sagittis nec.
-
-            </p>
-
         </div>
     </section>
 
