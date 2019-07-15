@@ -35,8 +35,8 @@ class ProposalAndQuotes{
         }
     }
 
-    public function delete($ntf){
-        if(!$this->_db->delete('proposals_and_quotes', array('id', '=', $ntf))){
+    public function delete($id){
+        if(!$this->_db->delete('proposals_and_quotes', array('id', '=', $id))){
             throw new Exception('There was a problem deleting an Proposal / Quote.');
         }
     }

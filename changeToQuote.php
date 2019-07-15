@@ -12,6 +12,7 @@ if($id = Input::get('id')) {
             'type' => 'quote'
         ], $id);
 
+        Session::flash('home', 'Proposal transformed to a quote.');
         Redirect::to('info.php?case=customer&id='.Input::get('customerID'));
 
     }catch (Exception $e){

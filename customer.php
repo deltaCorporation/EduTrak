@@ -82,7 +82,7 @@ if ($customer->exists()) {
 
         <div class="proposal-popup-footer">
             <button type="submit" onclick="this.form.target='_blank'; form.action='previewProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Preview</button>
-            <button type="submit">Generate</button>
+            <button type="submit" onclick="form.action='createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Generate</button>
         </div>
     </form>
 </div>
@@ -199,15 +199,18 @@ if ($customer->exists()) {
 
                 <div class="proposal-request-header">
                     <h4><?php echo $proposal->title ?> | <span><?php echo $proposal->dateCreated ?></span></h4>
-                    <a href="changeToQuote.php?id=<?php echo $proposal->ID ?>&customerID=<?php echo $customer->data()->id ?>" class="">
+                    <a title="Transform to Quote" onclick="changeToQuote(<?php echo $proposal->ID ?>,<?php echo $customer->data()->id ?>)" class="">
                         <i class="fas fa-receipt"></i>
                     </a>
-                    <a href="generateProposal.php?id=<?php echo $proposal->ID ?>" class="">
+                    <a title="Download Proposal" href="generateProposal.php?id=<?php echo $proposal->ID ?>" class="">
                         <i class="fas fa-file-download"></i>
                     </a>
-                    <a class="more">
-                        <i class="far fa-caret-square-down"></i>
+                    <a title="Delete Proposal" onclick="deleteProposal(<?php echo $proposal->ID ?>)" class="">
+                        <i class="fas fa-trash"></i>
                     </a>
+<!--                    <a class="more">-->
+<!--                        <i class="far fa-caret-square-down"></i>-->
+<!--                    </a>-->
                 </div>
 
                 <div class="proposal-panel">
@@ -226,12 +229,15 @@ if ($customer->exists()) {
 
                 <div class="quote-request-header">
                     <h4><?php echo $quote->title ?> | <span><?php echo $quote->dateCreated ?></span></h4>
-                    <a href="generateQuote.php?id=<?php echo $quote->ID ?>" class="">
+                    <a title="Download Quote" href="generateQuote.php?id=<?php echo $quote->ID ?>" class="">
                         <i class="fas fa-file-download"></i>
                     </a>
-                    <a class="more">
-                        <i class="far fa-caret-square-down"></i>
+                    <a title="Delete Quote" onclick="deleteQuote(<?php echo $quote->ID ?>)" class="">
+                        <i class="fas fa-trash"></i>
                     </a>
+<!--                    <a class="more">-->
+<!--                        <i class="far fa-caret-square-down"></i>-->
+<!--                    </a>-->
                 </div>
 
                 <div class="quote-panel">
@@ -241,9 +247,9 @@ if ($customer->exists()) {
             <?php endforeach; ?>
         </div>
 
-        <form action="updateCustomer.php" method="post" class="contact-form-information contact-tabcontent"
+        <form action="updateCustomer.php" method="post" enctype="multipart/form-data" class="contact-form-information contact-tabcontent"
               id="contact-information">
-            <input type="hidden" name="customerId" value="<?php echo $customer->data()->id ?>">
+            <input type="hidden" name="customerId" value="<?php echo $customer->data()->id ?>" required>
 
             <div class="contact-form-information-row">
                 <div class="contact-form-information-cell info-form-x-5">
@@ -256,6 +262,14 @@ if ($customer->exists()) {
                            type="text" name="parentCustomer" value="<?php echo $customer->data()->parentCustomer; ?>">
                     <div style="width: 100%" class="autocomplete-wrapper"></div>
                 </div>
+                <div class="contact-form-section-cell-file info-form-x-3">
+                    <label>Company Logo</label>
+                    <input type="file" name="logo" placeholder="">
+                </div>
+
+            </div>
+
+            <div class="contact-form-information-row">
                 <div class="contact-form-information-cell info-form-x-3">
                     <label>Category</label>
                     <select id="existing-customer-category" onchange="extendExistingCustomer()" name="category">
@@ -272,9 +286,6 @@ if ($customer->exists()) {
                         ?>
                     </select>
                 </div>
-            </div>
-
-            <div class="contact-form-information-row">
                 <div class="contact-form-information-cell info-form-x-5">
                     <label>Email</label>
                     <input type="text" name="email" value="<?php echo $customer->data()->email; ?>">
@@ -806,6 +817,47 @@ if ($customer->exists()) {
 
     <script>
 
+        function changeToQuote(id, customerID) {
+            if (confirm('Are you sure you want to transform this proposal to a quote?')) {
+                window.location.href = 'changeToQuote.php?id=' + id + '&customerID=' + customerID;
+            }
+        }
+
+        function deleteProposal(id){
+            if (confirm('Are you sure you want to delete this proposal?')) {
+
+                $.ajax({
+                    method: "POST",
+                    url: "deleteProposal.php",
+                    data: {
+                        id: id
+                    }
+                })
+                    .done(function(result) {
+                        $("#contact-proposal").load(" #contact-proposal > *");
+                    });
+
+            }
+        }
+
+        function deleteQuote(id){
+            if (confirm('Are you sure you want to delete this quote?')) {
+
+                $.ajax({
+                    method: "POST",
+                    url: "deleteQuote.php",
+                    data: {
+                        id: id
+                    }
+                })
+                    .done(function(result) {
+                        console.log(result);
+                        $("#contact-quote").load(" #contact-quote > *");
+                    });
+
+            }
+        }
+
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
@@ -915,6 +967,7 @@ if ($customer->exists()) {
                     let html = '';
                     html += '<select onchange="showWorkshop(this, ' + count +')" class="js-example-basic-single">';
 
+                    html += '<option selected disabled>Select Workshop</option>';
                     $.each(data, function (index, item) {
                         html += '<option value="'+ item.ID +'">'+ item.titleOfOffering +'</option>';
                     });

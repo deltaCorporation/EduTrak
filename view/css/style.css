@@ -2351,7 +2351,8 @@ height: 2.5vh !important;
      position: relative;
  }
 
- .contact-form-information-cell label{
+ .contact-form-information-cell label,
+ .contact-form-section-cell-file label{
      display: block;
      height: 1rem;
      font-size: .8rem;
@@ -4613,12 +4614,14 @@ font-size: 2vh;
      margin-bottom: 1rem;
  }
 
- .add-window-form-section-cell-file{
+ .add-window-form-section-cell-file,
+ .contact-form-section-cell-file{
      position: relative;
      display: grid;
  }
 
- .add-window-form-section-cell-file > input{
+ .add-window-form-section-cell-file > input,
+ .contact-form-section-cell-file{
      align-self: center;
  }
 
@@ -5276,7 +5279,6 @@ font-size: 2vh;
  }
 
  .proposal-panel {
-     margin: 10px;
      background-color: white;
      max-height: 0;
      overflow: hidden;

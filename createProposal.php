@@ -55,6 +55,7 @@ if(Input::get('id')) {
 
         $id = $customer ? $customer->data()->id : $lead->data()->id;
 
+        Session::flash('home', 'New proposal has been created!');
         Redirect::to('info.php?case=customer&id=' . $id);
 
     }catch (Exception $e){
