@@ -17,28 +17,23 @@ if(Input::exists()){
 
             $id = date('ymdhis');
 
-            $target_dir = "view/img/logos/";
-            $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            if($_FILES["logo"]["size"] !== 0){
+                $target_dir = "view/img/logos/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-            if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
-                $uploadOk = 0;
-            }
-
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif" ) {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                $uploadOk = 0;
-            }
-
-            if ($uploadOk === 1) {
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" ) {
+                    die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+                }
 
                 move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
 
-                try{
+            }
+
+            try{
 
                     $customer->create(array(
                         'id' => $id,
@@ -100,10 +95,9 @@ if(Input::exists()){
                     Session::flash('home', 'New Customer has been created!');
                     Redirect::to('customers.php');
 
-                }catch (Exception $e){
+                }catch (Exception $e) {
                     die($e->getMessage());
                 }
-            }
         }
 
     

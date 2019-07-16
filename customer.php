@@ -66,7 +66,7 @@ if ($customer->exists()) {
 
             <input type="text" name="title" placeholder="Proposal Title">
 
-            <textarea name="introduction" placeholder="Introducion"></textarea>
+            <textarea name="introduction" placeholder="Introduction"></textarea>
             <textarea name="requiredInvestment" placeholder="Required Investment"></textarea>
 
             <select class="js-example-basic-single" name="user">
@@ -82,7 +82,7 @@ if ($customer->exists()) {
 
         <div class="proposal-popup-footer">
             <button type="submit" onclick="this.form.target='_blank'; form.action='previewProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Preview</button>
-            <button type="submit" onclick="form.action='createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Generate</button>
+            <button type="submit" onclick="this.form.target='_self'; form.action='createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Generate</button>
         </div>
     </form>
 </div>
@@ -264,7 +264,8 @@ if ($customer->exists()) {
                 </div>
                 <div class="contact-form-section-cell-file info-form-x-3">
                     <label>Company Logo</label>
-                    <input type="file" name="logo" placeholder="">
+                    <input type="file" name="logo">
+                    <input type="hidden" name="logoOLD" value="<?php echo $customer->data()->logo ?>">
                 </div>
 
             </div>

@@ -15,26 +15,23 @@ if(Input::exists()){
             $user = new User();
             $customer = new Customer(Input::get('customerId'));
 
-            $target_dir = "view/img/logos/";
-            $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $logo = Input::get('logoOLD');
 
-//            if (file_exists($target_file)) {
-//                echo "Sorry, file already exists.";
-//                $uploadOk = 0;
-//            }
+            if($_FILES["logo"]["size"] !== 0) {
+                $target_dir = "view/img/logos/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif" ) {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                $uploadOk = 0;
-            }
-
-            if ($uploadOk === 1) {
+                // Allow certain file formats
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif") {
+                    die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+                }
 
                 move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
+
+                $logo = basename($_FILES["logo"]["name"]);
+            }
 
                 try {
 
@@ -63,7 +60,7 @@ if(Input::exists()){
                         'website' => Input::get('website'),
                         'modifiedBy' => $user->data()->firstName . ' ' . $user->data()->lastName,
                         'modifiedOn' => date('n/j/y'),
-                        'logo' => basename($_FILES["logo"]["name"])
+                        'logo' => $logo
                     ), Input::get('customerId'));
 
                     if (Input::get('category') == 'Public School' ||
@@ -109,7 +106,7 @@ if(Input::exists()){
                 } catch (Exception $e) {
                     die($e->getMessage());
                 }
-            }
+
         }
 
     
