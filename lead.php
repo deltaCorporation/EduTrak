@@ -85,6 +85,7 @@
             <div class="contact-form-information-cell info-form-x-3">
                 <label>Category</label>
                 <select id="existing-lead-category" onchange="extendExistingLead()" name="category">
+                    <option>Select Category</option>
                     <?php
 
                         foreach ($lead->getCategories() as $category){

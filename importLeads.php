@@ -11,7 +11,8 @@ $user = new User();
 
 if($user->isLoggedIn()) {
 
-    $fileName = 'leads.xlsx';
+
+    $fileName = 'ISTE 2019.xls';
     $filePath = __DIR__ . '/temp/' . $fileName;
     $fileExt = ucfirst(explode('.', $fileName)[1]);
 
@@ -41,17 +42,19 @@ if($user->isLoggedIn()) {
 
                 $lead->create([
                     'id' => $id,
-                    'prefix' => $data[$i][0],
-                    'firstName' => $data[$i][1],
-                    'lastName' => $data[$i][2],
-                    'jobTitle' => $data[$i][4],
-                    'category' => 'Private School',
-                    'company' => $data[$i][5],
-                    'email' => $data[$i][6],
-                    'city' => $data[$i][7],
-                    'state' => $data[$i][8],
-                    'archDiocese' => $data[$i][9],
+                    'firstName' => $data[$i][0],
+                    'lastName' => $data[$i][1],
+                    'company' => $data[$i][3],
+                    'street' => $data[$i][4],
+                    'city' => $data[$i][5],
+                    'state' => $data[$i][6],
+                    'zip' => $data[$i][7],
+                    'country' => $data[$i][8],
+                    'email' => $data[$i][9],
+                    'officePhone' => $data[$i][10],
+                    'jobTitle' => $data[$i][11],
                     'reachedUsBy' => 'Event',
+                    'assignedTo' => 190627035028,
                     'eventName' => explode('.', $fileName)[0],
                     'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
                     'createdOn' => date('n/j/y'),

@@ -156,7 +156,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
             <tr>
                 <th class="sort" onclick="loadMore(0, 'firstName', this)">Full Name</th>
                 <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Title</th>
-                <th class="sort" onclick="loadMore(0, 'company', this)">Company</th>
+                <th class="sort" onclick="loadMore(0, 'company', this)">Company/School Name</th>
                 <th class="sort" onclick="loadMore(0, 'reachedUsBy', this)">Reached Us By</th>
                 <th class="sort" onclick="loadMore(0, 'assignedTo', this)">Assigned to</th>
                 <th class="sort" onclick="loadMore(0, 'officePhone', this)">Office Phone</th>
