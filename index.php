@@ -42,6 +42,7 @@ if($user->isLoggedIn()){
     <head>
     
         <meta charset="UTF-8">
+        <meta name="google-site-verification" content="Q7P8qM_XSFxL5aBL7WN4AsxdqsI7CPrZcnGNY52Kr0Y" />
         <title>EduTrak</title>
 
         <link href="view/css/reset.css" rel="stylesheet">
@@ -407,6 +408,7 @@ include __DIR__ . '/include/scripts.php';
     <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="google-site-verification" content="Q7P8qM_XSFxL5aBL7WN4AsxdqsI7CPrZcnGNY52Kr0Y" />
         <title>EduTrak | Login page</title>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
