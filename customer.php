@@ -71,9 +71,11 @@ if ($customer->exists()) {
 
             <select class="js-example-basic-single" name="user">
                 <option disabled selected>Select User</option>
-                <?php foreach ($users->getUsers() as $person): ?>
-                    <option value="<?php echo $person->id ?>"><?php echo $person->firstName . ' ' . $person->lastName?></option>
-                <?php endforeach; ?>
+                <option value="48">Alex Urrea</option>
+                <option value="44">Lanie Gordon</option>
+                <option value="190627035028">Katrina Keene</option>
+                <option value="46">Naa Okaine</option>
+                <option value="190712061806">Garrett Eastlake</option>
             </select>
 
         </div>
@@ -383,6 +385,12 @@ if ($customer->exists()) {
                 <div class="contact-form-information-cell info-form-x-5">
                     <label>Website</label>
                     <input type="text" name="website" value="<?php echo $customer->data()->website; ?>">
+                </div>
+            </div>
+            <div class="contact-form-information-row">
+                <div class="contact-form-information-cell info-form-x-3">
+                    <label>Follow up date</label>
+                    <input type="date" name="followUpDate" value="<?php echo $customer->data()->followUpDate; ?>">
                 </div>
             </div>
 

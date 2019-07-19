@@ -158,6 +158,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                 <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Title</th>
                 <th class="sort" onclick="loadMore(0, 'company', this)">Company/School Name</th>
                 <th class="sort" onclick="loadMore(0, 'reachedUsBy', this)">Reached Us By</th>
+                <th class="sort" onclick="loadMore(0, 'eventName', this)">Event name</th>
                 <th class="sort" onclick="loadMore(0, 'assignedTo', this)">Assigned to</th>
                 <th class="sort" onclick="loadMore(0, 'officePhone', this)">Office Phone</th>
                 <th class="sort" onclick="loadMore(0, 'email', this)">Email</th>
@@ -316,6 +317,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                           let jobTitle = value.jobTitle === null ? '-' : value.jobTitle;
                           let company = value.company === null || value.company === '' ? '-' : value.company;
                           let reachedUsBy = value.reachedUsBy === null ? '-' : value.reachedUsBy;
+                          let eventName = value.eventName === null ? '-' : value.eventName;
                           let assignedToUser = value.assignedToUser === null ? '-' : value.assignedToUser;
                           let officePhone = value.officePhone === null ? '-' : value.officePhone;
                           let email = value.email;
@@ -328,6 +330,7 @@ echo '<div style="margin: 20vh; text-align: center;">Sorry this page is under ma
                                             '<td>'+ jobTitle +'</td>' +
                                           '<td>'+ company +'</td>' +
                                           '<td>'+ reachedUsBy +'</td>' +
+                                          '<td>'+ eventName +'</td>' +
                                           '<td>'+ assignedToUser +'</td>' +
                                           '<td>'+ officePhone +'</td>' +
                                           '<td>'+ email +'</td>' +

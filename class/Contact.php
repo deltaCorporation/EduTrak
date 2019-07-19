@@ -131,7 +131,18 @@ class Contact{
         return $this->_db->first()->count;
 
     }
-    
+
+    public function getCustomerID($customerName){
+        $this->_db->query('SELECT id FROM customers WHERE customers.name = "'.$customerName.'"', array());
+
+        if($this->_db->results()){
+            return $this->_db->first();
+        }else{
+            return false;
+        }
+
+    }
+
     public function getCategories(){
     	$this->_categories = $this->_db->query('SELECT category FROM categories ORDER BY id', array());
 

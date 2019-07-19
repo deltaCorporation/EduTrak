@@ -53,8 +53,21 @@
 			<h6>Modified On</h6>
 			<span><?php echo $contact->data()->modifiedOn ?></span>
 		</div>
-	
-	</div>
+
+        <?php if($contact->getCustomerID($contact->data()->customer)): ?>
+
+            <div class="customer-sidebar-information-name">
+                <i class="fas fa-address-book"></i>
+                <span>Customer</span>
+            </div>
+
+            <div class='contact-sidebar-information-h6'>
+                <a href= "info.php?case=customer&id=<?php echo $contact->getCustomerID($contact->data()->customer)->id ?>"><?php echo  $contact->data()->customer ?></a>
+            </div>
+
+        <?php endif; ?>
+
+    </div>
 	<div class="contact-header-information contact-tab">
 		<button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){echo 'defaultOpen';}else{echo 'defaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
   <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $contact->countNotes($contact->data()->id, 'contact')?>)</button>
@@ -182,6 +195,12 @@
             <div class="contact-form-information-cell info-form-x-5">
                 <label>Website</label>
                 <input type="text" name="website" value="<?php echo $contact->data()->website; ?>">
+            </div>
+        </div>
+        <div class="contact-form-information-row">
+            <div class="contact-form-information-cell info-form-x-3">
+                <label>Follow up date</label>
+                <input type="date" name="followUpDate" value="<?php echo $contact->data()->followUpDate; ?>">
             </div>
         </div>
 

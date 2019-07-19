@@ -58,6 +58,7 @@ if(Input::exists()){
                         'twitter' => Input::get('twitter'),
                         'linkedIn' => Input::get('linkedIn'),
                         'website' => Input::get('website'),
+                        'followUpDate' => Input::get('followUpDate'),
                         'modifiedBy' => $user->data()->firstName . ' ' . $user->data()->lastName,
                         'modifiedOn' => date('n/j/y'),
                         'logo' => $logo

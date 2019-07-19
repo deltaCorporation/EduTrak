@@ -125,7 +125,6 @@
                 <input type="text" name="website" placeholder="">
             </div>
         </div>
-
     </div>
     
     <div id="customerAdditionalInfo" class="add-window-form">

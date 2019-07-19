@@ -2936,6 +2936,7 @@ height: 2.5vh !important;
 }
 
 .contact-sidebar-information-name,
+.customer-sidebar-information-name,
 .employee-sidebar-information-name{
 	background-color: #6D9A3F;
 	color: white;
@@ -2948,27 +2949,32 @@ height: 2.5vh !important;
 	padding: 0 3vh;
 }
 
- .contact-sidebar-information-name div{
+ .contact-sidebar-information-name div,
+ .customer-sidebar-information-name div{
      align-self: center;
  }
 
- .contact-sidebar-information-name div img{
+ .contact-sidebar-information-name div img,
+ .customer-sidebar-information-name div img{
      width: 100%;
  }
 
 .contact-sidebar-information-name:last-of-type,
+.customer-sidebar-information-name,
 .employee-sidebar-information-name:last-of-type{
 	margin-top: 2vh;
 }
 
 .contact-sidebar-information-name i,
+.customer-sidebar-information-name i,
 .employee-sidebar-information-name i{
 	color: white;
 	font-size: 4vh;
 	margin-right: 2vh;
 }
 
-.contact-sidebar-information-name span{
+.contact-sidebar-information-name span,
+.customer-sidebar-information-name span{
 	color: white;
 }
 

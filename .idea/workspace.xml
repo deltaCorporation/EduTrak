@@ -2,70 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b944dd9e-3142-48f5-ab9e-229fbc6bc09c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/importLeads.php" beforeDir="false" afterPath="$PROJECT_DIR$/importLeads.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead.php" beforeDir="false" afterPath="$PROJECT_DIR$/lead.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/newCustomer.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/newCustomer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/leads.php" beforeDir="false" afterPath="$PROJECT_DIR$/leads.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/docs/topics/recipes.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/docs/topics/recipes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Autofilter/10_Autofilter_selection_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Autofilter/10_Autofilter_selection_1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Autofilter/10_Autofilter_selection_2.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Autofilter/10_Autofilter_selection_2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Autofilter/10_Autofilter_selection_display.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Autofilter/10_Autofilter_selection_display.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/16_Csv.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/16_Csv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/26_Utf8.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/26_Utf8.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/31_Document_properties_write.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/31_Document_properties_write.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/31_Document_properties_write_xls.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/31_Document_properties_write_xls.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/40_Duplicate_style.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/samples/Basic/40_Duplicate_style.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Calculation.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Calculation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Logical.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/Logical.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/MathTrig.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/MathTrig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/functionlist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Calculation/functionlist.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Cell/Cell.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Cell/Cell.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Cell/Coordinate.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Cell/Coordinate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Chart/Axis.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Chart/Axis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Chart/GridLines.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Chart/GridLines.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Chart/Layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Chart/Layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Collection/Cells.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Collection/Cells.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Document/Properties.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Document/Properties.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/BaseReader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/BaseReader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Csv.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Csv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Gnumeric.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Gnumeric.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Html.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/IReader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/IReader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Ods.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Ods.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Security/XmlScanner.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Security/XmlScanner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Slk.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Slk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xls.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xls.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xlsx.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xml.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Xml.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/ReferenceHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/ReferenceHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Date.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Date.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/ExponentialBestFit.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/ExponentialBestFit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/LinearBestFit.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/LinearBestFit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/LogarithmicBestFit.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/LogarithmicBestFit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/PolynomialBestFit.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/PolynomialBestFit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/PowerBestFit.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Shared/Trend/PowerBestFit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Style/NumberFormat.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Style/NumberFormat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Dimension.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Dimension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/RowCellIterator.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/RowCellIterator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Worksheet.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Worksheet/Worksheet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/BaseWriter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/BaseWriter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/IWriter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/IWriter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xls/Parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xls/Parser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xls/Workbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xls/Workbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Workbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Workbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Worksheet.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Writer/Xlsx/Worksheet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/updateContact.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateContact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/updateCustomer.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateCustomer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/css/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/google/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/google/vendor/firebase/php-jwt/" />
@@ -90,22 +36,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/contact.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/connect.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/importLeads.php">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/class/Contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="56" column="49" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
+            <state relative-caret-position="534">
+              <caret line="140" column="25" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lead.php">
+        <entry file="file://$PROJECT_DIR$/customer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="87" column="27" lean-forward="true" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+            <state relative-caret-position="167">
+              <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -113,13 +81,56 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leads.php">
+        <entry file="file://$PROJECT_DIR$/updateContact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="158" column="91" selection-start-line="158" selection-start-column="91" selection-end-line="158" selection-end-column="91" />
+            <state relative-caret-position="585">
+              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/newContact.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1695">
+              <caret line="113" selection-start-line="113" selection-end-line="113" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44430">
+              <caret line="2962" column="34" selection-start-line="2962" selection-start-column="34" selection-end-line="2962" selection-end-column="34" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#3103#3570#1" expanded="true" />
+                <element signature="e#3741#4204#1" expanded="true" />
+                <element signature="e#33197#33613#1" expanded="true" />
+                <element signature="e#33701#34023#1" expanded="true" />
+                <element signature="e#34113#34439#1" expanded="true" />
+                <element signature="e#49170#49403#1" expanded="true" />
+                <element signature="e#51143#51871#1" expanded="true" />
+                <element signature="e#52324#52786#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/newCustomer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1890">
+              <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/updateCustomer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -131,8 +142,11 @@
       <find>introducion</find>
       <find>contact-form-section-cell-file</find>
       <find>compa</find>
-      <find>company</find>
       <find>comp</find>
+      <find>company</find>
+      <find>contact-side</find>
+      <find>fas fa-address-book</find>
+      <find>proposal-tab</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,15 +157,21 @@
       <list>
         <option value="$PROJECT_DIR$/composer.lock" />
         <option value="$PROJECT_DIR$/temp.php" />
-        <option value="$PROJECT_DIR$/view/css/style.css" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/addCustomer.php" />
-        <option value="$PROJECT_DIR$/updateCustomer.php" />
-        <option value="$PROJECT_DIR$/customer.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/leads.php" />
-        <option value="$PROJECT_DIR$/lead.php" />
         <option value="$PROJECT_DIR$/importLeads.php" />
+        <option value="$PROJECT_DIR$/leads.php" />
+        <option value="$PROJECT_DIR$/view/css/style.css" />
+        <option value="$PROJECT_DIR$/lead.php" />
+        <option value="$PROJECT_DIR$/contacts.php" />
+        <option value="$PROJECT_DIR$/updateContact.php" />
+        <option value="$PROJECT_DIR$/updateCustomer.php" />
+        <option value="$PROJECT_DIR$/include/newContact.php" />
+        <option value="$PROJECT_DIR$/include/newCustomer.php" />
+        <option value="$PROJECT_DIR$/contact.php" />
+        <option value="$PROJECT_DIR$/class/Contact.php" />
+        <option value="$PROJECT_DIR$/customer.php" />
       </list>
     </option>
   </component>
@@ -193,7 +213,7 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -268,18 +288,18 @@
       <workItem from="1561568726369" duration="987000" />
       <workItem from="1562968922898" duration="6406000" />
       <workItem from="1563277839771" duration="2887000" />
-      <workItem from="1563378772366" duration="1778000" />
+      <workItem from="1563378772366" duration="6652000" />
+      <workItem from="1563518713500" duration="2723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6204000" />
+    <option name="totallyTimeSpent" value="13801000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20355412" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20678514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -294,12 +314,12 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32876712" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="File Transfer" order="12" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32876712" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="Remote Host" order="4" visible="true" weight="0.32956383" />
+      <window_info anchor="right" id="Remote Host" order="4" weight="0.32956383" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,44 +333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="57" column="65" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80490">
-          <caret line="5366" column="2" selection-start-line="5366" selection-start-column="2" selection-end-line="5366" selection-end-column="2" />
-          <folding>
-            <element signature="e#3103#3570#1" expanded="true" />
-            <element signature="e#3741#4204#1" expanded="true" />
-            <element signature="e#33197#33613#1" expanded="true" />
-            <element signature="e#33701#34023#1" expanded="true" />
-            <element signature="e#34113#34439#1" expanded="true" />
-            <element signature="e#49170#49403#1" expanded="true" />
-            <element signature="e#51143#51871#1" expanded="true" />
-            <element signature="e#52324#52786#1" expanded="true" />
-            <element signature="e#70149#70447#1" expanded="true" />
-            <element signature="e#79485#79986#1" expanded="true" />
-            <element signature="e#80864#81779#1" expanded="true" />
-            <element signature="e#81959#82629#1" expanded="true" />
-            <element signature="e#82802#83862#1" expanded="true" />
-            <element signature="e#85974#86457#1" expanded="true" />
-            <element signature="e#86619#87602#1" expanded="true" />
-            <element signature="e#87770#88269#1" expanded="true" />
-            <element signature="e#88436#88892#1" expanded="true" />
-            <element signature="e#89062#89685#1" expanded="true" />
-            <element signature="e#90028#90535#1" expanded="true" />
-            <element signature="e#90652#91891#1" expanded="true" />
-            <element signature="e#96337#96769#1" expanded="true" />
-            <element signature="e#96883#97643#1" expanded="true" />
-            <element signature="e#97699#98374#1" expanded="true" />
-            <element signature="e#98431#99188#1" expanded="true" />
-            <element signature="e#99298#99969#1" expanded="true" />
-            <element signature="e#100080#100471#1" expanded="true" />
-            <element signature="e#101167#101714#1" expanded="true" />
-            <element signature="e#102905#103441#1" expanded="true" />
-            <element signature="e#104423#104656#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -381,31 +363,10 @@
     <entry file="file://$PROJECT_DIR$/temp.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/customer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="84" column="66" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addCustomer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="19" column="46" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/updateCustomer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/newCustomer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="74" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -416,33 +377,125 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leads.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="158" column="91" selection-start-line="158" selection-start-column="91" selection-end-line="158" selection-end-column="91" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lead.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="87" column="27" lean-forward="true" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/importLeads.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
           <caret line="56" column="49" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lead.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="207" column="18" lean-forward="true" selection-start-line="204" selection-start-column="12" selection-end-line="207" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leads.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2992">
+          <caret line="331" column="66" selection-start-line="331" selection-start-column="66" selection-end-line="332" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contacts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-340">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getCustomers.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getContacts.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateContact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/newContact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1695">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44430">
+          <caret line="2962" column="34" selection-start-line="2962" selection-start-column="34" selection-end-line="2962" selection-end-column="34" />
+          <folding>
+            <element signature="e#3103#3570#1" expanded="true" />
+            <element signature="e#3741#4204#1" expanded="true" />
+            <element signature="e#33197#33613#1" expanded="true" />
+            <element signature="e#33701#34023#1" expanded="true" />
+            <element signature="e#34113#34439#1" expanded="true" />
+            <element signature="e#49170#49403#1" expanded="true" />
+            <element signature="e#51143#51871#1" expanded="true" />
+            <element signature="e#52324#52786#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/newCustomer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateCustomer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/class/Contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="140" column="25" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="59" column="51" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connect.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
