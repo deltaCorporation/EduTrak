@@ -57,8 +57,9 @@
 		</div>
 	
 	</div>
-	<div class="contact-header-information contact-tab">
+	<div class="lead-header-information contact-tab">
 		<button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){echo 'defaultOpen';}else{echo 'defaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
+		<button class="contact-tablinks" onclick="openCity(event, 'contact-requests', 'grid')"><i class="fas fa-file-alt"></i>Requests</button>
         <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo  $lead->countNotes($lead->data()->id, 'lead') ?>)</button>
         <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-envelope"></i>Email</button>
 	</div>
@@ -398,6 +399,35 @@
         <button onclick="location.href='';" type="button" class="contact-form-information-cancel"></button>
 
 	</form>
+
+    <div id="contact-requests" class="lead-requests contact-tabcontent">
+
+        <div>
+            <div class="request-table-header">
+                <div>ID</div>
+                <div>Workshop Title</div>
+                <div>Date</div>
+                <div>Status</div>
+                <div>Instructors</div>
+                <div>Attendees</div>
+                <div> Link to Asana</div>
+                <div onclick="show('add-event-window', 'eventDefaultOpen')">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+            </div>
+            <div class='request-table-row'>
+                <div>-</div>
+                <div>-</div>
+                <div>-</div>
+                <div>-</div>
+                <div>-</div>
+                <div>-</div>
+                <div>-</div>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
 	
 	<div id="contact-notes" class="contact-notes contact-tabcontent">
 	<div class="contact-notes-all">

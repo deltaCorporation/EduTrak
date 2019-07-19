@@ -2380,6 +2380,15 @@ height: 2.5vh !important;
 	grid-gap: 7vh;
 }
 
+.lead-header-information{
+    margin-top: 2vh;
+    height: 8vh;
+    padding: 1vh 10vh 0 10vh;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 7vh;
+}
+
 
 /* Contact form Information */
 
@@ -3084,7 +3093,7 @@ height: 2.5vh !important;
 
 .contact-tab button{
 	border: none;
-	border-bottom: 2px solid darkgray;
+	border-bottom: 1px solid darkgray;
 	font-size: 1.8vh;
 	color: rgba(0,0,0,.6);
 	cursor: pointer;
@@ -3100,13 +3109,22 @@ height: 2.5vh !important;
 .contact-tab button.contact-active{
 	background-color: white;
 	color: rgba(0,0,0,.9);
-	border-bottom: 2px solid steelblue;
+	border-bottom: 1px solid steelblue;
 	font-size: 2vh;
 }
 
 .contact-tab button.contact-active i{
 	color: dimgray;
 }
+
+
+ .lead-requests{
+     display: grid;
+     grid-template-columns: 1fr;
+     grid-gap: 2vh;
+     height: 80vh;
+     padding: 3rem;
+ }
 
 /* Contact Notes */
 
@@ -3458,6 +3476,105 @@ display: none;
     border-radius: .5vh;
     font-size: 2vh;
 }
+
+/* Requests Table */
+
+ .request-table-header {
+     display: grid;
+     grid-template-columns: 8% 20% 12% 12% 15% 10% 15% 8%;
+     font-size: 1.8vh;
+     background-color: darkgray !important;
+     border-top-left-radius: .5vh;
+     border-top-right-radius: .5vh;
+     text-align: center;
+ }
+
+ .request-table-header div{
+     color: white !important;
+     border-right: 1px solid white;
+     padding: 2vh 0;
+ }
+
+ .request-table-header div:last-of-type{
+     border: none;
+ }
+
+ .request-table-header div i{
+     color: white;
+     font-size: 1.2rem;
+     cursor: pointer;
+ }
+
+
+ .request-table-row{
+     display: grid;
+     grid-template-columns: 8% 20% 12% 12% 15% 10% 15% 8%;
+     border-bottom: 1px solid #eee;
+     cursor: pointer;
+ }
+
+ .request-table-row:hover {
+     background-color: #eee;
+ }
+
+ .request-table-row > div{
+     text-align: center;
+     padding: 2vh 0;
+     font-size: 1.7vh;
+     display: grid;
+     align-items: center;
+ }
+
+ .request-table-row > div:first-of-type{
+     word-break: break-all;
+     padding: 2vh;
+ }
+
+ .request-table-row > div i{
+     font-size: 1.8vh;
+     color: dimgrey;
+     cursor: pointer;
+     margin: 0 .5vh;
+ }
+
+ .request-table-row > div i:hover{
+     color: grey;
+ }
+
+ .request-table-row select{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     border: none;
+     font-size: 1.8vh;
+     padding: 2vh;
+     background: transparent url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M287.968 160H32.038c-28.425 0-42.767 34.488-22.627 54.627l127.962 128c12.496 12.496 32.758 12.497 45.255 0l127.968-128C330.695 194.528 316.45 160 287.968 160zM160 320L32 192h256L160 320z"/></svg>') no-repeat center right 2vh;
+     background-size: 1.5vh;
+     border-bottom: .5vh solid transparent;
+     border-radius: unset;
+ }
+
+ .request-table-row input{
+     word-break: break-all;
+     text-align: center;
+     font-size: 1.8vh;
+     border: none;
+     border-bottom: .5vh solid transparent;
+ }
+
+ .request-table-row input:focus,
+ .request-table-row select:focus{
+     border-bottom: .5vh solid steelblue;
+ }
+
+ .request-table-row input:hover,
+ .request-table-row select:hover{
+     border-bottom: .5vh solid steelblue;
+ }
+
+
+ .request-table-row div a:hover{
+     color: #1f7f91;
+ }
 
 /* Customer Event Table */
 
