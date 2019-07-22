@@ -42,7 +42,19 @@ class Request{
     public function find($request = null){
         if($request){
 
-            $data = $this->_db->get('requests', array('id', '=', $request));
+            $data = $this->_db->query("
+
+                SELECT 
+                    requests.*, 
+                    CONCAT(users.firstName,' ', users.lastName) as createdBy,
+                    requestStatus.name as statusName ,
+                    requestStatus.colorClass
+                FROM requests 
+                JOIN requestStatus ON statusID = requestStatus.ID
+                JOIN users ON createdBy = users.id
+                WHERE requests.ID = {$request}
+                
+            ");
 
             if($data->count()){
                 $this->_data = $data->first();

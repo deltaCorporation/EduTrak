@@ -436,7 +436,7 @@
                     </div>
                     <div><?php echo date("m/d/Y", strtotime($request->insertDate)) ?></div>
                     <div>
-                        <a href="request.php?id=<?php echo $request->ID ?>">
+                        <a href="request.php?case=<?php echo Input::get('case') ?>&id=<?php echo $request->ID ?>">
                             <i class="fas fa-chevron-right"></i>
                         </a>
                     </div>

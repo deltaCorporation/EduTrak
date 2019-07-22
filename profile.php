@@ -126,9 +126,6 @@ if($user->isLoggedIn()){
                             <a href="https://twitter.com/<?php echo $employee->data()->twitter ?>"><i class="fab fa-twitter-square"></i></a>
                             <a href="https://www.linkedin.com/<?php  echo $employee->data()->linkedin ?>"><i class="fab fa-linkedin"></i></a>
                         </div>
-
-
-
                     </div>
                     <div class="contact-header-information contact-tab">
                         <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){}else{echo 'employeeDefaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
