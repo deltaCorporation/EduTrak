@@ -104,6 +104,21 @@ if($user->isLoggedIn()){
 
                 <div class="request-sidebar-information">
 
+                    <div class="request-sidebar-information-submenu">
+                        <a href="<?php echo 'info.php?case='.Input::get('case').'&id='.$client->data()->id ?>">
+                            <i class="far fa-arrow-alt-circle-left"></i>
+                            <span class="tooltip-main">Back</span>
+                        </a>
+                        <a>
+                            <i class="far fa-calendar-alt"></i>
+                            <span class="tooltip-main">Convert to Event</span>
+                        </a>
+                        <a class="delete-icon" href="#delete">
+                            <i class="far fa-trash-alt"></i>
+                            <span class="tooltip-main">Delete</span>
+                        </a>
+                    </div>
+
                     <div class="request-sidebar-information-name">
                         <div>Request number</div>
                         <div><?php echo $request->data()->ID ?></div>
@@ -111,12 +126,6 @@ if($user->isLoggedIn()){
                         <div>
                             <?php echo $client->data()->company ? $client->data()->company : $client->data()->name; ?>
                         </div>
-                    </div>
-
-                    <div class="request-sidebar-information-submenu">
-                        <a href="<?php echo 'info.php?case='.Input::get('case').'&id='.$client->data()->id ?>"><i class="far fa-arrow-alt-circle-left"></i></a>
-<!--                        <a><i class="far fa-paper-plane"></i></a>-->
-                        <a class="delete-icon" href="#delete"><i class="far fa-trash-alt"></i></a>
                     </div>
 
                     <div class="request-sidebar-information-name">
@@ -133,51 +142,58 @@ if($user->isLoggedIn()){
                         <div>Created by</div>
                         <div><?php echo $request->data()->createdBy ?></div>
                     </div>
+
+                    <div class="request-sidebar-information-name">
+                        <div>Proposal Sent</div>
+                        <div>No</div>
+                        <div>Quote Sent</div>
+                        <div>No</div>
+                    </div>
                 </div>
                 <div class="request-header-information main-request-tab">
                     <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-information', 'block')" id="defaultOpen"><i class="fas fa-chalkboard-teacher"></i>Workshops</button>
                     <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-proposal', 'block')"><i class="fas fa-file-invoice-dollar"></i>Proposal</button>
                     <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-quote', 'block')"><i class="fas fa-receipt"></i>Quote</button>
                 </div>
-                <div class="request-form-information main-request-tabcontent" id="request-information">
+                <form class="request-form-information main-request-tabcontent" id="request-information">
 
                     <?php foreach ($requests->getRequestWorkshopsByID($request->data()->ID) as $workshop): ?>
 
-                        <button class="request-accordion"><?php echo $workshop->workshopTitle ?></button>
+                        <button type="button" class="request-accordion"><?php echo $workshop->workshopTitle ?></button>
                         <div class="request-panel">
                             <div class="request-panel-block">
                                 <label>Description</label>
-                                <textarea><?php echo $workshop->workshopDescription ?></textarea>
+                                <textarea name="data[<?php echo $workshop->ID ?>][description]"><?php echo $workshop->workshopDescription ?></textarea>
                             </div>
                             <div class="request-panel-block">
                                 <label>Learner Outcomes</label>
-                                <textarea><?php echo $workshop->workshopLearnerOutcomes ?></textarea>
+                                <textarea name="data[<?php echo $workshop->ID ?>][learnerOutcomes]"><?php echo $workshop->workshopLearnerOutcomes ?></textarea>
                             </div>
                             <div class="request-panel-block">
                                 <label>Prerequisites</label>
-                                <textarea><?php echo $workshop->workshopPrerequisites ?></textarea>
+                                <textarea name="data[<?php echo $workshop->ID ?>][prerequisites]"><?php echo $workshop->workshopPrerequisites ?></textarea>
                             </div>
                             <div class="request-panel-block">
                                 <label>MSRP</label>
-                                <input class="request-input-price" value="<?php echo number_format((float)$workshop->workshopPrice, 2, '.', ',')  ?>" >
+                                <input name="data[<?php echo $workshop->ID ?>][price]" class="request-input-price" value="<?php echo number_format((float)$workshop->workshopPrice, 2, '.', ',')  ?>" >
                             </div>
                         </div>
 
                     <?php endforeach; ?>
-                </div>
+                </form>
                 <div class="main-request-tabcontent" id="request-proposal">
                     <div class="request-proposal-content">
                         <div>
                             <label>Proposal Title</label>
-                            <input>
+                            <input id="proposalTitle" value="<?php echo $request->data()->proposalTitle ?>">
                         </div>
                         <div>
                             <label>Introduction</label>
-                            <textarea></textarea>
+                            <textarea id="proposalIntroduction"><?php echo $request->data()->proposalIntroduction ?></textarea>
                         </div>
                         <div>
                             <label>Required Investment</label>
-                            <textarea></textarea>
+                            <textarea id="proposalRequiredInvestment"><?php echo $request->data()->proposalRequiredInvestment ?></textarea>
                         </div>
                         <div>
                             <label>Presented By</label>
@@ -190,6 +206,23 @@ if($user->isLoggedIn()){
                                 <option value="190712061806">Garrett Eastlake</option>
                             </select>
                         </div>
+                        <div>
+                            <button id="save-proposal"><i class="fa-spin fas fa-spinner"></i>Save</button>
+                        </div>
+                    </div>
+                    <div class="request-sidebar-information-submenu-additional">
+                        <a>
+                            <i class="far fa-eye"></i>
+                            <span class="tooltip-pq">Preview</span>
+                        </a>
+                        <a>
+                            <i class="far fa-arrow-alt-circle-down"></i>
+                            <span class="tooltip-pq">Download</span>
+                        </a>
+                        <a class="not-available">
+                            <i class="far fa-paper-plane"></i>
+                            <span class="tooltip-pq">Send</span>
+                        </a>
                     </div>
                 </div>
 
@@ -197,38 +230,188 @@ if($user->isLoggedIn()){
                     <div class="request-quote-content">
                         <div>
                             <label>Quote Title</label>
-                            <input>
+                            <input id="quoteTitle" value="<?php echo $request->data()->quoteTitle ?>">
                         </div>
+                        <div>
+                            <button id="save-quote"><i class="fa-spin fas fa-spinner"></i>Save</button>
+                        </div>
+                    </div>
+                    <div class="request-sidebar-information-submenu-additional">
+                        <a>
+                            <i class="far fa-eye"></i>
+                            <span class="tooltip-pq">Preview</span>
+                        </a>
+                        <a>
+                            <i class="far fa-arrow-alt-circle-down"></i>
+                            <span class="tooltip-pq">Download</span>
+                        </a>
+                        <a class="not-available">
+                            <i class="far fa-paper-plane"></i>
+                            <span class="tooltip-pq">Send</span>
+                        </a>
                     </div>
                 </div>
 
             </div>
             <footer id="footer"></footer>
+
+            <div class="flash-msg"></div>
         </body>
 
         <script>
+
+            /* Save Workshop Information */
+
+            var timeoutId;
+            $('form input, form textarea').on('input propertychange change', function() {
+                console.log('Textarea Change');
+
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(function() {
+                    // Runs 1 second (1000 ms) after the last change
+                    saveToDB();
+                }, 1000);
+            });
+
+            function saveToDB()
+            {
+                console.log('Saving to the db');
+                let form = $('#request-information');
+                $.ajax({
+                    url: "function/request/saveRequestWorkshop.php",
+                    type: "POST",
+                    data: form.serialize(), // serializes the form's elements.
+                    beforeSend: function(xhr) {
+                        $('.flash-msg').css('border-left', '4px solid #51c399');
+                        $('.flash-msg').html('<i class="fas fa-spinner fa-spin"></i><span class="saving">Saving</span>');
+                        $('.flash-msg').fadeToggle();
+                    },
+                    success: function(data) {
+
+                        let result = JSON.parse(data);
+
+                        if(result.status === true){
+                            $('.flash-msg').css('border-left', '4px solid #51c399');
+                            $('.flash-msg').html('<i class="far fa-check-circle"></i><span class="saving">Saved</span>');
+                            $(".flash-msg").delay(2500).fadeToggle();
+                        }else{
+                            $('.flash-msg').css('border-left', '4px solid #CF4D4D');
+                            $('.flash-msg').html('<i class="far fa-times-circle"></i><span class="saving">Not saved please refresh your browser</span>');
+                            $(".flash-msg").delay(2500).fadeToggle();
+                        }
+
+                    },
+                });
+            }
+
+            /* Hover Tooltips */
+
+            $('.request-sidebar-information-submenu-additional a').hover(function () {
+               $(this).children(":first").next().show();
+            }, function () {
+                $(this).children(":first").next().hide();
+            });
+
+            $('.request-sidebar-information-submenu a').hover(function () {
+                $(this).children(":first").next().show();
+            }, function () {
+                $(this).children(":first").next().hide();
+            });
+
+            $('.tooltip-main').each(function () {
+
+                let eWidth = $(this).outerWidth();
+                let pWidth = $(this).parent().outerWidth();
+
+                let left = eWidth > pWidth ? '-' + (eWidth - pWidth) / 2 : (pWidth - eWidth) / 2;
+
+                $(this).css('left', left + 'px');
+            });
+
+            /* Save Proposal */
+
+            $('#save-proposal').on('click', function () {
+                $('#save-proposal .fa-spinner').css("display", "inline-block");
+                $('#save-proposal').attr('disabled', true);
+
+                $.ajax({
+                    method: "POST",
+                    url: "function/request/saveProposal.php",
+                    data: {
+                        proposalTitle: $('#proposalTitle').val(),
+                        proposalIntroduction: $('#proposalIntroduction').val(),
+                        proposalRequiredInvestment: $('#proposalRequiredInvestment').val(),
+                        proposalPresentedBy: $('#proposalPresentedBy').val(),
+                        requestID: <?php echo $request->data()->ID ?>
+                    }
+                }).done(function(result) {
+                    $('#save-proposal .fa-spinner').css("display", "none");
+                    $('#save-proposal').attr('disabled', false);
+
+                    $('.flash-msg').html('Proposal Saved');
+                    $('.flash-msg').fadeToggle();
+                    $(".flash-msg").delay(2000).fadeToggle();
+
+                });
+
+            });
+
+            /* Save Proposal */
+
+            $('#save-quote').on('click', function () {
+                $('#save-quote .fa-spinner').css("display", "inline-block");
+                $('#save-quote').attr('disabled', true);
+
+                $.ajax({
+                    method: "POST",
+                    url: "function/request/saveQuote.php",
+                    data: {
+                        quoteTitle: $('#quoteTitle').val(),
+                        requestID: <?php echo $request->data()->ID ?>
+                    }
+                }).done(function(result) {
+                    $('#save-quote .fa-spinner').css("display", "none");
+                    $('#save-quote').attr('disabled', false);
+
+                    $('.flash-msg').html('Quote Saved');
+                    $('.flash-msg').fadeToggle();
+                    $(".flash-msg").delay(2000).fadeToggle();
+
+                });
+
+            });
 
             /* Status Change */
 
             function updateStatus(select, requestID){
 
                 let statusID = select.value;
-
                 $.ajax({
                     method: "GET",
                     url: "function/request/updateStatus.php",
                     data: {
                         statusID: statusID,
                         requestID: requestID
-                    }
-                }).done(function(result) {
-                    if(result) {
-                        let data = JSON.parse(result);
+                    },
+                    beforeSend: function(xhr) {
+                        $('.flash-msg').css('border-left', '4px solid #51c399');
+                        $('.flash-msg').html('<i class="fas fa-spinner fa-spin"></i><span class="saving">Saving</span>');
+                        $('.flash-msg').fadeToggle();
+                    },
+                    success: function(result) {
 
-                        select.className = '';
-                        select.classList.add(data.colorClass);
-                        select.classList.add('request-status');
-                        select.classList.add('request-page-status-select');
+                        if(result) {
+                            let data = JSON.parse(result);
+
+                            select.className = '';
+                            select.classList.add(data.colorClass);
+                            select.classList.add('request-status');
+                            select.classList.add('request-page-status-select');
+
+                            $('.flash-msg').css('border-left', '4px solid #51c399');
+                            $('.flash-msg').html('<i class="far fa-check-circle"></i><span class="saving">Saved</span>');
+                            $(".flash-msg").delay(2500).fadeToggle();
+                        }
                     }
                 });
             }
@@ -252,6 +435,16 @@ if($user->isLoggedIn()){
                     document.getElementById(tabName).style.display = "grid";
                 }
                 evt.currentTarget.className += " request-active";
+
+                $('.tooltip-pq').each(function () {
+
+                    let eWidth = $(this).outerWidth();
+                    let pWidth = $(this).parent().outerWidth();
+
+                    let left = eWidth > pWidth ? '-' + (eWidth - pWidth) / 2 : (pWidth - eWidth) / 2;
+
+                    $(this).css('left', left + 'px');
+                });
             }
 
             // Get the element with id="defaultOpen" and click on it

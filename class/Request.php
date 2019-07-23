@@ -21,6 +21,12 @@ class Request{
         }
     }
 
+    public function updateWorkshop($fields = array(), $id = null){
+        if(!$this->_db->update('requestworkshops', $id, $fields)){
+            throw new Exception('There was a problem updating.');
+        }
+    }
+
     public function create($fields = array()){
         if(!$this->_db->insert('requests', $fields)){
             throw new Exception('There was a problem creating an request.');
