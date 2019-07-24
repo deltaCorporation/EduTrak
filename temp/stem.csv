@@ -1,0 +1,252 @@
+SKU,Workshop Group,Format,Time (hours),Title of Offering,Description,Learner Outcomes,Prerequisites,Toolbox,Status
+EDU-CO_001,Coding,F2F,3 hours,Coding for Every Teacher,"In this workshop, you will explore how coding relates to everyday applications. You will learn the concepts of computational thinking, why coding is important, how to write code and the elements of programming.  Upon completion of this workshop, you will have a better understanding of how coding aligns to the subject areas you teach and be able to write some code of your own to apply to your classroom applications.","- Identify the ways coding enhances our everyday lives
+- Explore the basic functions and uses of common coding languages
+- Connect coding skills to other content areas
+- Identify fixed vs growth mindsets
+- Align Computational Thinking to Inquiry-based and Problem-based learning
+- Write your own simple code",TBD,TBD,Needs updating
+EDU-CO_002, Coding ,eLearning,self-paced,Coding for Every Teacher (eL),"See My First Robot in SMS Products and compare course descriptions.                                                                                                                                                                                              In this online introductory course, you will gain a basic understanding around the concepts of computational thinking, why coding is important, how it relates to everyday applications and the elements of programming. Upon completing this course, you will be able to write simple code, connect coding to Problem-based and Inquiry-based Learning, define the basics of block coding via Scratch, identify ways to involve your students in coding, and have a better understanding of how coding relates to your subject area/s.","- Examine how coding impacts our everyday lives
+- Connect coding to Problem-based and Inquiry-based Learning
+- Identify ways to get your students involved with coding
+- Apply the basics of block coding via Scratch 
+- Write your own simple code",TBD,TBD,Needs updating
+EDU-HU_001,Hummingbird,eLearning,self-paced,My First Robot (eL),"In this hands on workshop, you will be introduced to a real world authentic problem and will use your skills to research, plan and solve it with My First Robot. You'll collaborate with others, create and construct solutions based on the research and design process. You will design and build your own robot, learn to code it and gain hand on experience which you can use to further engage your students in the design thinking process. You will delve deeply into computational thinking and innovative designing by utilizing the Hummingbird Robotics kit to adapt and integrate robotic elements into your design to assist and integrate with your design solution. You will reflect on your design and proposed solution, and adapt your creation if necessary until the problem is solved.
+*Note : This is a glimpse into Phase 1 of the unit plan/design process. Students of this workshop might need to revise and adapt several times throughout their creation and collaboration processes. ","Student:
+- Discover causes for animals becoming an endangered
+species
+- Explore how adaptations can help animals survive
+- Collaborate with peers to plan and create an adaptable
+robot
+- Code lights (or any component of the Hummingbird Kit) to
+integrate design solutions
+
+Teacher
+- Connect electronic components of the Hummingbird Kit
+- Program the components
+- Build robots from various materials
+- Plan and prepare facilitating the lesson with students",TBD,TBD,Needs updating
+EDU-HU_002,Hummingbird,F2F,3 hours,Hummingbird Basics,"Why use robots in the classroom?  During this workshop, we will discuss the benefits of becoming a maker, using authentic hands on learning to experience building, wiring and coding your Robot with the Hummingbird Duo Premium Kit. You'll further develop the skills of critical thinking, collaboration and communication as you wire your robot to the circuit board and utilize lights, motors, and a sensor to further your robotics creation.  At the conclusion of this workshop, you'll have experience learning how to create, wire and code robots. Return to your classroom and implement immediately! ","- Identify reasons for using robotics in the classroom
+- Identify uses for available lights and motors
+- Create a robot using the Hummingbird board
+- Code lights, motors, and one sensor with Visual Programmer",TBD,TBD,Needs updating
+EDU-HU_003,Hummingbird,F2F,3 hours,Hummingbird Coding with Visual Programmer,"Once you understand how to connect the parts of the Hummingbird Robotics Kit, it is time for you and your students to learn how to code your robots. In this hands-on workshop, you will use the Visual Programmer software to program your Hummingbird Robot. In this workshop, you'll discover how to change the color of the lights, add sensors and multiple outputs to your creation to make it come alive with code. By the completion of this workshop, you will be able to create deeper learning in your classroom with engineering and code.","- Plan and create a robot
+- Program a robot with Visual Programmer
+- Create a lesson that utilizes Visual Programmer",TBD,TBD,Needs updating
+EDU-HU_004,Hummingbird,F2F,3 hours,Hummingbird Coding with Scratch 2.0,"Once you understand how to connect the parts of the Hummingbird Robotics Kit, it is time to experience how engaging it is for you and your students to program your robots. In this workshop, you will use MIT’s Scratch 2.0 to program your Hummingbird Robots. You'll discover how to change the color of the lights, add sensors, and multiple outputs to your creation to make it come alive with code! At the completion of this workshop, you'll be able to create deeper learning in your classroom with engineering and code.","- Plan and create a robot
+- Program a robot with Scratch 2.0
+- Create a lesson that utilizes Scratch 2.0",TBD,TBD,Needs updating
+EDU-HU_005,Hummingbird,F2F,3 hours,Hummingbird Coding with Snap!,"Once you know how to connect the parts of the Hummingbird Robotics Kit, it is time to experience how engaging it is for you and your and students to program your robots.  In this workshop, you will use Berkeley's Snap! to program your Hummingbird Robots. You'll discover how to change the color of the lights, add sensors, and multiple outputs to your creation and make it come alive with code. By the completion of this workshop, you'll be able to create deeper learning in your classroom with engineering and code.","- Plan and create a robot
+- Program a robot with Snap!
+- Create a lesson that utilizes Snap!",TBD,TBD,Needs updating
+EDU-HU_006,Hummingbird,F2F,3 hours,Hummingbird in the Classroom*,"How will Hummingbird Robots enhance teaching and learning in your classroom?  In this hands-on workshop, you will explore how using robots and coding can be done cross-curricular and that coding is not just for the science classroom. You will participate in a model lesson and develop ideas for incorporating Hummingbird into your own content area and classroom. You'll further explore how Hummingbird will enhance your social studies, math, ELA, and science lessons. You'll plan a lesson with Hummingbird and by the completion of this workshop, you'll have a deeper understanding of how learning to code helps students code to learn.
+","- Participate in model lesson
+- Identify projects to incorporate Hummingbird into the Classroom
+- Plan a lesson for your classroom
+- Use client’s current coding language to generate advanced coding in the classroom",TBD,TBD,Needs updating
+EDU-HU_007,Hummingbird,F2F,3 hours,Hummingbird Advanced Coding*,"In this hands-on workshop, you will take your Hummingbird Robotics Kit to the next level. You will learn how to build and program increasingly complex robots with motors, sensors, and LEDs available from the the kit. You will design a robot that uses multiple pieces of hardware and program the robot to sense and respond to light, distance, temperature, and sound. You will use advanced coding features such as creating loops, states, and functions. By the completion of this workshop, you will generate project ideas and lessons for incorporating robotics into the classroom.","- Plan and build a robot to solve a problem
+- Program a robot to use available hardware
+- Generate ideas for incorporating robotics into the classroom
+- Use client’s current coding language to generate advanced coding in the classroom",Hummingbird Coding with Snap!,TBD,Needs updating
+EDU-LB_001, littleBits ,F2F,6 hours,STEAM is a SNAP! (STEAM Kit),"STEAM defines a culture of thinking that enables growth, sparks creativity, and boosts engagement. In this hands-on course, you will develop an understanding of how littleBits works. You will invent with littleBits. By the completion of this course, you will take advantage of the simple modular design of the littleBits STEAM Student Set to inspire confidence and creative thinking in tyour students. ","- Develop an understanding of how littleBits work
+- Invent with littleBits
+- Facilitate a growth mindset through the littleBits Invention Cycle
+",TBD,TBD,Needs updating
+EDU-LB_002, littleBits ,F2F,6 hours,Solving Real-World Problems in Your Classroom with littleBits (STEAM Kit),"In this hands-on course, you will invent with a purpose while having fun solving real-world problems in the process. You will experience and apply the concepts behind problem-based learning to your classroom. You will use littleBits' simple, modular design to quickly and easily transform a current unit of study into a fun, engaging learning experience. You will be able to find real-world problems that correlate to learning goals in any subject area and spark creativity in the problem-solving process through the littleBits' Invention Cycle. By the completion of this course, you will be able to apply littleBits to engage your students in turingn real-world problems into real-world solutions.  ","- Facilitate a culture of growth through students' use of the Invention Cycle to solve problems
+- Create opportunities for student reflection on the process of learning
+- Transform a current unit of study to focus on problem-solving through invention",STEAM is a SNAP! (STEAM Kit),TBD,Needs updating
+EDU-LB_003, littleBits ,F2F,6 hours,littleBits Make Coding a Snap (Code Kit),"In this hands-on course, you will delve into the littleBits Code Kit to code a variety of activities. You will become familiar with using the components within Bits. You will learn how to code with the kit by creating. You will learn the coding concepts of input, output, loops, and variables and apply your learning to build. You will create with the invention cycle  and apply it to your creation. By the completion of this course, you will brainstorm with your peers how to integrate the code kit into lessons in your content area.     
+","- Create with littleBits Code Kit
+- Remix code programs
+- Apply the Invention Cycle to a creation
+- Plan a lesson for integrating the code kit into content",TBD,TBD,Needs updating
+EDU-LB_004, littleBits ,F2F,6 hours,STEAM and Coding Are a Snap - DAY 1 (STEAM and Code Kit),"STEAM defines a culture of thinking that enables growth, sparks creativity, and boosts engagement. In Day 1 of this hands-on course, you will take advantage of the simple modular design of the littleBits STEAM Student Set to inspire confidence and creative thinking in your students. As Invention Advisors, you will learn to facilitate the littleBits Invention Cycle in your own classrooms. 
+
+*Note - This is day 1 of a two day workshop.  They may be scheduled at different points in the year, but the two workshops should be sold as a bundle.","- Develop an understanding of how littleBits work
+- Invent with littleBits
+- Facilitate a growth mindset through the littleBits Invention Cycle
+- Connect the Code Kit to create code and communicate it to the Bits",TBD,TBD,Needs updating
+EDU-LB_005, littleBits ,F2F,6 hours,STEAM and Coding Are a Snap - DAY 2 (STEAM and Code Kit),"In Day 2 of this hands-on course, you will build on your experience from the Day 1 workshop and your littleBits implementation. You will experience a design challenge; then you will design a challenge for your students with curriculum connections ready for immediate use in your classroom.  You will be introduced to additional coding skills to assist you with planning activities with the Code Set for your classroom. 
+
+
+*Note - This is day 2 of STEAM and Coding Are A Snap!
+","- Design challenges with littleBits for their students
+- Invent with littleBits
+- Practice additional coding skills
+- Plan activities with the Code Kit",STEAM and Coding Are a Snap - DAY 1 (STEAM and Code Kit),TBD,Needs updating
+EDU-MINE_001, Minecraft ,F2F,5 hours,Learning the Craft - Introduction to Minecraft,"In this hands-on course, you will be explore the creative potential of Minecraft as much more than a game. You will learn how to set up a world, navigate within it, build structures, and craft new objects. You will discover how Minecraft allows fast iteration so your students can create - and re-create - a model of a real-world object. You will learn how to create code quickly and easily with MakeCode and connect to your robot agent to turn your code into a building. Upon completion of this course, you will join the Minecraft community of educators and learn how to contribute., while walking away with a new world of ideas and possibilities that can be immediately applied in your classroom.","After completing this workshop, participants will be able to…
+- Navigate the Minecraft interface
+- Create worlds with customized settings
+- Create models of real-world objects
+- Create code to automate the building process
+- Export and save created worlds
+- Integrate Minecraft: Education Edition into existing curricular units
+- Find and implement pre-built lessons in the Minecraft Educator Community",TBD,TBD,Needs updating
+EDU-MINE_002, Minecraft ,F2F,5 hours,Honing Your Craft - Collaborate with Minecraft,"When you connect, you collaborate. When you collaborate, you accelerate learning! In this hands-on course, you will learn how to move students from individual building to collaborating.  You will use Classroom Mode to connect your students together while maintaining just the right level of control over the world. You will learn how students interact with each other in the virtual world and how these interactions can lead to greater understanding, positive teamwork, and better learning outcomes.
+","- Create a Minecraft world for collaborative use
+- Invite students to a collaborative world
+- Manage student behavior in a collaborative world
+- Create the structure necessary to balance creativity with boundaries
+- Prevent students from damaging work
+- Create Digital Citizenship Guidelines for collaborative Minecraft work",Learning the Craft - Introduction to Minecraft,TBD,Needs updating
+EDU-MINE_003,Minecraft,F2F,5 hours,The Crafting Challenge - Virtual Modeling to Hands-on Construction,"In this hands-on course, you will connect the virtual world to the real world with Minecraft. You will learn how students can take their virtual designs and make them real by engaging in hands-on Made With Minecraft challenges. You will experience how the connection to the real world sparks student planning and foresight. You will collaborate as a team to plan, build, and rebuild in the virtual world. You will actualize your team design by using simple materials in the real world. Using these challenges, you will make cross-curricular connections that increase retention, engagement, and interest.
+
+The Crafting Challenge workshop challenges are aligned to CS and Next Generation Science Standards."," - Work collaboratively to plan and build virtual and physical models
+- Convert virtual designs into physical models
+- Engage in the Engineering Design Process
+- Explore cross-curricular connections to increase engagement",TBD,TBD,Needs updating
+EDU-MINE_004, Minecraft ,F2F,10 hours,Building with Purpose,"In this hands-on course, you will build, collaborate, and code. You'll start the course by experiencing a model collaborative lesson as students. You will collaborate with your peers to complete the lesson and will grade it according to a predetermined rubric. You will make connections between the model lesson and state and national standards. By the completion of this course, you will be creating, modifying, and adapting ready-for-the-classroom lessons that authentically integrate Minecraft as a building tool.  This workshop is 5 hours per day over 2 consecutive days.","- Manage student behavior in a collaborative world.
+- Create the structure necessary to balance creativity with boundaries.
+- Create Digital Citizenship Guidelines for collaborative Minecraft work.
+- Create or adapt a Minecraft-based lesson for collaborative use.
+- Integrate coding into lesson plans in authentic ways.
+- Connect Minecraft-based lessons with state and national standards.
+",TBD,TBD,Needs updating
+EDU-PH_001, Photon Academy ,F2F,6 hours,Meet Photon,"In this hands-on course, you'll meet Photon, the world's first robot that will develop and grow with your students. You'll become familiar with Photon's capabilities and learn what it takes to make Photon come alive. You'll identify Photon's features and characteristics, classroom management procedures, and be able to identify the applications and the magic bridge. By the conclusion of this course, you will have the skills to properly care for Photon.","- Identify the features of Photon
+- Identify the classroom management procedures
+- Identify the apps and the magic bridge
+",TBD,TBD,Needs updating
+EDU-PH_002, Photon Academy ,F2F,6 hours,Visual Coding with Photon,"In this hands-on course, you will learn how easy coding with Photon is for young children and students who are pre-readers. You will learn to program Photon. You'll explore the sensors and functions that control Photon. At the conclusion of this course, you'll be able to operate Photon and seamlessly integrate Photon into your lesson plans.","- Program Photon to respond to sensors
+- Program with functions
+- Integrate Photon into content lessons",TBD,TBD,Needs updating
+EDU-PH_003, Photon Academy ,F2F,6 hours,Taking Photon Around the Block,"In this hands-on course, you will get started with block coding of Photon and be able to take your programming to the next level. You will learn how to program Photon and integrate coding into your classroom. By the completion of this course, you will be able to write a block program and be able to share the purpose of the program with your peers.
+","- Share a block program they wrote and the purpose of the program
+- Share pic/video",TBD,TBD,Needs updating
+EDU-PH_004, Photon Academy ,F2F,6 hours,Cooperative Coding,"In this hands-on course, you will learn how to use 8 Photons at a time for team coding and cooperative coding. At the conclusion of this course, you'll be able to design specific activities for Photon.",,TBD,TBD,Needs updating
+EDU-PH_005, Photon Academy ,F2F,6 hours,Transitional Coding with Photon,"Text based coding can be intimidating. In this course, you will learn a simple way to use text based coding to code Photon. You will be able to introduce your students to text based coding while still using a block structure. In this course, you will become familiar with the text that you will need to transition to text based coding languages. By the completion of this course, you will be able to integrate text based coding with Photon into your lessons.","- Program with text based blocks
+- Identify text that will be used in text based coding languages
+- Integrate Photon into lessons
+",TBD,TBD,Needs updating
+EDU-PH_006, Photon Academy ,F2F,6 hours,Scratching the Coding Surface with Photon*,"In this hands-on course, you will learn how to code your Photon with Scratch, a free online coding platform.  You will learn how to use Scratch's block based software to control your Photon. By the completion of this course, you will be able to integrate Scratch coding into your lesson plans.","- Program with Scratch
+- Integrate Photon into content lessons with Scratch",TBD,TBD,Needs updating
+EDU-PH_007, Photon Academy ,F2F,6 hours,Photon can MakeCode*,"In this hands-on course, you will explore the online MakeCode platform, which allows coding with both MakeCode and JavaScript. You will learn how to code your Photon using the MakeCode platform and JavaScript. At the completion of this workshop, you will be able to code with MakeCode as a block based language and be able to switch between blocks and JavaScript.","- Program with MakeCode
+- Program with JavaScript
+- Integrate Photon into content lessons with MakeCode or JavaScript",TBD,TBD,Needs updating
+EDU-PH_008, Photon Academy ,F2F,6 hours,Photon and Python*,"In this hands-on course, you will learn to code your Photon using the Python language. You will discover how easy Python is to learn text based coding, because it is a text based coding language with easy to use syntax. At the completion of this course, you will be able to integrate Photon into content lessons using Python coding.","- Program with Python
+- Integrate Photon into content lessons with Python",TBD,TBD,Needs updating
+EDU-PH_009, Photon Academy ,F2F,6 hours,Photon in the Science Classroom,"In this hands-on course, you will examine sample lessons for using Photon in the Science classroom. You will collaborate with peers to discover how you can integrate Photon into your own classroom.  At the completion of this workshop, you will be able to create and test your own lesson with Photon.  ","- Examine sample lessons
+- Share ideas on how to bring Photon into your Science classroom
+- Create and test your own lesson",TBD,TBD,Needs updating
+EDU-PH_010, Photon Academy ,F2F,6 hours,Photon in the Math Classroom,"In this hands-on course, you will examine sample lessons for using Photon in the Math classroom. You will collaborate with peers to discover how you can integrate Photon into your own classroom. At the completion of this workshop, you will be able to create and test your own lesson with Photon.  ","- Examine sample lessons
+- Share ideas on how to bring Photon into your Math classroom
+- Create and test your own lesson",TBD,TBD,Needs updating
+EDU-PH_011, Photon Academy ,F2F,6 hours,Photon in the Language Arts Classroom,"In this hands-on course, you will examine sample lessons for using Photon in the Language Arts classroom. You will collaborate with peers to discover how you can integrate Photon into your own classroom. At the completion of this workshop, you will be able to create and test your own Language Arts lesson with Photon.  ","- Examine sample lessons
+- Share ideas on how to bring Photon into your Language Arts classroom
+- Create and test your own lesson",TBD,TBD,Needs updating
+EDU-PH_012, Photon Academy ,F2F,6 hours,Photon in the Social Studies Classroom,"In this hands-on course, you will examine sample lessons for using Photon in the Social Studies classroom. You will collaborate with peers to discover how you can integrate Photon into your own classroom. At the completion of this workshop, you will be able to create and test your own Social Studies lesson with Photon.  ","- Examine sample lessons
+- Share ideas on how to bring Photon into your Social Studies classroom
+- Create and test your own lesson",TBD,TBD,Needs updating
+EDU-PH_013, Photon Academy ,F2F,6 hours,Photon in the Foreign Language Classroom,"In this hands-on course, you will examine sample lessons for using Photon in the Foreign Language classroom.  You will collaborate with peers to discover how you can integrate Photon into your own classroom.  At the completion of this workshop, you will be able to create and test your own lesson with Photon.  ","- Examine sample lessons
+- Share ideas on how to bring Photon into your Language Arts classroom
+- Create and test your own lesson",TBD,TBD,Needs updating
+EDU-PH_014, Photon Academy ,F2F,6 hours,3D Printing for Photon,"In this course, you will gain hands-on experience with 3D printing for Photon. You will go through the engineering design process to design a 3D object with Tinkercad, use a 3D printer to create a small item, and print a product for Photon. At the completion of this course, you will be able to employ the engineering design process to solve small problems with your students.","- Design a 3D object with Tinkercad
+- Use the 3D printer to create a small item
+- Employ the engineering design process to solve problems",TBD,TBD,Needs updating
+EDU-PH_015, Photon Academy ,F2F,6 hours,Engineering Design Process with Photon,"In this course, you will gain hands on experience employing the engineering design to solve a problem. At the completion of this course, you will be able to use the engineering design to design a problem for your students to solve.","- Employ the engineering design process to solve a problem
+- Design a problem for their students ",TBD,TBD,Needs updating
+EDU-PP-001,Project Pals,F2F,6 hours,1a. Getting Started with Project Pals (Day 1),"Day One  - In Day 1 of this hands-on introduction to Project Pals course, you will take full advantage of Project Pals' visualization tools. You will import media, diagram relationships, and create project assets. You will be able to design projects so that learners can collaborate with each other in real time.  You will discover that Project Pals brings Project-based learning to life.                                                                                                                                                                                                                                                                                                                ","-Define inquiry-based learning
+-Differentiate between project and problem-based learning
+-Explore and identify the main features of Project Pals
+-Add text boxes, images, and annotations to a workspace
+-Diagram the relationship between two or more objects
+-Analyze data to create actionable feedback for learners
+-Use the features and tools in Project Pals to create an inquiry-based activity
+","Project Pals
+G Suite for Education or Office 365 account",n/a,Current
+EDU-PP-001,Project Pals,F2F,6 hours,1b. Getting Started with Project Pals (Day 2),TBD,TBD,"Project Pals
+G Suite for Education or Microsoft Office 365",1a. Getting Started with Project Pals (Day 1),Not written
+EDU-PP-001,Project Pals,F2F,6 hours,Project-Based Learning - A Digital Roadmap,"When you create project-based learning (PBL) activities in Project Pals, you are supporting computational thinking, design thinking and collaborative problem solving. In this hands-on workshop, you will build on your learning from your Getting Started with Project Pals workshop. You will learn about the advanced techniques and features of Project Pals and will be able to create timelines, visual representations of relationships, and develop a structured analysis to support reasoned conclusions. You will further advance your skills in Project Pals to assist your students secure their skills in PBL, which will benefit them as life long learners.",TBD,"Project Pals
+G Suite for Education or Microsoft Office 365","1a. Getting Started with Project Pals (Day 1
+1b. Getting Started with Project Pals (Day 2)",Not written
+EDU-PP-001,Project Pals,F2F,6 hours,Project-Based Learning and STEM Made Simple with Project Pals,"Eduscape's STEM Made Simple and Project Pals are a perfect pair. In this hands-on workshop, you will experience the value of combining STEM Made Simple, which addresses inquiry and project-based learning with Project Pals. You will explore these learning models, as well as the Engineering Design Process and Transdisciplinary Lesson Design. You will define the difference between project and  and create lessons and activities that align to each category. By the completion of this workshop, you will learn how to make the most of all of Project Pal's tools and features to support learning experiences that promote increased student engagement and student agency. ",TBD,"Project Pals
+G Suite for Education or Microsoft Office 365","1a. Getting Started with Project Pals (Day 1
+1b. Getting Started with Project Pals (Day 2)",Not written
+EDU-PP-001,Project Pals,F2F,6 hours,Sustainable Project-Based Learning - Integration into Strategic Planning,"In this hands-on workshop, you will delve deeply into sustainable project based learning (PBL) with Project Plans. By the completion of this workshop, you will have the tools and knowledge to integrate sustainable PBL with Project Pals into your strategic planning for your students.",TBD,"Project Pals
+G Suite for Education or Microsoft Office 365","1a. Getting Started with Project Pals (Day 1
+1b. Getting Started with Project Pals (Day 2)",Not written
+EDU-PP-001,Project Pals,F2F,,Coaching – Onsite and/or eCoaching,"Project Pals Academy also offers coaching and modeling sessions, either onsite and/or remote ecoaching to support teacher adoption of PBL and Project Pals. Onsite coaching blocks must be purchased in two, consecutive day increments and ecoaching is delivered in 50-minute blocks with a minimum purchase of ten (10) blocks.",n/a,,"1a. Getting Started with Project Pals (Day 1
+1b. Getting Started with Project Pals (Day 2)",Not written
+EDU-SMS_001,SMS,eLearning,self-paced,STEM Made Simple for Teachers (eL),"STEM Made Simple is an Inquiry-based program that leverages a student-centered model wherein the 5 E’s (Engage, Explore, Explain, Elaborate, and Evaluate) define the structure of a lesson unit. Supporting methodologies include Problem Based Learning and Project-Based Learning. It is inclusive of all other acronyms including STEAM and STREAM.
+
+In this series of online courses, you will learn about the definition of STEM, why it matters, and how to apply it in every classroom. You will then be equipped to complete STEM Challenges as students in an online environment.","- Establish a global understanding of STEM
+- Integrate inquiry into the learning process
+- Use STEM to make transdisciplinary connections
+- Create a library of STEM lessons",TBD,TBD,Needs updating
+EDU-WW_001,Wonder,F2F,,Coding with Puzzlets,"Even the youngest of learners can learn to code. In this hands-on workshop, you will learn how to program, Dash the robot with the physical pieces of Puzzlets. You will be able to reinforce early literacy skills, such as directionality, orientation, patterns, and sequencing. At the completion of this workshop, you will be able to use your new coding skills to guide your students to control Dash with easy to code tiles.","· Program a robot with physical coding
+· Create a coding challenge for your students
+- Identify how students who are learning to code can code to learn with Puzzlets and Dash",TBD,TBD,Needs updating
+EDU-WW_002,Wonder,F2F,,Dance with Dash and Xylo,"In this hands-on workshop, you will learn how to program Dash to play a tune with the Xylo accessory. You will be able to share your skills with your students, so that they can learn music vocabulary, notes on the musical scale, sequencing, and cause and effect. You will learn to program a recognizable tune. By the completion of this workshop, you will take on the extra challenge and create a “marching band.” You will be able to bring your new coding skills into the classroom so that your students will be coding, singing, and dancing with Dash in no time.","· Program a robot with visual coding
+· Create a coding challenge for your students
+Introduce looping",TBD,TBD,Needs updating
+EDU-WW_003,Wonder,F2F,,Visual Programming for Young Learners,"In this hands-on workshop, you will learn how to code Dash with visual programs, Go and Path. Working on your iPad, you will learn learn how to put steps in order to complete a sequence. You will add stops and make Dash talk, spin or flash her lights. By the completion of this workshop, you will be able to integrate coding into the curriculum for young learners. ","· Program a robot with visual programming
+· Create a code to make a sequence of events happen
+- Plan for students to code to learn with a classroom lesson",TBD,TBD,Needs updating
+EDU-WW_004,Wonder,F2F,,Introduction to Coding in the Elementary Classroom,"In this hands-on workshop, you'll meet Dash the Robot and learn to control her with visual coding. You will get a general overview of the available apps you can use with Dash and  understand her role in bringing coding and STEM into the curriculum. You'll discover Dash's many capabilities and how she can be utilized to introduce coding to your students.  You will learn to digitally navigate the physical world via the Go and Path apps. You will brainstorm ways to implement Dash into your curriculum. By the completion of this workshop, you will create a lesson to introduce Dash to your students.","· Identify the capabilities of Dash the robot and her role in bringing coding and STEM into the curriculum
+· Control a robot with visual coding
+- Create a lesson to introduce Dash to your students",TBD,TBD,Needs updating
+EDU-WW_005,Wonder,F2F,,Bringing Block Coding to your Curriculum,"In this hands-on workshop, you will learn how accessible coding and programming can be and develop your skills by using the Blockly application with Robots Dash and Dot. You will experience firsthand how easily Blockly can be managed for classroom use. You will practice creating and testing programs that include loops and variables. You will understand that when students use a coding program to learn, they use critical reasoning skills to develop a deeper knowledge of the content. You will experience subject-specific lessons and by the completion of this workshop, you will be guided in the creation of your own lesson using Blockly as a tool for learning.","· Experience model lessons for having students learn to code while coding to learn
+· Create programs in block code to control Dash
+- Create a content based lesson to bring Dash into your classroom",TBD,TBD,Needs updating
+EDU-WW_006,Wonder,F2F,,State Machine Coding,"In this hands-on workshop, you will learn how accessible coding and programming can be and develop your skills by using the Blockly application with Robots Dash and Dot. You will experience firsthand how easily Blockly can be managed for classroom use. You will practice creating and testing programs that include loops and variables. You will understand that when students use a coding program to learn, they use critical reasoning skills to develop a deeper knowledge of the content. You will experience subject-specific lessons and by the completion of this workshop, you will be guided in the creation of your own lesson using Blockly as a tool for learning.","· Experience model lessons for having students learn to code while coding to learn
+· Create programs in a visual state machine language to control Dash
+- Create a content based lesson to bring Dash into your classroom",TBD,TBD,Needs updating
+EDU-WW_007,Wonder,F2F,,Drawing with Dash or CUE,"In this hands-on workshop, you will experience a model lesson for having students learn to code while coding to learn. You will attache and practice using the drawing kit to Dash or CUE*.  In addition to setting up and experiencing the drawing kit, you will use the kit as part of content based lessons. By the completion of this workshop, you will create your own lesson to take back to your classroom.                                                                                                                                                                                                                                  *Requires one Drawing Kit per Dash or CUE  ","· Experience a model lesson for having students learn to code while coding to learn
+· Practice using the Drawing Kit for Dash or CUE
+- Create a content based lesson to bring Dash into your classroom",TBD,TBD,Needs updating
+EDU-WW_008,Wonder,F2F,,Cue Coding in the Classroom,"CUE is a clever interactive robot with a witty attitude and has the perfect personality for middle school students to code in the classroom. In this hands-on workshop, you will learn to control and code CUE with block and text based coding. You will experience subject-specific lessons and create your own lesson to bring back to your classroom.","· Experience model lessons for having students learn to code while coding to learn
+· Create programs in block code and text based code to control CUE
+- Create a content based lesson to bring CUE into your classroom",TBD,TBD,Needs updating
+EDU-WW_009,Wonder,F2F,,Creating Code with CUE,"In this hands-on workshop, you will explore CUE's ability to be programmed to perform parallel actions. You will practice programming CUE to do more than one thing at a time. You will set up conditions that affect the performance of your program. You will experience model lessons for having students learn to code while coding to learn. Once you can comfortably control CUE, you will create content based lessons that you can bring back to your own classroom. By the completion of this workshop, you will be able to create and share your own lessons.","· Experience model lessons for having students learn to code while coding to learn
+· Create programs in a visual language that allows parallel programming to control CUE
+- Create a content based lesson to bring CUE into your classroom",TBD,TBD,Needs updating
+EDU-SMS_001,STEM Made Simple,eLearning,self-paced,STEM for Every Teacher (eL),"STEM Made Simple is an inquiry-based program that leverages a student-centered model wherein the 5 E’s (Engage, Explore, Explain, Elaborate, and Evaluate) define the structure of a lesson unit. Supporting methodologies include Problem-Based Learning and Transdisciplinary Lesson Planning. It is inclusive of all other acronyms including STEAM and STREAM.  Teachers will learn about the definition of STEM, why it matters, and how to apply it in every classroom, every lesson. Then, they will complete STEM Challenges as students. They will prepare to design and deploy STEM Lessons in their own classrooms. ","- Establish a global understanding of STEM
+- Integrate inquiry into the learning process
+- Use STEM to make transdisciplinary connections
+- Create a library of STEM lessons
+",n/a,n/a,Needs updating
+EDU-SMS_002,STEM Made Simple,eLearning,self-paced,STEM Made Simple (eL),"STEM Made Simple is an Inquiry-based program that leverages a student-centered model wherein the 5 E’s (Engage, Explore, Explain, Elaborate, and Evaluate) define the structure of a lesson unit. Supporting methodologies include Problem Based Learning and Project-Based Learning. It is inclusive of all other acronyms including STEAM and STREAM.
+
+In this series of online courses, you will learn about the definition of STEM, why it matters, and how to apply it in every classroom. You will then be equipped to complete STEM Challenges as students in an online environment.","- Establish a global understanding of STEM
+- Integrate inquiry into the learning process
+- Use STEM to make transdisciplinary connections
+- Create a library of STEM lessons",n/a,n/a,Needs updating
+EDU-SMS_003,STEM Made Simple,F2F,3 hours,1. STEM for Every Teacher,"Integrated STEM Education ® is a way of teaching that incorporates the skills of science, technology, engineering, and math into all subject areas. Participants will learn what STEM is and identify components that may already be present in lessons they are currently teaching. ","Define integrated STEM Education
+Explain the importance of STEM skills
+Identify new skills teachers need to implement STEM
+Connect STEM activities with higher levels of Bloom's Taxonomy
+Identify lessons where STEM may already be present
+Connect STEM skills across content areas 
+",n/a,n/a,Needs updating
+EDU-SMS_004,STEM Made Simple,F2F,3 hours,2. Inquiry: The Foundation of STEM,"Inquiry is what allows teachers to apply this method of teaching across all content areas. It sounds a little too easy, maybe even a little too good to be true, but we promise, it’s really just a new way of looking at things you are already doing. Participants will explore the concept of inquiry and how it applies to STEM Education. ","Define inquiry
+Explain the benefits of inquiry
+Connect inquiry and STEM
+Model each step of the 5E method of inquiry
+Create an inquiry-based lesson plan using the 5E method
+",1. STEM for Every Teacher,n/a,Needs updating
+EDU-SMS_005,STEM Made Simple,F2F,3 hours,3. Problem-Based Learning,"What is problem-based learning? How is it different from project-based learning? How does it fit with STEM? How does it enhance the learning experience and increase student agency? And - maybe most importantly - how does this style of teaching impact the role of the teacher? In this section, participants will create authentic, relevant, student-centered learning experiences for students.","Define problem-based learning
+Explain real-world applications of problem-based learning
+Create a problem-based learning lesson
+","1. STEM for Every Teacher
+2. Inquiry: The Foundation of STEM",n/a,Needs updating
+EDU-SMS_006,STEM Made Simple,F2F,3 hours,4. Transdisciplinary Lesson Planning,"Research shows that students learn more when the information being presented is connected. Although there are several subjects in a grade level, this does not mean that these subjects have to be taught in isolation. Transdisciplinary lesson planning unites various subjects in a real-word or STEM-related lesson. Participants will examine the science of how the brain learns, participate in a sample lesson, and create their own transdisciplinary lesson. ","Define Transdisciplinary Learning
+Describe how transdisciplinary experiences enhance student learning
+Use thematic strands to find opportunities for transdisciplinary planning
+Create a Transdisciplinary lesson plan using a thematic strand
+","1. STEM for Every Teacher
+2. Inquiry: The Foundation of STEM
+3. Problem-Based Learning",n/a,Needs updating
+EDU-SMS_007,STEM Made Simple,F2F,3 hours,5. The Engineering Design Process,"Engineering in the context of this course refers to a process of teaching and learning, as opposed to a specific content area. Like much of the information presented previously, this is not as much of a new concept, as is it focusing on identifying existing teaching and learning behaviors with a new lens. Participants will explore the Engineering Design Process and learn how to apply it across content areas.","Define engineering and explore its application within any classroom
+Explore the engineering design process and how it can be used in all classes and subjects
+Participate in an engineering challenge
+Create an engineering challenge for your classroom
+","1. STEM for Every Teacher
+2. Inquiry: The Foundation of STEM
+3. Problem-Based Learning
+4. Transdisciplinary Lesson Planning",n/a,Needs updating
+EDU-SMS_008,STEM Made Simple,F2F,3 hours,STEM Can Be Simple,"STEM lessons don’t need to be complicated or time consuming.  In this workshop, experience a lesson* as a students using Makey Makey and the design process.  After you become familiar with the capabilities of the tool, work with your colleagues to brainstorm how to tie the use of the lab and Makey Makey into at least one of your lessons.
+*Lesson will be for K - 4 or 5 -8 depending on the group of teachers.","Experience a STEM Lesson
+Apply the design process
+Develop a lesson idea that is appropriate for your students and curriculum","1. STEM for Every Teacher
+2. Inquiry: The Foundation of STEM
+3. Problem-Based Learning
+4. Transdisciplinary Lesson Planning
+5. The Engineering Design Process",n/a,Needs updating

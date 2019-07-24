@@ -7,6 +7,7 @@ $inventory = new Inventory();
 $proposal = new ProposalAndQuotes();
 $quotes = new ProposalAndQuotes();
 $users = new User();
+$requests = new Request();
 
 if ($customer->exists()) {
 
@@ -14,77 +15,24 @@ if ($customer->exists()) {
 
     ?>
 
-<div class="overlay">
+<div class="overlay"></div>
 
-</div>
-
-<div id="quote-modal">
-    <div class="quote-popup-header">
-        <h2>Generate Quote</h2>
+<div id="request-modal">
+    <div class="request-popup-header">
+        <h2>Create Request</h2>
         <div>
-            <button class="quote-popup-close"></button>
+            <button class="request-popup-close"></button>
         </div>
     </div>
-    <form class="quote-popup-content" action="createQuote.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
+    <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
 
         <!-- Tab links -->
-        <div class="quote-tab">
-            <button id="default-tab" type="button" class="quote-tablinks" onclick="openQuoteTab(event, 'workshop-1')">Quote Information</button>
-            <button id="add-new-quote-tab" type="button" class="quote-tablinks" onclick="addQuoteTab(this)">add workshop</button>
+        <div class="request-tab">
+            <button id="add-new-request-tab" type="button" class="request-tablinks" onclick="addRequestTab(this)">add workshop</button>
         </div>
-
-        <!-- Tab content -->
-        <div id="workshop-1" class="quote-tabcontent">
-            <input type="text" name="title" placeholder="Quote Title">
-        </div>
-
-
 
         <div class="quote-popup-footer">
-            <button type="submit">Generate</button>
-        </div>
-    </form>
-</div>
-
-<div id="proposal-modal">
-    <div class="proposal-popup-header">
-        <h2>Generate Proposal</h2>
-        <div>
-            <button class="proposal-popup-close"></button>
-        </div>
-    </div>
-    <form name="form" class="proposal-popup-content" action="createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
-
-        <!-- Tab links -->
-        <div class="proposal-tab">
-            <button id="proposal-default-tab" type="button" class="proposal-tablinks" onclick="openProposalTab(event, 'proposal-workshop-1')">Proposal Information</button>
-            <button id="add-new-proposal-tab" type="button" class="proposal-tablinks" onclick="addProposalTab(this)">add workshop</button>
-        </div>
-
-        <!-- Tab content -->
-        <div id="proposal-workshop-1" class="proposal-tabcontent proposal-details">
-
-            <input type="text" name="title" placeholder="Proposal Title">
-
-            <textarea name="introduction" placeholder="Introduction"></textarea>
-            <textarea name="requiredInvestment" placeholder="Required Investment"></textarea>
-
-            <select class="js-example-basic-single" name="user">
-                <option disabled selected>Select User</option>
-                <option value="48">Alex Urrea</option>
-                <option value="44">Lanie Gordon</option>
-                <option value="190627035028">Katrina Keene</option>
-                <option value="46">Naa Okaine</option>
-                <option value="190712061806">Garrett Eastlake</option>
-            </select>
-
-        </div>
-
-
-
-        <div class="proposal-popup-footer">
-            <button type="submit" onclick="this.form.target='_blank'; form.action='previewProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Preview</button>
-            <button type="submit" onclick="this.form.target='_self'; form.action='createProposal.php?id=<?php echo $customer->data()->id ?>&case=customer';">Generate</button>
+            <button type="submit">Create</button>
         </div>
     </form>
 </div>
@@ -173,80 +121,11 @@ if ($customer->exists()) {
 
         </div>
         <div class="customer-header-information contact-tab">
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')"
-                    id="<?php if (!isset($_GET['tab'])) echo 'defaultOpen' ?>"><i class="fas fa-info"></i>Information
-            </button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')"
-                    id="<?php if ($_GET['tab'] == 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)
-            </button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-proposal', 'block')"><i class="fas fa-file-invoice-dollar"></i>Proposals
-            </button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-quote', 'block')"><i class="fas fa-receipt"></i>Quotes
-            </button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-poll-h"></i>Censeo
-            </button>
-
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-event')"
-                    id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)
-            </button>
-        </div>
-
-        <div id="contact-proposal" class="contact-proposal contact-tabcontent">
-            <div class="proposal-create-new">
-                <button onclick="openProposalModal()">Create New Proposal</button>
-                <div class="clear"></div>
-            </div>
-            <?php foreach ($proposal->getProposals((int)$customer->data()->id) as $proposal) : ?>
-
-
-                <div class="proposal-request-header">
-                    <h4><?php echo $proposal->title ?> | <span><?php echo $proposal->dateCreated ?></span></h4>
-                    <a title="Transform to Quote" onclick="changeToQuote(<?php echo $proposal->ID ?>,<?php echo $customer->data()->id ?>)" class="">
-                        <i class="fas fa-receipt"></i>
-                    </a>
-                    <a title="Download Proposal" href="generateProposal.php?id=<?php echo $proposal->ID ?>" class="">
-                        <i class="fas fa-file-download"></i>
-                    </a>
-                    <a title="Delete Proposal" onclick="deleteProposal(<?php echo $proposal->ID ?>)" class="">
-                        <i class="fas fa-trash"></i>
-                    </a>
-<!--                    <a class="more">-->
-<!--                        <i class="far fa-caret-square-down"></i>-->
-<!--                    </a>-->
-                </div>
-
-                <div class="proposal-panel">
-
-                </div>
-
-            <?php endforeach; ?>
-        </div>
-
-        <div id="contact-quote" class="contact-quote contact-tabcontent">
-            <div class="quote-create-new">
-                <button onclick="openQuoteModal()">Create New Quote</button>
-                <div class="clear"></div>
-            </div>
-            <?php foreach ($quotes->getQuotes((int)$customer->data()->id) as $quote) : ?>
-
-                <div class="quote-request-header">
-                    <h4><?php echo $quote->title ?> | <span><?php echo $quote->dateCreated ?></span></h4>
-                    <a title="Download Quote" href="generateQuote.php?id=<?php echo $quote->ID ?>" class="">
-                        <i class="fas fa-file-download"></i>
-                    </a>
-                    <a title="Delete Quote" onclick="deleteQuote(<?php echo $quote->ID ?>)" class="">
-                        <i class="fas fa-trash"></i>
-                    </a>
-<!--                    <a class="more">-->
-<!--                        <i class="far fa-caret-square-down"></i>-->
-<!--                    </a>-->
-                </div>
-
-                <div class="quote-panel">
-
-                </div>
-
-            <?php endforeach; ?>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if (!isset($_GET['tab'])) echo 'defaultOpen' ?>"><i class="fas fa-info"></i>Information</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')"><i class="fas fa-file-alt"></i>Requests</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if ($_GET['tab'] == 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-poll-h"></i>Censeo</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-event')" id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)</button>
         </div>
 
         <form action="updateCustomer.php" method="post" enctype="multipart/form-data" class="contact-form-information contact-tabcontent"
@@ -525,6 +404,53 @@ if ($customer->exists()) {
             <button onclick="location.href='';" type="button" class="contact-form-information-cancel"></button>
 
         </form>
+
+        <div id="lead-requests" class="lead-requests contact-tabcontent">
+
+            <div id="request-table">
+                <div class="request-table-nav">
+                    <button onclick="openRequestModal()">+ Create Request</button>
+                    <div class="clear"></div>
+                </div>
+                <div class="request-table-header">
+                    <div>ID</div>
+                    <div>Workshop Titles</div>
+                    <div>Status</div>
+                    <div>Date</div>
+                    <div></div>
+                </div>
+
+                <?php foreach ($requests->getCustomerRequestsByID($customer->data()->id) as $request): ?>
+
+                    <div class="request-table-row">
+                        <div><?php echo $request->ID ?></div>
+                        <div>
+                            <ul>
+                                <?php foreach ($requests->getRequestWorkshopsByID($request->ID) as $workshop): ?>
+                                    <li><?php echo $workshop->workshopTitle ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <div>
+                            <select onchange="updateStatus(this, '<?php echo $request->ID ?>')" class="request-status <?php echo $request->colorClass ?>">
+                                <?php foreach ($requests->getStatuses() as $status): ?>
+                                    <option <?php echo $request->statusID === $status->ID ? 'selected' : '' ?> value="<?php echo $status->ID ?>"><?php echo $status->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div><?php echo date("m/d/Y", strtotime($request->insertDate)) ?></div>
+                        <div>
+                            <a href="request.php?case=<?php echo Input::get('case') ?>&id=<?php echo $request->ID ?>">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                <?php endforeach; ?>
+
+            </div>
+
+        </div>
 
         <div id="contact-notes" class="contact-notes contact-tabcontent">
             <div class="contact-notes-all">
@@ -826,54 +752,52 @@ if ($customer->exists()) {
 
     <script>
 
-        function changeToQuote(id, customerID) {
-            if (confirm('Are you sure you want to transform this proposal to a quote?')) {
-                window.location.href = 'changeToQuote.php?id=' + id + '&customerID=' + customerID;
-            }
-        }
-
-        function deleteProposal(id){
-            if (confirm('Are you sure you want to delete this proposal?')) {
-
-                $.ajax({
-                    method: "POST",
-                    url: "deleteProposal.php",
-                    data: {
-                        id: id
-                    }
-                })
-                    .done(function(result) {
-                        $("#contact-proposal").load(" #contact-proposal > *");
-                    });
-
-            }
-        }
-
-        function deleteQuote(id){
-            if (confirm('Are you sure you want to delete this quote?')) {
-
-                $.ajax({
-                    method: "POST",
-                    url: "deleteQuote.php",
-                    data: {
-                        id: id
-                    }
-                })
-                    .done(function(result) {
-                        console.log(result);
-                        $("#contact-quote").load(" #contact-quote > *");
-                    });
-
-            }
-        }
+        $('#add-new-request-tab').click();
 
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
-        
+
         $('.overlay').on('click', function () {
             $('#quote-modal').hide();
             $('#proposal-modal').hide();
+            $('.overlay').hide();
+        });
+
+        /* Status Change */
+
+        function updateStatus(select, requestID){
+
+            let statusID = select.value;
+
+            $.ajax({
+                method: "GET",
+                url: "function/request/updateStatus.php",
+                data: {
+                    statusID: statusID,
+                    requestID: requestID
+                }
+            }).done(function(result) {
+                if(result) {
+                    let data = JSON.parse(result);
+
+                    select.className = '';
+                    select.classList.add(data.colorClass);
+                    select.classList.add('request-status');
+                }
+            });
+
+        }
+
+        /* Request Modal */
+
+        function openRequestModal() {
+            $('.overlay').show();
+            $('#request-modal').show();
+        }
+
+        $('.request-popup-close').on('click', function () {
+            $('#request-modal').hide();
             $('.overlay').hide();
         });
 
@@ -893,69 +817,49 @@ if ($customer->exists()) {
                     console.log(data);
 
                     html =  '<div class="workshop-textareas">' +
-                                '<div>' +
-                                    '<label>Description</label>' +
-                                    '<textarea name="data['+num+'][description]">'+ data.description +'</textarea>' +
-                                '</div>' +
-                                '<div>' +
-                                    '<label>Learner Outcomes</label>' +
-                                    '<textarea name="data['+num+'][learnerOutcomes]">'+ data.learnerOutcomes +'</textarea>' +
-                                '</div>' +
-                                '<div>' +
-                                    '<label>Prerequisites</label>' +
-                                    '<textarea name="data['+num+'][prerequisites]">'+ data.prerequisites +'</textarea>' +
-                                '</div>' +
-                                '<div>' +
-                                    '<label>MSRP</label>' +
-                                    '<input name="data['+num+'][msrp]" value="'+ data.msrp +'">' +
+                        '<div>' +
+                        '<label>Description</label>' +
+                        '<textarea name="data['+num+'][description]">'+ data.description +'</textarea>' +
+                        '</div>' +
+                        '<div>' +
+                        '<label>Learner Outcomes</label>' +
+                        '<textarea name="data['+num+'][learnerOutcomes]">'+ data.learnerOutcomes +'</textarea>' +
+                        '</div>' +
+                        '<div>' +
+                        '<label>Prerequisites</label>' +
+                        '<textarea name="data['+num+'][prerequisites]">'+ data.prerequisites +'</textarea>' +
+                        '</div>' +
+                        '<div>' +
+                        '<label>MSRP</label>' +
+                        '<input name="data['+num+'][msrp]" value="'+ data.msrp +'">' +
                         '       </div>' +
-                                '<input type="hidden" name="data['+num+'][title]" value="'+ data.titleOfOffering +'" >' +
-                            '</div>';
+                        '<input type="hidden" name="data['+num+'][title]" value="'+ data.titleOfOffering +'" >' +
+                        '</div>';
 
                     content.html(html);
                 });
         }
 
-        function openQuoteModal() {
-            $('.overlay').show();
-            $('#quote-modal').show();
-        }
+        function addRequestTab(link) {
 
-        function openProposalModal() {
-            $('.overlay').show();
-            $('#proposal-modal').show();
-        }
-
-        $('.quote-popup-close').on('click', function () {
-            $('#quote-modal').hide();
-            $('.overlay').hide();
-        });
-
-        $('.proposal-popup-close').on('click', function () {
-            $('#proposal-modal').hide();
-            $('.overlay').hide();
-        });
-
-        function addQuoteTab(link) {
-
-            let count = $('.quote-tablinks').length;
+            let count = $('.request-tablinks').length;
 
             let button = document.createElement('button');
-            button.classList.add('quote-tablinks');
+            button.classList.add('request-tablinks');
             button.id = 'workshop-button-' + count;
             button.type = 'button';
-            button.textContent = 'Workshop ' + (count - 1);
+            button.textContent = 'Workshop ' + count;
 
             let footer = $('.quote-popup-footer');
 
             let content = document.createElement('div');
             content.id = 'workshop-' + count;
-            content.classList.add('quote-tabcontent');
+            content.classList.add('request-tabcontent');
 
             footer.before(content);
 
             button.addEventListener("click", function (event) {
-                openQuoteTab(event, 'workshop-' + count)
+                openRequestTab(event, 'workshop-' + count)
             });
 
             link.before(button);
@@ -992,18 +896,18 @@ if ($customer->exists()) {
                 });
         }
 
-        function openQuoteTab(evt, cityName) {
+        function openRequestTab(evt, cityName) {
             // Declare all variables
             var i, tabcontent, tablinks;
 
             // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("quote-tabcontent");
+            tabcontent = document.getElementsByClassName("request-tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
 
             // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("quote-tablinks");
+            tablinks = document.getElementsByClassName("request-tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
@@ -1012,87 +916,6 @@ if ($customer->exists()) {
             document.getElementById(cityName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-
-        function addProposalTab(link) {
-
-            let count = $('.proposal-tablinks').length;
-
-            let button = document.createElement('button');
-            button.classList.add('proposal-tablinks');
-            button.id = 'proposal-workshop-button-' + count;
-            button.type = 'button';
-            button.textContent = 'Workshop ' + (count - 1);
-
-            let footer = $('.proposal-popup-footer');
-
-            let content = document.createElement('div');
-            content.id = 'proposal-workshop-' + count;
-            content.classList.add('proposal-tabcontent');
-
-            footer.before(content);
-
-            button.addEventListener("click", function (event) {
-                openProposalTab(event, 'proposal-workshop-' + count)
-            });
-
-            link.before(button);
-
-            $('#proposal-workshop-button-' + count).click();
-
-            $.ajax({
-                method: "GET",
-                url: "getWorkshopList.php",
-                data: {
-                    status: 'ok'
-                }
-            })
-                .done(function(result) {
-
-                    let data = JSON.parse(result);
-
-                    let html = '';
-                    html += '<select onchange="showWorkshop(this, ' + count +')" class="js-example-basic-single">';
-
-                    html += '<option selected disabled>Select Workshop</option>';
-
-                    $.each(data, function (index, item) {
-                        html += '<option value="'+ item.ID +'">'+ item.titleOfOffering +'</option>';
-                    });
-
-                    html += '</select>'
-
-                    let workshopCOntent = '<div id="workshop-'+count+'-content"></div>';
-
-                    $('#proposal-workshop-' + count).append(html);
-                    $('#proposal-workshop-' + count).append(workshopCOntent);
-                    $('#proposal-workshop-' + count + ' select').select2();
-
-                });
-        }
-
-        function openProposalTab(evt, cityName) {
-            // Declare all variables
-            var i, tabcontent, tablinks;
-
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("proposal-tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("proposal-tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-
-        document.getElementById("default-tab").click();
-        document.getElementById("proposal-default-tab").click();
 
         function save(link, field, id, customer) {
             var option = link.options[link.selectedIndex].value;

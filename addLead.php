@@ -17,6 +17,22 @@ if(Input::exists()){
             
             $id = date('ymdhis');
 
+            if($_FILES["logo"]["size"] !== 0){
+                $target_dir = "view/img/logos/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" ) {
+                    die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+                }
+
+                move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
+
+            }
+
             try{
 
                 $lead->create(array(
@@ -52,6 +68,7 @@ if(Input::exists()){
                     'lastContacted' => 'Not contacted',
                     'modifiedBy' => '-',
                     'modifiedOn' => '-',
+                    'logo' => basename($_FILES["logo"]["name"])
                 ));
 
                 if(

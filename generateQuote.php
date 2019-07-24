@@ -7,12 +7,20 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 if(Input::get('id')){
 
-    $quote = new ProposalAndQuotes(Input::get('id'));
-    $customer = new Customer($quote->data()->customerID);
-    $user = new User($quote->data()->userID);
+    $request = new Request(Input::get('id'));
+    $user = new User();
 
+    if(Input::get('case') === 'lead'){
+        $client = new Lead($request->data()->leadID);
+    }else{
+        $client = new Customer($request->data()->customerID);
+    }
 
-    $data = $quote->getDetails(Input::get('id'));
+    if($request->data()->presentedBy){
+        $user = new User((int)$request->data()->presentedBy);
+    }
+
+    $clientName = Input::get('case') === 'lead' ? $client->data()->company : $client->data()->name;
 
     $total = 0;
 
@@ -23,10 +31,15 @@ if(Input::get('id')){
     ]);
 
     $mpdf->use_kwt = true;    // Default: false
+    $mpdf->shrink_tables_to_fit = 1;
 
     $html = '
 
     <style media="print">
+        h3{
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+        }
        header{
             height: 50px;
        }
@@ -48,9 +61,8 @@ if(Input::get('id')){
        }
        
        table tr td{
-            border: 1px solid black;
+            border: .5px solid black;
             border-right: none;
-            border-bottom: none;
             font-family: Arial, sans-serif;
             font-size: 9pt;
        }
@@ -78,6 +90,7 @@ if(Input::get('id')){
             border: 1px solid black;
             font-family: Arial, sans-serif;
             font-size: 9pt;
+            page-break-inside: avoid
        }
        footer div{
             padding: 2px;
@@ -102,11 +115,12 @@ if(Input::get('id')){
         </div>
         <div class="address-2">
             <b>To:</b>
-            <div>'.$customer->data()->name.'</div>
-            <div>'.$customer->data()->street.'</div>
-            <div>'.$customer->data()->city.'</div>
-            <div>'.$customer->data()->state.' '.$customer->data()->zip.'</div>
+            <div>'.$clientName.'</div>
+            <div>'.$client->data()->street.'</div>
+            <div>'.$client->data()->city.'</div>
+            <div>'.$client->data()->state.' '.$client->data()->zip.'</div>
         </div>
+        <h3>'.$request->data()->quoteTitle.'</h3>
         <table cellspacing="0">
             <tr class="table-header">
                 <td>Date</td>
@@ -128,30 +142,28 @@ if(Input::get('id')){
             </tr>
                  ';
 
-
-
-    foreach ($data as $item){
+    foreach ($request->getRequestWorkshopsByID($request->data()->ID) as $workshop){
 
         $html .= '<tr>';
         $html .= '<td colspan="2" class="table-text">';
-        $html .= '<h3>'.$item->workshopTitle.'</h3>';
+        $html .= '<h3>'.$workshop->workshopTitle.'</h3>';
         $html .= '<br>';
         $html .= '<h4>Description</h4>';
-        $html .= '<pre>'.$item->workshopDescription.'</pre>';
+        $html .= '<pre>'.$workshop->workshopDescription.'</pre>';
         $html .= '<br>';
         $html .= '<h4>Learner Outcomes</h4>';
-        $html .= '<pre>'.$item->workshopLearnerOutcomes.'</pre>';
+        $html .= '<pre>'.$workshop->workshopLearnerOutcomes.'</pre>';
         $html .= '<br>';
         $html .= '<h4>Prerequisites</h4>';
-        $html .= '<pre>'.$item->workshopPrerequisites.'</pre>';
+        $html .= '<pre>'.$workshop->workshopPrerequisites.'</pre>';
         $html .= '</td>';
-        $html .= '<td class="align-top align-center">$'.number_format((int)$item->workshopPrice, 2).'</td>';
+        $html .= '<td class="align-top align-center">$'.number_format((int)$workshop->workshopPrice, 2).'</td>';
         $html .= '</tr>';
 
-        $total += (int)$item->workshopPrice;
+        $total += (int)$workshop->workshopPrice;
     }
 
-                   
+
                    
      $html .=      '
             <tr class="table-header">
@@ -168,10 +180,17 @@ if(Input::get('id')){
     </footer>
 ';
 
-    $fileName = str_replace(' ', '_', $customer->data()->name) . '_Quote_' . date('m_d_Y');
+    $fileName = str_replace(' ', '_', $clientName) . '_Quote_' . date('m_d_Y');
     $mpdf->SetTitle($fileName);
     $mpdf->WriteHTML($html);
-    $mpdf->Output($fileName.'.pdf', 'D');
+
+    if(Input::get('type') === 'preview'){
+        $type = 'I';
+    }else{
+        $type = 'D';
+    }
+
+    $mpdf->Output($fileName.'.pdf', $type);
 }
 
 

@@ -3,6 +3,7 @@
 	$lead = new Lead($id);
 	$note = new Note();
 	$user = new User();
+	$requests = new Request();
 
     if($lead->exists()){
 
@@ -13,11 +14,17 @@
 
 <div class="contact-information">
 	<div class="contact-sidebar-information">
-	
-		<div class="contact-sidebar-information-name">
-			<i class="fas fa-id-badge"></i>
-			<span><?php echo $lead->data()->prefix .' '. $lead->data()->firstName .' '. $lead->data()->lastName?></span>
-		</div>
+
+        <div class="contact-sidebar-information-name">
+            <div>
+                <?php if($lead->data()->logo): ?>
+                    <img src="view/img/logos/<?php echo $lead->data()->logo ?>">
+                <?php else: ?>
+                    <i class="fas fa-id-badge"></i>
+                <?php endif; ?>
+            </div>
+            <span><?php echo $lead->data()->prefix .' '. $lead->data()->firstName .' '. $lead->data()->lastName?></span>
+        </div>
 		
 		<div class="lead-sidebar-information-submenu">
             <a href="#transform-lead"><i class="fas fa-dollar-sign"></i></a>
@@ -57,13 +64,14 @@
 		</div>
 	
 	</div>
-	<div class="contact-header-information contact-tab">
+	<div class="lead-header-information contact-tab">
 		<button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){echo 'defaultOpen';}else{echo 'defaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
+		<button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')"><i class="fas fa-file-alt"></i>Requests</button>
         <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo  $lead->countNotes($lead->data()->id, 'lead') ?>)</button>
         <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-envelope"></i>Email</button>
 	</div>
 	
-	<form action="updateLead.php" method="post" class="contact-form-information contact-tabcontent" id="contact-information">
+	<form action="updateLead.php" method="post"  enctype="multipart/form-data" class="contact-form-information contact-tabcontent" id="contact-information">
 		<input type="hidden" name="leadId" value="<?php echo $lead->data()->id ?>">
 
         <div class="contact-form-information-row">
@@ -71,42 +79,47 @@
                 <label>First Name</label>
                 <input type="text" name="firstName" value="<?php echo $lead->data()->firstName; ?>">
             </div>
-            <div class="contact-form-information-cell info-form-x-4">
+            <div class="contact-form-information-cell info-form-x-3">
                 <label>Last Name</label>
                 <input type="text" name="lastName" value="<?php echo $lead->data()->lastName; ?>">
             </div>
-            <div class="contact-form-information-cell info-form-x-5">
+            <div class="contact-form-information-cell info-form-x-3">
                 <label>Title</label>
                 <input type="text" name="title" value="<?php echo $lead->data()->jobTitle; ?>">
             </div>
-        </div>
-
-        <div class="contact-form-information-row">
             <div class="contact-form-information-cell info-form-x-3">
                 <label>Category</label>
                 <select id="existing-lead-category" onchange="extendExistingLead()" name="category">
                     <option>Select Category</option>
                     <?php
 
-                        foreach ($lead->getCategories() as $category){
+                    foreach ($lead->getCategories() as $category){
 
-                            if($lead->data()->category == $category->category){
-                                echo "<option selected value='".$category->category."'>".$category->category."</option>";
-                            }else{
-                                echo "<option value='".$category->category."'>".$category->category."</option>";
-                            }
+                        if($lead->data()->category == $category->category){
+                            echo "<option selected value='".$category->category."'>".$category->category."</option>";
+                        }else{
+                            echo "<option value='".$category->category."'>".$category->category."</option>";
                         }
+                    }
                     ?>
                 </select>
             </div>
+        </div>
+
+        <div class="contact-form-information-row">
             <div id="arch-diocese" class="contact-form-information-cell info-form-x-3" <?php if($lead->data()->category !== 'Diocese' && $lead->data()->category !== 'Private School') echo 'style="display: none"' ?>>
                 <label>Arch/Diocese</label>
                 <input type="text" name="archDiocese" value="<?php echo $lead->data()->archDiocese ?>">
             </div>
             <div class="contact-form-information-cell info-form-x-6">
                 <label>Company/School Name</label>
-                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input"  type="text" name="customer" value="<?php echo $lead->data()->company; ?>">
+                <input autocomplete="false" onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input"  type="text" name="customer" value="<?php echo $lead->data()->company; ?>">
                 <div style="width: 100%" class="autocomplete-wrapper"></div>
+            </div>
+            <div class="contact-form-section-cell-file info-form-x-3">
+                <label>Company Logo</label>
+                <input type="file" name="logo">
+                <input type="hidden" name="logoOLD" value="<?php echo $lead->data()->logo ?>">
             </div>
         </div>
 
@@ -398,6 +411,53 @@
         <button onclick="location.href='';" type="button" class="contact-form-information-cancel"></button>
 
 	</form>
+
+    <div id="lead-requests" class="lead-requests contact-tabcontent">
+
+        <div id="request-table">
+            <div class="request-table-nav">
+                <button onclick="openRequestModal()">+ Create Request</button>
+                <div class="clear"></div>
+            </div>
+            <div class="request-table-header">
+                <div>ID</div>
+                <div>Workshop Titles</div>
+                <div>Status</div>
+                <div>Date</div>
+                <div></div>
+            </div>
+
+            <?php foreach ($requests->getLeadRequestsByID($lead->data()->id) as $request): ?>
+
+                <div class="request-table-row">
+                    <div><?php echo $request->ID ?></div>
+                    <div>
+                        <ul>
+                            <?php foreach ($requests->getRequestWorkshopsByID($request->ID) as $workshop): ?>
+                                <li><?php echo $workshop->workshopTitle ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div>
+                        <select onchange="updateStatus(this, '<?php echo $request->ID ?>')" class="request-status <?php echo $request->colorClass ?>">
+                            <?php foreach ($requests->getStatuses() as $status): ?>
+                                    <option <?php echo $request->statusID === $status->ID ? 'selected' : '' ?> value="<?php echo $status->ID ?>"><?php echo $status->name ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div><?php echo date("m/d/Y", strtotime($request->insertDate)) ?></div>
+                    <div>
+                        <a href="request.php?case=<?php echo Input::get('case') ?>&id=<?php echo $request->ID ?>">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
 	
 	<div id="contact-notes" class="contact-notes contact-tabcontent">
 	<div class="contact-notes-all">
@@ -608,74 +668,262 @@
 </div>
 
 <div class="remodal" data-remodal-id="delete">
-        <form action='delete.php' method='get' class="contact-delete-contact">
-        	<h3>Are you sure you want delete this?</h3>
-        	<input type='hidden' name='case' value='<?php echo $case ?>'>
-        	<input type='hidden' name='id' value='<?php echo $id ?>'>
-                <button type='submit' class="button"><i class="fas fa-trash"></i>Delete</button>
-                <button type='button' data-remodal-action="cancel" class="button"><i class="fas fa-ban"></i>Cancel</button>
-        </form>
+    <form action='delete.php' method='get' class="contact-delete-contact">
+        <h3>Are you sure you want delete this?</h3>
+        <input type='hidden' name='case' value='<?php echo $case ?>'>
+        <input type='hidden' name='id' value='<?php echo $id ?>'>
+            <button type='submit' class="button"><i class="fas fa-trash"></i>Delete</button>
+            <button type='button' data-remodal-action="cancel" class="button"><i class="fas fa-ban"></i>Cancel</button>
+    </form>
+</div>
+
+<div id="request-modal">
+    <div class="request-popup-header">
+        <h2>Create Request</h2>
+        <div>
+            <button class="request-popup-close"></button>
+        </div>
     </div>
+    <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $lead->data()->id ?>&case=lead" method="post">
+
+        <!-- Tab links -->
+        <div class="request-tab">
+            <button id="add-new-request-tab" type="button" class="request-tablinks" onclick="addRequestTab(this)">add workshop</button>
+        </div>
+
+        <div class="quote-popup-footer">
+            <button type="submit">Create</button>
+        </div>
+    </form>
+</div>
+
+<div class="overlay"></div>
 
 <script>
-function openCity(evt, cityName, type) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("contact-tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+
+    $('#add-new-request-tab').click();
+
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+
+    $('.overlay').on('click', function () {
+        $('#quote-modal').hide();
+        $('#proposal-modal').hide();
+        $('.overlay').hide();
+    });
+
+    /* Status Change */
+
+    function updateStatus(select, requestID){
+
+        let statusID = select.value;
+
+        $.ajax({
+            method: "GET",
+            url: "function/request/updateStatus.php",
+            data: {
+                statusID: statusID,
+                requestID: requestID
+            }
+        }).done(function(result) {
+            if(result) {
+                let data = JSON.parse(result);
+
+                select.className = '';
+                select.classList.add(data.colorClass);
+                select.classList.add('request-status');
+            }
+        });
+
     }
-    tablinks = document.getElementsByClassName("contact-tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" contact-active", "");
+
+    /* Request Modal */
+
+    function openRequestModal() {
+        $('.overlay').show();
+        $('#request-modal').show();
     }
 
-    if (type === 'block'){
-        document.getElementById(cityName).style.display = "block";
-    }else{
-        document.getElementById(cityName).style.display = "grid";
+    $('.request-popup-close').on('click', function () {
+        $('#request-modal').hide();
+        $('.overlay').hide();
+    });
+
+    function showWorkshop(link, num) {
+        $.ajax({
+            method: "GET",
+            url: "getWorkshop.php",
+            data: {
+                workShopID: link.value
+            }
+        })
+            .done(function(result) {
+
+                let content = $('#workshop-'+num+'-content');
+                let data = JSON.parse(result);
+
+                console.log(data);
+
+                html =  '<div class="workshop-textareas">' +
+                    '<div>' +
+                    '<label>Description</label>' +
+                    '<textarea name="data['+num+'][description]">'+ data.description +'</textarea>' +
+                    '</div>' +
+                    '<div>' +
+                    '<label>Learner Outcomes</label>' +
+                    '<textarea name="data['+num+'][learnerOutcomes]">'+ data.learnerOutcomes +'</textarea>' +
+                    '</div>' +
+                    '<div>' +
+                    '<label>Prerequisites</label>' +
+                    '<textarea name="data['+num+'][prerequisites]">'+ data.prerequisites +'</textarea>' +
+                    '</div>' +
+                    '<div>' +
+                    '<label>MSRP</label>' +
+                    '<input name="data['+num+'][msrp]" value="'+ data.msrp +'">' +
+                    '       </div>' +
+                    '<input type="hidden" name="data['+num+'][title]" value="'+ data.titleOfOffering +'" >' +
+                    '</div>';
+
+                content.html(html);
+            });
     }
-    evt.currentTarget.className += " contact-active";
-}
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+    function addRequestTab(link) {
 
-    
-function extendExistingLead() {
-    var cat = document.getElementById("existing-lead-category").value;
-    var extendedContent = document.getElementById("extended-lead-content");
-    let archDiocese = document.getElementById('arch-diocese');
+        let count = $('.request-tablinks').length;
 
-    if(cat === 'Public School' || cat === 'Private School' || cat === 'Diocese' || cat === 'District'){
+        let button = document.createElement('button');
+        button.classList.add('request-tablinks');
+        button.id = 'workshop-button-' + count;
+        button.type = 'button';
+        button.textContent = 'Workshop ' + count;
 
-        if(cat === 'Diocese' || cat === 'Private School'){
-            archDiocese.style.display = 'block';
-        }else{
-            archDiocese.style.display = 'none';
+        let footer = $('.quote-popup-footer');
+
+        let content = document.createElement('div');
+        content.id = 'workshop-' + count;
+        content.classList.add('request-tabcontent');
+
+        footer.before(content);
+
+        button.addEventListener("click", function (event) {
+            openRequestTab(event, 'workshop-' + count)
+        });
+
+        link.before(button);
+
+        $('#workshop-button-' + count).click();
+
+        $.ajax({
+            method: "GET",
+            url: "getWorkshopList.php",
+            data: {
+                status: 'ok'
+            }
+        })
+            .done(function(result) {
+
+                let data = JSON.parse(result);
+
+                let html = '';
+                html += '<select onchange="showWorkshop(this, ' + count +')" class="js-example-basic-single">';
+
+                html += '<option selected disabled>Select Workshop</option>';
+                $.each(data, function (index, item) {
+                    html += '<option value="'+ item.ID +'">'+ item.titleOfOffering +'</option>';
+                });
+
+                html += '</select>'
+
+                let workshopCOntent = '<div id="workshop-'+count+'-content"></div>';
+
+                $('#workshop-' + count).append(html);
+                $('#workshop-' + count).append(workshopCOntent);
+                $('#workshop-' + count + ' select').select2();
+
+            });
+    }
+
+    function openRequestTab(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("request-tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
         }
 
-        extendedContent.style.display = 'block';
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("request-tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
 
-    }else {
-        extendedContent.style.display = 'none';
-        archDiocese.style.display = 'none';
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
     }
-}
 
-$('#leads').addClass('link-selected');
+    function openCity(evt, cityName, type) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("contact-tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("contact-tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" contact-active", "");
+        }
 
-$('#reachedUsBy select').on('change', function () {
-
-    let eventName = $('#eventName');
-    let eventNameInput = $('#addLeadEventName input');
-
-    if(this.value === 'Event'){
-        eventName.show();
-    }else{
-        eventName.hide();
-        eventNameInput.html('');
+        if (type === 'block'){
+            document.getElementById(cityName).style.display = "block";
+        }else{
+            document.getElementById(cityName).style.display = "grid";
+        }
+        evt.currentTarget.className += " contact-active";
     }
-});
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+
+    function extendExistingLead() {
+        var cat = document.getElementById("existing-lead-category").value;
+        var extendedContent = document.getElementById("extended-lead-content");
+        let archDiocese = document.getElementById('arch-diocese');
+
+        if(cat === 'Public School' || cat === 'Private School' || cat === 'Diocese' || cat === 'District'){
+
+            if(cat === 'Diocese' || cat === 'Private School'){
+                archDiocese.style.display = 'block';
+            }else{
+                archDiocese.style.display = 'none';
+            }
+
+            extendedContent.style.display = 'block';
+
+        }else {
+            extendedContent.style.display = 'none';
+            archDiocese.style.display = 'none';
+        }
+    }
+
+    $('#leads').addClass('link-selected');
+
+    $('#reachedUsBy select').on('change', function () {
+
+        let eventName = $('#eventName');
+        let eventNameInput = $('#addLeadEventName input');
+
+        if(this.value === 'Event'){
+            eventName.show();
+        }else{
+            eventName.hide();
+            eventNameInput.html('');
+        }
+    });
 
 </script>
 

@@ -1,0 +1,189 @@
+SKU,Workshop Group,Format,Time (hours),Title of Offering,Description,Learner Outcomes,Toolbox,Prerequisites,Status
+EDU-MS_001,Microsoft,F2F,3 hours,1. Managing the Content Monster with Microsoft OneDrive,"Microsoft OneOneDrive is the foundation on which Office 365 is built. In the digital learning world, it’s very easy for the content monster to take over and create chaos in your OneDrive. Being able to find and locate your content is crucial to creating engaging learning experiences. This workshop is about learning how to use the right OneDrive features to tame the content monster. ","-Organize content to support more effective lesson planning
+-Integrate features like nested folders to support organization efforts 
+-Clean up OneDrive ",OneDrive,n/a,Not written
+EDU-MS_002,Microsoft,F2F,3 hours,2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge,The world is changing and so are our students. We are educating a different mind and now have access to an overwhelming amount of resources and tools. How do you decide which tool or which resource to use? This workshop will focus on effectively combining pedagogy and Microsoft Tools to create meaningful learning experiences!,"-Create a lesson using the Backwards Design
+-Practice the TPACK Process",Microsoft OneDrive,1. Managing the Content Monster with Microsoft OneDrive,Not written
+EDU-MS_003,Microsoft,F2F,3 hours,3. Transformative Learning with Microsoft Word Online,"This workshop will focus on the effective use of Microsoft Word Online to promote collaboration, create student voice, evaluate understanding, and streamline classroom management. Teachers will have time to explore the tool independently, then, complete a choice activity that will strengthen their knowledge and use of Word Online. ","-Create Microsoft Word Online activities that promote collaboration
+-Design Microsoft Word Online activities that support student agency
+-Use Microsoft Word Online to assess student knowledge
+-Brainstorm ways to use Microsoft Word Online for classroom management","Microsoft OneDrive
+Microsoft Word Online","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge",Not written
+EDU-MS_004,Microsoft,F2F,3 hours,4. Transformative Learning with Microsoft PowerPoint Online and Sway,"This workshop will focus on the effective use of Microsoft PowerPoint Online and Microsoft Sway to promote collaboration, create student voice, evaluate understanding, and streamline Teams management. ","-Create Microsoft PowerPoint Online activities that promote collaboration
+-Design Microsoft PowerPoint Online activities that support student agency
+-Use Microsoft PowerPoint Online to assess student knowledge
+-Brainstorm ways to use Microsoft PowerPoint Online for classroom management","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classrrom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online",Not written
+EDU-MS_005,Microsoft,F2F,3 hours,5. Transformative Learning with Microsoft Teams,"This workshop will focus on the effective use of Microsoft Teams to promote collaboration, create student voice, evaluate understanding, and streamline classroom management. ","-Use Microsoft Teams to promote collaboration
+-Organize Microsoft Teams to collect student agency activities
+-Integrate assessments and assignment collection with Microsoft Teams
+-Brainstorm ways to use Microsoft Teams for classroom management","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway",Not written
+EDU-MS_006,Microsoft,F2F,3 hours,6. Data Collection and More with Microsoft Excel Online,"Numbers, symbols, equations - oh my! This workshop will focus on the effective use of Microsoft Excel Online to promote collaboration, gather assessment data, manage your classroon, and support student agency in assignments. We will discuss and practice data organization, representation, and analysis that will calm your fears of Microsoft Excel Online! ","-Use Microsoft Excel Online to promote collaboration
+-Integrate Microsoft Excel Online into student agency activities
+-Collect assessment data with Microsoft Excel Online
+-Brainstorm ways to use Microsoft Excel Online for classroom management","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites",Not written
+EDU-MS_007,Microsoft,F2F,3 hours,8. Assessing and More with Microsoft Forms,"This workshop will focus on the effective use of Microsoft Forms in assessing student knowledge, gathering feedback, providing opportunities for student agency, and streamlining Teams management. We will explore the various features that will make Microsoft Forms your next favorite Microsoft Tool!","-Organize Microsoft Forms to plan student agency activities
+-Integrate assessments and assignment collection with Microsoft Forms
+-Brainstorm ways to use Microsoft Forms for classroom management","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Data Collection and More with Microsoft Excel Online",Not written
+EDU-MS_008,Microsoft,eLearning,self-paced,0. Promoting Digital Citizenship using Microsoft Tools (eL),"Teaching students about how to create a positive online reputation is key to an increasingly connected world. Furthermore, determining the validity of information is crucial to that reputation. This workshop focus is twofold as we will explore the digital citizenship skills and which Microsoft Tools help cultivate those skills. We will dive into Microsoft Word Online Explore, Microsoft Search Tools, and more in order tosupport learners in digitally responsible behavior!  ","-Identify digital citizenship skills and plan ways to model for students
+-Use Microsoft tools to research and protect intellectual property
+-Develop learning experiences that teach students how to create a positive online reputation and determine the validity of resources","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_009,Microsoft,F2F,6 hours,0. Building a Virtual Learning Space using Microsoft Tools,"Not only is the classroom changing as a result of new technology and research, but so is the location that learning is happening. More and more, students are learning online, in a flipped classroom setting, or by blended learning. This workshop will extend participants’ knowledge of the basic Microsoft Tools by focusing on “how to” create a virtual learning space with Microsoft Sites, Calendar, Outlook, as well a deeper dive into the use of Microsoft Teams, Finally, participants will learn about ways to bridge the home to classroom connection.","-Build an engaging virtual learning environment using Microsoft tools
+-Design collaborative learning activities that promote student agency
+-Integrate Microsoft Tools to enhance communication, assessment and activity collection, and classroom management
+","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_010,Microsoft,F2F,6 hours,0. Integrating Inquiry Based Learning Experiences,"Inquiry based learning experiences are messy, but they cultivate content knowledge as well as the soft skills needed to succeed in the modern world. This workshop will focus on the pedagogy, such as the Engineering Design Process, and the planning of inquiry based learning experiences by building on participants background knowledge of the basic Microsoft Tools. Participants will also be introduced to using YouTube to facilitate a inquiry based instruction. ","-Build an engaging inquiry based learning experience using Microsoft Tools
+-Use the Engineering Design Process and brainstorm ways to integrate it into student learning experiences
+-Define inquiry based learning and discuss ways to integrate it","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_011,Microsoft,F2F,3 hours,0. Connecting with Like-Minded Educators,"It is very easy to become siloed within your classroom walls. Yet, there is power in professional learning networks and connecting with other like-minded educators within your district. This workshop will focus on using Teams to create virtual professional learning communities that share the latest research, interact with other educators, learn from other’s experiences, and ultimately grow as an educator.","-Use Microsoft Tools to collaborate with like-minded educators across the district
+-Build online learning spaces to promote collaboration, learning, and communication
+-Lead and support colleagues across the district ","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_012,Microsoft,eLearning,self-paced,0. Breaking Down the Classroom Walls with Microsoft Expeditions (eL),There is so much in the world to see and Microsoft Expeditions makes it possible to bring those sights into the classroom in an interactive and meaningful way. This eLearning course will focus on how to use Microsoft Expeditions and how to integrate an experience into instruction.  ,"-Experience how Microsoft Expeditions can enhance student learning 
+-Identify the procedures on how to set up, run, search, and download a Microsoft Expedition
+-Design a learning experience using a Microsoft Expedition",Microsoft Expeditions,"1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_013,Microsoft,F2F,3 hours,0. From Microsoft and Beyond!,"There is little argument about the transformative impact of effectively using Microsoft Tools. Yet, we can make our instruction that much more meaningful by using Microsoft Tools in conjunction with add-ons! This workshop will focus on the most impactful add-ons that take your learning experiences from meaningful to unforgettable! ","-Design learning experiences using Microsoft Tools and add-ons
+-Integrate Screencastify, Flubaroo, Edpuzzle and ___________________ into learning experiences
+","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_014,Microsoft,F2F,3 hours,0. The Surface-Classroom Connection,"Language changes, shortcuts to favorite games, bringing back closed out tabs - our students know how to do it all when it comes their devices. Somehow, our students know how to use a Surface better than we do - that’s about to change! This workshop will focus on everything from basic tablet and Edge functionality to how to integrate features and apps into learning experiences!","-Identify Chromebook features and button functionality 
+-Integrate Chromebook features and apps into learning experiences 
+-Troubleshoot common Chromebook  problems ","Microsoft OneDrive
+Microsoft Word Online
+Microsoft PowerPoint Online
+Microsoft Sway
+Microsoft Teams
+Microsoft Sites
+Microsoft Excel Online
+Microsoft Forms","1. Managing the Content Monster with Microsoft OneDrive
+2. The Modern Classroom: Where Microsoft Tools and Pedagogy Converge
+3. Transformative Learning with Microsoft Word Online
+4. Transformative Learning with Microsoft PowerPoint Online and Sway
+5. Transformative Learning with Microsoft Classroom Team
+6. Transformative Learning with Microsoft Sites
+7. Data Collection and More with Microsoft Excel Online
+8. Assessing and More with Microsoft Forms",Not written
+EDU-MS_015, Microsoft IT ,F2F,3 hours,O365 Admin Center 101,"This entry level workshop is intended for IT administrators to manage their Office 365 tenant from anywhere. In this hands-on workshop, you will explore how to access and navigate the O365 Admin Center from anywhere. You will enable, disable, and modify services within your O365 Tenant. You will create policies to meet end user needs. By the completion of this workshop, you will be able to troubleshoot common user issues.                                ","- Explore how to access and navigate the O365 Admin Center
+- Enable, disable, and modify services within their O365 Tenant
+- Create policies to meet end user needs
+- Troubleshoot common issues",TBD,TBD,Needs updating
+EDU-MS_016, Microsoft IT ,F2F,3 hours,1:1 Device Management with Microsoft's Intune for Education,"In this hands-on workshop, you will experience the process of enrolling and managing devices with Intune for Education. You will create a Windows 10 device profile using the ""Setup School PCs app"", enroll devices via USB, and utilize Express Configuration in Intune for Education to adjust Windows 10 device and user settings. You will be able to explain the remote management using Intune for Education and how Azure and Intune for Education share device data. You will create a locked-down testing experience on Windows 10 devices. By the completion of this workshop, you will have the ability to enroll, configure, and cloud manage Windows 10 devices and be able to manage Windows 10 Devices in Intune for Education.
+
+","- Create a Windows 10 device profile using the ""Setup School PCs app"" 
+- Enroll devices via USB
+- Explain how Azure and Intune for Education share device data
+- Manage Windows 10 Devices in Intune for Education
+- Utilize Express Configuration in Intune for Education to adjust Windows 10 device and user settings
+- Create a locked-down testing experience on Windows 10 devices
+- Explain remote management using Intune for Education
+",TBD,TBD,Needs updating

@@ -1,0 +1,221 @@
+Eduscape SKU,Workshop Group,Format,Time (hours),Title of Offering,Description,Learner Outcomes,Toolbox,Prerequisites,Status
+EDU-G_001,Google,F2F,3 hours,1. Managing the Content Monster with Google Drive,"Google Drive is the foundation on which G-Suite is built. In the digital learning world, it’s very easy for the content monster to take over and create chaos in your drive. Being able to find and locate your content is crucial to creating engaging learning experiences. This workshop is about learning how to use the right Google Drive features to tame the content monster. ","-Organize content to support more effective lesson planning
+-Investigate Google Shared Drive and brainstorm ways to use the feature effectively
+-Integrate features like color coding and nested folders to support organization efforts 
+-Clean up Drive ",Google Drive,n/a,Not written
+EDU-G_002,Google,F2F,3 hours,2. The Modern Classroom: Where Google Tools and Pedagogy Converge,The world is changing and so are our students. We are educating a different mind and now have access to an overwhelming amount of resources and tools. How do you decide which tool or which resource to use? This workshop will focus on effectively combining pedagogy and Google Tools to create meaningful learning experiences!,"-Create a lesson using the Backwards Design
+-Practice the TPACK Process",Google Drive,1. Managing the Content Monster with Google Drive,Not written
+EDU-G_003,Google,F2F,3 hours,3. Transformative Learning with Google Docs,"This workshop will focus on the effective use of Google Docs to promote collaboration, create student voice, evaluate understanding, and streamline classroom management. Teachers will have time to explore the tool independently, then, complete a choice activity that will strengthen their knowledge and use of Docs. ","-Create Google Docs activities that promote collaboration
+-Design Google Docs activities that support student agency
+-Use Google Docs to assess student knowledge
+-Brainstorm ways to use Google Docs for classroom management","Google Drive
+Google Docs","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge",Not written
+EDU-G_004,Google,F2F,3 hours,4. Transformative Learning with Google Slides and Drawings,"This workshop will focus on the effective use of Google Slides and Drawings to promote collaboration, create student voice, evaluate understanding, and streamline classroom management. ","-Create Google Slides activities that promote collaboration
+-Design Google Slides activities that support student agency
+-Use Google Slides to assess student knowledge
+-Brainstorm ways to use Google Slides for classroom management","Google Drive
+Google Docs
+Google Slides
+Google Drawings","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs",Not written
+EDU-G_005,Google,F2F,3 hours,5. Transformative Learning with Google Classroom,"This workshop will focus on the effective use of Google Classroom to promote collaboration, create student voice, evaluate understanding, and streamline classroom management. ","-Use Google Classroom to promote collaboration
+-Organize Google Classroom to collect student agency activities
+-Integrate assessments and assignment collection with Google Classroom
+-Brainstorm ways to use Google Classroom for classroom management","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings",Not written
+EDU-G_006,Google,F2F,3 hours,6. Transformative Learning with Google Sites,"This workshop will focus on the effective use of Google Sites to promote collaboration, create student voice, evaluate understanding, and streamline classroom management. ","Use Google Sites to promote collaboration
+Organize Google Sites to collect student agency activities
+Integrate assessments and assignment collection with Google Sites
+Brainstorm ways to use Google Sites for classroom management","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom",Not written
+EDU-G_007,Google,F2F,3 hours,7. Data Collection and More with Google Sheets,"Numbers, symbols, equations - oh my! This workshop will focus on the effective use of Google sheets to promote collaboration, gather assessment data, manage your classroom, and support student agency in assignments. We will discuss and practice data organization, representation, and analysis that will calm your fears of Google Sheets! ","-Use Google Sheets to promote collaboration
+-Integrate Google Sheets into student agency activities
+-Collect assessment data with Google Sheets
+-Brainstorm ways to use Google Sheets for classroom management","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites",Not written
+EDU-G_008,Google,F2F,3 hours,8. Assessing and More with Google Forms,"This workshop will focus on the effective use of Google Forms in assessing student knowledge, gathering feedback, providing opportunities for student agency, and streamlining classroom management. We will explore the various features that will make Google Forms your next favorite Google Tool!","-Organize Google Forms to plan student agency activities
+-Integrate assessments and assignment collection with Google Forms
+-Brainstorm ways to use Google Forms for classroom management","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets",Not written
+EDU-G_009,Google,eLearning,self-paced,0. Promoting Digital Citizenship using Google Tools (eL),"Teaching students about how to create a positive online reputation is key to an increasingly connected world. Furthermore, determining the validity of information is crucial to that reputation. This workshop focus is twofold as we will explore the digital citizenship skills and which Google Tools help cultivate those skills. We will dive into Google Docs Explore, Google Search Tools, and more in order to be internet awesome!  ","-Identify digital citizenship skills and plan ways to model for students
+-Use Google tools to research and protect intellectual property
+-Develop learning experiences that teach students how to create a positive online reputation and determine the validity of resources","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_010,Google,F2F,6 hours,0. Building a Virtual Learning Space using Google Tools,"Not only is the classroom changing as a result of new technology and research, but so is the location that learning is happening. More and more, students are learning online, in a flipped classroom setting, or by blended learning. This workshop will extend participants’ knowledge of the basic Google Tools by focusing on “how to” create a virtual learning space with Google Sites, Calendar, Gmail, as well a deeper dive into the use of Google Classroom, Finally, participants will learn about ways to bridge the home to classroom connection.","-Build an engaging virtual learning environment using Google tools
+-Design collaborative learning activities that promote student agency
+-Integrate Google Tools to enhance communication, assessment and activity collection, and classroom management
+","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_011,Google,F2F,3 hours,0. Integrating Inquiry Based Learning Experiences,"Inquiry based learning experiences are messy, but they cultivate content knowledge as well as the soft skills needed to succeed in the modern world. This workshop will focus on the pedagogy, such as the Engineering Design Process, and the planning of inquiry based learning experiences by building on participants background knowledge of the basic Google Tools. Participants will also be introduced to using YouTube to facilitate a inquiry based instruction. ","-Build an engaging inquiry based learning experience using Google Tools
+-Use the Engineering Design Process and brainstorm ways to integrate it into student learning experiences
+-Define inquiry based learning and discuss ways to integrate it","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_012,Google,F2F,3 hours,0. Connecting with Like-Minded Educators,"It is very easy to become siloed within your classroom walls. Yet, there is power in professional learning networks and connecting with other like-minded educators within your district. This workshop will focus on using Google Sites and Classroom to create virtual professional learning communities that share the latest research, interact with other educators, learn from other’s experiences, and ultimately grow as an educator.","-Use Google Tools to collaborate with like-minded educators across the district
+-Build online learning spaces to promote collaboration, learning, and communication
+-Lead and support colleagues across the district ","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_013,Google,eLearning,self-paced,0. Breaking Down the Classroom Walls with Google Expeditions (eL),There is so much in the world to see and Google Expeditions makes it possible to bring those sights into the classroom in an interactive and meaningful way. This elearn will focus on how to use Google Expeditions and how to integrate an experience into instruction.  ,"-Experience how Google Expeditions can enhance student learning 
+-Identify the procedures on how to set up, run, search, and download a Google Expedition
+-Design a learning experience using a Google Expedition",Google Expeditions,"1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_014,Google,F2F,3 hours,0. From Google and Beyond!,"There is little argument about the transformative impact of effectively using Google Tools. Yet, we can make our instruction that much more meaningful by using Google Tools in conjunction with add-ons! This workshop will focus on the most impactful add-ons that take your learning experiences from meaningful to unforgettable! ","-Design learning experiences using Google Tools and add-ons
+-Integrate Google Add-ons to support deeper learning experiences. ","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_015,Google,F2F,3 hours,0. The Chromebook Classroom Connection,"Language changes, shortcuts to favorite games, bringing back closed out tabs - our students know how to do it all when it comes their Chromebooks. Somehow, our students know how to use the Chromebook better than we do - that’s about to change! This workshop will focus on everything from basic Chromebook and Chrome functionality to how to integrate features and apps into learning experiences!","-Identify Chromebook features and button functionality 
+-Integrate Chromebook features and apps into learning experiences 
+-Troubleshoot common Chromebook  problems ","Google Drive
+Google Docs
+Google Slides
+Google Drawings
+Google Classroom
+Google Sites
+Google Sheets
+Google Forms","1. Managing the Content Monster with Google Drive
+2. The Modern Classroom: Where Google Tools and Pedagogy Converge
+3. Transformative Learning with Google Docs
+4. Transformative Learning with Google Slides and Drawings
+5. Transformative Learning with Google Classroom
+6. Transformative Learning with Google Sites
+7. Data Collection and More with Google Sheets
+8. Assessing and More with Google Forms",Not written
+EDU-G_016, Google IT ,F2F,3 hours,CloudwatchTM GAFE Management Console Audit and Training,"The CloudwatchTM program is designed to ensure that your district’s GAFE Management Console and operational guidelines are set up in the most efficient manner. In this hands-on workshop, you will learn all about the CloudwatchTM program. You will explore recommended best practices on organizational structures to support your curriculum and technology goals. By the completion of this workshop, you will understand how the CloudwatchTM program works with your district’s GAFE Management Console and operational guidelines to ensure they are set up efficiently.",TBD,TBD,TBD,Needs updating
+EDU-G_017, Google IT ,F2F,3 hours,Basic Google Admin Console Training ,"This hands-on workshop is intended for IT administrators to become familiar with the many features within the Google Admin Console on the Google for Education platform. You will work with expert instructors as they guide you through the features that will empower you to control your domain and devices. You will focus on features available to super administrators and administrators of GAFE domains.*  You will be able to manage users, organizations, and administrator roles and devices within your domain using Chrome management and you will use Vault to retain and discover mail and drive items. If you do not have an administrator account on a GAFE domain, one will be provided to use during the training. You need to bring your own laptop, as not all admin features are easily accessed on a tablet.                                                                                                                                                                                                                                                            ","- Manage user, organizations, and administrator roles
+- Manage devices within your domain using Chrome management
+- Use Vault to retain and discover mail and drive items
+",TBD,TBD,Needs updating
+EDU-G_018, Google IT ,F2F,3 hours,Chrome Device Organization and Management Training – 6 hours ,"Chromebooks have become a popular choice for student devices across the planet. This workshop is intended for IT Directors and Administrators. In this workshop, you will learn how easy it is to manage 10,000's of Google devices with limited contact. In this hands-on workshop, you will delve into the Chromebook from a front and back end prospective, including, but not limited to its OS, Google Admin Console settings, troubling shooting tips, and explore overall best practices in the Google For Education realm. In addition to Google Admin Console Training, IT professionals desire explicit training on managing Chrome devices.IT professionals desire explicit training on managing Chrome devices. ","- Understand the Chromebook as both a piece of hardware and it's unique Chrome OS
+- Analyze the numerous settings in the Google Admin Console to manage the devices in the field
+- Enroll and organize Chrome devices to increase awareness of devices in the field
+- Troubleshoot malfunctioning devices to remedy the Chrome operating system",TBD,TBD,Needs updating
+EDU-G_019, Google IT ,F2F,3 hours,Advanced Google Admin Console ,"Are you a Google Admin Console Super Administrator? This hands-on workshop is intended for administrators looking to learn tips and tricks to add value to your GFE cloud-based management solution. In this workshop, you will utilize syncing tools, such as Google Apps Directory Sync and Add-Ons that access Google's APIs to streamline your management. You will learn how to create custom kiosk apps for sites that are used frequently in your district. You will explore the potential of using the Chrome OS to create digital signage and you will analyze security settings and how they relate to current data privacy laws. In this supercharged training, you will take your understanding of Google Admin Console from basic to advanced.
+ 
+This training will focus on features available to super administrators and administrators of GFE domains.*  If you do not have an administrator account on a GFE domain, one will be provided to use during the training. Please bring your own laptop. Not all admin features are easily accessed on a tablet.","- Understand how Google Apps Directory Sync works
+- Utilize Google's APIs to create Google Classrooms, track Google Sites, and monitor Chromebooks
+- Create custom kiosk apps for sites and tools frequently used
+- Analyze security settings in relation to data privacy laws",TBD,TBD,Needs updating
+EDU-G_020, Google IT ,F2F,3 hours,Google Admin Certification Training ,"This workshop is intended for those who have been administering a Google For Education domain for at least six months and are looking to get certified. Google offers a certification exam* for proficient users of the Admin Console and this course will serve as practice and preparation. This highly interactive course will prepare you with knowledge, examples, and experience working in a sample domain to complete tasks similar to those found on the exam. In addition to test-like experiences, you will create a study guide to use as a resource.                                                                
+                                                                                                                                                                                                                                                                                                                                                      *The $100 certification exam fee is not included in this course.","- Understand the certification and the exam format
+- Explore the Admin Console to identify and remedy gaps in knowledge
+- Execute tasks that replicate the exam and demonstrate proficiency 
+- Create a study resource to be used in preparation for the exam",TBD,TBD,Needs updating
+EDU-G_021, Google IT ,F2F,3 hours,Custom Admin Roles: Empowering Teachers,"Chromebooks are a popular choice for student devices across the planet. This hands-on workshop is intended for administrators who will be responsible for sharing admin access with select teachers who are implementing Chromebooks in their classroom. In this hands-on workshop, you will be able to describe the features in the Admin Console that empower teaching and learning. You will be able to analyze the numerous settings in the Google Admin Console to manage the devices in the classroom. You will be able to complete a variety of select functions, such as reseting passwords, deploying apps, and managing Chrome website filtering tools. You will create custom admin roles for teachers that will empower them, ease helpdesk burdens and allow for greater Google Chromebook implementation.           
+
+","- Describe what features in the Admin Console would empower teaching and learning 
+- Analyze the numerous settings in the Google Admin Console to manage the devices in the classroom
+- Create custom admin roles that empower teachers",TBD,TBD,Needs updating
+EDU-G_022, Google IT ,F2F,3 hours,"Are You Compliant? CIPA, COPPA, FERPA, and HIPAA","The protection of personal data has become more important with the move to the Cloud. Many laws have been enacted to foster security around student and staff information.  Is your school/district in compliance? This workshop is designed to provide you with an understanding of the definitions of CIPA, COPPA, FERPA, and HIPPA and how you can adjust your school/district settings to meet those requirements*.  By the completion of this course, you will be able to explain student privacy laws, analyze current settings and policies and create policies that lead to compliance.
+
+*This course is not taught by a lawyer and presented information should not be perceived as legal advice.
+**This course can be delivered to both Office 365 and Google For Education schools.","- Explain student privacy laws
+- Analyze current settings and policies
+- Create policies that lead to compliance",TBD,TBD,Needs updating
+EDU-G_023, Google IT ,F2F,3 hours,"Google Admin Console Training (Gmail, Vault, and Groups)","Google for Education is a very popular choice for schools, colleges, and businesses. This workshop is intended for IT administrators who are or will be managing the Google for Education admin console. In this hands-on workshop, you will focus specifically on the administration of Gmail, Groups and use Vault to retain and investigate user accounts.",TBD,TBD,TBD,Needs updating
