@@ -11,7 +11,7 @@ $user = new User();
 
 if($user->isLoggedIn()) {
 
-    $fileName = 'stem.csv';
+    $fileName = 'digital.csv';
     $filePath = __DIR__ . '/temp/' . $fileName;
     $fileExt = ucfirst(explode('.', $fileName)[1]);
 
@@ -41,17 +41,17 @@ if($user->isLoggedIn()) {
 
                 $inventory->create([
                     'id' => $id,
-                    'eduscapeSKU' => $data[$i][0],
-                    'workshopGroups' => $data[$i][1],
-//                    'track' => $data[$i][2],
-                    'format' => $data[$i][2],
-                    'time' => $data[$i][3],
-                    'titleOfOffering' => $data[$i][4],
-                    'description' => $data[$i][5],
-                    'learnerOutcomes' => $data[$i][6],
-                    'prerequisites' => $data[$i][7],
-                    'toolbox' => $data[$i][8],
-                    'status' => $data[$i][9],
+                    'eduscapeSKU' => escape($data[$i][0]),
+                    'workshopGroups' => escape($data[$i][1]),
+//                    'track' => escape($data[$i][2]),
+                    'format' => escape($data[$i][3]),
+                    'time' => escape($data[$i][4]),
+                    'titleOfOffering' => escape($data[$i][5]),
+                    'description' => escape($data[$i][6]),
+                    'learnerOutcomes' => escape($data[$i][7]),
+                    'prerequisites' => escape($data[$i][8]),
+                    'toolbox' => escape($data[$i][9]),
+                    'status' => escape($data[$i][10]),
                 ]);
 
             }
