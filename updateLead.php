@@ -15,6 +15,24 @@ if(Input::exists()){
             $user = new User();
             $lead = new Lead(Input::get('leadId'));
 
+            $logo = Input::get('logoOLD');
+
+            if($_FILES["logo"]["size"] !== 0) {
+                $target_dir = "view/img/logos/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+                // Allow certain file formats
+                if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif") {
+                    die("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+                }
+
+                move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
+
+                $logo = basename($_FILES["logo"]["name"]);
+            }
+
             try{
 
                 $lead->update(array(
@@ -47,6 +65,7 @@ if(Input::exists()){
                     'website' => Input::get('website'),
                     'modifiedBy' => $user->data()->firstName.' '.$user->data()->lastName,
                     'modifiedOn' => date('n/j/y'),
+                    'logo' => $logo
                
                     
                 ),Input::get('leadId'));

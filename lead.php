@@ -14,11 +14,17 @@
 
 <div class="contact-information">
 	<div class="contact-sidebar-information">
-	
-		<div class="contact-sidebar-information-name">
-			<i class="fas fa-id-badge"></i>
-			<span><?php echo $lead->data()->prefix .' '. $lead->data()->firstName .' '. $lead->data()->lastName?></span>
-		</div>
+
+        <div class="contact-sidebar-information-name">
+            <div>
+                <?php if($lead->data()->logo): ?>
+                    <img src="view/img/logos/<?php echo $lead->data()->logo ?>">
+                <?php else: ?>
+                    <i class="fas fa-id-badge"></i>
+                <?php endif; ?>
+            </div>
+            <span><?php echo $lead->data()->prefix .' '. $lead->data()->firstName .' '. $lead->data()->lastName?></span>
+        </div>
 		
 		<div class="lead-sidebar-information-submenu">
             <a href="#transform-lead"><i class="fas fa-dollar-sign"></i></a>
@@ -65,7 +71,7 @@
         <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-envelope"></i>Email</button>
 	</div>
 	
-	<form action="updateLead.php" method="post" class="contact-form-information contact-tabcontent" id="contact-information">
+	<form action="updateLead.php" method="post"  enctype="multipart/form-data" class="contact-form-information contact-tabcontent" id="contact-information">
 		<input type="hidden" name="leadId" value="<?php echo $lead->data()->id ?>">
 
         <div class="contact-form-information-row">
@@ -73,42 +79,47 @@
                 <label>First Name</label>
                 <input type="text" name="firstName" value="<?php echo $lead->data()->firstName; ?>">
             </div>
-            <div class="contact-form-information-cell info-form-x-4">
+            <div class="contact-form-information-cell info-form-x-3">
                 <label>Last Name</label>
                 <input type="text" name="lastName" value="<?php echo $lead->data()->lastName; ?>">
             </div>
-            <div class="contact-form-information-cell info-form-x-5">
+            <div class="contact-form-information-cell info-form-x-3">
                 <label>Title</label>
                 <input type="text" name="title" value="<?php echo $lead->data()->jobTitle; ?>">
             </div>
-        </div>
-
-        <div class="contact-form-information-row">
             <div class="contact-form-information-cell info-form-x-3">
                 <label>Category</label>
                 <select id="existing-lead-category" onchange="extendExistingLead()" name="category">
                     <option>Select Category</option>
                     <?php
 
-                        foreach ($lead->getCategories() as $category){
+                    foreach ($lead->getCategories() as $category){
 
-                            if($lead->data()->category == $category->category){
-                                echo "<option selected value='".$category->category."'>".$category->category."</option>";
-                            }else{
-                                echo "<option value='".$category->category."'>".$category->category."</option>";
-                            }
+                        if($lead->data()->category == $category->category){
+                            echo "<option selected value='".$category->category."'>".$category->category."</option>";
+                        }else{
+                            echo "<option value='".$category->category."'>".$category->category."</option>";
                         }
+                    }
                     ?>
                 </select>
             </div>
+        </div>
+
+        <div class="contact-form-information-row">
             <div id="arch-diocese" class="contact-form-information-cell info-form-x-3" <?php if($lead->data()->category !== 'Diocese' && $lead->data()->category !== 'Private School') echo 'style="display: none"' ?>>
                 <label>Arch/Diocese</label>
                 <input type="text" name="archDiocese" value="<?php echo $lead->data()->archDiocese ?>">
             </div>
             <div class="contact-form-information-cell info-form-x-6">
                 <label>Company/School Name</label>
-                <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input"  type="text" name="customer" value="<?php echo $lead->data()->company; ?>">
+                <input autocomplete="false" onfocus="getCustomers(this)" onkeyup="getCustomers(this)" class="autocomplete-input"  type="text" name="customer" value="<?php echo $lead->data()->company; ?>">
                 <div style="width: 100%" class="autocomplete-wrapper"></div>
+            </div>
+            <div class="contact-form-section-cell-file info-form-x-3">
+                <label>Company Logo</label>
+                <input type="file" name="logo">
+                <input type="hidden" name="logoOLD" value="<?php echo $lead->data()->logo ?>">
             </div>
         </div>
 

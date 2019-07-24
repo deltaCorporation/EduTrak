@@ -4,7 +4,7 @@
 ?>
 
 
-<form action="addLead.php" method="post" id="add-lead-window" class="add-window">
+<form action="addLead.php" enctype="multipart/form-data" method="post" id="add-lead-window" class="add-window">
     <div class="add-window-header lead-bg-color">
         <div class="add-window-header-icon lead-icon"></div>
         <div class="add-window-header-title">Create new lead</div>
@@ -40,10 +40,17 @@
                 <label>Arch/Diocese</label>
                 <input type="text" name="archDiocese">
             </div>
+        </div>
+
+        <div class="add-window-form-section-row">
             <div class="add-window-form-section-cell form-x-5">
                 <label>Company Name</label>
                 <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" type="text" style="width:90%;" class="autocomplete-input" name="customer">
                 <div class="autocomplete-wrapper"></div>
+            </div>
+            <div class="add-window-form-section-cell-file form-x-4">
+                <label>Company Logo</label>
+                <input type="file" name="logo" placeholder="">
             </div>
         </div>
 

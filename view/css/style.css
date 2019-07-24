@@ -1650,7 +1650,7 @@ footer{
     border-left: 4px solid #51c399;
     background-color: white;
     position: absolute;
-    bottom: 5vh;
+    top: 5vh;
     z-index: 999;
     right: 20px;
     display: none;
@@ -2390,7 +2390,7 @@ height: 2.5vh !important;
 	height: 8vh;
 	padding: 1vh 10vh 0 10vh;
 	display: grid;
-	grid-template-columns: auto auto auto auto auto auto;
+	grid-template-columns: auto auto auto auto auto;
 	grid-gap: 7vh;
 }
 
@@ -3666,7 +3666,7 @@ display: none;
      -webkit-appearance: none;
      -moz-appearance: none;
      font-size: 1.8vh;
-     width: 120px;
+     width: 150px;
      text-align: center;
      text-align-last: center;
      display: inline;
@@ -5759,6 +5759,10 @@ font-size: 2vh;
      border-bottom: 1px solid #eeeeee;
  }
 
+ .request-sidebar-information-name a:hover{
+    text-decoration: underline;
+ }
+
  .request-sidebar-information-name div{
      color: white;
      margin-left: 1vh;
@@ -5995,4 +5999,73 @@ font-size: 2vh;
  .saving{
      display: inline-block;
      min-width: 50px;
+ }
+
+ /* Modal */
+
+ .modal-overlay{
+     position: absolute;
+     display: none;
+     z-index: 999;
+     top: 0;
+     left: 0;
+     align-items: center;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0,0,0,.5);
+ }
+
+ .modal{
+     background-color: white;
+     max-width: 60%;
+     min-width: 30%;
+     margin: 0 auto;
+ }
+
+ .modal-header{
+     padding: 20px;
+     display: grid;
+     grid-template-columns: auto 50px;
+     align-items: center;
+     border-bottom: 1px solid #eee;
+ }
+
+ .modal-header h3{
+     font-size: 16px;
+     font-weight: normal;
+     color: dimgrey;
+ }
+
+ .modal-header i{
+     text-align: right;
+     cursor: pointer;
+     color: dimgrey;
+ }
+
+ .modal-content{
+     padding: 20px;
+ }
+
+ .modal-buttons button{
+     padding: 7px 14px;
+     cursor: pointer;
+     font-size: 14px;
+ }
+
+ .btn-yes{
+     background-color: #36C488;
+     color: rgba(255,255,255,.8);
+     border: 1px solid transparent;
+ }
+
+ .btn-yes i{
+     color: rgba(255,255,255,.7);
+     margin-right: 8px;
+     display: none;
+ }
+
+ .btn-no{
+     border: 1px solid #CF4D4D;
+     color: #CF4D4D;
+     background-color: transparent;
  }

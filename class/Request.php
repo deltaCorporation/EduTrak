@@ -90,6 +90,11 @@ class Request{
         return $this->_db->results();
     }
 
+    public function getCustomerRequestsByID($customerID){
+        $this->_requests = $this->_db->query("SELECT requests.*, requestStatus.colorClass FROM requests JOIN requestStatus ON requests.statusID = requestStatus.ID WHERE requests.customerID = {$customerID} ORDER BY ID", array());
+        return $this->_db->results();
+    }
+
     public function getStatuses(){
         $this->_requests = $this->_db->query('SELECT * FROM requestStatus ORDER BY ID', array());
         return $this->_db->results();

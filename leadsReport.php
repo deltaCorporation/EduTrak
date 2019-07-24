@@ -120,8 +120,7 @@ if($user->isLoggedIn()){
         ]);
     }
 
-
-    $file = 'leads-report.csv';
+    $file = 'leads-report.xlsx';
     $writer->writeToFile($file);
 
     if (file_exists($file)) {
