@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ea17e74-43b7-421e-ab1e-c2b9a64b7b1f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addContact.php" beforeDir="false" afterPath="$PROJECT_DIR$/addContact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addCustomer.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCustomer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addLead.php" beforeDir="false" afterPath="$PROJECT_DIR$/addLead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addNote.php" beforeDir="false" afterPath="$PROJECT_DIR$/addNote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Lead.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Lead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/createRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/createRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/importLeads.php" beforeDir="false" afterPath="$PROJECT_DIR$/importLeads.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/newLead.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/newLead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transformLead.php" beforeDir="false" afterPath="$PROJECT_DIR$/transformLead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateContact.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateContact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateCustomer.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateCustomer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateLead.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateLead.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateQuote.php" beforeDir="false" afterPath="$PROJECT_DIR$/generateQuote.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/google/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/google/vendor/firebase/php-jwt/" />
@@ -154,6 +140,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/generateQuote.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="154" column="69" selection-start-line="154" selection-start-column="69" selection-end-line="154" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/Lead.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
@@ -240,6 +235,7 @@
         <option value="$PROJECT_DIR$/include/newLead.php" />
         <option value="$PROJECT_DIR$/addNote.php" />
         <option value="$PROJECT_DIR$/class/Lead.php" />
+        <option value="$PROJECT_DIR$/generateQuote.php" />
       </list>
     </option>
   </component>
@@ -388,12 +384,12 @@
       <workItem from="1563624895982" duration="16415000" />
       <workItem from="1563776751748" duration="23218000" />
       <workItem from="1563808739553" duration="22065000" />
-      <workItem from="1564035389946" duration="6077000" />
+      <workItem from="1564035389946" duration="6097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86433000" />
+    <option name="totallyTimeSpent" value="86453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -704,13 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generateQuote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/transformLead.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -774,6 +763,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generateQuote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="154" column="69" selection-start-line="154" selection-start-column="69" selection-end-line="154" selection-end-column="69" />
         </state>
       </provider>
     </entry>

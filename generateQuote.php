@@ -153,9 +153,6 @@ if(Input::get('id')){
         $html .= '<br>';
         $html .= '<h4>Learner Outcomes</h4>';
         $html .= '<pre>'.$workshop->workshopLearnerOutcomes.'</pre>';
-        $html .= '<br>';
-        $html .= '<h4>Prerequisites</h4>';
-        $html .= '<pre>'.$workshop->workshopPrerequisites.'</pre>';
         $html .= '</td>';
         $html .= '<td class="align-top align-center">$'.number_format((int)$workshop->workshopPrice, 2).'</td>';
         $html .= '</tr>';
