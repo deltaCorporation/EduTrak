@@ -23,8 +23,8 @@ if($user->isLoggedIn()) {
                 'statusID' => 1,
                 'insertDate' => date('Y-m-d'),
                 'createdBy' => $user->data()->id,
-                'leadID' => $lead ? $lead->data()->id : null,
-                'customerID' => $customer ? $customer->data()->id : null
+                'leadID' => Input::get('case') === 'lead' ? $lead->data()->id : null,
+                'customerID' => Input::get('case') === 'customer' ? $customer->data()->id : null
             ]);
 
             foreach (Input::get('data') as $workshop){

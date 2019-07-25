@@ -64,7 +64,7 @@ if(Input::exists()){
                     'linkedIn' => Input::get('linkedIn'),
                     'website' => Input::get('website'),
                     'modifiedBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                    'modifiedOn' => date('n/j/y'),
+                    'modifiedOn' => date('m/d/Y'),
                     'logo' => $logo
                
                     

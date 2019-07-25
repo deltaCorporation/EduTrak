@@ -34,7 +34,7 @@ class Request{
     }
 
     public function createRequestWorkshop($fields = array()){
-        if(!$this->_db->insert('requestWorkshops', $fields)){
+        if(!$this->_db->insert('requestworkshops', $fields)){
             throw new Exception('There was a problem creating an workshop request.');
         }
     }
@@ -53,10 +53,10 @@ class Request{
                 SELECT 
                     requests.*, 
                     CONCAT(users.firstName,' ', users.lastName) as createdBy,
-                    requestStatus.name as statusName ,
-                    requestStatus.colorClass
+                    requeststatus.name as statusName ,
+                    requeststatus.colorClass
                 FROM requests 
-                JOIN requestStatus ON statusID = requestStatus.ID
+                JOIN requeststatus ON statusID = requeststatus.ID
                 JOIN users ON createdBy = users.id
                 WHERE requests.ID = {$request}
                 
@@ -81,32 +81,32 @@ class Request{
 
 
     public function getRequests(){
-        $this->_requests = $this->_db->query('SELECT requests.*, requestStatus.colorClass FROM requests JOIN requestStatus ON requests.statusID = requestStatus.ID ORDER BY ID', array());
+        $this->_requests = $this->_db->query('SELECT requests.*, requeststatus.colorClass FROM requests JOIN requeststatus ON requests.statusID = requeststatus.ID ORDER BY ID', array());
         return $this->_db->results();
     }
 
     public function getLeadRequestsByID($leadID){
-        $this->_requests = $this->_db->query("SELECT requests.*, requestStatus.colorClass FROM requests JOIN requestStatus ON requests.statusID = requestStatus.ID WHERE requests.leadID = {$leadID} ORDER BY ID", array());
+        $this->_requests = $this->_db->query("SELECT requests.*, requeststatus.colorClass FROM requests JOIN requeststatus ON requests.statusID = requeststatus.ID WHERE requests.leadID = {$leadID} ORDER BY ID", array());
         return $this->_db->results();
     }
 
     public function getCustomerRequestsByID($customerID){
-        $this->_requests = $this->_db->query("SELECT requests.*, requestStatus.colorClass FROM requests JOIN requestStatus ON requests.statusID = requestStatus.ID WHERE requests.customerID = {$customerID} ORDER BY ID", array());
+        $this->_requests = $this->_db->query("SELECT requests.*, requeststatus.colorClass FROM requests JOIN requeststatus ON requests.statusID = requeststatus.ID WHERE requests.customerID = {$customerID} ORDER BY ID", array());
         return $this->_db->results();
     }
 
     public function getStatuses(){
-        $this->_requests = $this->_db->query('SELECT * FROM requestStatus ORDER BY ID', array());
+        $this->_requests = $this->_db->query('SELECT * FROM requeststatus ORDER BY ID', array());
         return $this->_db->results();
     }
 
     public function getRequestWorkshopsByID($requestID){
-        $this->_requests = $this->_db->query("SELECT * FROM requestWorkshops WHERE requestWorkshops.requestID = '{$requestID}'", array());
+        $this->_requests = $this->_db->query("SELECT * FROM requestworkshops WHERE requestworkshops.requestID = '{$requestID}'", array());
         return $this->_db->results();
     }
 
     public function getStatusByID($statusID){
-        $this->_requests = $this->_db->query("SELECT * FROM requestStatus WHERE ID = {$statusID}", array());
+        $this->_requests = $this->_db->query("SELECT * FROM requeststatus WHERE ID = {$statusID}", array());
         return $this->_db->first();
     }
 }

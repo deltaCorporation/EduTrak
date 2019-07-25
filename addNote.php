@@ -38,7 +38,7 @@ if(Input::exists()){
             $lead = new Lead(Input::get('id'));
             
             $lead->update(array(
-            	 'lastContacted' => date('n/j/y')
+            	 'lastContacted' => date('m/d/Y')
           	),Input::get('id'));
             	 
             }elseif (Input::get('case') == 'contact' && Input::get('contactNoteCall')){
@@ -46,11 +46,11 @@ if(Input::exists()){
             	 $customer = new Customer($contact->data()->customerID);
             
             $contact->update(array(
-            	 'lastContacted' => date('n/j/y')
+            	 'lastContacted' => date('m/d/Y')
           	),Input::get('id'));
           	
           	$customer->update(array(
-            	 'lastContacted' => date('n/j/y')
+            	 'lastContacted' => date('m/d/Y')
           	),$contact->data()->customerID);
             
             }
@@ -62,7 +62,7 @@ if(Input::exists()){
                 'visibility' => $visibility,
                 'userID' => $user->data()->id,
                 'type' => Input::get('contactNoteCall'),
-                'createdOn' => date('n/j/y'),
+                'createdOn' => date('m/d/Y'),
                 'contactsID' => Input::get('id'),
             ));
             

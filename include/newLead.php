@@ -44,12 +44,12 @@
 
         <div class="add-window-form-section-row">
             <div class="add-window-form-section-cell form-x-5">
-                <label>Company Name</label>
+                <label>Company/School Name</label>
                 <input onfocus="getCustomers(this)" onkeyup="getCustomers(this)" type="text" style="width:90%;" class="autocomplete-input" name="customer">
                 <div class="autocomplete-wrapper"></div>
             </div>
             <div class="add-window-form-section-cell-file form-x-4">
-                <label>Company Logo</label>
+                <label>Company/School Logo</label>
                 <input type="file" name="logo" placeholder="">
             </div>
         </div>

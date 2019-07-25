@@ -74,7 +74,7 @@ class Lead{
         switch ($case){
             case 'list':
 
-                $sql = "SELECT leads.*, CONCAT(users.firstName, ' ', users.lastName) as assignedToUser FROM leads ";
+                $sql = "SELECT leads.*, DATE_FORMAT(leads.followUpDate, '%m/%d/%Y') as followUpDate,  CONCAT(users.firstName, ' ', users.lastName) as assignedToUser FROM leads ";
                 $sql .= "LEFT JOIN users ON leads.assignedTo = users.id ";
 
                 $offset = $page * $this->_listNo;

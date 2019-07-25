@@ -39,7 +39,7 @@ if(Input::exists()){
                     'website' => Input::get('website'),
                     'followUpDate' => Input::get('followUpDate'),
                     'modifiedBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                    'modifiedOn' => date('n/j/y'),
+                    'modifiedOn' => date('m/d/Y'),
                 ),Input::get('contactId'));
 
                 Session::flash('home', 'Contact has been updated!');

@@ -57,7 +57,7 @@ if($user->isLoggedIn()) {
                     'assignedTo' => 190627035028,
                     'eventName' => explode('.', $fileName)[0],
                     'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                    'createdOn' => date('n/j/y'),
+                    'createdOn' => date('m/d/Y'),
                     'lastContacted' => 'Not contacted',
                     'modifiedBy' => '-',
                     'modifiedOn' => '-',

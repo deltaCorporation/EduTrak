@@ -61,7 +61,7 @@ if(Input::exists()){
                         'website' => Input::get('website'),
                         'lastContacted' => 'Not contacted',
                         'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                        'createdOn' => date('n/j/y'),
+                        'createdOn' => date('m/d/Y'),
                         'modifiedBy' => '-',
                         'modifiedOn' => '-',
                         'logo' => basename($_FILES["logo"]["name"])

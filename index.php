@@ -159,11 +159,13 @@ include_once __DIR__ . '/include/addSidebar.php';
                                 $daysLeft = 'days left: ' . $daysLeft;
                             }
 
+                            $date = date('m/d/Y', strtotime($lead->followUpDate));
+
                             echo "
                             
                                 <a href='info.php?case=lead&id={$lead->id}' class='index-board-followUp-item'>
                                     <div>{$lead->company}</div>
-                                    <div>{$daysLeft}</div>
+                                    <div>{$date}</div>
                                 </a>
                             
                             ";

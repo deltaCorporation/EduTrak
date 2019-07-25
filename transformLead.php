@@ -49,7 +49,7 @@
                             'website' => $lead->data()->website,
                             'lastContacted' => 'Not contacted',
                             'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                            'createdOn' => date('n/j/y'),
+                            'createdOn' => date('m/d/Y'),
                             'modifiedBy' => '-',
                             'modifiedOn' => '-',
                             'logo' => $lead->data()->logo
@@ -83,7 +83,7 @@
                             'linkedIn' => $lead->data()->linkedIn,
                             'website' => $lead->data()->website,
                             'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                            'createdOn' => date('n/j/y'),
+                            'createdOn' => date('m/d/Y'),
                             'lastContacted' => 'Not contacted',
                             'modifiedBy' => '-',
                             'modifiedOn' => '-',
@@ -144,7 +144,7 @@
                         'linkedIn' => $lead->data()->linkedIn,
                         'website' => $lead->data()->website,
                         'createdBy' => $user->data()->firstName.' '.$user->data()->lastName,
-                        'createdOn' => date('n/j/y'),
+                        'createdOn' => date('m/d/Y'),
                         'lastContacted' => 'Not contacted',
                         'modifiedBy' => '-',
                         'modifiedOn' => '-'
