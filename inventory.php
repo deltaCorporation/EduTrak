@@ -335,15 +335,6 @@ include_once __DIR__ . '/include/addSidebar.php';
                 ?>
             </ul>
             
-            <ul id='track'>
-                <span onclick="uncheck('track')">Track</span>
-                <?php
-                	foreach($inventory->getFilterItems('track') as $item){
-                		echo '<li><input onclick="filter(this, 2)" value="'.escape($item->track).'" id="'.$item->track.'" type="checkbox" checked><label for="'.$item->track.'">'.$item->track.'</label></li>';
-                	}
-                ?>
-            </ul>
-            
             <ul id="format">
                 <span onclick="uncheck('format')">Format</span>
                 <?php

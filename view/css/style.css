@@ -5458,6 +5458,8 @@ font-size: 2vh;
 
  .request-tabcontent{
      padding: 1rem;
+     height: calc(80vh - 151px);
+     overflow-y: auto;
  }
 
  .quote-tabcontent input,
