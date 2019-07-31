@@ -63,7 +63,7 @@ class Contact{
 
                 $sql = "
                   SELECT 
-                    TRIM(contacts.id) as id,
+                    contacts.id as id,
                     TRIM(contacts.firstName) as firstName, 
                     TRIM(contacts.lastName) as lastName,
                     TRIM(contacts.jobTitle) as jobTitle,

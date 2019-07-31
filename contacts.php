@@ -20,7 +20,7 @@ if($user->isLoggedIn()){
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
 
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
@@ -104,6 +104,11 @@ include_once __DIR__ . '/include/addSidebar.php';
     <section id="content-contacts">
 
         <ul id="side-menu">
+            <li>
+                <a id="contacts-report-link" href="contactsReport.php">
+                    <i class="fas fa-file-csv"></i>
+                </a>
+            </li>
             <li onclick="openFilters()">
                 <a id="filters-link">
                     <i class="fas fa-sliders-h"></i>

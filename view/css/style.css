@@ -2902,6 +2902,8 @@ height: 2.5vh !important;
 }
 
  #lead-report-link,
+ #contacts-report-link,
+ #customers-report-link,
  #filters-link{
      text-align: center;
      height: 100%;
@@ -2910,6 +2912,8 @@ height: 2.5vh !important;
  }
 
  #lead-report-link i,
+ #contacts-report-link i,
+ #customers-report-link i,
  #filters-link i{
      color: dimgray;
      font-size: 16px;

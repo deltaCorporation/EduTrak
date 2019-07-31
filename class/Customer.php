@@ -75,7 +75,7 @@ class Customer{
 
                 $sql = "
                   SELECT 
-                    TRIM(customers.id) as id, 
+                    customers.id as id, 
                     TRIM(customers.name) as name, 
                     TRIM(customers.category) as category, 
                     TRIM(customers.partnerRep) as partnerRep, 
@@ -107,7 +107,7 @@ class Customer{
                 if($sort && $order){
                     $sql.= "ORDER BY {$sort} {$order} ";
                 }else{
-                    $sql.= "ORDER BY id DESC ";
+                    $sql.= "ORDER BY ID DESC ";
                 }
 
                 if($page !== null){
