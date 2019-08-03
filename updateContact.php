@@ -14,6 +14,15 @@ if(Input::exists()){
             $user = new User();
             $contact = new Contact(Input::get('contactId'));
 
+
+            $tags = '';
+            if(Input::get('tags') !== ''){
+                foreach (json_decode(Input::get('tags')) as $tag){
+                    $tags .= $tag->value . ', ';
+                }
+                $tags = substr($tags, 0, -2);
+            }
+
             try{
 
                 $contact->update(array(
@@ -23,7 +32,7 @@ if(Input::exists()){
                     'category' => Input::get('category'),
                     'customer' => Input::get('customer'),
                     'description' => Input::get('description'),
-                    'tags' => Input::get('tags'),
+                    'tags' => $tags,
                     'officePhone' => Input::get('officePhone'),
                     'phoneExt' => Input::get('phoneExt'),
                     'mobilePhone' => Input::get('mobilePhone'),

@@ -9,6 +9,14 @@ $quotes = new ProposalAndQuotes();
 $users = new User();
 $requests = new Request();
 
+$tagOptions = '';
+if($grups = $inventory->getFilterItems('workshopGroups')){
+    foreach ($grups as $group){
+        $tagOptions .= "'". $group->workshopGroups . "', ";
+    }
+    $tagOptions = substr($tagOptions, 0, -2);
+}
+
 if ($customer->exists()) {
 
     $customerCategories = array('Company', 'Public School', 'Private School', 'Diocese', 'Partner');
@@ -53,7 +61,7 @@ if ($customer->exists()) {
 
             <div class="customer-sidebar-information-submenu">
 
-                <a href="tel:01<?php echo $customer->data()->phone ?>"><i class="fas fa-phone"></i></a>
+                <a href="tel:01<?php echo $customer->data()->officePhone ?>"><i class="fas fa-phone"></i></a>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=<?php echo $customer->data()->email ?>"
                    target="_blank"><i class="fas fa-envelope"></i></a>
 
@@ -123,7 +131,7 @@ if ($customer->exists()) {
         <div class="customer-header-information contact-tab">
             <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if (!isset($_GET['tab'])) echo 'defaultOpen' ?>"><i class="fas fa-info"></i>Information</button>
             <button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')"><i class="fas fa-file-alt"></i>Requests</button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if ($_GET['tab'] == 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if ($_GET['tab'] === 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)</button>
             <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-poll-h"></i>Censeo</button>
             <button class="contact-tablinks" onclick="openCity(event, 'contact-event')" id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)</button>
         </div>
@@ -240,7 +248,7 @@ if ($customer->exists()) {
             <div class="contact-form-information-row">
                 <div class="contact-form-information-cell info-form-x-12">
                     <label>Tags</label>
-                    <input type="text" name="tags" value="<?php echo $customer->data()->tags; ?>">
+                    <input id="tags" type="text" name="tags" value="<?php echo $customer->data()->tags; ?>">
                 </div>
             </div>
 
@@ -751,6 +759,12 @@ if ($customer->exists()) {
     </div>
 
     <script>
+
+        $('#tags').tagify({
+            whitelist: [<?php echo $tagOptions ?>],
+            enforceWhitelist: true,
+            autoComplete: true
+        });
 
         $('#add-new-request-tab').click();
 

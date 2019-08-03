@@ -3,6 +3,16 @@
 	$contact = new Contact($id);
 	$note = new Note();
 
+    $inventory = new Inventory();
+
+    $tagOptions = '';
+    if($grups = $inventory->getFilterItems('workshopGroups')){
+        foreach ($grups as $group){
+            $tagOptions .= "'". $group->workshopGroups . "', ";
+        }
+        $tagOptions = substr($tagOptions, 0, -2);
+    }
+
     if($contact->exists()){
 
         $contactTypes = array('Employee','Partner','Partner Rep','School','Company','');
@@ -171,7 +181,7 @@
         <div class="contact-form-information-row">
             <div class="contact-form-information-cell info-form-x-12">
                 <label>Tags</label>
-                <input type="text" name="tags" value="<?php echo $contact->data()->tags; ?>">
+                <input id="tags" type="text" name="tags" value="<?php echo $contact->data()->tags; ?>">
             </div>
         </div>
 
@@ -473,6 +483,13 @@
    
 
 <script>
+
+    $('#tags').tagify({
+        whitelist: [<?php echo $tagOptions ?>],
+        enforceWhitelist: true,
+        autoComplete: true
+    });
+
     function openCity(evt, cityName, type) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("contact-tabcontent");

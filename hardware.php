@@ -8,6 +8,14 @@ require_once __DIR__ . '/core/ini.php';
 $user = new User();
 $inventory = new Inventory();
 
+$tagOptions = '';
+if($grups = $inventory->getFilterItems('workshopGroups')){
+    foreach ($grups as $group){
+        $tagOptions .= "'". $group->workshopGroups . "', ";
+    }
+    $tagOptions = substr($tagOptions, 0, -2);
+}
+
 if($user->isLoggedIn()){
 ?>
 
@@ -24,8 +32,11 @@ if($user->isLoggedIn()){
 
             <link href="view/css/remodal.css" rel="stylesheet">
             <link href="view/css/remodal-default-theme.css" rel="stylesheet">
+            <link href="view/css/tagify.css" rel="stylesheet">
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="view/js/jQuery.tagify.min.js"></script>
+            <script src="view/js/tagify.js"></script>
             <script src="view/js/remodal.js"></script>
         </head>
         <body>
@@ -114,6 +125,12 @@ if($user->isLoggedIn()){
 
         </body>
         <script>
+
+            $('.tags').tagify({
+                whitelist: [<?php echo $tagOptions ?>],
+                enforceWhitelist: true,
+                autoComplete: true
+            });
 
             $('#hardware').addClass("link-selected");
 

@@ -30,6 +30,18 @@ class Lead{
         }
     }
 
+    public function createTag($fields = array()){
+        if(!$this->_db->insert('tags', $fields)){
+            throw new Exception('There was a problem creating an tag.');
+        }
+    }
+
+    public function clearTags($caseID){
+        if(!$this->_db->delete('tags', array('caseID', '=', $caseID))){
+            throw new Exception('There was a problem clearing an tags.');
+        }
+    }
+
     public function delete($lead){
         if(!$this->_db->delete('leads', array('id', '=', $lead))){
             throw new Exception('There was a problem deleting an lead.');
@@ -128,6 +140,10 @@ class Lead{
             'eventName' => [
                 'title' => 'Event',
                 'content' => $this->_db->query('SELECT DISTINCT(eventName) FROM leads WHERE eventName IS NOT NULL')->results()
+            ],
+            'tags' => [
+                'title' => 'Tags',
+                'content' => '',
             ]
         ];
 

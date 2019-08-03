@@ -6,6 +6,15 @@
 require_once __DIR__ . '/core/ini.php';
 
 $user = new User();
+$inventory = new Inventory();
+
+$tagOptions = '';
+if($grups = $inventory->getFilterItems('workshopGroups')){
+    foreach ($grups as $group){
+        $tagOptions .= "'". $group->workshopGroups . "', ";
+    }
+    $tagOptions = substr($tagOptions, 0, -2);
+}
 
 if($user->isLoggedIn()){
 if($user->hasPermission('superAdmin')){
@@ -26,8 +35,11 @@ if($user->hasPermission('superAdmin')){
 
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
+        <link href="view/css/tagify.css" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="view/js/jQuery.tagify.min.js"></script>
+        <script src="view/js/tagify.js"></script>
         <script src="view/js/remodal.js"></script>
 
 
@@ -180,6 +192,12 @@ include_once __DIR__ . '/include/addSidebar.php';
     </html>
 
     <script>
+
+        $('.tags').tagify({
+            whitelist: [<?php echo $tagOptions ?>],
+            enforceWhitelist: true,
+            autoComplete: true
+        });
 
         /* Open Filters Menu */
 

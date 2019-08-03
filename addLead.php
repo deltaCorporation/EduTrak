@@ -33,6 +33,14 @@ if(Input::exists()){
 
             }
 
+            $tags = '';
+            if(Input::get('tags') !== ''){
+                foreach (json_decode(Input::get('tags')) as $tag){
+                    $tags .= $tag->value . ', ';
+                }
+                $tags = substr($tags, 0, -2);
+            }
+
             try{
 
                 $lead->create(array(
@@ -49,7 +57,7 @@ if(Input::exists()){
                     'partnerRep' => Input::get('partnerRep'),
                     'assignedTo' => Input::get('assignedTo'),
                     'description' => Input::get('description'),
-                    'tags' => Input::get('tags'),
+                    'tags' => $tags,
                     'officePhone' => Input::get('officePhone'),
                     'phoneExt' => Input::get('extension'),
                     'mobilePhone' => Input::get('mobilePhone'),

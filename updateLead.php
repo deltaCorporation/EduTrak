@@ -3,7 +3,6 @@
 require_once __DIR__ . '/core/ini.php';
 
 if(Input::exists()){
-    
 
         $validate = new Validate();
         $validation = $validate->check($_POST, array(
@@ -33,6 +32,14 @@ if(Input::exists()){
                 $logo = basename($_FILES["logo"]["name"]);
             }
 
+            $tags = '';
+            if(Input::get('tags') !== ''){
+                foreach (json_decode(Input::get('tags')) as $tag){
+                    $tags .= $tag->value . ', ';
+                }
+                $tags = substr($tags, 0, -2);
+            }
+
             try{
 
                 $lead->update(array(
@@ -48,7 +55,7 @@ if(Input::exists()){
                     'partnerRep' => Input::get('partnerRep'),
                     'assignedTo' => Input::get('assignedTo'),
                     'description' => Input::get('description'),
-                    'tags' => Input::get('tags'),
+                    'tags' => $tags,
                     'officePhone' => Input::get('officePhone'),
                     'phoneExt' => Input::get('ext'),
                     'mobilePhone' => Input::get('mobilePhone'),

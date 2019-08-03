@@ -32,6 +32,15 @@ if (isset($_GET['code'])) {
 }
 
 $user = new User();
+$inventory = new Inventory();
+
+$tagOptions = '';
+if($grups = $inventory->getFilterItems('workshopGroups')){
+    foreach ($grups as $group){
+        $tagOptions .= "'". $group->workshopGroups . "', ";
+    }
+    $tagOptions = substr($tagOptions, 0, -2);
+}
 
 
 if($user->isLoggedIn()){
@@ -47,6 +56,7 @@ if($user->isLoggedIn()){
 
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
+        <link href="view/css/tagify.css" rel="stylesheet">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
@@ -54,6 +64,8 @@ if($user->isLoggedIn()){
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="view/js/jQuery.tagify.min.js"></script>
+        <script src="view/js/tagify.js"></script>
         <script src="view/js/remodal.js"></script>
 
     </head>
@@ -136,7 +148,7 @@ include_once __DIR__ . '/include/addSidebar.php';
         <div id="index-board-followUp" class="index-board-block block-2">
             <h3>
                 <div></div>
-                <div>Follow Up Companies</div>
+                <div>Follow Up Companies/Schools</div>
             </h3>
             <div id="index-board-followUp-content">
 
@@ -388,6 +400,12 @@ include_once __DIR__ . '/include/addSidebar.php';
 
     </body>
     <script>
+        $('.tags').tagify({
+            whitelist: [<?php echo $tagOptions ?>],
+            enforceWhitelist: true,
+            autoComplete: true
+        });
+
         $('#home').addClass('link-selected');
     </script>
     </html>
@@ -485,6 +503,7 @@ include __DIR__ . '/include/scripts.php';
     </body>
 
     <script>
+
         function openCity(evt, cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");

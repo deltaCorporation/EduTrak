@@ -4,6 +4,15 @@
 	$note = new Note();
 	$user = new User();
 	$requests = new Request();
+	$inventory = new Inventory();
+
+	$tagOptions = '';
+	if($grups = $inventory->getFilterItems('workshopGroups')){
+        foreach ($grups as $group){
+            $tagOptions .= "'". $group->workshopGroups . "', ";
+        }
+        $tagOptions = substr($tagOptions, 0, -2);
+    }
 
     if($lead->exists()){
 
@@ -28,7 +37,7 @@
 		
 		<div class="lead-sidebar-information-submenu">
             <a href="#transform-lead"><i class="fas fa-dollar-sign"></i></a>
-			<a href="tel:01<?php echo $lead->data()->phone ?>"><i class="fas fa-phone"></i></a>
+			<a href="tel:01<?php echo $lead->data()->officePhone ?>"><i class="fas fa-phone"></i></a>
 			<a href="https://mail.google.com/mail/?view=cm&fs=1&to=<?php echo $lead->data()->email ?>" target="_blank"><i class="fas fa-envelope"></i></a>
 			<a href="#delete"><i class="fas fa-trash"></i></a>
 		</div>
@@ -187,7 +196,7 @@
         <div class="contact-form-information-row">
             <div class="contact-form-information-cell info-form-x-12">
                 <label>Tags</label>
-                <input type="text" name="tags" value="<?php echo $lead->data()->tags; ?>">
+                <input id="tags" type="text" name="tags" value="<?php echo $lead->data()->tags; ?>">
             </div>
         </div>
 
@@ -700,6 +709,12 @@
 <div class="overlay"></div>
 
 <script>
+
+    $('#tags').tagify({
+        whitelist: [<?php echo $tagOptions ?>],
+        enforceWhitelist: true,
+        autoComplete: true
+    });
 
     $('#add-new-request-tab').click();
 

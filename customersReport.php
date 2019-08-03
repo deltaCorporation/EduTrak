@@ -4,132 +4,104 @@
  * Require ini file with settings
  */
 require_once __DIR__ . '/core/ini.php';
-include_once __DIR__ . '/include/class/xlsxwriter.class.php';
 
 $user = new User();
 $customer = new Customer();
-$writer = new XLSXWriter();
 
 if($user->isLoggedIn()){
 
-    $writer->writeSheetHeader('Sheet1', [
-        'ID' => 'integer',
-        'Name' => 'string',
-        'Category' => 'string',
-        'Partner Rep' => 'string',
-        'Reached Us By' => 'string',
-        'Description' => 'string',
-        'Tags' => 'string',
-        'Last Contacted' => 'string',
-        'Partner' => 'string',
-        'Parent Customer' => 'string',
-        'Office Phone' => 'string',
-        'Phone Ext' => 'string',
-        'Mobile Phone' => 'string',
-        'Email' => 'string',
-        'Fax' => 'string',
-        'Accounts Payable Info' => 'string',
-        'Street' => 'string',
-        'City' => 'string',
-        'State' => 'string',
-        'Country' => 'string',
-        'Zip' => 'string',
-        'FollowUp Date' => 'string',
-        'Facebook' => 'string',
-        'Twitter' => 'string',
-        'LinkedIn' => 'string',
-        'Website' => 'string',
-        'Created By' => 'string',
-        'Created On' => 'string',
-        'Modified By' => 'string',
-        'Modified On' => 'string'
+    try{
 
-    ], [
-        'widths' => [
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-        ]
-    ]);
+        $fileName = 'customer-report';
 
-    foreach ($customer->getCustomers() as $customer){
+        // output headers so that the file is downloaded rather than displayed
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename='.$fileName.'.csv');
 
-        $writer->writeSheetRow('Sheet1', [
-            $customer->id,
-            $customer->name,
-            $customer->category,
-            $customer->partnerRep,
-            $customer->reachedUsBy,
-            $customer->description,
-            $customer->tags,
-            $customer->lastContacted,
-            $customer->partner,
-            $customer->parentCustomer,
-            $customer->officePhone,
-            $customer->phoneExt,
-            $customer->mobilePhone,
-            $customer->email,
-            $customer->fax,
-            $customer->accountsPayableInfo,
-            $customer->street,
-            $customer->city,
-            $customer->state,
-            $customer->country,
-            $customer->zip,
-            $customer->followUpDate,
-            $customer->facebook,
-            $customer->twitter,
-            $customer->linkedIn,
-            $customer->website,
-            $customer->createdBy,
-            $customer->createdOn,
-            $customer->modifiedBy,
-            $customer->modifiedOn,
-        ]);
+        // create a file pointer connected to the output stream
+        $output = fopen('php://output', 'w');
+
+        $csvHeader = array(
+            'ID',
+            'Name',
+            'Category',
+            'Partner Rep',
+            'Reached Us By',
+            'Description',
+            'Tags' ,
+            'Last Contacted',
+            'Partner',
+            'Parent Customer',
+            'Office Phone',
+            'Phone Ext',
+            'Mobile Phone',
+            'Email',
+            'Fax',
+            'Accounts Payable Info',
+            'Street',
+            'City',
+            'State',
+            'Country',
+            'Zip',
+            'FollowUp Date',
+            'Facebook',
+            'Twitter',
+            'LinkedIn',
+            'Website',
+            'Created By',
+            'Created On',
+            'Modified By',
+            'Modified On'
+        );
+
+        fputcsv($output, $csvHeader);
+
+        foreach ($customer->getCustomers() as $customer){
+
+            $data = array();
+
+
+            $data['id'] = $customer->id;
+            $data['name'] = $customer->name;
+            $data['category'] = $customer->category;
+            $data['partnerRep'] = $customer->partnerRep;
+            $data['reachedUsBy'] = $customer->reachedUsBy;
+            $data['description'] = $customer->description;
+            $data['tags'] = $customer->tags;
+            $data['lastContacted'] = $customer->lastContacted;
+            $data['partner'] = $customer->partner;
+            $data['parentCustomer'] = $customer->parentCustomer;
+            $data['officePhone'] = $customer->officePhone;
+            $data['phoneExt'] = $customer->phoneExt;
+            $data['mobilePhone'] = $customer->mobilePhone;
+            $data['email'] = $customer->email;
+            $data['fax'] = $customer->fax;
+            $data['accountsPayableInfo'] = $customer->accountsPayableInfo;
+            $data['street'] = $customer->street;
+            $data['city'] = $customer->city;
+            $data['state'] = $customer->state;
+            $data['country'] = $customer->country;
+            $data['zip'] = $customer->zip;
+            $data['followUpDate'] = $customer->followUpDate;
+            $data['facebook'] = $customer->facebook;
+            $data['twitter'] = $customer->twitter;
+            $data['linkedIn'] = $customer->linkedIn;
+            $data['website'] = $customer->website;
+            $data['createdBy'] = $customer->createdBy;
+            $data['createdOn'] = $customer->createdOn;
+            $data['modifiedBy'] = $customer->modifiedBy;
+            $data['modifiedOn'] = $customer->modifiedOn;
+
+
+                fputcsv($output, $data);
+        }
+
+        fclose($output);
+
+
+    }catch(Exception $e) {
+        die($e->getMessage());
     }
 
-    $file = 'customers-report.xlsx';
-    $writer->writeToFile($file);
 
-    if (file_exists($file)) {
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="'.basename($file).'"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($file));
-        readfile($file);
-        unlink($file);
-    }
-
-    Redirect::to('customers.php');
 }

@@ -13,7 +13,14 @@ if($user->isLoggedIn()){
 	if($id = Input::get('id')){
 
         $inventory = new Inventory($id);
-	
+
+        $tagOptions = '';
+        if($grups = $inventory->getFilterItems('workshopGroups')){
+            foreach ($grups as $group){
+                $tagOptions .= "'". $group->workshopGroups . "', ";
+            }
+            $tagOptions = substr($tagOptions, 0, -2);
+        }
     ?>
 
     <!DOCTYPE html>
@@ -24,6 +31,7 @@ if($user->isLoggedIn()){
 
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
+        <link href="view/css/tagify.css" rel="stylesheet">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 
@@ -31,6 +39,8 @@ if($user->isLoggedIn()){
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="view/js/jQuery.tagify.min.js"></script>
+        <script src="view/js/tagify.js"></script>
         <script src="view/js/remodal.js"></script>
 
 	<script>
@@ -526,6 +536,12 @@ include_once __DIR__ . '/include/addSidebar.php';
 
     </body>
     <script>
+
+        $('.tags').tagify({
+            whitelist: [<?php echo $tagOptions ?>],
+            enforceWhitelist: true,
+            autoComplete: true
+        });
 
         $('#inventory').addClass("link-selected");
 

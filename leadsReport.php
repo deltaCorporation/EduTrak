@@ -4,136 +4,108 @@
  * Require ini file with settings
  */
 require_once __DIR__ . '/core/ini.php';
-include_once __DIR__ . '/include/class/xlsxwriter.class.php';
 
 $user = new User();
 $lead = new Lead();
-$writer = new XLSXWriter();
 
 if($user->isLoggedIn()){
 
-    $writer->writeSheetHeader('Sheet1', [
-        'ID' => 'integer',
-        'Prefix' => 'string',
-        'First Name' => 'string',
-        'Last Name' => 'string',
-        'Job Title' => 'string',
-        'Category' => 'string',
-        'Company' => 'string',
-        'Reached Us By' => 'string',
-        'Partner' => 'string',
-        'Partner Rep' => 'string',
-        'Assigned To' => 'string',
-        'Description' => 'string',
-        'Tags' => 'string',
-        'Last Contacted' => 'string',
-        'Follow Up Date' => 'string',
-        'Office Phone' => 'string',
-        'Phone Ext' => 'string',
-        'Mobile Phone' => 'string',
-        'Email' => 'string',
-        'Street' => 'string',
-        'City' => 'string',
-        'Country' => 'string',
-        'State' => 'string',
-        'Zip' => 'string',
-        'Facebook' => 'string',
-        'Twitter' => 'string',
-        'LinkedIn' => 'string',
-        'Website' => 'string',
-        'Modified By' => 'string',
-        'Modified On' => 'string',
-        'Created By' => 'string',
-        'Created On' => 'string'
-    ], [
-        'widths' => [
-            20,
-            10,
-            25,
-            25,
-            60,
-            20,
-            60,
-            15,
-            30,
-            30,
-            30,
-            100,
-            50,
-            15,
-            15,
-            15,
-            10,
-            15,
-            50,
-            50,
-            25,
-            15,
-            20,
-            10,
-            20,
-            20,
-            20,
-            20,
-            20,
-            15,
-            20,
-            15
-        ]
-    ]);
+    try{
 
-    foreach ($lead->getLeads() as $lead){
+        $fileName = 'leads-report';
 
-        $writer->writeSheetRow('Sheet1', [
-            $lead->id,
-            $lead->prefix,
-            $lead->firstName,
-            $lead->lastName,
-            $lead->jobTitle,
-            $lead->category,
-            $lead->company,
-            $lead->reachedUsBy,
-            $lead->partner,
-            $lead->partnerRep,
-            $lead->assignedTo,
-            $lead->description,
-            $lead->tags,
-            $lead->lastContacted,
-            $lead->followUpDate,
-            $lead->officePhone,
-            $lead->phoneExt,
-            $lead->mobilePhone,
-            $lead->email,
-            $lead->street,
-            $lead->city,
-            $lead->country,
-            $lead->state,
-            $lead->zip,
-            $lead->facebook,
-            $lead->twitter,
-            $lead->linkedIn,
-            $lead->website,
-            $lead->modifiedBy,
-            $lead->modifiedOn,
-            $lead->createdBy,
-            $lead->createdOn,
-        ]);
+        // output headers so that the file is downloaded rather than displayed
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename='.$fileName.'.csv');
+
+        // create a file pointer connected to the output stream
+        $output = fopen('php://output', 'w');
+
+        $csvHeader = array(
+            'ID',
+            'Prefix',
+            'First Name',
+            'Last Name',
+            'Job Title',
+            'Category',
+            'Company',
+            'Reached Us By',
+            'Partner',
+            'Partner Rep',
+            'Assigned To',
+            'Description',
+            'Tags',
+            'Last Contacted',
+            'Follow Up Date',
+            'Office Phone',
+            'Phone Ext',
+            'Mobile Phone',
+            'Email',
+            'Street',
+            'City',
+            'Country',
+            'State',
+            'Zip',
+            'Facebook',
+            'Twitter',
+            'LinkedIn',
+            'Website',
+            'Modified By',
+            'Modified On',
+            'Created By',
+            'Created On'
+        );
+
+        fputcsv($output, $csvHeader);
+
+        foreach ($lead->getLeads() as $lead){
+
+            $data = array();
+
+
+                $data['id'] = $lead->id;
+                $data['prefix'] = $lead->prefix;
+                $data['firstName'] = $lead->firstName;
+                $data['lastName'] = $lead->lastName;
+                $data['jobTitle'] = $lead->jobTitle;
+                $data['category'] = $lead->category;
+                $data['company'] = $lead->company;
+                $data['reachedUsBy'] = $lead->reachedUsBy;
+                $data['partner'] = $lead->partner;
+                $data['partnerRep'] = $lead->partnerRep;
+                $data['assignedTo'] = $lead->assignedTo;
+                $data['description'] = $lead->description;
+                $data['tags'] = $lead->tags;
+                $data['lastContacted'] = $lead->lastContacted;
+                $data['followUpDate'] = $lead->followUpDate;
+                $data['officePhone'] = $lead->officePhone;
+                $data['phoneExt'] = $lead->phoneExt;
+                $data['mobilePhone'] = $lead->mobilePhone;
+                $data['email'] = $lead->email;
+                $data['street'] = $lead->street;
+                $data['city'] = $lead->city;
+                $data['country'] = $lead->country;
+                $data['state'] = $lead->state;
+                $data['zip'] = $lead->zip;
+                $data['facebook'] = $lead->facebook;
+                $data['twitter'] = $lead->twitter;
+                $data['linkedIn'] = $lead->linkedIn;
+                $data['website'] = $lead->website;
+                $data['modifiedBy'] = $lead->modifiedBy;
+                $data['modifiedOn'] = $lead->modifiedOn;
+                $data['createdBy'] = $lead->createdBy;
+                $data['createdOn'] = $lead->createdOn;
+
+
+            fputcsv($output, $data);
+        }
+
+        fclose($output);
+
+
+    }catch(Exception $e) {
+        die($e->getMessage());
     }
 
-    $file = 'leads-report.xlsx';
-    $writer->writeToFile($file);
 
-    if (file_exists($file)) {
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="'.basename($file).'"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($file));
-        readfile($file);
-        unlink($file);
-    }
-
-    Redirect::to('leads.php');
 }

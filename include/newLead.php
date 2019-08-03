@@ -122,7 +122,7 @@
             </div>
             <div class="add-window-form-section-cell form-x-4">
                 <label>Tags</label>
-                <input type="text" name="tags" placeholder="">
+                <input class="tags" type="text" name="tags" placeholder="">
             </div>
             <div class="add-window-form-section-cell form-x-2">
                 <label>Facebook</label>

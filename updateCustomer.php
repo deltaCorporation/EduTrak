@@ -33,6 +33,15 @@ if(Input::exists()){
                 $logo = basename($_FILES["logo"]["name"]);
             }
 
+
+            $tags = '';
+            if(Input::get('tags') !== ''){
+                foreach (json_decode(Input::get('tags')) as $tag){
+                    $tags .= $tag->value . ', ';
+                }
+                $tags = substr($tags, 0, -2);
+            }
+
                 try {
 
                     $customer->update(array(
@@ -40,7 +49,7 @@ if(Input::exists()){
                         'category' => Input::get('category'),
                         'partnerRep' => Input::get('partnerRep'),
                         'description' => Input::get('description'),
-                        'tags' => Input::get('tags'),
+                        'tags' => $tags,
                         'partner' => Input::get('partner'),
                         'parentCustomer' => Input::get('parentCustomer'),
                         'officePhone' => Input::get('officePhone'),

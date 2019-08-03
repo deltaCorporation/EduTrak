@@ -1569,8 +1569,8 @@ background-color: white;
  position: sticky;
  top: 0;
  text-align: left;
- font-weight: normal;
- font-size: 14px;
+ font-weight: lighter;
+ font-size: 16px;
  color: rgba(255,255,255,.7);
  padding: 15px 10px;
  cursor: pointer;
@@ -1584,7 +1584,7 @@ background-color: white;
 
 #table-list-content td {
     padding: 15px 10px;
-    font-size: 12px;
+    font-size: 14px;
     min-width: 200px;
 }
 

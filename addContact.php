@@ -25,6 +25,14 @@ if(Input::exists()){
              	}
             }
 
+            $tags = '';
+            if(Input::get('tags') !== ''){
+                foreach (json_decode(Input::get('tags')) as $tag){
+                    $tags .= $tag->value . ', ';
+                }
+                $tags = substr($tags, 0, -2);
+            }
+
             try{
 
                 $contact->create(array(
@@ -36,7 +44,7 @@ if(Input::exists()){
                     'category' => Input::get('category'),
                     'customer' => Input::get('customer'),
                     'description' => Input::get('description'),
-                    'tags' => Input::get('tags'),
+                    'tags' => $tags,
                     'officePhone' => Input::get('officePhone'),
                     'phoneExt' => Input::get('extension'),
                     'mobilePhone' => Input::get('mobilePhone'),

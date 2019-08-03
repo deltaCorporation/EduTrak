@@ -37,9 +37,12 @@ if($user->isLoggedIn()){
 
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
+        <link href="view/css/tagify.css" rel="stylesheet">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="view/js/jQuery.tagify.min.js"></script>
+        <script src="view/js/tagify.js"></script>
         <script src="view/js/remodal.js"></script>
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
