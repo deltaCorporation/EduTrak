@@ -435,9 +435,11 @@ include_once __DIR__ . '/include/addSidebar.php';
                    },
                    beforeSend: function () {
                        $('#add-quick-note .fa-spinner').removeClass('display-none');
+                       $('#add-quick-note').prop("disabled",true);
                    },
                    success: function (data) {
                        $('#add-quick-note .fa-spinner').addClass('display-none');
+                       $('#add-quick-note').prop("disabled",false);
                        closeQuickNote();
 
                        let result = JSON.parse(data);
