@@ -132,6 +132,7 @@ include_once __DIR__ . '/include/addSidebar.php';
             <table class="table-list">
                 <thead class="table-list-header">
                 <tr>
+                    <th></th>
                     <th class="sort" onclick="loadMore(0, 'firstName', this)">Full Name</th>
                     <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Job Title</th>
                     <th class="sort" onclick="loadMore(0, 'category', this)">Category</th>
@@ -149,6 +150,21 @@ include_once __DIR__ . '/include/addSidebar.php';
         </div>
 
     </section>
+
+    <div id="quick-note">
+        <div id="quick-note-header">
+            <h2>Add Quick Note</h2>
+            <a onclick="closeQuickNote()">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <!--        <div class="loader-small">-->
+        <!--            <i class="fas fa-spin fa-spinner"></i>-->
+        <!--        </div>-->
+        <div id="quick-note-content">
+
+        </div>
+    </div>
 
     <footer id="footer">
 
@@ -296,14 +312,15 @@ include_once __DIR__ . '/include/addSidebar.php';
                             let lastContacted = value.lastContacted === null ? 'Not Contacted' : value.lastContacted;
 
                             html += '<a href="">' +
-                                '<tr onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'" class="table-list-row">' +
-                                '<td>'+ name +'</td>' +
-                                '<td>'+ jobTitle +'</td>' +
-                                '<td>'+ category +'</td>' +
-                                '<td>'+ customer +'</td>' +
-                                '<td>'+ officePhone +'</td>' +
-                                '<td>'+ email +'</td>' +
-                                '<td>'+ lastContacted +'</td>' +
+                                '<tr class="table-list-row">' +
+                                    '<td onclick="quickNote('+value.id+')"><i class="far fa-sticky-note"></i></td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ name +'</td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ jobTitle +'</td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ category +'</td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ customer +'</td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ officePhone +'</td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ email +'</td>' +
+                                    '<td onclick="window.location = \'info.php?case=contact&id='+ value.id +'\'">'+ lastContacted +'</td>' +
                                 '</tr>' +
                                 '</a>';
 
@@ -341,6 +358,101 @@ include_once __DIR__ . '/include/addSidebar.php';
                 }
 
             });
+        }
+
+
+        function quickNote(id){
+            $('#quick-note').animate({right: '0'}, 0, 'swing');
+
+            let content = $('#quick-note-content');
+
+            content.html('');
+
+            content.html('<input id="quick-note-title" type="text" name="contactNoteTitle" placeholder="Note Title">\n' +
+                '            <textarea id="quick-note-text" name="contactNoteContent" placeholder="Note content"></textarea>\n' +
+                '            <input id="quick-note-id" type="hidden" value="'+id+'">' +
+                '            <div id="quick-note-content-footer">\n' +
+                '                <div>\n' +
+                '                    <label for="privateNote">\n' +
+                '                        <i class="fas fa-lock"></i>\n' +
+                '                    </label>\n' +
+                '                    <input id="privateNote" type="checkbox" name="contactNotePrivate" value="private">\n' +
+                '                    <label for="callNote">\n' +
+                '                        <i class="fas fa-phone"></i>\n' +
+                '                    </label>\n' +
+                '                    <input id="callNote" type="checkbox" name="contactNoteCall" value="call">\n' +
+                '                </div>\n' +
+                '                <div>\n' +
+                '                    <button onclick="addQuickNote()" id="add-quick-note" type="button"><i class="fas fa-spin display-none fa-spinner"></i>Add</button>\n' +
+                '                </div>\n' +
+                '            </div>');
+        }
+
+        function closeQuickNote(){
+            $('#quick-note').animate({right: '-350px'}, 0, 'swing');
+            $('#quick-note-content').html('');
+
+        }
+
+        function addQuickNote(){
+
+            let title = $('#quick-note-title').val();
+            let text = $('#quick-note-text').val();
+            let id = $('#quick-note-id').val();
+            let private = document.getElementById("privateNote").checked;
+            let call = document.getElementById("callNote").checked;
+
+            let validation = true;
+
+            if(title === ''){
+                validation = false;
+                $('#quick-note-title').addClass('input-error');
+            }else{
+                $('#quick-note-title').removeClass('input-error');
+            }
+
+            if(text === ''){
+                validation = false;
+                $('#quick-note-text').addClass('input-error');
+            }else{
+                $('#quick-note-text').removeClass('input-error');
+            }
+
+            if(validation === true){
+                $.ajax({
+                    url: "function/note/addNote.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        section: 'contact',
+                        title: title,
+                        text: text,
+                        private: private,
+                        call: call
+                    },
+                    beforeSend: function () {
+                        $('#add-quick-note .fa-spinner').removeClass('display-none');
+                    },
+                    success: function (data) {
+                        $('#add-quick-note .fa-spinner').addClass('display-none');
+                        closeQuickNote();
+
+                        let result = JSON.parse(data);
+
+                        if (result.status === true) {
+                            $('.flash-msg').fadeToggle();
+                            $('.flash-msg').css('border-left', '4px solid #51c399');
+                            $('.flash-msg').html('<i class="far fa-check-circle"></i><span class="saving">Note Added</span>');
+                            $(".flash-msg").delay(2500).fadeToggle();
+                        }else{
+                            $('.flash-msg').fadeToggle();
+                            $('.flash-msg').css('border-left', '4px solid #CF4D4D');
+                            $('.flash-msg').html('<i class="far fa-times-circle"></i><span class="saving">Not saved please refresh your browser</span>');
+                            $(".flash-msg").delay(2500).fadeToggle();
+                        }
+                    },
+                });
+            }
         }
 
         $('#contacts').addClass("link-selected");

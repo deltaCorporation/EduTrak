@@ -1554,9 +1554,13 @@ background-color: white;
 }
 
 .table-list-header tr th{
- min-width: 130px;
- max-width: 250px;
+    min-width: 130px;
+    max-width: 250px;
 }
+
+ .table-list-header tr th:first-of-type{
+     min-width: 20px !important;
+ }
 
 .table-list-header tr th,
 #table-list-content td {
@@ -1581,6 +1585,10 @@ background-color: white;
 .table-list-header tr th:hover{
  background-color: slategrey;
 }
+
+ #table-list-content tr td:first-of-type{
+     min-width: 20px !important;
+ }
 
 #table-list-content td {
     padding: 15px 10px;
@@ -6074,4 +6082,107 @@ font-size: 2vh;
      border: 1px solid #CF4D4D;
      color: #CF4D4D;
      background-color: transparent;
+ }
+
+ /* Quick note */
+
+ #quick-note{
+     z-index: 1000;
+     top: 8vh;
+     right: -350px;
+     height: 90vh;
+     width: 350px;
+     position: fixed;
+     background-color: rgba(255,255,255,1);
+
+     box-shadow:
+             0 16px 24px 2px rgba(0, 0, 0, .14),
+             0 6px 30px 5px rgba(0, 0, 0, .12),
+             0 8px 10px -5px rgba(0, 0, 0, .4);
+ }
+
+ #quick-note-header{
+     background-color: #B04146;
+     display: grid;
+     grid-template-columns: auto 50px;
+     height: 50px;
+     align-items: center;
+ }
+
+ #quick-note-header h2{
+     padding-left: 15px;
+     font-size: 18px;
+     color: rgba(0,0,0,.6);
+ }
+
+ #quick-note-header a{
+     text-align: center;
+ }
+
+ #quick-note-header a i{
+     font-size: 14px;
+     cursor: pointer;
+     color: rgba(0,0,0,.6);
+ }
+
+ #quick-note-content{
+     padding: 20px;
+     display: grid;
+     grid-template-columns: 4fr;
+     grid-row-gap: 10px;
+ }
+
+ #quick-note-content input{
+     border: 1px solid #D7CEC7;
+     color: #565656;
+     border-radius: 3px;
+     padding: 10px;
+ }
+
+ #quick-note-content textarea{
+     border: 1px solid #D7CEC7;
+     color: #565656;
+     border-radius: 3px;
+     padding: 10px;
+     height: 400px;
+     resize: none;
+ }
+
+ #quick-note-content-footer{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+ }
+
+ #quick-note-content-footer div:first-of-type{
+     display: grid;
+     grid-template-columns: 20px 25px 20px 25px;
+     align-items: center;
+ }
+
+ #quick-note-content-footer div:last-of-type{
+     text-align: right;
+ }
+
+ #quick-note-content-footer button{
+     border: none;
+     border-radius: 3px;
+     padding: 5px 10px;
+     background-color: #002D62;
+     cursor: pointer;
+     opacity: .8;
+     color: white;
+ }
+
+ #quick-note-content-footer button i{
+     color: white;
+     margin-right: 5px;
+ }
+
+ .loader-small{
+     text-align: center;
+     padding: 15px;
+ }
+
+ .input-error{
+     border: 1px solid #CF4D4D !important;
  }
