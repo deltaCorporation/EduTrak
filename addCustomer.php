@@ -14,6 +14,7 @@ if(Input::exists()){
 
             $user = new User();
             $customer = new Customer();
+            $log = new ActivityLog();
 
             $id = date('ymdhis');
 
@@ -99,6 +100,18 @@ if(Input::exists()){
                         ));
 
                     }
+
+                $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                $date->setTimezone(new DateTimeZone('UTC'));
+
+                $log->create([
+                    'userID' => $user->data()->id,
+                    'caseName' => 'customer',
+                    'caseID' => $id,
+                    'section' => 'create',
+                    'time' => $date->format('Y-m-d G:i:s'),
+                    'text' => 'created customer.'
+                ]);
 
                     Session::flash('home', 'New Customer has been created!');
                     Redirect::to('customers.php');

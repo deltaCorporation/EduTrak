@@ -2,8 +2,32 @@
 
 	$contact = new Contact($id);
 	$note = new Note();
-
     $inventory = new Inventory();
+
+    $log = new ActivityLog();
+
+    $defaultInfo = '';
+    $defaultNotes = '';
+    $defaultLog = '';
+
+    if(Input::get('tab')){
+        switch (Input::get('tab')){
+            case 'info':
+                $defaultInfo = 'defaultOpen';
+                break;
+            case 'notes':
+                $defaultNotes = 'defaultOpen';
+                break;
+            case 'log':
+                $defaultLog = 'defaultOpen';
+                break;
+            default:
+                $defaultInfo = 'defaultOpen';
+                break;
+        }
+    }else{
+        $defaultInfo = 'defaultOpen';
+    }
 
     $tagOptions = '';
     if($grups = $inventory->getFilterItems('workshopGroups')){
@@ -79,9 +103,9 @@
 
     </div>
 	<div class="contact-header-information contact-tab">
-		<button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){echo 'defaultOpen';}else{echo 'defaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
-  <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $contact->countNotes($contact->data()->id, 'contact')?>)</button>
-  <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-envelope"></i>Email</button>
+        <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php echo $defaultInfo ?>"><i class="fas fa-info"></i>Information</button>
+        <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php echo $defaultNotes ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo  $contact->countNotes($contact->data()->id, 'contact') ?>)</button>
+        <button class="contact-tablinks" onclick="openCity(event, 'contact-activity-log', 'grid')" id="<?php echo $defaultLog ?>"><i class="fas fa-history"></i>Activity Log</button>
 	</div>
 	
 	<form action="updateContact.php" method="post" class="contact-form-information contact-tabcontent" id="contact-information">
@@ -419,53 +443,43 @@
 	 		<button type="submit"><i class="fas fa-plus"></i>Add</button>
 	 	</form>
 	</div>
-	
-	<div id="contact-mails" class="contact-mails contact-tabcontent">
-	 
-	 <div class="contact-mail">
-	 	<div class="contact-mail-box accordion">
-		    <div class="contact-mail-box-icon">
-		        <i class="fas fa-sign-in-alt mail-box-icon-green"></i>
-		    </div>
-		    <div class="contact-mail-box-title">Our meeting on Tuesday </div>
-		    <div class="contact-mail-box-time">04/04/2018</div>
-		
-		
-		</div>
-		<div class="panel">
-			test
-		</div>
-		
-		
-		
-		<div class="contact-mail-box accordion">
-		    <div class="contact-mail-box-icon">
-		        <i class="fas fa-sign-out-alt mail-box-icon-red"></i>
-		    </div>
-		    <div class="contact-mail-box-title">Our meeting next week</div>
-		    <div class="contact-mail-box-time">04/04/2018</div>
-		
-		</div>
-		<div class="panel">
-			test 2
-		</div>
-		
-		
-		
-		<div class="contact-mail-box accordion">
-		    <div class="contact-mail-box-icon">
-		        <i class="fas fa-sign-in-alt mail-box-icon-green"></i>
-		    </div>
-		    <div class="contact-mail-box-title">Presentation</div>
-		    <div class="contact-mail-box-time">04/04/2018</div>
-		
-		</div>
-		<div class="panel">
-			test 3
-		</div>
-		
-			</div>
-	 </div>
+
+    <!-- ACTIVITY LOG TAB START -->
+    <div id="contact-activity-log" class="contact-activity-log contact-tabcontent">
+
+        <div id="activity-log-wrapper">
+
+            <?php foreach ($log->getActivityLogGrouped($contact->data()->id) as $key => $logs) : ?>
+
+                <div class="activity-log-section">
+                    <h3><?php echo $key ?></h3>
+                    <div class="activity-log-content">
+                        <?php foreach ($logs as $log): ?>
+
+                            <?php
+
+                            $date = new DateTime($log['time'], new DateTimeZone('UTC'));
+                            $date->setTimezone(new DateTimeZone('America/New_York'));
+
+                            ?>
+
+                            <div>
+                                <span class="activity-log-time"><?php echo $date->format('g:ia'); ?></span>
+                                <?php echo $log['icon'] ?>
+                                <span class="activity-log-user"><?php echo $log['userName'] ?></span>
+                                <span class="activity-log-text"><?php echo $log['text'] ?></span>
+                            </div>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+    <!-- ACTIVITY LOG TAB END -->
 
 </div>
 

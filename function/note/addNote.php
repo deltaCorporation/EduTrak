@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../core/ini.php';
 
 $user = new User();
 $note = new Note();
+$log = new ActivityLog();
 
 if($user->isLoggedIn()) {
     if (Input::exists('post')) {
@@ -54,6 +55,29 @@ if($user->isLoggedIn()) {
                 'createdOn' => date('m/d/Y'),
                 'contactsID' => Input::get('id')
             ]);
+
+            $date = new DateTime('now', new DateTimeZone('America/New_York'));
+            $date->setTimezone(new DateTimeZone('UTC'));
+
+            $log->create([
+                'userID' => $user->data()->id,
+                'caseName' => Input::get('section'),
+                'caseID' => Input::get('id'),
+                'section' => 'note',
+                'time' => $date->format('Y-m-d G:i:s'),
+                'text' => 'created note.'
+            ]);
+
+            if(Input::get('call') === 'true'){
+                $log->create([
+                    'userID' => $user->data()->id,
+                    'caseName' => Input::get('section'),
+                    'caseID' => Input::get('id'),
+                    'section' => 'call',
+                    'time' => $date->format('Y-m-d G:i:s'),
+                    'text' => 'contacted '.Input::get('section').'.'
+                ]);
+            }
 
             echo json_encode(['status' => true]);
         }catch (Exception $e){

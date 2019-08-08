@@ -181,6 +181,8 @@ if($user->isLoggedIn()){
                     </div>
                     <form class="request-form-information main-request-tabcontent" id="request-information">
 
+                        <input type="hidden" name="requestID" value="<?php echo $requestID ?>">
+
                         <?php foreach ($requests->getRequestWorkshopsByID($request->data()->ID) as $workshop): ?>
 
                             <button type="button" class="request-accordion"><?php echo $workshop->workshopTitle ?></button>
@@ -608,4 +610,6 @@ if($user->isLoggedIn()){
     }else{
         Redirect::to('index.php');
     }
+}else{
+    Redirect::to('index.php');
 }

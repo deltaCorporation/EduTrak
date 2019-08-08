@@ -15,11 +15,11 @@ $client_secret = 'zqkm4eq_B6wFkmHz1s7EJvt7';
 $redirect_uri = 'http://localhost:8888/google/index.php';
 
 $client = new Google_Client();
-$client->setApplicationName("Client_Library_Examples");
 $client->setClientId($client_id);
 $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
 $client->setAccessType('offline');   // Gets us our refreshtoken
+$client->setApprovalPrompt('force');
 
 $client->setScopes(array('https://www.googleapis.com/auth/calendar.readonly'));
 

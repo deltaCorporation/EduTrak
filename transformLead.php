@@ -6,6 +6,7 @@
 	require_once __DIR__ . '/core/ini.php';
 
 	$user = new User();
+	$log = new ActivityLog();
 	
 	if($user->isLoggedIn()){
 		if($id = Input::get('id')){
@@ -25,7 +26,7 @@
 					try{
 
                         $customer->create(array(
-                        'id' => $customerID,
+                            'id' => $customerID,
                             'name' => $lead->data()->company,
                             'category' => $lead->data()->category,
                             'partnerRep' => $lead->data()->partnerRep,
@@ -103,10 +104,21 @@
                             'customerID' => $customerID
                         ), $lead->data()->id);
 				                	
-				        $lead->delete($id);        
-					
-					
-			
+                        $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                        $date->setTimezone(new DateTimeZone('UTC'));
+
+                        $log->create([
+                            'userID' => $user->data()->id,
+                            'caseName' => 'lead',
+                            'caseID' => $id,
+                            'section' => 'transform',
+                            'time' => $date->format('Y-m-d G:i:s'),
+                            'text' => 'converted this lead to a customer.'
+                        ]);
+
+				        $lead->delete($id);
+
+
                         Session::flash('home', 'Lead successfully changed!');
                         Redirect::to('contacts.php');
 			

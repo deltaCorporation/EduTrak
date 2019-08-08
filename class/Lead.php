@@ -178,4 +178,17 @@ class Lead{
         return $this->_db->results();
     }
 
+    public function getFollowUpLeads(){
+        $this->_db->query("
+
+            SELECT ID, company as name, followUpDate, 'lead' as caseName FROM leads 
+            WHERE followUpDate <> NULL OR followUpDate <> ''
+            UNION 
+            SELECT ID, name, followUpDate, 'customer' as caseName FROM customers
+            WHERE followUpDate <> NULL OR followUpDate <> ''
+
+        ", []);
+        return $this->_db->results();
+    }
+
 }

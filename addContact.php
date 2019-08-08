@@ -14,6 +14,7 @@ if(Input::exists()){
             $user = new User();
             $contact = new Contact();
             $customer = new Customer();
+            $log = new ActivityLog();
             
             $customerID = null;
             $id = date('ymdhis');
@@ -64,6 +65,18 @@ if(Input::exists()){
                     'modifiedBy' => '-',
                     'modifiedOn' => '-',
                 ));
+
+                $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                $date->setTimezone(new DateTimeZone('UTC'));
+
+                $log->create([
+                    'userID' => $user->data()->id,
+                    'caseName' => 'contact',
+                    'caseID' => $id,
+                    'section' => 'create',
+                    'time' => $date->format('Y-m-d G:i:s'),
+                    'text' => 'created contact.'
+                ]);
 
                 Session::flash('home', 'New Contact has been created!');
                 Redirect::to('contacts.php');

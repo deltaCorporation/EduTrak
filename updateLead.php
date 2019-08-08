@@ -13,6 +13,7 @@ if(Input::exists()){
 
             $user = new User();
             $lead = new Lead(Input::get('leadId'));
+            $log = new ActivityLog();
 
             $logo = Input::get('logoOLD');
 
@@ -112,7 +113,46 @@ if(Input::exists()){
                             'leadID' => Input::get('leadId')
                         ));
                     }
-;
+                }
+
+                $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                $date->setTimezone(new DateTimeZone('UTC'));
+
+                $log->create([
+                    'userID' => $user->data()->id,
+                    'caseName' => 'lead',
+                    'caseID' => $lead->data()->id,
+                    'section' => 'update',
+                    'time' => $date->format('Y-m-d G:i:s'),
+                    'text' => 'updated lead.'
+                ]);
+
+                if(($lead->data()->assignedTo !== Input::get('assignedTo')) && Input::get('assignedTo') !== ''){
+
+                    $assignedUser = new User(Input::get('assignedTo'));
+
+                    $log->create([
+                        'userID' => $user->data()->id,
+                        'caseName' => 'lead',
+                        'caseID' => $lead->data()->id,
+                        'section' => 'assign',
+                        'time' => $date->format('Y-m-d G:i:s'),
+                        'text' => 'assigned lead to '.$assignedUser->data()->firstName.' '.$assignedUser->data()->lastName
+                    ]);
+                }
+
+                if(($lead->data()->followUpDate !== Input::get('followUpDate')) && Input::get('followUpDate') !== ''){
+
+                    $followUpDate = Input::get('followUpDate');
+
+                    $log->create([
+                        'userID' => $user->data()->id,
+                        'caseName' => 'lead',
+                        'caseID' => $lead->data()->id,
+                        'section' => 'followup',
+                        'time' => $date->format('Y-m-d G:i:s'),
+                        'text' => 'update follow up date to '.date('m/d/y', strtotime($followUpDate)).'.'
+                    ]);
                 }
 
                 Session::flash('home', 'Lead has been updated!');
