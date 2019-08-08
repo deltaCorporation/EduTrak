@@ -14,6 +14,7 @@ if(Input::exists()){
 
             $user = new User();
             $customer = new Customer(Input::get('customerId'));
+            $log = new ActivityLog();
 
             $logo = Input::get('logoOLD');
 
@@ -108,6 +109,32 @@ if(Input::exists()){
                                 'customerID' => Input::get('customerId')
                             ));
                         };
+                    }
+
+                    $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                    $date->setTimezone(new DateTimeZone('UTC'));
+
+                    $log->create([
+                        'userID' => $user->data()->id,
+                        'caseName' => 'customer',
+                        'caseID' => $customer->data()->id,
+                        'section' => 'update',
+                        'time' => $date->format('Y-m-d G:i:s'),
+                        'text' => 'updated customer.'
+                    ]);
+
+                    if(($customer->data()->followUpDate !== Input::get('followUpDate')) && Input::get('followUpDate') !== ''){
+
+                        $followUpDate = Input::get('followUpDate');
+
+                        $log->create([
+                            'userID' => $user->data()->id,
+                            'caseName' => 'customer',
+                            'caseID' => $customer->data()->id,
+                            'section' => 'followup',
+                            'time' => $date->format('Y-m-d G:i:s'),
+                            'text' => 'update follow up date to '.date('m/d/y', strtotime($followUpDate)).'.'
+                        ]);
                     }
 
                     Session::flash('home', 'Customer has been updated!');

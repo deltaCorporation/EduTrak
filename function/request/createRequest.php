@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../core/ini.php';
 
 $user = new User();
 $requests = new Request();
+$log = new ActivityLog();
 
 if($user->isLoggedIn()) {
     if (Input::exists('post')) {
@@ -42,8 +43,20 @@ if($user->isLoggedIn()) {
 
             $id = $customer ? $customer->data()->id : $lead->data()->id;
 
+            $date = new DateTime('now', new DateTimeZone('America/New_York'));
+            $date->setTimezone(new DateTimeZone('UTC'));
+
+            $log->create([
+                'userID' => $user->data()->id,
+                'caseName' => $customer ? 'customer' : 'lead',
+                'caseID' => $id,
+                'section' => 'request',
+                'time' => $date->format('Y-m-d G:i:s'),
+                'text' => 'created request.'
+            ]);
+
             Session::flash('home', 'New request has been created!');
-            Redirect::to('../../info.php?case='.Input::get('case').'&id=' . $id);
+            Redirect::to('../../info.php?case='.Input::get('case').'&id=' . $id .'&tab=request');
 
         }catch (Exception $e){
             die($e->getMessage());

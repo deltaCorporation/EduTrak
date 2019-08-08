@@ -5,6 +5,34 @@
 	$user = new User();
 	$requests = new Request();
 	$inventory = new Inventory();
+	$log = new ActivityLog();
+
+	$defaultInfo = '';
+    $defaultRequest = '';
+	$defaultNotes = '';
+	$defaultLog = '';
+
+	if(Input::get('tab')){
+	    switch (Input::get('tab')){
+            case 'info':
+                $defaultInfo = 'defaultOpen';
+                break;
+            case 'request':
+                $defaultRequest = 'defaultOpen';
+                break;
+            case 'notes':
+                $defaultNotes = 'defaultOpen';
+                break;
+            case 'log':
+                $defaultLog = 'defaultOpen';
+                break;
+            default:
+                $defaultInfo = 'defaultOpen';
+                break;
+        }
+    }else{
+	    $defaultInfo = 'defaultOpen';
+    }
 
 	$tagOptions = '';
 	if($grups = $inventory->getFilterItems('workshopGroups')){
@@ -15,6 +43,7 @@
     }
 
     if($lead->exists()){
+
 
         
     // $prefixes = array('Mr.','Ms.','Mrs.','Fr.','Sr.','Dr.','');
@@ -74,10 +103,10 @@
 	
 	</div>
 	<div class="lead-header-information contact-tab">
-		<button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if(Session::exists('home')){echo 'defaultOpen';}else{echo 'defaultOpen';} ?>"><i class="fas fa-info"></i>Information</button>
-		<button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')"><i class="fas fa-file-alt"></i>Requests</button>
-        <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if(Session::exists('home')){ echo 'defaultOpen';} ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo  $lead->countNotes($lead->data()->id, 'lead') ?>)</button>
-        <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-envelope"></i>Email</button>
+		<button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php echo $defaultInfo ?>"><i class="fas fa-info"></i>Information</button>
+		<button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')" id="<?php echo $defaultRequest ?>"><i class="fas fa-file-alt"></i>Requests</button>
+        <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php echo $defaultNotes ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo  $lead->countNotes($lead->data()->id, 'lead') ?>)</button>
+        <button class="contact-tablinks" onclick="openCity(event, 'contact-activity-log', 'grid')" id="<?php echo $defaultLog ?>"><i class="fas fa-history"></i>Activity Log</button>
 	</div>
 	
 	<form action="updateLead.php" method="post"  enctype="multipart/form-data" class="contact-form-information contact-tabcontent" id="contact-information">
@@ -670,10 +699,43 @@
 	 		<button type="submit"><i class="fas fa-plus"></i>Add</button>
 	 	</form>
 	</div>
-	
-	<div id="contact-mails" class="contact-mails contact-tabcontent">
-	  <h3>Mails</h3>
+
+    <!-- ACTIVITY LOG TAB START -->
+	<div id="contact-activity-log" class="contact-activity-log contact-tabcontent">
+
+        <div id="activity-log-wrapper">
+
+            <?php foreach ($log->getActivityLogGrouped($lead->data()->id) as $key => $logs) : ?>
+
+            <div class="activity-log-section">
+                <h3><?php echo $key ?></h3>
+                <div class="activity-log-content">
+                    <?php foreach ($logs as $log): ?>
+
+                        <?php
+
+                            $date = new DateTime($log['time'], new DateTimeZone('UTC'));
+                            $date->setTimezone(new DateTimeZone('America/New_York'));
+
+                        ?>
+
+                        <div>
+                            <span class="activity-log-time"><?php echo $date->format('g:ia'); ?></span>
+                            <?php echo $log['icon'] ?>
+                            <span class="activity-log-user"><?php echo $log['userName'] ?></span>
+                            <span class="activity-log-text"><?php echo $log['text'] ?></span>
+                        </div>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
 	</div>
+    <!-- ACTIVITY LOG TAB END -->
 </div>
 
 <div class="remodal" data-remodal-id="delete">

@@ -3,10 +3,8 @@
  * Require ini file with settings
  */
 
-
-
-
 require_once __DIR__ . '/core/ini.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 $user = new User();
 
@@ -16,23 +14,34 @@ if($user->isLoggedIn()){
 
         $eventCRM = new Event();
         $customer = new Customer();
+        $log = new ActivityLog();
 
-        require_once __DIR__ . '/google/vendor/autoload.php';
+        $client_id = '79089015940-tgbv8mgfkf0vahefgo35r0hevlflig3g.apps.googleusercontent.com';
+        $client_secret = 'zqkm4eq_B6wFkmHz1s7EJvt7';
+        $redirect_uri = 'http://localhost:8888/EduTrak/index.php';
 
         $client = new Google_Client();
-        $client->setAuthConfig('client_secret.json');
-        $client->addScope(Google_Service_Calendar::CALENDAR);
+        $client->setClientId($client_id);
+        $client->setClientSecret($client_secret);
+        $client->setRedirectUri($redirect_uri);
+        $client->setAccessType('offline');   // Gets us our refreshtoken
+        $client->setApprovalPrompt('force');
 
-        if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+        $client->setScopes(array('https://www.googleapis.com/auth/calendar'));
+
+        if(!isset($_SESSION['token'])){
+            $client->revokeToken();
+        }
+
+        if (isset($_SESSION['token'])) {
+
+            $client->setAccessToken($_SESSION['token']);
 
             foreach($customer->getCustomers() as $item){
                 if(Input::get('customer') == $item->name){
                     $customerID = $item->id;
                 }
             }
-
-
-            $client->setAccessToken($_SESSION['access_token']);
 
             $optParams = array();
 
@@ -87,10 +96,6 @@ if($user->isLoggedIn()){
 
                     }
 
-
-
-
-
                     $ntf = new Notification();
 
                     $users = new User();
@@ -106,6 +111,18 @@ if($user->isLoggedIn()){
                             ));
                         }
                     }
+
+                    $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                    $date->setTimezone(new DateTimeZone('UTC'));
+
+                    $log->create([
+                        'userID' => $user->data()->id,
+                        'caseName' => 'customer',
+                        'caseID' => $customerID,
+                        'section' => 'event',
+                        'time' => $date->format('Y-m-d G:i:s'),
+                        'text' => 'created new event for this customer.'
+                    ]);
 
                     Session::flash('home', 'New Event has been created!');
                     Redirect::to('info.php?case=customer&id='.$customerID.'&tab=event');

@@ -8,6 +8,38 @@ $proposal = new ProposalAndQuotes();
 $quotes = new ProposalAndQuotes();
 $users = new User();
 $requests = new Request();
+$log = new ActivityLog();
+
+$defaultInfo = '';
+$defaultRequest = '';
+$defaultNotes = '';
+$defaultEvent = '';
+$defaultLog = '';
+
+if(Input::get('tab')){
+    switch (Input::get('tab')){
+        case 'info':
+            $defaultInfo = 'defaultOpen';
+            break;
+        case 'request':
+            $defaultRequest = 'defaultOpen';
+            break;
+        case 'notes':
+            $defaultNotes = 'defaultOpen';
+            break;
+        case 'log':
+            $defaultLog = 'defaultOpen';
+            break;
+        case 'event':
+            $defaultEvent = 'defaultOpen';
+            break;
+        default:
+            $defaultInfo = 'defaultOpen';
+            break;
+    }
+}else{
+    $defaultInfo = 'defaultOpen';
+}
 
 $tagOptions = '';
 if($grups = $inventory->getFilterItems('workshopGroups')){
@@ -129,11 +161,11 @@ if ($customer->exists()) {
 
         </div>
         <div class="customer-header-information contact-tab">
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php if (!isset($_GET['tab'])) echo 'defaultOpen' ?>"><i class="fas fa-info"></i>Information</button>
-            <button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')"><i class="fas fa-file-alt"></i>Requests</button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php if ($_GET['tab'] === 'note') echo 'defaultOpen' ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)</button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-mails', 'grid')"><i class="fas fa-poll-h"></i>Censeo</button>
-            <button class="contact-tablinks" onclick="openCity(event, 'contact-event')" id="<?php if ($_GET['tab'] == 'event') echo 'defaultOpen' ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-information', 'block')" id="<?php echo $defaultInfo ?>"><i class="fas fa-info"></i>Information</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'lead-requests', 'grid')" id="<?php echo $defaultRequest ?>""><i class="fas fa-file-alt"></i>Requests</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-notes', 'grid')" id="<?php echo $defaultNotes ?>"><i class="fas fa-sticky-note"></i>Notes (<?php echo $customer->countNotes($customer->data()->id, 'customer'); ?>)</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-event')" id="<?php echo $defaultEvent ?>"><i class="fas fa-calendar"></i>Event (<?php echo $customer->countEvent($customer->data()->id); ?>)</button>
+            <button class="contact-tablinks" onclick="openCity(event, 'contact-activity-log')" id="<?php echo $defaultLog ?>"><i class="fas fa-history"></i>Activity Log</button>
         </div>
 
         <form action="updateCustomer.php" method="post" enctype="multipart/form-data" class="contact-form-information contact-tabcontent"
@@ -484,6 +516,12 @@ if ($customer->exists()) {
 	 				<img src='view/img/profile/" . $noteUser->data()->img . "'>
 	 				<h4>" . $noteUser->data()->firstName . " " . $noteUser->data()->lastName . "</h4>";
 
+                                if ($note->type == 'call') {
+                                    echo "<div><i class='fas fa-phone'></i></div>";
+                                } else {
+                                    echo "<div></div>";
+                                }
+
                                 if ($note->visibility == 'private') {
                                     echo "<div><i class='fas fa-lock'></i></div>";
                                 } else {
@@ -550,6 +588,12 @@ if ($customer->exists()) {
 	 			<div class='contact-notes-note-header'>
 	 				<img src='view/img/profile/" . $noteUser->data()->img . "'>
 	 				<h4>" . $noteUser->data()->firstName . " " . $noteUser->data()->lastName . "</h4>";
+
+                                if ($note->type == 'call') {
+                                    echo "<div><i class='fas fa-phone'></i></div>";
+                                } else {
+                                    echo "<div></div>";
+                                }
 
                                 if ($note->visibility == 'private') {
                                     echo "<div><i class='fas fa-lock'></i></div>";
@@ -631,17 +675,29 @@ if ($customer->exists()) {
 
 
                 </div>
+                <div class="contact-notes-add-call">
+                    <label for="callNote">
+                        <i class="fas fa-phone"></i>
+                    </label>
+
+                    <?php
+
+                    if($user->hasPermission('user')){
+                        echo "<input id='callNote' type='checkbox' style='cursor: not-allowed' disabled name='contactNoteCall' value='call'>";
+                    }else{
+                        echo "<input id='callNote' type='checkbox' name='contactNoteCall' value='call'>";
+                    }
+
+                    ?>
+
+
+                </div>
                 <textarea class="contact-notes-add-content" name="contactNoteContent"
                           placeholder="Note content"></textarea>
                 <input type="hidden" name="id" value="<?php echo $id ?>">
                 <input type="hidden" name="case" value="<?php echo $case ?>">
                 <button type="submit"><i class="fas fa-plus"></i>Add</button>
             </form>
-        </div>
-
-        <div id="contact-mails" class="contact-mails contact-tabcontent">
-            <h3>Censeo</h3>
-
         </div>
 
         <div id="contact-event" class="contact-event contact-tabcontent">
@@ -729,7 +785,45 @@ if ($customer->exists()) {
                     </div>
 
                 <?php endif; ?>
+            </div>
+        </div>
 
+        <!-- ACTIVITY LOG TAB START -->
+        <div id="contact-activity-log" class="contact-activity-log contact-tabcontent">
+
+            <div id="activity-log-wrapper">
+
+                <?php foreach ($log->getActivityLogGrouped($customer->data()->id) as $key => $logs) : ?>
+
+                    <div class="activity-log-section">
+                        <h3><?php echo $key ?></h3>
+                        <div class="activity-log-content">
+                            <?php foreach ($logs as $log): ?>
+
+                                <?php
+
+                                $date = new DateTime($log['time'], new DateTimeZone('UTC'));
+                                $date->setTimezone(new DateTimeZone('America/New_York'));
+
+                                ?>
+
+                                <div>
+                                    <span class="activity-log-time"><?php echo $date->format('g:ia'); ?></span>
+                                    <?php echo $log['icon'] ?>
+                                    <span class="activity-log-user"><?php echo $log['userName'] ?></span>
+                                    <span class="activity-log-text"><?php echo $log['text'] ?></span>
+                                </div>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                <?php endforeach; ?>
+
+            </div>
+
+        </div>
+        <!-- ACTIVITY LOG TAB END -->
 
     </div>
 

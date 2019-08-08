@@ -14,6 +14,7 @@ if(Input::exists()){
 
             $user = new User();
             $lead = new Lead();
+            $log = new ActivityLog();
             
             $id = date('ymdhis');
 
@@ -118,6 +119,18 @@ if(Input::exists()){
                 	));
                 	
                 }
+
+                $date = new DateTime('now', new DateTimeZone('America/New_York'));
+                $date->setTimezone(new DateTimeZone('UTC'));
+
+                $log->create([
+                    'userID' => $user->data()->id,
+                    'caseName' => 'lead',
+                    'caseID' => $id,
+                    'section' => 'create',
+                    'time' => $date->format('Y-m-d G:i:s'),
+                    'text' => 'created lead.'
+                ]);
 
                 Session::flash('home', 'New lead has been created!');
                 Redirect::to('leads.php');

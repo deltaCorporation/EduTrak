@@ -13,7 +13,7 @@ if(Input::exists()){
 
         $user = new User();
         $note = new Note();
-        
+        $log = new ActivityLog();
 
         if(Input::get('contactNotePrivate')){
             $visibility = 'private';
@@ -24,7 +24,7 @@ if(Input::exists()){
         if(Input::get('case') == 'employee')
             $redirectLink = 'profile.php?id='.Input::get('id').'';
         else
-            $redirectLink = 'info.php?case='.Input::get('case').'&id='.Input::get('id').'';
+            $redirectLink = 'info.php?case='.Input::get('case').'&id='.Input::get('id').'&tab=notes';
 
 	if(Input::get('contactNoteProtected')){
             $visibility = 'protected';
@@ -65,11 +65,31 @@ if(Input::exists()){
                 'createdOn' => date('m/d/Y'),
                 'contactsID' => Input::get('id'),
             ));
-            
-          
+
+            $date = new DateTime('now', new DateTimeZone('America/New_York'));
+            $date->setTimezone(new DateTimeZone('UTC'));
+
+            $log->create([
+                'userID' => $user->data()->id,
+                'caseName' => Input::get('case'),
+                'caseID' => Input::get('id'),
+                'section' => 'note',
+                'time' => $date->format('Y-m-d G:i:s'),
+                'text' => 'created note.'
+            ]);
+
+            if(Input::get('contactNoteCall')){
+                $log->create([
+                    'userID' => $user->data()->id,
+                    'caseName' => Input::get('case'),
+                    'caseID' => Input::get('id'),
+                    'section' => 'call',
+                    'time' => $date->format('Y-m-d G:i:s'),
+                    'text' => 'contacted '.Input::get('case')
+                ]);
+            }
 
             Session::flash('home', 'New Note has been added!');
-            Session::flash('note', 'defaultOpen');
 
             Redirect::to($redirectLink);
 
