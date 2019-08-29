@@ -23,10 +23,6 @@ $client->setApprovalPrompt('force');
 
 $client->setScopes(array('https://www.googleapis.com/auth/calendar.readonly'));
 
-$client->aut
-
-var_dump($client->getAccessToken());
-
 $user = new User();
 $calendar = new Calendar();
 $inventory = new Inventory();

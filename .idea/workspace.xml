@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ea17e74-43b7-421e-ab1e-c2b9a64b7b1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/function/request/addWorkshop.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/function/request/changeAssignTo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/function/request/deleteNote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/function/request/editNote.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/function/request/getNotes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/function/request/saveTitle.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/board/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e453caa-3af9-415a-8621-2175c19a67a9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0e453caa-3af9-415a-8621-2175c19a67a9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Inventory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Lead.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Lead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Note.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Note.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/createRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/createRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/deleteRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/deleteRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/saveProposal.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveProposal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/saveQuote.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveQuote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/saveRequestWorkshop.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveRequestWorkshop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function/request/updateStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/updateStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generateProposal.php" beforeDir="false" afterPath="$PROJECT_DIR$/generateProposal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generateQuote.php" beforeDir="false" afterPath="$PROJECT_DIR$/generateQuote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/scripts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/item.php" beforeDir="false" afterPath="$PROJECT_DIR$/item.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead.php" beforeDir="false" afterPath="$PROJECT_DIR$/lead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transformLead.php" beforeDir="false" afterPath="$PROJECT_DIR$/transformLead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/css/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/google/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/google/vendor/firebase/php-jwt/" />
@@ -193,8 +160,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/calendar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+            <state relative-caret-position="340">
+              <caret line="23" column="79" selection-start-line="23" selection-start-column="79" selection-end-line="23" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -487,12 +454,12 @@
       <workItem from="1566935184147" duration="19375000" />
       <workItem from="1567008186426" duration="4756000" />
       <workItem from="1567027927140" duration="3165000" />
-      <workItem from="1567063744381" duration="2279000" />
+      <workItem from="1567063744381" duration="2658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="305541000" />
+    <option name="totallyTimeSpent" value="305920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -885,8 +852,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calendar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        <state relative-caret-position="340">
+          <caret line="23" column="79" selection-start-line="23" selection-start-column="79" selection-end-line="23" selection-end-column="79" />
         </state>
       </provider>
     </entry>
