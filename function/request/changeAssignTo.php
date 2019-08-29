@@ -7,15 +7,14 @@ $requests = new Request(Input::get('requestID'));
 $log = new ActivityLog();
 
 if($user->isLoggedIn()) {
-    if (Input::exists()) {
+    if (Input::exists('post')) {
+
+        $assign = new User(Input::get('assignedTo'));
 
         try{
 
             $requests->update([
-                'proposalTitle' => Input::get('proposalTitle'),
-                'proposalIntroduction' => Input::get('proposalIntroduction'),
-                'proposalRequiredInvestment' => Input::get('proposalRequiredInvestment'),
-                'presentedBy' => Input::get('proposalPresentedBy')
+                'assignedTo' => Input::get('assignedTo')
             ], Input::get('requestID'));
 
             $date = new DateTime('now', new DateTimeZone('America/New_York'));
@@ -25,14 +24,15 @@ if($user->isLoggedIn()) {
                 'userID' => $user->data()->id,
                 'caseName' => $requests->data()->customerID ? 'customer' : 'lead',
                 'caseID' => $requests->data()->customerID ? $requests->data()->customerID : $requests->data()->leadID,
-                'section' => 'proposal',
+                'section' => 'assign',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'updated proposal for request '.$requests->data()->title.'.'
+                'text' => 'assign request '.$requests->data()->title.' to '.$assign->data()->firstName .' '. $assign->data()->lastName .'.'
             ]);
-
         }catch (Exception $e){
             die($e->getMessage());
         }
+
+        echo json_encode(['status' => true]);
 
     }
 }

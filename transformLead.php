@@ -90,7 +90,7 @@
                             'modifiedOn' => '-',
                         ));
 
-                        foreach ($requests->getLeadRequestsByID($lead->data()->id) as $request){
+                        foreach ($requests->getLoadRequestsByID($lead->data()->id) as $request){
 
                             $requests->update([
                                 'leadID' => null,

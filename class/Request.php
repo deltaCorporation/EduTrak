@@ -53,10 +53,10 @@ class Request{
                 SELECT 
                     requests.*, 
                     CONCAT(users.firstName,' ', users.lastName) as createdBy,
-                    requeststatus.name as statusName ,
-                    requeststatus.colorClass
+                    request_status.name as statusName ,
+                    request_status.colorClass
                 FROM requests 
-                JOIN requeststatus ON statusID = requeststatus.ID
+                JOIN request_status ON statusID = request_status.ID
                 JOIN users ON createdBy = users.id
                 WHERE requests.ID = {$request}
                 
@@ -79,24 +79,36 @@ class Request{
         return $this->_data;
     }
 
+    public function deactivateRequests($caseID, $case){
+
+        if($case === 'lead'){
+            $sql = "UPDATE requests SET deleted = 1 WHERE leadID = {$caseID}";
+        }else{
+            $sql = "UPDATE requests SET deleted = 1 WHERE customerID = {$caseID}";
+        }
+
+        if(!$this->_db->query($sql)){
+            throw new Exception('There was a problem deactivating requests.');
+        }
+    }
 
     public function getRequests(){
-        $this->_requests = $this->_db->query('SELECT requests.*, requeststatus.colorClass FROM requests JOIN requeststatus ON requests.statusID = requeststatus.ID ORDER BY ID', array());
+        $this->_requests = $this->_db->query('SELECT requests.*, request_status.colorClass FROM requests JOIN request_status ON requests.statusID = request_status.ID WHERE requests.deleted <> 1 ORDER BY ID', array());
         return $this->_db->results();
     }
 
-    public function getLeadRequestsByID($leadID){
-        $this->_requests = $this->_db->query("SELECT requests.*, requeststatus.colorClass FROM requests JOIN requeststatus ON requests.statusID = requeststatus.ID WHERE requests.leadID = {$leadID} ORDER BY ID", array());
+    public function getLoadRequestsByID($leadID){
+        $this->_requests = $this->_db->query("SELECT requests.*, request_status.colorClass FROM requests JOIN request_status ON requests.statusID = request_status.ID WHERE requests.leadID = {$leadID} AND requests.deleted <> 1 ORDER BY ID", array());
         return $this->_db->results();
     }
 
     public function getCustomerRequestsByID($customerID){
-        $this->_requests = $this->_db->query("SELECT requests.*, requeststatus.colorClass FROM requests JOIN requeststatus ON requests.statusID = requeststatus.ID WHERE requests.customerID = {$customerID} ORDER BY ID", array());
+        $this->_requests = $this->_db->query("SELECT requests.*, request_status.colorClass FROM requests JOIN request_status ON requests.statusID = request_status.ID WHERE requests.customerID = {$customerID} AND requests.deleted <> 1 ORDER BY ID", array());
         return $this->_db->results();
     }
 
     public function getStatuses(){
-        $this->_requests = $this->_db->query('SELECT * FROM requeststatus ORDER BY ID', array());
+        $this->_requests = $this->_db->query('SELECT * FROM request_status ORDER BY ID', array());
         return $this->_db->results();
     }
 
@@ -106,7 +118,7 @@ class Request{
     }
 
     public function getStatusByID($statusID){
-        $this->_requests = $this->_db->query("SELECT * FROM requeststatus WHERE ID = {$statusID}", array());
+        $this->_requests = $this->_db->query("SELECT * FROM request_status WHERE ID = {$statusID}", array());
         return $this->_db->first();
     }
 }

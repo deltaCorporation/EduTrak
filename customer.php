@@ -57,26 +57,24 @@ if ($customer->exists()) {
 
 <div class="overlay"></div>
 
-<div id="request-modal">
-    <div class="request-popup-header">
-        <h2>Create Request</h2>
-        <div>
-            <button class="request-popup-close"></button>
+    <!-- REQUEST MODAL START -->
+    <div id="request-modal">
+        <div class="request-popup-header">
+            <h2>Create Request</h2>
+            <div>
+                <button class="request-popup-close"></button>
+            </div>
         </div>
+        <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
+            <label for="request-title">Request Title</label>
+            <input required id="request-title" type="text" name="title">
+
+            <div class="request-popup-footer">
+                <button type="submit">Create</button>
+            </div>
+        </form>
     </div>
-    <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
-
-        <!-- Tab links -->
-        <div class="request-tab">
-            <button id="add-new-request-tab" type="button" class="request-tablinks" onclick="addRequestTab(this)">add workshop</button>
-        </div>
-
-        <div class="quote-popup-footer">
-            <button type="submit">Create</button>
-        </div>
-    </form>
-</div>
-
+    <!-- REQUEST MODAL END -->
     <div class="contact-information">
         <div class="contact-sidebar-information">
 
@@ -454,7 +452,7 @@ if ($customer->exists()) {
                 </div>
                 <div class="request-table-header">
                     <div>ID</div>
-                    <div>Workshop Titles</div>
+                    <div>Request Title</div>
                     <div>Status</div>
                     <div>Date</div>
                     <div></div>
@@ -465,11 +463,7 @@ if ($customer->exists()) {
                     <div class="request-table-row">
                         <div><?php echo $request->ID ?></div>
                         <div>
-                            <ul>
-                                <?php foreach ($requests->getRequestWorkshopsByID($request->ID) as $workshop): ?>
-                                    <li><?php echo $workshop->workshopTitle ?></li>
-                                <?php endforeach; ?>
-                            </ul>
+                            <?php echo $request->title ?>
                         </div>
                         <div>
                             <select onchange="updateStatus(this, '<?php echo $request->ID ?>')" class="request-status <?php echo $request->colorClass ?>">
@@ -869,6 +863,7 @@ if ($customer->exists()) {
         $('.overlay').on('click', function () {
             $('#quote-modal').hide();
             $('#proposal-modal').hide();
+            $('#request-modal').hide();
             $('.overlay').hide();
         });
 
@@ -879,7 +874,7 @@ if ($customer->exists()) {
             let statusID = select.value;
 
             $.ajax({
-                method: "GET",
+                method: "POST",
                 url: "function/request/updateStatus.php",
                 data: {
                     statusID: statusID,

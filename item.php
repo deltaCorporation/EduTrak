@@ -376,7 +376,7 @@ include_once __DIR__ . '/include/addSidebar.php';
          <div class="add-window-form-section-row">
             <div class="add-window-form-section-cell ">
                 <label class="inventory-item-label">Time (hours)</label>
-                <input class="inventory-item-input " type="number" name="timeH" value="<?php echo $inventory->data()->time ?>">
+                <input class="inventory-item-input " type="text" name="timeH" value="<?php echo $inventory->data()->time ?>">
             </div>
          </div>
 

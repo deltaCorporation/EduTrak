@@ -16,8 +16,8 @@ if(Input::get('id')){
         $client = new Customer($request->data()->customerID);
     }
 
-    if($request->data()->presentedBy){
-        $user = new User((int)$request->data()->presentedBy);
+    if($request->data()->requisitioner){
+        $user = new User((int)$request->data()->requisitioner);
     }
 
     $clientName = Input::get('case') === 'lead' ? $client->data()->company : $client->data()->name;
@@ -36,12 +36,26 @@ if(Input::get('id')){
     $html = '
 
     <style media="print">
+        h1{
+            color: grey;
+            font-family: Arial, sans-serif;
+            font-size: 17pt;
+        }
         h3{
             font-family: Arial, sans-serif;
             font-size: 12pt;
         }
-       header{
+        p{
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+        }
+       .header{
+            border: none !important;
             height: 50px;
+       }
+       .header tr,
+       .header tr td{
+            border: none;
        }
        .address-1{
             margin-top: 20px;
@@ -85,7 +99,7 @@ if(Input::get('id')){
             font-size: 9pt;
        }
        footer{
-            margin-top: 20px;
+            margin-top: 0;
             width: 33%;
             border: 1px solid black;
             font-family: Arial, sans-serif;
@@ -103,10 +117,12 @@ if(Input::get('id')){
        }
         
     </style>   
-
-    <header>
-        <img width="33%" src="view/img/Eduscape.png">
-    </header>
+    <table class="header" cellspacing="0" cellpadding="0">
+        <tr>
+            <td><img width="33%" src="view/img/Eduscape.png"></td>
+            <td align="right"><h1>QUOTE</h1></td>
+        </tr>
+    </table>
     <section class="content">
         <div class="address-1">
             <div>28 West Grand Avenue, Suite 5</div>
@@ -120,7 +136,6 @@ if(Input::get('id')){
             <div>'.$client->data()->city.'</div>
             <div>'.$client->data()->state.' '.$client->data()->zip.'</div>
         </div>
-        <h3>'.$request->data()->quoteTitle.'</h3>
         <table cellspacing="0">
             <tr class="table-header">
                 <td>Date</td>
@@ -169,6 +184,7 @@ if(Input::get('id')){
             </tr>
         </table>
     </section>
+    <p>Quote valid for 30 days</p>
     <footer>
         <div class="yellow">Please make purchase order to:</div>
         <div class="yellow">Eduscape Partners LLC</div>

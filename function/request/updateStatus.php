@@ -7,7 +7,7 @@ $requests = new Request(Input::get('requestID'));
 $log = new ActivityLog();
 
 if($user->isLoggedIn()) {
-    if (Input::exists('get')) {
+    if (Input::exists('post')) {
 
         try{
 
@@ -26,7 +26,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $requests->data()->customerID ? $requests->data()->customerID : $requests->data()->leadID,
                 'section' => 'status',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'changed request ['.$requests->data()->ID.'] status on '.$status->name.'.'
+                'text' => 'changed request '.$requests->data()->title.' status on '.$status->name.'.'
             ]);
         }catch (Exception $e){
             die($e->getMessage());

@@ -12,7 +12,7 @@ if($user->isLoggedIn()) {
         try{
 
             $requests->update([
-                'quoteTitle' => Input::get('quoteTitle'),
+                'requisitioner' => Input::get('requisitioner'),
             ], Input::get('requestID'));
 
             $date = new DateTime('now', new DateTimeZone('America/New_York'));
@@ -24,7 +24,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $requests->data()->customerID ? $requests->data()->customerID : $requests->data()->leadID,
                 'section' => 'quote',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'updated quote for request - '.$requests->data()->ID.'.'
+                'text' => 'updated quote for request '.$requests->data()->titlr.'.'
             ]);
 
         }catch (Exception $e){

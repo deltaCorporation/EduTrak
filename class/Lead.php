@@ -91,6 +91,8 @@ class Lead{
 
                 $offset = $page * $this->_listNo;
 
+                $sql .= "WHERE deleted <> 1 ";
+
                 if($filters){
 
                     $sql .= "HAVING ";
@@ -185,6 +187,9 @@ class Lead{
             WHERE followUpDate <> NULL OR followUpDate <> ''
             UNION 
             SELECT ID, name, followUpDate, 'customer' as caseName FROM customers
+            WHERE followUpDate <> NULL OR followUpDate <> ''
+            UNION 
+            SELECT ID, CONCAT(firstName, ' ', lastName) as name, followUpDate, 'contact' as caseName FROM contacts
             WHERE followUpDate <> NULL OR followUpDate <> ''
 
         ", []);

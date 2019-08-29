@@ -125,9 +125,14 @@ class User{
         return $this->_db->results();
     }
 
+    public function getSalesUsers(){
+        $this->_usersWithPermission = $this->_db->query("SELECT u.ID, u.firstName, u.lastName, ug.groupID, g.name FROM users u JOIN user_groups ug ON u.id = ug.userID JOIN groups g ON ug.groupID = g.id WHERE g.name = 'sales'", array());
+        return $this->_db->results();
+    }
+
     public function getUserTravelInfo($userID){
         $this->_db->query('SELECT * FROM travel_info WHERE userID = '.$userID, array());
-        return$this->_db->results();
+        return $this->_db->results();
     }
 
     public function updateUserTravelInfo($fields = array(), $id = null){
@@ -200,7 +205,6 @@ class User{
     }
 
     public function logOut(){
-
         $this->_db->delete('users_session', array('user_id', '=', $this->data()->id));
 
         Cookie::delete($this->_cookieName);
@@ -219,5 +223,18 @@ class User{
         return $this->_isLoggedIn;
     }
 
+    public function getKanbanColumns($section){
+        $this->_db->query("SELECT * FROM request_status WHERE section = '{$section}'", array());
+        return $this->_db->results();
+    }
 
+    public function getKanbanRequests($statusID, $userID){
+        $this->_db->query("SELECT r.*, l.company as leadCompany, c.name as customerCompany FROM requests r LEFT JOIN leads l ON r.leadID = l.id LEFT JOIN customers c ON c.id = r.customerID WHERE r.assignedTo = {$userID} AND r.statusID = {$statusID} AND r.deleted <> 1 ORDER BY r.ID DESC", array());
+        return $this->_db->results();
+    }
+
+    public function getAllCompanies(){
+        $this->_db->query("SELECT ID, company AS name, 'lead' as caseName FROM leads UNION SELECT ID, name, 'customer' as caseName FROM customers");
+        return $this->_db->results();
+    }
 }

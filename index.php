@@ -12,7 +12,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // ********************************************************    //
 $client_id = '79089015940-4c5ahkbrnu9m81fsibtli29ltmiisrrc.apps.googleusercontent.com';
 $client_secret = 'JrQJuDAfIqVuGoCECt7zqhZN';
-$redirect_uri = 'http://localhost:8888/EduTrak/index.php';
+$redirect_uri = 'https://crm.elevationlearningllc.com/index.php';
 
 $client = new Google_Client();
 $client->setClientId($client_id);
@@ -24,7 +24,6 @@ $client->setApprovalPrompt('force');
 $client->setScopes(array('https://www.googleapis.com/auth/calendar'));
 
 if (isset($_GET['code'])) {
-
     $client->authenticate($_GET['code']);
     $_SESSION['token'] = $client->getAccessToken();
     $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
@@ -70,6 +69,9 @@ if($user->isLoggedIn()){
         <script src="view/js/jQuery.tagify.min.js"></script>
         <script src="view/js/tagify.js"></script>
         <script src="view/js/remodal.js"></script>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
     </head>
     <body>
@@ -130,8 +132,7 @@ if($user->isLoggedIn()){
 include_once __DIR__ . '/include/addSidebar.php';
 
 ?>
-
-    <section id="index-board">
+    <div id="board-wrapper">
 
         <!-- DASHBOARD HEADER START -->
         <div id="index-board-header" class="index-board-block block-1">
@@ -141,100 +142,187 @@ include_once __DIR__ . '/include/addSidebar.php';
                 <span><?php echo date("F j"); ?></span>
                 <span><?php echo date("S"); ?></span>
             </div>
+            <ul>
+                <li>
+                    <button data-link="main" type="button" onclick="changeDashboard('main', this)"><i class="fas fa-th-list"></i></button>
+                </li>
+                <?php if($user->hasPermission('sales')): ?>
+                    <li>
+                        <button data-link="kanban" type="button" onclick="changeDashboard('kanban', this)"><i class="fab fa-trello"></i></button>
+                    </li>
+                <?php endif; ?>
+            </ul>
         </div>
         <!-- DASHBOARD HEADER END -->
 
-        <!-- DASHBOARD ACTIVITY LOG START -->
-        <div id="index-board-log" class="index-board-block block-3">
-            <h3>
-                <div></div>
-                <div>Activity Log</div>
-            </h3>
-            <div id="index-board-log-content">
-                <?php if($boardLogs = $log->getBoardActivityLog()): ?>
-                    <?php foreach ($boardLogs as $key => $logs) : ?>
+        <section data-type="kanban" id="kanban-board" class="board">
 
-                        <div class="activity-log-section-board">
-                            <h3><?php echo $key ?></h3>
-                            <div class="activity-log-content-board">
-                                <?php foreach ($logs as $log): ?>
+            <?php foreach ($user->getKanbanColumns($user->data()->section) as $column): ?>
 
-                                    <?php
-
-                                    $date = new DateTime($log['time'], new DateTimeZone('UTC'));
-                                    $date->setTimezone(new DateTimeZone('America/New_York'));
-
-                                    ?>
-
-                                    <a href="info.php?case=<?php echo $log['case'] ?>&id=<?php echo $log['caseID'] ?>" class="activity-log-board">
-                                        <span><?php echo $date->format('g:ia'); ?></span>
-                                        <span style="background-color: #<?php echo $log['case'] === 'lead' ? '3e4a6e' : ($log['case'] === 'customer' ? 'e29a46' : '8ba65c') ?>"><?php echo $log['case'] ?></span>
-                                        <span><?php echo $log['icon'] ?></span>
-                                        <span><?php echo $log['userName'] ?></span>
-                                        <span><?php echo $log['text'] ?></span>
-                                        <span><?php echo $log['name'] ?></span>
-                                    </a>
-
-                                <?php endforeach; ?>
+            <section data-id="<?php echo $column->ID ?>" data-kanban="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h4 data-kanban="header"><?php echo $column->name ?></h4>
+                <button class="kanban-new-request" data-kanban="new-request" data-request-status="<?php echo $column->ID ?>">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <?php foreach ($user->getKanbanRequests($column->ID, $user->data()->id) as $item): ?>
+                    <div id="<?php echo $item->ID ?>" data-kanban="item" draggable="true" ondragstart="drag(event)">
+                        <a href="request.php?case=<?php echo $item->leadID ? 'lead' : 'customer' ?>&id=<?php echo $item->ID ?>">
+                            <div data-kanban="item-header" ><?php echo $item->title ?></div>
+                            <div data-kanban="item-footer" >
+                                <span><?php echo $item->leadCompany ? $item->leadCompany : $item->customerCompany ?></span>
+                                <span><?php echo $item->leadCompany ? '<i class="far fa-dot-circle"></i>' : '<i class="fas fa-dollar-sign"></i>' ?></span>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="dashboard-no-results">
-                        <span>No logs</span>
+                        </a>
                     </div>
-                <?php endif; ?>
-            </div>
-        </div>
-        <!-- DASHBOARD ACTIVITY LOG END -->
+                <?php endforeach; ?>
+            </section>
 
-        <!-- DASHBOARD FOLLOW UP START -->
-        <div id="index-board-followUp" class="index-board-block block-5">
-            <h3>
-                <div></div>
-                <div>Follow Up Companies/Schools</div>
-            </h3>
-            <div id="index-board-followUp-content">
-                <?php if($companies = $leads->getFollowUpLeads()): ?>
-                <?php $i = 0; ?>
-                    <?php foreach ($companies as $company): ?>
-                        <?php if($company->followUpDate > date('Y-m-d')): ?>
-                            <a href='info.php?case=lead&id=<?php echo $company->ID ?>' class='index-board-followUp-item'>
-                                <span style="background-color: #<?php echo $company->caseName === 'lead' ? '3e4a6e' : 'e29a46' ?>"><?php echo $company->caseName ?></span>
-                                <span><?php echo $company->name ?></span>
-                                <span><?php echo date('m/d/y', strtotime($company->followUpDate)) ?></span>
-                            </a>
-                        <?php $i++ ?>
+            <?php endforeach; ?>
+        </section>
+
+        <section data-type="main" id="index-board" class="board">
+
+            <!-- DASHBOARD ACTIVITY LOG START -->
+            <div id="index-board-log" class="index-board-block block-3">
+                <h3>
+                    <div></div>
+                    <div>Activity Log</div>
+                </h3>
+                <div id="index-board-log-content">
+                    <?php if($boardLogs = $log->getBoardActivityLog()): ?>
+                        <?php foreach ($boardLogs as $key => $logs) : ?>
+
+                            <div class="activity-log-section-board">
+                                <h3><?php echo $key ?></h3>
+                                <div class="activity-log-content-board">
+                                    <?php foreach ($logs as $log): ?>
+
+                                        <?php
+
+                                        $date = new DateTime($log['time'], new DateTimeZone('UTC'));
+                                        $date->setTimezone(new DateTimeZone('America/New_York'));
+
+                                        ?>
+
+                                        <a href="info.php?case=<?php echo $log['case'] ?>&id=<?php echo $log['caseID'] ?>" class="activity-log-board">
+                                            <span><?php echo $date->format('g:ia'); ?></span>
+                                            <span style="background-color: #<?php echo $log['case'] === 'lead' ? '3e4a6e' : ($log['case'] === 'customer' ? 'e29a46' : '8ba65c') ?>"><?php echo $log['case'] ?></span>
+                                            <span><?php echo $log['icon'] ?></span>
+                                            <span><?php echo $log['userName'] ?></span>
+                                            <span><?php echo $log['text'] ?></span>
+                                            <span><?php echo $log['name'] ?></span>
+                                        </a>
+
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="dashboard-no-results">
+                            <span>No logs</span>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <!-- DASHBOARD ACTIVITY LOG END -->
+
+            <!-- DASHBOARD FOLLOW UP START -->
+            <div id="index-board-followUp" class="index-board-block block-5">
+                <h3>
+                    <div></div>
+                    <div>Follow Up Companies/Schools</div>
+                </h3>
+                <div id="index-board-followUp-content">
+                    <?php if($companies = $leads->getFollowUpLeads()): ?>
+                        <?php $i = 0; ?>
+                        <?php foreach ($companies as $company): ?>
+                            <?php if($company->followUpDate > date('Y-m-d')): ?>
+                                <a href='info.php?case=<?php echo $company->caseName ?>&id=<?php echo $company->ID ?>' class='index-board-followUp-item'>
+                                    <span style="background-color: #<?php echo $company->caseName === 'lead' ? '3e4a6e' : 'e29a46' ?>"><?php echo $company->caseName ?></span>
+                                    <span><?php echo $company->name ?></span>
+                                    <span><?php echo date('m/d/y', strtotime($company->followUpDate)) ?></span>
+                                </a>
+                                <?php $i++ ?>
+                            <?php endif; ?>
+                        <?php endforeach ?>
+                        <?php if($i === 0): ?>
+                            <div class="dashboard-no-results">
+                                <span>No companies or schools to follow up</span>
+                            </div>
                         <?php endif; ?>
-                    <?php endforeach ?>
-                    <?php if($i === 0): ?>
+                    <?php else: ?>
                         <div class="dashboard-no-results">
                             <span>No companies or schools to follow up</span>
                         </div>
                     <?php endif; ?>
-                <?php else: ?>
-                    <div class="dashboard-no-results">
-                        <span>No companies or schools to follow up</span>
-                    </div>
-                <?php endif; ?>
+                </div>
             </div>
-        </div>
-        <!-- DASHBOARD FOLLOW UP END -->
+            <!-- DASHBOARD FOLLOW UP END -->
 
-        <!-- DASHBOARD UPCOMING EVENTS START -->
-        <div id="index-board-upcoming-events" class="index-board-block block-4">
-            <h3>
-                <div></div>
-                <div>Upcoming events</div>
-            </h3>
-            <div id="index-board-upcoming-events-content">
+            <!-- DASHBOARD UPCOMING EVENTS START -->
+            <div id="index-board-upcoming-events" class="index-board-block block-4">
+                <h3>
+                    <div></div>
+                    <div>Upcoming events</div>
+                </h3>
+                <div id="index-board-upcoming-events-content">
 
-                <?php $i = 0; ?>
+                    <?php $i = 0; ?>
 
-                <?php if($events->getEvents()): ?>
-                    <?php foreach ($events->getUpcomingEvents() as $event): ?>
-                        <?php $newDate = date("Ymd", strtotime($event->date)); ?>
-                        <?php if($newDate >= date('Ymd')): ?>
+                    <?php if($events->getEvents()): ?>
+                        <?php foreach ($events->getUpcomingEvents() as $event): ?>
+                            <?php $newDate = date("Ymd", strtotime($event->date)); ?>
+                            <?php if($newDate >= date('Ymd')): ?>
+                                <?php if($i < 5): ?>
+
+                                    <a href='info.php?case=customer&id=<?php echo $event->customerID ?>&tab=event' class='index-board-last-event-wrapper'>
+                                        <div>
+                                            <span><?php echo $event->name ?></span>
+                                            <span><?php echo $event->workshopTitle ?></span>
+                                            <div>
+                                                <?php foreach ($events->getInstructors($event->id) as $instructor): ?>
+                                                    <span><?php echo $instructor->firstName. " " .$instructor->lastName; ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span><?php echo date("m/d/y", strtotime($event->date)) ?></span>
+                                            <span><?php echo (int)$event->attendeesNumber === 0 ? '' : 'Attendees: '. $event->attendeesNumber ?></span>
+                                            <span class="event-status-<?php echo $event->statusID ?>"><?php echo $event->status ?></span>
+                                        </div>
+                                    </a>
+
+                                    <?php $i++ ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php if($i == 0): ?>
+                            <div class="dashboard-no-results">
+                                <span>No upcoming events</span>
+                            </div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="dashboard-no-results">
+                            <span>No upcoming events</span>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+            <!-- DASHBOARD UPCOMING EVENTS END -->
+
+            <!-- DASHBOARD LAST EVENTS START -->
+            <div id="index-board-last-events" class="index-board-block block-4">
+                <h3>
+                    <div></div>
+                    <div>Recently added events</div>
+                </h3>
+                <div id="index-board-last-events-content">
+
+                    <?php $i = 0; ?>
+
+                    <?php if($events->getEvents()): ?>
+                        <?php foreach ($events->getEvents() as $event): ?>
                             <?php if($i < 5): ?>
 
                                 <a href='info.php?case=customer&id=<?php echo $event->customerID ?>&tab=event' class='index-board-last-event-wrapper'>
@@ -256,80 +344,32 @@ include_once __DIR__ . '/include/addSidebar.php';
 
                                 <?php $i++ ?>
                             <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php if($i == 0): ?>
+                            <div class="dashboard-no-results">
+                                <span>No upcoming events</span>
+                            </div>
                         <?php endif; ?>
-                    <?php endforeach; ?>
-                    <?php if($i == 0): ?>
+                    <?php else: ?>
                         <div class="dashboard-no-results">
                             <span>No upcoming events</span>
                         </div>
                     <?php endif; ?>
-                <?php else: ?>
-                    <div class="dashboard-no-results">
-                        <span>No upcoming events</span>
-                    </div>
-                <?php endif; ?>
 
+                </div>
             </div>
-        </div>
-        <!-- DASHBOARD UPCOMING EVENTS END -->
+            <!-- DASHBOARD LAST EVENTS START -->
 
-        <!-- DASHBOARD LAST EVENTS START -->
-        <div id="index-board-last-events" class="index-board-block block-4">
-            <h3>
-                <div></div>
-                <div>Recently added events</div>
-            </h3>
-            <div id="index-board-last-events-content">
+            <div></div>
+        </section>
 
-                <?php $i = 0; ?>
-
-                <?php if($events->getEvents()): ?>
-                    <?php foreach ($events->getEvents() as $event): ?>
-                        <?php if($i < 5): ?>
-
-                            <a href='info.php?case=customer&id=<?php echo $event->customerID ?>&tab=event' class='index-board-last-event-wrapper'>
-                                <div>
-                                    <span><?php echo $event->name ?></span>
-                                    <span><?php echo $event->workshopTitle ?></span>
-                                    <div>
-                                        <?php foreach ($events->getInstructors($event->id) as $instructor): ?>
-                                            <span><?php echo $instructor->firstName. " " .$instructor->lastName; ?></span>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span><?php echo date("m/d/y", strtotime($event->date)) ?></span>
-                                    <span><?php echo (int)$event->attendeesNumber === 0 ? '' : 'Attendees: '. $event->attendeesNumber ?></span>
-                                    <span class="event-status-<?php echo $event->statusID ?>"><?php echo $event->status ?></span>
-                                </div>
-                            </a>
-
-                            <?php $i++ ?>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                    <?php if($i == 0): ?>
-                        <div class="dashboard-no-results">
-                            <span>No upcoming events</span>
-                        </div>
-                    <?php endif; ?>
-                <?php else: ?>
-                    <div class="dashboard-no-results">
-                        <span>No upcoming events</span>
-                    </div>
-                <?php endif; ?>
-
-            </div>
-        </div>
-        <!-- DASHBOARD LAST EVENTS START -->
-
-        <div></div>
-    </section>
+    </div>
 
     <footer id="footer">
 
     </footer>
 
-
+    <div class="overlay"></div>
     <div class="flash-msg <?php if(Session::exists('home')){ echo 'show-msg';} ?>">
         <?php
 
@@ -341,8 +381,34 @@ include_once __DIR__ . '/include/addSidebar.php';
 
     </div>
 
+    <!-- NEW REQUEST POPUP -->
 
-
+    <div data-kanban="new-request-popup">
+        <div class="request-popup-header">
+            <h2>Create Request</h2>
+            <div>
+                <button class="request-popup-close"></button>
+            </div>
+        </div>
+        <form class="request-popup-content">
+            <div class="request-popup-section">
+                <label for="request-title">Request Title</label>
+                <input data-new-request="title" required id="request-title" type="text" name="title">
+            </div>
+            <div class="request-popup-section">
+                <label for="request-title">Lead/Customer Name</label>
+                <select data-new-request="company" id="company-select" class="js-example-basic-single">
+                    <?php foreach ($user->getAllCompanies() as $company): ?>
+                        <option value="<?php echo $company->ID ?>-<?php echo $company->caseName ?>"><?php echo $company->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <input type="hidden" data-new-request="status" value="">
+            <div class="request-popup-footer">
+                <button id="add-request" type="button"><i class="fa-spin fas fa-spinner"></i>Create</button>
+            </div>
+        </form>
+    </div>
 
 
     <!-- Remodals -->
@@ -368,7 +434,13 @@ include_once __DIR__ . '/include/addSidebar.php';
     ?>
 
     </body>
+    <?php include __DIR__ . '/include/scripts.php'; ?>
     <script>
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
         $('.tags').tagify({
             whitelist: [<?php echo $tagOptions ?>],
             enforceWhitelist: true,
@@ -376,14 +448,19 @@ include_once __DIR__ . '/include/addSidebar.php';
         });
 
         $('#home').addClass('link-selected');
+
+        <?php if($user->hasPermission('sales')): ?>
+            $("button[data-link='kanban']").click();
+        <?php else: ?>
+            $("button[data-link='main']").click();
+        <?php endif; ?>
     </script>
     </html>
 
-    
+
 
     <?php
 
-include __DIR__ . '/include/scripts.php';
 
 }else{
 

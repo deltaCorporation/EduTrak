@@ -5,39 +5,41 @@ use Mpdf\Mpdf;
 require_once __DIR__ . '/core/ini.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
-if(Input::get('id')){
+$user = new User();
 
-    $request = new Request(Input::get('id'));
-    $user = new User();
+if($user->isLoggedIn()) {
+    if (Input::get('id')) {
 
-    if(Input::get('case') === 'lead'){
-        $client = new Lead($request->data()->leadID);
-    }else{
-        $client = new Customer($request->data()->customerID);
-    }
+        $request = new Request(Input::get('id'));
 
-    if($request->data()->presentedBy){
-        $user = new User((int)$request->data()->presentedBy);
-    }
+        if (Input::get('case') === 'lead') {
+            $client = new Lead($request->data()->leadID);
+        } else {
+            $client = new Customer($request->data()->customerID);
+        }
 
-    //    var_dump($proposal->data(), $client->data(), $user->data(), $data);die;
+        if ($request->data()->presentedBy) {
+            $user = new User((int)$request->data()->presentedBy);
+        }
 
-    $total = 0;
+        //    var_dump($proposal->data(), $client->data(), $user->data(), $data);die;
+
+        $total = 0;
 
 //    var_dump($data);die;
 
-    $mpdf = new Mpdf([
-        'format' => 'Letter'
-    ]);
+        $mpdf = new Mpdf([
+            'format' => 'Letter'
+        ]);
 
-    $mpdf->use_kwt = true;    // Default: false
+        $mpdf->use_kwt = true;    // Default: false
 
-    $clientName = Input::get('case') === 'lead' ? $client->data()->company : $client->data()->name;
+        $clientName = Input::get('case') === 'lead' ? $client->data()->company : $client->data()->name;
 
-    $fileName = str_replace(' ', '_', $clientName) . '_Proposal_' . date('m_d_Y');
-    $mpdf->SetTitle($fileName);
+        $fileName = str_replace(' ', '_', $clientName) . '_Proposal_' . date('m_d_Y');
+        $mpdf->SetTitle($fileName);
 
-    $style = "
+        $style = "
     
         <style>
         
@@ -119,9 +121,9 @@ if(Input::get('id')){
     
     ";
 
-    $mpdf->WriteHTML($style);
+        $mpdf->WriteHTML($style);
 
-    $html = "
+        $html = "
     
         <br><br><br><br><br><br><br><br><br><br>
         <h1>PROFESSIONAL DEVELOPMENT</h1>
@@ -132,15 +134,15 @@ if(Input::get('id')){
         <br>
         
         <div id='logo-wrapper'>
-            <img id='logo' src='view/img/logos/".$client->data()->logo."'>
+            <img id='logo' src='view/img/logos/" . $client->data()->logo . "'>
         </div>
         
         <br>
-        <h3>".date('F d, Y')."</h3>
+        <h3>" . date('F d, Y') . "</h3>
         
         <br>
         <div id='title-wrapper'>
-            <span id='title'>".$request->data()->proposalTitle."</span>
+            <span id='title'>" . $request->data()->proposalTitle . "</span>
         </div>
         
         <br><br><br>
@@ -152,82 +154,85 @@ if(Input::get('id')){
         <div>
             <div id='presented-by'>
                 <span>PRESENTED BY</span><br>
-                <span>".$user->data()->firstName ." ". $user->data()->lastName . ", " . $user->data()->role ."</span><br>
-                <span>". $user->data()->email ."</span><br>
-                <span>M. ". $user->data()->phone ."</span><br>
+                <span>" . $user->data()->firstName . " " . $user->data()->lastName . ", " . $user->data()->role . "</span><br>
+                <span>" . $user->data()->email . "</span><br>
+                <span>M. " . $user->data()->phone . "</span><br>
             </div>
         </div>
     ";
 
-    // Introduction
+        // Introduction
 
-    $mpdf->WriteHTML($html);
-    $mpdf->AddPage();
+        $mpdf->WriteHTML($html);
+        $mpdf->AddPage();
 
-    $html = "
+        $html = "
         <div id='introduction'>
             <h4>INTRODUCTION</h4>
-            <p>". nl2br($request->data()->proposalIntroduction)."</p>
+            <p>" . nl2br($request->data()->proposalIntroduction) . "</p>
         </div>
     ";
 
-    $mpdf->WriteHTML($html);
+        $mpdf->WriteHTML($html);
 
-    // Workshops
+        // Workshops
 
-    $data = Input::get('data');
-    $mpdf->AddPage();
+        $data = Input::get('data');
+        $mpdf->AddPage();
 
-    $html = "
+        $html = "
         <div id='workshops'>
             <h4>Workshop Descriptions</h4>
             ";
 
-    foreach ($request->getRequestWorkshopsByID($request->data()->ID) as $workshop){
+        foreach ($request->getRequestWorkshopsByID($request->data()->ID) as $workshop) {
 
-        if($workshop->workshopLearnerOutcomes !== ''){
-            $learnerOutcomesTitle = '<h6>Learner Outcomes</h6>';
-        }else{
-            $learnerOutcomesTitle = '';
+            if ($workshop->workshopLearnerOutcomes !== '') {
+                $learnerOutcomesTitle = '<h6>Learner Outcomes</h6>';
+            } else {
+                $learnerOutcomesTitle = '';
+
+            }
+
+            $html .= "
+            <h5>" . $workshop->workshopTitle . "</h5>  
+            <p>" . nl2br($workshop->workshopDescription) . "</p>  
+            
+            " . $learnerOutcomesTitle . "
+            <p class='learner-outcomes'>" . nl2br($workshop->workshopLearnerOutcomes) . "</p>
+        ";
 
         }
 
         $html .= "
-            <h5>".$workshop->workshopTitle."</h5>  
-            <p>".nl2br($workshop->workshopDescription)."</p>  
-            
-            ".$learnerOutcomesTitle."
-            <p class='learner-outcomes'>".nl2br($workshop->workshopLearnerOutcomes)."</p>
-        ";
-
-    }
-
-    $html .= "
         </div>
     ";
 
-    $mpdf->WriteHTML($html);
+        $mpdf->WriteHTML($html);
 
-    // Required Investment
+        // Required Investment
 
-    $mpdf->AddPage();
+        $mpdf->AddPage();
 
-    $html = "
+        $html = "
         <div id='investments'>
             <h4>Required Investment</h4>
-            <p>". nl2br($request->data()->proposalRequiredInvestment)."</p>
+            <p>" . nl2br($request->data()->proposalRequiredInvestment) . "</p>
         </div>
     ";
 
-    $mpdf->WriteHTML($html);
+        $mpdf->WriteHTML($html);
 
-    if(Input::get('type') === 'preview'){
-        $type = 'I';
-    }else{
-        $type = 'D';
+        if (Input::get('type') === 'preview') {
+            $type = 'I';
+        } else {
+            $type = 'D';
+        }
+
+        $mpdf->Output($fileName . '.pdf', $type);
     }
-
-    $mpdf->Output($fileName.'.pdf', $type);
+}else{
+    Redirect::to('index.php');
 }
 
 

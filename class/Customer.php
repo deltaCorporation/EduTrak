@@ -89,6 +89,8 @@ class Customer{
 
                 $offset = $page * $this->_listNo;
 
+                $sql .= "WHERE deleted <> 1 ";
+
                 if($filters){
 
                     $sql .= "HAVING ";

@@ -5,6 +5,7 @@
     if(($case = Input::get('case')) && ($id = Input::get('id')) || ($sku = Input::get('sku'))){
 
         $log = new ActivityLog();
+        $requests = new Request();
 
         switch ($case){
 
@@ -13,9 +14,12 @@
                 $lead = new Lead(Input::get('id'));
 
                 try{
-                    $lead->delete(Input::get('id'));
 
-                    $log->clearLog($id);
+                    $lead->update([
+                        'deleted' => 1
+                    ], Input::get('id'));
+
+                    $requests->deactivateRequests($id, 'lead');
 
                     Session::flash('home', 'Lead has been deleted!');
                     Redirect::to('leads.php');
@@ -31,9 +35,10 @@
                 $contact = new Contact(Input::get('id'));
 
                 try{
-                    $contact->delete(Input::get('id'));
 
-                    $log->clearLog($id);
+                    $contact->update([
+                        'deleted' => 1
+                    ], Input::get('id'));
 
                     Session::flash('home', 'Contact has been deleted!');
                     Redirect::to('contacts.php');
@@ -48,9 +53,12 @@
                 $customer = new Customer(Input::get('id'));
 
                 try{
-                    $customer->delete(Input::get('id'));
 
-                    $log->clearLog($id);
+                    $customer->update([
+                        'deleted' => 1
+                    ], Input::get('id'));
+
+                    $requests->deactivateRequests($id, 'customer');
 
                     Session::flash('home', 'Customer has been deleted!');
                     Redirect::to('customers.php');

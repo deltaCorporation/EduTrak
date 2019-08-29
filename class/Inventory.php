@@ -59,7 +59,6 @@ class Inventory{
     
     public function getInventory(){
     	$this->_db->query('SELECT id, TRIM(inventory.workshopGroups) as workshopGroups, TRIM(inventory.eduscapeSKU) as eduscapeSKU, TRIM(inventory.track) as track, TRIM(inventory.format) as format, TRIM(inventory.time) as time, TRIM(inventory.status) as status, TRIM(inventory.titleOfOffering) as titleOfOffering FROM inventory ORDER BY eduscapeSKU', array());
-
         return $this->_db->results();
     }
 
