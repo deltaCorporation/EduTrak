@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
 *{
-    font-family: Tahoma;
+    font-family: 'Roboto', sans-serif;
     font-weight: 100; 
 }
 
 body{
-
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 100vh;
 
 }
@@ -18,7 +19,7 @@ body{
 
 .image-cover{
     height: 100%;
-    background-color: rgba(40,40,40,.6);
+    background-color: rgba(40,40,40,.3);
     padding-top: 45%;
     box-shadow:
             0 9px 46px 8px rgba(0, 0, 0, .14),
@@ -26,263 +27,67 @@ body{
             0 11px 15px -7px rgba(0, 0, 0, .4);
 }
 
-#logo{
-    height: 10vh;
-    display: block;
-    margin: 0 auto;
-}
-
 .title{
-    text-align: center;
-    font-size: 3.5vh;
-    color: white;
-}
-
-.text{
-    padding: 10%;
-    color: rgba(255,255,255,.8);
-    text-align: center;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: lighter;
 }
 
 .right-sec{
-    padding: 0 8vh;
-
-    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* - - - - - - - - - - - - - - - - - - - - */
-
-
-.tab {
-    overflow: hidden;
-
-    height: 4vh;
+#login{
+    width: 360px;
 }
 
-/* Style the buttons inside the tab */
-.tab a {
-    color: rgba(0,0,0,.25);
-    cursor: pointer;
-    transition: 0.3s;
+#login h1{
+    margin-bottom: 40px;
 }
 
-/* Change background color of buttons on hover */
-.tab a:hover {
-    color: rgba(0,0,0,.4);
-}
-
-/* Create an active/current tablink class */
-.tab a.active {
-    color: rgba(0,0,0,.6);
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 7vh 2vh 0vh 2vh;
-    -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s;
-
-
-
-    grid-template-columns: 1fr .1fr 1fr;
-    grid-template-rows: 44vh 6vh;
-    grid-column-gap: 7vh;
-    grid-row-gap: 5vh;
-
-    height: auto;
-}
-
-.tabcontent h2{
-    font-size: 2.2vh;
-
-    color: rgba(0,0,0,.6);
-    height: 3vh;
-}
-
-.registration-left,
-.login-left{
-
-}
-
-.registration-form{
-
-    margin-top: 5vh;
-}
-
-.login-form{
-
-    margin-top: -3vh;
-    height: 41vh;
-    display: grid;
-}
-
-.login-forms{
-    align-self: center;
-}
-
-.registration-field,
 .login-field{
-
-    height: 6vh;
-    margin-bottom: 3vh;
+    height: 40px;
+    margin-bottom: 25px;
 }
 
-.registration-field div,
 .login-field div{
-    font-size: 1.5vh;
+    font-size: 13px;
     color: #F24C4E;
-    padding-top: .1vh;
+    padding: 5px;
+    font-weight: normal;
 }
 
-.registration-field:last-of-type,
-.login-field:last-of-type{
-    margin-bottom: 0;
-}
-
-.registration-field input,
 .login-field input{
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     border: none;
     background-color: transparent;
-    border-bottom: .25vh solid rgba(0,0,0,1);
-    font-size: 1.9vh;
-    opacity: .4;
+    border-bottom: 1px solid dimgrey;
+    font-size: 16px;
+    color: dimgrey;
+    padding: 5px;
 }
 
-.registration-field input::placeholder,
 .login-field input::placeholder{
-    color: rgba(0,0,0,1);
+    color: #b1b1b1;
 }
 
-.registration-field:nth-of-type(1) input{
-    background: url("../img/icons/003-id-card.png") no-repeat right center ;
-    background-size: auto 4vh;
-}
-
-.registration-field:nth-of-type(2) input,
-.login-field:nth-of-type(1) input{
-    background: url("../img/icons/004-mail.png") no-repeat right center ;
-    background-size: auto 4vh;
-}
-
-.registration-field:nth-of-type(3) input,
-.login-field:nth-of-type(2) input{
-    background: url("../img/icons/002-lock.png") no-repeat right center ;
-    background-size: auto 4vh;
-}
-
-.registration-field:nth-of-type(4) input{
-    background: url("../img/icons/001-lock-1.png") no-repeat right center ;
-    background-size: auto 4vh;
-}
-
-.registration-field input:focus,
-.login-field input:focus{
-    opacity: .6;
-}
-
-.registration-middle,
-.login-middle{
-
-}
-
-.vertical-line{
-    height: 44%;
-    width: 0;
-    margin: 0 auto;
-    border: .5px solid rgba(0,0,0,.25);
-}
-
-.registration-middle-text,
-.login-middle-text{
-
-    height: 8%;
-    margin: 1vh 0;
-    text-align: center;
-    padding-top: .23vh;
-    color: rgba(0,0,0,.6);
-    font-size: 2vh;
-}
-
-.registration-right,
-.login-right{
-
-}
-
-.login-google{
-
-
-    display: grid;
-    align-content: center;
-    margin-top: -3vh;
-    height: 44vh;
-}
-
-.login-google button{
-    height: 6vh;
-    border: none;
-    text-align: left;
-    color: white;
-    font-size: 1.8vh;
-    padding: 0 2vh;
-    border-radius: 1vh;
-    background: cornflowerblue url("../img/icons/info.png") no-repeat center right 2vh;
-    background-size: auto 3.3vh;
-    cursor: pointer;
-}
-.login-google button:hover{
-    box-shadow:
-            0 2px 2px 0 rgba(0, 0, 0, .14),
-            0 1px 5px 0 rgba(0, 0, 0, .12),
-            0 3px 1px -2px rgba(0, 0, 0, .2);
-}
-
-.registration-submit,
-.login-submit{
-
-    grid-column-start: 1;
-    grid-column-end: 4;
-    height: 6vh;
-}
-
-.registration-submit input[type=submit],
 .login-submit input[type=submit]{
     display: block;
-    height: 6vh;
-    width: 40%;
-    border-radius: 1vh;
-    margin: 0 auto;
-    border: 1px solid rgba(0,0,0,.25);
-    color: rgba(0,0,0,.5);
-    font-size: 2vh;
-    background-color: transparent;
+    border-radius: 3px;
+    padding: 5px 20px;
+    border: none;
+    background-color: #3E4A6E;
+    color: rgba(255,255,255,.7);
+    font-size: 16px;
     cursor: pointer;
-}
-
-.registration-submit input[type=submit]:hover,
-.login-submit input[type=submit]:hover{
-    box-shadow:
-            0 2px 2px 0 rgba(0, 0, 0, .14),
-            0 1px 5px 0 rgba(0, 0, 0, .12),
-            0 3px 1px -2px rgba(0, 0, 0, .2);
+    margin-top: 40px;
 }
 
 .remember-me{
     margin-top: 1vh;
     font-size: 1.9vh;
     color: rgba(0,0,0,.4);
-    float: right;
-}
-
-/* Fade in tabs */
-@-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }

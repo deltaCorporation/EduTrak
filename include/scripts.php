@@ -289,14 +289,6 @@ $inventory = new Inventory();
             $(".flash-msg").delay(2500).fadeToggle();
         }
 
-        $(".search-input").focus(function () {
-            $('.search').css('background-color', 'rgba(255,255,255,.8)');
-        })
-
-        $(".search-input").focusout(function () {
-            $('.search').css('background-color', 'transparent');
-        })
-
         $("#close-nav").click(function(){
             $('#index-sidebar').animate({left: '-20%'}, 0);
             $('#open-nav').css('display', 'block');

@@ -35,22 +35,10 @@
 		        echo '
 			          <div class="ntf-content">
 				         <div class="ntf-header">
-				             <div class="ntf-text-picture">
-				             	<i class="fas fa-info"></i>
-				             </div>
-				             <button onclick="deleteNtf('.$ntf->id.')" id="" class="ntf-hide">
-				             	<i class="fas fa-times"></i>
-				             </button>
-				         
+				             <div class="ntf-date">' . $ntf->ntfDate .'</div>
+				             <button onclick="deleteNtf('.$ntf->id.')" id="" class="ntf-hide"></button>
 				         </div>
-				         <a href="'. $ntf->ntfLink    .'"  class="ntf-text">
-				           
-				             '. $ntf->content   .'
-				         </a>
-				         <div class="ntf-date">
-				             <div class="ntf-data-data">' . $ntf->ntfDate .'</div>
-				             <div class="clear"></div>
-				         </div>
+				         <a href="'. $ntf->ntfLink    .'"  class="ntf-text">'. $ntf->content   .'</a>
 				    </div>
 			        
 		        

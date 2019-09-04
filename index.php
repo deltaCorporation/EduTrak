@@ -12,7 +12,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // ********************************************************    //
 $client_id = '79089015940-4c5ahkbrnu9m81fsibtli29ltmiisrrc.apps.googleusercontent.com';
 $client_secret = 'JrQJuDAfIqVuGoCECt7zqhZN';
-$redirect_uri = 'https://crm.elevationlearningllc.com/index.php';
+$redirect_uri = 'http://localhost:8888/EduTrak/index.php';
 
 $client = new Google_Client();
 $client->setClientId($client_id);
@@ -81,7 +81,7 @@ if($user->isLoggedIn()){
     <div class="dropdown">
         <div id="myDropdown" class="dropdown-content">
             <a href="#" data-remodal-target="profile" class="profile-ico">Profile</a>
-            <a href="#" class="settings-ico">Settings<span class="notification-sign-yellow">!</span></a>
+            <a href="#" class="settings-ico">Settings</a>
             <a href="logout.php" class="logout-ico">Log out</a>
         </div>
     </div>
@@ -468,14 +468,14 @@ include_once __DIR__ . '/include/addSidebar.php';
 
     ?>
 
-
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="google-site-verification" content="Q7P8qM_XSFxL5aBL7WN4AsxdqsI7CPrZcnGNY52Kr0Y" />
         <title>EduTrak | Login page</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="https://eduscape.com/wp-content/uploads/2017/04/edu-favicon.jpg">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
@@ -487,96 +487,36 @@ include_once __DIR__ . '/include/addSidebar.php';
     <body>
 
     <section class="left-sec">
-        <div class="image-cover">
-
-            <img id="logo" src="view/img/Edu%20Man%20white.png">
-
-            <h1 class="title">Welcome to <br> EduTrak</h1>
-
-        </div>
+        <div class="image-cover"></div>
     </section>
 
     <section class="right-sec">
-
-        <div class="tab">
-            <a class="tablinks" onclick="openCity(event, 'login')" id="defaultOpen">Login</a>
+        <div id="login">
+            <h1 class="title">EduTrak</h1>
+            <form action="" method="post">
+                    <div class="login-field">
+                        <input type="text" name="email" id="email" autocomplete="off" value="<?php echo Input::get('email')?>" placeholder="Your email address">
+                        <div><?php if(isset($loginErrors['email'])) echo $loginErrors['email']; ?></div>
+                    </div>
+                    <div class="login-field">
+                        <input type="password" name="password" id="password" placeholder="Your password">
+                        <div><?php if(isset($loginErrors['password'])) echo $loginErrors['password']; ?></div>
+                    </div>
+<!--                    <label class="remember-me" for="remember">-->
+<!--                        <input type="checkbox" name="remember" id="remember"> Remember me-->
+<!--                    </label>-->
+                    <div class="login-submit">
+                        <input type="hidden" name="token" value="<?php echo Token::generateLogin(); ?>">
+                        <input type="submit" value="Login">
+                    </div>
+            </form>
         </div>
-
-        <form action="" method="post">
-            <div id="login" class="tabcontent">
-                <div class="login-left">
-                    <h2>We will need...</h2>
-                    <div class="login-form">
-                        <div class="login-forms">
-                            <div class="login-field">
-                                <input type="text" name="email" id="email" autocomplete="off" value="<?php echo Input::get('email')?>" placeholder="Your email address">
-                                <div><?php if(isset($loginErrors['email'])) echo $loginErrors['email']; ?></div>
-                            </div>
-                            <div class="login-field">
-                                <input type="password" name="password" id="password" placeholder="Your password">
-                                <div><?php if(isset($loginErrors['password'])) echo $loginErrors['password']; ?></div>
-                            </div>
-                            <label class="remember-me" for="remember">
-                                <input type="checkbox" name="remember" id="remember"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="login-middle">
-                    <div class="vertical-line"></div>
-                    <div class="login-middle-text">Or</div>
-                    <div class="vertical-line"></div>
-                </div>
-
-                <div class="login-right">
-                    <h2>Also You can...</h2>
-                    <div class="login-google">
-                        <button type="button">
-                            Contact us for more information
-                        </button>
-                    </div>
-                </div>
-                <div class="login-submit">
-                    <input type="hidden" name="token" value="<?php echo Token::generateLogin(); ?>">
-                    <input type="submit" value="Login">
-                </div>
-            </div>
-        </form>
 
     </section>
 
     </body>
-
-    <script>
-
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "grid";
-            evt.currentTarget.className += " active";
-        }
-
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-    </script>
-    
-    
-    
-
     </html>
 <?php
-include __DIR__ . '/include/scripts.php';
-
-
-
 
 }
 

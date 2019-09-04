@@ -29,18 +29,12 @@ $calendar = new Calendar($month, $year, $day);
 <div id="calendar-wrapper">
     <div id="calendar-header">
         <div class="calendar-title">
-            <div class="calendar-title-event"><?php echo $calendar->getFullMonth().' '.$calendar->getDay()?></div>
-            <div class="calendar-add-event">
-
-            </div>
+            <?php echo $calendar->getFullMonth().' '.$calendar->getDay()?>
         </div>
         <a href="?day=1&month=<?php echo $calendar->getPrevMonth(); ?>&year=<?php echo $calendar->getPrevYear(); ?>">
             <i class="fas fa-caret-left fa-2x white"></i>
         </a>
-        <h2> <?php echo $calendar->getFullMonth() .' '. $calendar->getYear() ;
-
-            ?>
-        </h2>
+        <h2><?php echo $calendar->getFullMonth() .' '. $calendar->getYear() ; ?></h2>
         <a href="?day=1&month=<?php echo $calendar->getNextMonth(); ?>&year=<?php echo $calendar->getNextYear(); ?>">
             <i class="fas fa-caret-right fa-2x white"></i>
         </a>
@@ -102,17 +96,13 @@ $calendar = new Calendar($month, $year, $day);
                         if(is_numeric($event->getDescription())){
                             echo "
 			
-			<a href='info.php?case=customer&id=".$event->getDescription()."' class=\"calendar-month-event-title\">
-				<i class=\"fas fa-calendar-alt\"></i>".$event->getSummary()."
-			</a>
+			<a href='info.php?case=customer&id=".$event->getDescription()."' class=\"calendar-month-event-title\">".$event->getSummary()."</a>
 			
 			";
                         }else{
                             echo "
 			
-			<div class=\"calendar-month-event-title\">
-				<i class=\"fas fa-calendar-alt\"></i>".$event->getSummary()."
-			</div>
+			<div class=\"calendar-month-event-title\">".$event->getSummary()."</div>
 			
 			";
                         }
@@ -130,7 +120,7 @@ $calendar = new Calendar($month, $year, $day);
                     }
                 }
                 if($i == 0){
-                    echo "<div class=\"calendar-month-event-title\">No events for today2</div>";
+                    echo "<div class=\"calendar-month-event-title\">No events for today</div>";
                 }
             }
         }else{
@@ -139,101 +129,101 @@ $calendar = new Calendar($month, $year, $day);
         ?>
 
     </div>
+    <div id="calendar-month-wrapper">
+        <div id="calendar-month-sub-header">
+            <div class="calendar-month-header-cell">Sun</div>
+            <div class="calendar-month-header-cell">Mon</div>
+            <div class="calendar-month-header-cell">Tue</div>
+            <div class="calendar-month-header-cell">Wed</div>
+            <div class="calendar-month-header-cell">Thu</div>
+            <div class="calendar-month-header-cell">Fri</div>
+            <div class="calendar-month-header-cell">Sat</div>
+        </div>
+        <div id="calendar-month-content">
 
-    <div id="calendar-month-sub-header">
-        <div class="calendar-month-header-cell">Sun</div>
-        <div class="calendar-month-header-cell">Mon</div>
-        <div class="calendar-month-header-cell">Tue</div>
-        <div class="calendar-month-header-cell">Wed</div>
-        <div class="calendar-month-header-cell">Thu</div>
-        <div class="calendar-month-header-cell">Fri</div>
-        <div class="calendar-month-header-cell">Sat</div>
-    </div>
-    <div id="calendar-month-content">
+            <?php
 
-        <?php
+            foreach($calendar->allDays() as $key => $day) {
 
-        foreach($calendar->allDays() as $key => $day) {
+                $todayDay = '';
 
-            $todayDay = '';
+                if ($key <= 7 and $day >= 7) {
+                    $differentDay = 'different-day';
+                    if($day < 10){
 
-            if ($key <= 7 and $day >= 7) {
-                $differentDay = 'different-day';
-                if($day < 10){
+                        if($calendar->getPrevMonth() >= 10){
+                            $date = $calendar->getYear() . '-' . $calendar->getPrevMonth() . '-0' . $day;
+                        }else{
+                            $date = $calendar->getYear() . '-0' . $calendar->getPrevMonth() . '-0' . $day;
+                        }
 
-                    if($calendar->getPrevMonth() >= 10){
-                        $date = $calendar->getYear() . '-' . $calendar->getPrevMonth() . '-0' . $day;
+
                     }else{
-                        $date = $calendar->getYear() . '-0' . $calendar->getPrevMonth() . '-0' . $day;
+                        if($calendar->getPrevMonth() >= 10){
+                            $date = $calendar->getYear() . '-' . $calendar->getPrevMonth() . '-' . $day;
+                        }else{
+                            $date = $calendar->getYear() . '-0' . $calendar->getPrevMonth() . '-' . $day;
+                        }
                     }
 
+                    $monthLink = $calendar->getPrevMonth();
 
-                }else{
-                    if($calendar->getPrevMonth() >= 10){
-                        $date = $calendar->getYear() . '-' . $calendar->getPrevMonth() . '-' . $day;
+                } elseif ($key > 30 and $day < 12) {
+                    $differentDay = 'different-day';
+                    if($day < 10){
+
+                        if($calendar->getNextMonth() >= 10){
+                            $date = $calendar->getYear() . '-' . $calendar->getNextMonth() . '-0' . $day;
+                        }else{
+                            $date = $calendar->getYear() . '-0' . $calendar->getNextMonth() . '-0' . $day;
+                        }
+
+
                     }else{
-                        $date = $calendar->getYear() . '-0' . $calendar->getPrevMonth() . '-' . $day;
+                        if($calendar->getNextMonth() >= 10){
+                            $date = $calendar->getYear() . '-' . $calendar->getNextMonth() . '-' . $day;
+                        }else{
+                            $date = $calendar->getYear() . '-0' . $calendar->getNextMonth() . '-' . $day;
+                        }
                     }
+
+                    $monthLink = $calendar->getNextMonth();
+
+                } else {
+                    $differentDay = '';
+
+                    if($day < 10){
+
+                        if($calendar->getMonth() >= 10){
+                            $date = $calendar->getYear() . '-' . $calendar->getMonth() . '-0' . $day;
+                        }else{
+                            $date = $calendar->getYear() . '-0' . $calendar->getMonth() . '-0' . $day;
+                        }
+
+                    }else{
+                        if($calendar->getMonth() >= 10){
+                            $date = $calendar->getYear() . '-' . $calendar->getMonth() . '-' . $day;
+                        }else{
+                            $date = $calendar->getYear() . '-0' . $calendar->getMonth() . '-' . $day;
+                        }
+                    }
+
+                    if ($day == date('j')) {
+                        if ($month == date('n')) {
+                            $todayDay = 'today-day';
+                        } elseif ($month == null) {
+                            $todayDay = 'today-day';
+                        }
+                    }
+
+                    $monthLink = $calendar->getMonth();
+
                 }
 
-                $monthLink = $calendar->getPrevMonth();
-
-            } elseif ($key > 30 and $day < 12) {
-                $differentDay = 'different-day';
-                if($day < 10){
-
-                    if($calendar->getNextMonth() >= 10){
-                        $date = $calendar->getYear() . '-' . $calendar->getNextMonth() . '-0' . $day;
-                    }else{
-                        $date = $calendar->getYear() . '-0' . $calendar->getNextMonth() . '-0' . $day;
-                    }
-
-
-                }else{
-                    if($calendar->getNextMonth() >= 10){
-                        $date = $calendar->getYear() . '-' . $calendar->getNextMonth() . '-' . $day;
-                    }else{
-                        $date = $calendar->getYear() . '-0' . $calendar->getNextMonth() . '-' . $day;
-                    }
-                }
-
-                $monthLink = $calendar->getNextMonth();
-
-            } else {
-                $differentDay = '';
-
-                if($day < 10){
-
-                    if($calendar->getMonth() >= 10){
-                        $date = $calendar->getYear() . '-' . $calendar->getMonth() . '-0' . $day;
-                    }else{
-                        $date = $calendar->getYear() . '-0' . $calendar->getMonth() . '-0' . $day;
-                    }
-
-                }else{
-                    if($calendar->getMonth() >= 10){
-                        $date = $calendar->getYear() . '-' . $calendar->getMonth() . '-' . $day;
-                    }else{
-                        $date = $calendar->getYear() . '-0' . $calendar->getMonth() . '-' . $day;
-                    }
-                }
-
-                if ($day == date('j')) {
-                    if ($month == date('n')) {
-                        $todayDay = 'today-day';
-                    } elseif ($month == null) {
-                        $todayDay = 'today-day';
-                    }
-                }
-
-                $monthLink = $calendar->getMonth();
-
-            }
 
 
 
-
-            echo "
+                echo "
 
                             <a href='?day={$day}&month={$monthLink}&year={$calendar->getYear()}' class='calendar-cell $todayDay'>
                                 <div class='calendar-day $differentDay'>
@@ -241,51 +231,52 @@ $calendar = new Calendar($month, $year, $day);
                                     
                             
                             ";
-            if (isset($_SESSION['token'])) {
+                if (isset($_SESSION['token'])) {
 
-                $client->setAccessToken($_SESSION['token']);
-                $k = 0;
-                $j = 0;
-                foreach ($results->getItems() as $event) {
-                    $start = $event->start->dateTime;
-                    $start = substr($start, 0, -15);
+                    $client->setAccessToken($_SESSION['token']);
+                    $k = 0;
+                    $j = 0;
+                    foreach ($results->getItems() as $event) {
+                        $start = $event->start->dateTime;
+                        $start = substr($start, 0, -15);
 
 
-                    if (empty($start)) {
-                        $start = $event->start->date;
+                        if (empty($start)) {
+                            $start = $event->start->date;
 
-                    }
+                        }
 
-                    if($start == $date){
+                        if($start == $date){
 
-                        if($k < 2){
+                            if($k < 2){
 
-                            printf("
+                                printf("
 		                        <div class='calendar-month-event-cell'>
 		    <i class=\"fas fa-circle\"></i>
 		    %s</div>
 		                    ", $event->getSummary());
-                            $k++;
+                                $k++;
+                            }
+                            $j++;
                         }
-                        $j++;
+
+
+
+                    }
+
+                    if($j > 2){
+                        echo '<div class="calendar-month-event-cell-more">'.($j-2).' more</div>';
                     }
 
 
 
                 }
 
-                if($j > 2){
-                    echo '<div class="calendar-month-event-cell-more">'.($j-2).' more</div>';
-                }
-
-
-
-            }
-
-            echo "       </div>
+                echo "       </div>
                             </a>";
-        }
-        ?>
+            }
+            ?>
 
+        </div>
     </div>
 </div>
