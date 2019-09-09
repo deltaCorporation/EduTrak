@@ -6,31 +6,75 @@
 require_once __DIR__ . '/core/ini.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
-// ********************************************************  //
-// Get these values from https://console.developers.google.com
-// Be sure to enable the Analytics API
-// ********************************************************    //
-$client_id = '79089015940-4c5ahkbrnu9m81fsibtli29ltmiisrrc.apps.googleusercontent.com';
-$client_secret = 'JrQJuDAfIqVuGoCECt7zqhZN';
-$redirect_uri = 'https://crm.elevationlearningllc.com/index.php';
+$user = new User();
+
+$REDIRECT_URI = $GLOBALS['config']['G_REDIRECT_URL'];
+$KEY_LOCATION = __DIR__ . '/client_secret.json';
+
+$SCOPES = array(
+    Google_Service_Gmail::MAIL_GOOGLE_COM,
+    'email',
+    'profile',
+    Google_Service_Calendar::CALENDAR
+);
 
 $client = new Google_Client();
-$client->setClientId($client_id);
-$client->setClientSecret($client_secret);
-$client->setRedirectUri($redirect_uri);
-$client->setAccessType('offline');   // Gets us our refreshtoken
-$client->setApprovalPrompt('force');
+$client->setApplicationName("EduTrak");
+$client->setAuthConfig($KEY_LOCATION);
 
-$client->setScopes(array('https://www.googleapis.com/auth/calendar'));
+// Incremental authorization
+$client->setIncludeGrantedScopes(true);
 
-if (isset($_GET['code'])) {
-    $client->authenticate($_GET['code']);
-    $_SESSION['token'] = $client->getAccessToken();
-    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+// Allow access to Google API when the user is not present.
+$client->setAccessType('offline');
+$client->setRedirectUri($REDIRECT_URI);
+$client->setScopes($SCOPES);
+
+if (isset($_GET['code']) && !empty($_GET['code'])) {
+    try {
+        // Exchange the one-time authorization code for an access token
+        $accessToken = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+
+        $_SESSION['accessToken'] = $accessToken;
+
+        try{
+            $user->update([
+                'gAPI_access_token' => json_encode($accessToken)
+            ], $user->data()->id);
+        }catch (Exception $e){
+            die($e->getMessage());
+        }
+
+        header('Location: ' . filter_var($REDIRECT_URI, FILTER_SANITIZE_URL));
+        exit();
+    } catch (\Google_Service_Exception $e) {
+        print_r($e);
+    }
 }
 
-$user = new User();
+//// ********************************************************  //
+//// Get these values from https://console.developers.google.com
+//// Be sure to enable the Analytics API
+//// ********************************************************    //
+//$client_id = '79089015940-4c5ahkbrnu9m81fsibtli29ltmiisrrc.apps.googleusercontent.com';
+//$client_secret = 'JrQJuDAfIqVuGoCECt7zqhZN';
+//$redirect_uri = 'https://crm.elevationlearningllc.com/index.php';
+//
+//$client = new Google_Client();
+//$client->setClientId($client_id);
+//$client->setClientSecret($client_secret);
+//$client->setRedirectUri($redirect_uri);
+//$client->setAccessType('offline');   // Gets us our refreshtoken
+//
+//$client->setScopes(array('https://www.googleapis.com/auth/calendar'));
+//
+//if (isset($_GET['code'])) {
+//    $client->authenticate($_GET['code']);
+//    $_SESSION['token'] = $client->getAccessToken();
+//    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+//    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+//}
+
 $inventory = new Inventory();
 $leads = new Lead();
 $log = new ActivityLog();

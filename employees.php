@@ -130,6 +130,7 @@ include_once __DIR__ . '/include/addSidebar.php';
             <table class="table-list">
                 <thead class="table-list-header">
                 <tr>
+                    <th></th>
                     <th class="sort" onclick="loadMore(0, 'firstName', this)">First name</th>
                     <th class="sort" onclick="loadMore(0, 'lastName', this)">Last name</th>
                     <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Јob title</th>
@@ -291,6 +292,7 @@ include_once __DIR__ . '/include/addSidebar.php';
 
                             html += '<a href="">' +
                                 '<tr onclick="window.location = \'profile.php?id='+ value.id +'\'" class="table-list-row">' +
+                                '<td></td>' +
                                 '<td>'+ firstName +'</td>' +
                                 '<td>'+ lastName +'</td>' +
                                 '<td>'+ jobTitle +'</td>' +
@@ -304,7 +306,7 @@ include_once __DIR__ . '/include/addSidebar.php';
                         if(page === 0){
                             pageNo = 1;
                         }else{
-                            pageNo++;
+                            page++;
                         }
 
                         if(sort || checkedFilters){

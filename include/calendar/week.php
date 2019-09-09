@@ -58,12 +58,10 @@ $calendar = new Calendar($month, $year);
         <div id="calendar-week-events">
             <?php
 
-            if (isset($_SESSION['token'])) {
-
-                $client->setAccessToken($_SESSION['token']);
+            if (isset($_SESSION['accessToken'])) {
 
                 // Print the next 10 events on the user's calendar.
-                $calendarId = 'eduscapelearning.com_pddrarllh8a8jaj9p552tv6s9g@group.calendar.google.com';
+                $calendarId = $GLOBALS['config']['CALENDAR_ID'];
 
                 $timeBack = date('Y') - 1;
 
