@@ -56,11 +56,10 @@ $calendar = new Calendar($month, $year, $day);
     <div id="calendar-month-events">
 
         <?php
-        if (isset($_SESSION['token']))
+        if (isset($_SESSION['accessToken']))
         {
-            $client->setAccessToken($_SESSION['token']);
 
-            $calendarId = 'eduscapelearning.com_pddrarllh8a8jaj9p552tv6s9g@group.calendar.google.com';
+            $calendarId = $GLOBALS['config']['CALENDAR_ID'];
 
             $timeMin = $year.'-'.$month.'-1\Th:i:sP';
 
@@ -241,9 +240,9 @@ $calendar = new Calendar($month, $year, $day);
                                     
                             
                             ";
-            if (isset($_SESSION['token'])) {
+            if (isset($_SESSION['accessToken'])) {
 
-                $client->setAccessToken($_SESSION['token']);
+                $client->setAccessToken($_SESSION['accessToken']);
                 $k = 0;
                 $j = 0;
                 foreach ($results->getItems() as $event) {
