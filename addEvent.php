@@ -16,26 +16,65 @@ if($user->isLoggedIn()){
         $customer = new Customer();
         $log = new ActivityLog();
 
-        $client_id = '79089015940-tgbv8mgfkf0vahefgo35r0hevlflig3g.apps.googleusercontent.com';
-        $client_secret = 'zqkm4eq_B6wFkmHz1s7EJvt7';
-        $redirect_uri = 'http://localhost:8888/EduTrak/index.php';
+        $REDIRECT_URI = $GLOBALS['config']['G_REDIRECT_URL'];
+        $KEY_LOCATION = __DIR__ . '/client_secret.json';
+
+        $SCOPES = array(
+            Google_Service_Gmail::MAIL_GOOGLE_COM,
+            'email',
+            'profile',
+            Google_Service_Calendar::CALENDAR
+        );
 
         $client = new Google_Client();
-        $client->setClientId($client_id);
-        $client->setClientSecret($client_secret);
-        $client->setRedirectUri($redirect_uri);
-        $client->setAccessType('offline');   // Gets us our refreshtoken
-        $client->setApprovalPrompt('force');
+        $client->setApplicationName("EduTrak");
+        $client->setAuthConfig($KEY_LOCATION);
 
-        $client->setScopes(array('https://www.googleapis.com/auth/calendar'));
+        // Incremental authorization
+        $client->setIncludeGrantedScopes(true);
 
-        if(!isset($_SESSION['token'])){
-            $client->revokeToken();
+        // Allow access to Google API when the user is not present.
+        $client->setAccessType('offline');
+        $client->setRedirectUri($REDIRECT_URI);
+        $client->setScopes($SCOPES);
+
+        if (!isset($_SESSION['accessToken'])) {
+
+            $token = $user->getAccessToken($user->data()->id);
+
+            if ($token->gAPI_access_token == null) {
+
+                // Generate a URL to request access from Google's OAuth 2.0 server:
+                $authUrl = $client->createAuthUrl();
+
+                // Redirect the user to Google's OAuth server
+                header('Location: ' . filter_var($authUrl, FILTER_SANITIZE_URL));
+                exit();
+
+            } else {
+
+                $_SESSION['accessToken'] = json_decode($token->gAPI_access_token, true);
+
+            }
         }
 
-        if (isset($_SESSION['token'])) {
+        $client->setAccessToken($_SESSION['accessToken']);
 
-            $client->setAccessToken($_SESSION['token']);
+        /* Refresh token when expired */
+        if ($client->isAccessTokenExpired()) {
+            // the new access token comes with a refresh token as well
+            $client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
+
+            try{
+                $user->update([
+                    'gAPI_access_token' => json_encode($client->getAccessToken())
+                ], $user->data()->id);
+            }catch (Exception $e){
+                die($e->getMessage());
+            }
+        }
+
+        if (isset($_SESSION['accessToken'])) {
 
             foreach($customer->getCustomers() as $item){
                 if(Input::get('customer') == $item->name){
@@ -64,7 +103,7 @@ if($user->isLoggedIn()){
                 */
             ));
 
-            $calendarId = 'eduscapelearning.com_pddrarllh8a8jaj9p552tv6s9g@group.calendar.google.com';
+            $calendarId = $GLOBALS['config']['CALENDAR_ID'];
             $event = $service->events->insert($calendarId, $event);
 
             if($event){

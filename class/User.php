@@ -237,4 +237,9 @@ class User{
         $this->_db->query("SELECT ID, company AS name, 'lead' as caseName FROM leads UNION SELECT ID, name, 'customer' as caseName FROM customers");
         return $this->_db->results();
     }
+
+    public function getAccessToken($userID){
+        $this->_db->query("SELECT gAPI_access_token FROM users WHERE users.id = {$userID}");
+        return $this->_db->first();
+    }
 }

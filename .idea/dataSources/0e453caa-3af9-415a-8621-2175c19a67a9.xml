@@ -1699,7 +1699,6 @@
     <column id="384" parent="241" name="lastName">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="385" parent="241" name="jobTitle">
@@ -2157,7 +2156,7 @@
     </column>
     <column id="468" parent="246" name="dateCreated">
       <Position>4</Position>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -2770,31 +2769,36 @@
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="578" parent="255" name="PRIMARY">
+    <column id="578" parent="255" name="gAPI_access_token">
+      <Position>28</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="579" parent="255" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="579" parent="256" name="id">
+    <column id="580" parent="256" name="id">
       <Position>1</Position>
       <DataType>bigint(110)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="580" parent="256" name="user_id">
+    <column id="581" parent="256" name="user_id">
       <Position>2</Position>
       <DataType>bigint(110)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="581" parent="256" name="hash">
+    <column id="582" parent="256" name="hash">
       <Position>3</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="582" parent="256" name="PRIMARY">
+    <key id="583" parent="256" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

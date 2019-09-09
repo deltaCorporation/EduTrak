@@ -26,7 +26,9 @@ $GLOBALS['config'] = array(
     ),
     'img_path' => array(
         'profile' => 'view/img/profile/'
-    )
+    ),
+    'G_REDIRECT_URL' => 'http://localhost:8888/EduTrak/index.php',
+    'CALENDAR_ID' => 'eduscapelearning.com_pddrarllh8a8jaj9p552tv6s9g@group.calendar.google.com'
 );
 
 spl_autoload_register(function ($class){
