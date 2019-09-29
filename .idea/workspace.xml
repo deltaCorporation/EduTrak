@@ -2,43 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ea17e74-43b7-421e-ab1e-c2b9a64b7b1f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/ini.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/ini.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/calendar/week.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/calendar/week.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/function/charts/getChartItems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/function/inventory/addItems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/function/request/addItems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/function/request/saveRequestItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/function/request/updateShippingInfo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/newWorkshop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0e453caa-3af9-415a-8621-2175c19a67a9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0e453caa-3af9-415a-8621-2175c19a67a9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/ActivityLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/ActivityLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/DB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/contacts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/customers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/employees.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/addNote.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/addNote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/addWorkshop.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/addWorkshop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/createRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/createRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/deleteNote.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/deleteNote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/editNote.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/editNote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/saveProposal.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveProposal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/saveQuote.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveQuote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/saveRequestWorkshop.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveRequestWorkshop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function/request/saveTitle.php" beforeDir="false" afterPath="$PROJECT_DIR$/function/request/saveTitle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateQuote.php" beforeDir="false" afterPath="$PROJECT_DIR$/generateQuote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hardware.php" beforeDir="false" afterPath="$PROJECT_DIR$/orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/addSidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/addSidebar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/newHardware.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/newItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/newItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/scripts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/inventory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item.php" beforeDir="false" afterPath="$PROJECT_DIR$/item.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead.php" beforeDir="false" afterPath="$PROJECT_DIR$/lead.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leads.php" beforeDir="false" afterPath="$PROJECT_DIR$/leads.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/css/style.css" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/google/vendor/composer/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/firebase/php-jwt/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/google/apiclient-services/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/google/auth/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/guzzlehttp/guzzle/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/guzzlehttp/promises/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/guzzlehttp/psr7/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/monolog/monolog/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/phpseclib/phpseclib/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/psr/cache/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/psr/http-message/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/psr/log/" />
-    <ignored path="$PROJECT_DIR$/vendor/composer/" />
-    <ignored path="$PROJECT_DIR$/vendor/firebase/php-jwt/" />
-    <ignored path="$PROJECT_DIR$/vendor/google/apiclient/" />
-    <ignored path="$PROJECT_DIR$/vendor/google/apiclient-services/" />
-    <ignored path="$PROJECT_DIR$/vendor/google/auth/" />
-    <ignored path="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/" />
-    <ignored path="$PROJECT_DIR$/vendor/guzzlehttp/promises/" />
-    <ignored path="$PROJECT_DIR$/vendor/guzzlehttp/psr7/" />
-    <ignored path="$PROJECT_DIR$/vendor/markbaker/complex/" />
-    <ignored path="$PROJECT_DIR$/vendor/markbaker/matrix/" />
-    <ignored path="$PROJECT_DIR$/vendor/monolog/monolog/" />
-    <ignored path="$PROJECT_DIR$/vendor/mpdf/mpdf/" />
-    <ignored path="$PROJECT_DIR$/vendor/myclabs/deep-copy/" />
-    <ignored path="$PROJECT_DIR$/vendor/paragonie/random_compat/" />
-    <ignored path="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/" />
-    <ignored path="$PROJECT_DIR$/vendor/phpseclib/phpseclib/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/cache/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/http-message/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/log/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/simple-cache/" />
-    <ignored path="$PROJECT_DIR$/vendor/ralouphie/getallheaders/" />
-    <ignored path="$PROJECT_DIR$/vendor/setasign/fpdi/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,138 +88,6 @@
     </expand>
     <select />
   </component>
-  <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49307036">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/sandbox/token.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="134" selection-end-column="337" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/calendar.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="53" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/calendar/day.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1088">
-                  <caret line="64" column="64" selection-start-line="64" selection-start-column="64" selection-end-line="64" selection-end-column="64" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/include/calendar/week.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="759">
-                  <caret line="348" column="10" selection-start-line="348" selection-start-column="10" selection-end-line="348" selection-end-column="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/view/css/style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="26537">
-                  <caret line="1561" column="5" selection-start-line="1561" selection-start-column="5" selection-end-line="1561" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/core/ini.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/employees.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="274">
-                  <caret line="119" selection-start-line="119" selection-end-line="119" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/class/User.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3128">
-                  <caret line="184" column="9" selection-start-line="184" selection-start-column="9" selection-end-line="184" selection-end-column="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/sandbox/index.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="198">
-                  <caret line="94" column="33" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/index.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="7" selection-start-line="7" selection-end-line="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/login.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/calendar/month.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1037">
-                  <caret line="61" column="59" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/addEvent.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-                  <folding>
-                    <element signature="e#6#46#0#PHP" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -220,109 +95,14 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>#request-note</find>
-      <find>spinner</find>
-      <find>prop(</find>
-      <find>request-new-note</find>
-      <find>request-note-content</find>
-      <find>no-results</find>
-      <find>toggle</find>
-      <find>note</find>
-      <find>request-no</find>
-      <find>openRequestTab</find>
-      <find>request-active</find>
-      <find>fade</find>
-      <find>fadeEff</find>
-      <find>deleteRe</find>
-      <find>getNo</find>
-      <find>delete</find>
-      <find>leadR</find>
-      <find>leadReques</find>
-      <find>scri</find>
-      <find>request-note</find>
-      <find>deleteN</find>
-      <find>request-note-t</find>
-      <find>fa-spin</find>
-      <find>#add-workshop</find>
-      <find>request-note-content-text</find>
-      <find>.hover</find>
-      <find>hover</find>
-      <find>$_SESSION['token']</find>
-      <find>tooltip</find>
-      <find>loadMOre</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-      <replace>tooltip-pq</replace>
-      <replace>$customer</replace>
-      <replace>;</replace>
-      <replace>$log</replace>
-      <replace>$Y-m-d G:i:s</replace>
-      <replace>Y-m-d G:i:s</replace>
-      <replace>request_status</replace>
-      <replace>kanban</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/addLead.php" />
-        <option value="$PROJECT_DIR$/addNote.php" />
-        <option value="$PROJECT_DIR$/privacyPolicy.php" />
-        <option value="$PROJECT_DIR$/include/board/main.php" />
-        <option value="$PROJECT_DIR$/generateQuote.php" />
-        <option value="$PROJECT_DIR$/item.php" />
-        <option value="$PROJECT_DIR$/class/Kanban.php" />
-        <option value="$PROJECT_DIR$/class/ActivityLog.php" />
-        <option value="$PROJECT_DIR$/delete.php" />
-        <option value="$PROJECT_DIR$/class/Customer.php" />
-        <option value="$PROJECT_DIR$/class/Contact.php" />
-        <option value="$PROJECT_DIR$/generateProposal.php" />
-        <option value="$PROJECT_DIR$/class/Inventory.php" />
-        <option value="$PROJECT_DIR$/function/request/addWorkshop.php" />
-        <option value="$PROJECT_DIR$/function/request/changeAssignTo.php" />
-        <option value="$PROJECT_DIR$/function/request/deleteRequest.php" />
-        <option value="$PROJECT_DIR$/function/request/saveProposal.php" />
-        <option value="$PROJECT_DIR$/function/request/saveQuote.php" />
-        <option value="$PROJECT_DIR$/function/request/saveRequestWorkshop.php" />
-        <option value="$PROJECT_DIR$/function/request/saveTitle.php" />
-        <option value="$PROJECT_DIR$/function/request/updateStatus.php" />
-        <option value="$PROJECT_DIR$/customer.php" />
-        <option value="$PROJECT_DIR$/function/request/createRequest.php" />
-        <option value="$PROJECT_DIR$/include/scripts.php" />
-        <option value="$PROJECT_DIR$/function/request/addNote.php" />
-        <option value="$PROJECT_DIR$/class/DB.php" />
-        <option value="$PROJECT_DIR$/class/Request.php" />
-        <option value="$PROJECT_DIR$/transformLead.php" />
-        <option value="$PROJECT_DIR$/lead.php" />
-        <option value="$PROJECT_DIR$/function/request/editNote.php" />
-        <option value="$PROJECT_DIR$/function/request/deleteNote.php" />
-        <option value="$PROJECT_DIR$/class/Lead.php" />
-        <option value="$PROJECT_DIR$/function/request/getNotes.php" />
-        <option value="$PROJECT_DIR$/class/Note.php" />
-        <option value="$PROJECT_DIR$/request.php" />
-        <option value="$PROJECT_DIR$/sandbox/connect.php" />
-        <option value="$PROJECT_DIR$/sandbox/test.php" />
-        <option value="$PROJECT_DIR$/sandbox/token.json" />
-        <option value="$PROJECT_DIR$/sandbox/quickstart.php" />
-        <option value="$PROJECT_DIR$/sandbox/index.php" />
-        <option value="$PROJECT_DIR$/class/User.php" />
-        <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/calendar.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/include/calendar/day.php" />
-        <option value="$PROJECT_DIR$/include/calendar/month.php" />
-        <option value="$PROJECT_DIR$/addEvent.php" />
-        <option value="$PROJECT_DIR$/view/css/style.css" />
-        <option value="$PROJECT_DIR$/employees.php" />
-        <option value="$PROJECT_DIR$/core/ini.php" />
-        <option value="$PROJECT_DIR$/include/calendar/week.php" />
-      </list>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\wamp64\www\EduTrak\.idea" />
+      </set>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
@@ -363,30 +143,7 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1920" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="EduTrak" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EduTrak" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1QlysMOWvhauLCjpxtaqJnzZrQO" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -404,6 +161,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\EduTrak\view\css" />
       <recent name="C:\wamp64\www\EduTrak\sandbox" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -490,391 +248,37 @@
       <workItem from="1567063744381" duration="2658000" />
       <workItem from="1567672014779" duration="11259000" />
       <workItem from="1567967635974" duration="10468000" />
+      <workItem from="1568320036419" duration="6921000" />
+      <workItem from="1568358361772" duration="74000" />
+      <workItem from="1568359685138" duration="11637000" />
+      <workItem from="1568387358567" duration="1243000" />
+      <workItem from="1568705081150" duration="10664000" />
+      <workItem from="1568752584852" duration="5701000" />
+      <workItem from="1568790045118" duration="12000" />
+      <workItem from="1568794159969" duration="5540000" />
+      <workItem from="1568840128571" duration="19859000" />
+      <workItem from="1568927472568" duration="1379000" />
+      <workItem from="1568976768795" duration="1022000" />
+      <workItem from="1568977805254" duration="51202000" />
+      <workItem from="1569398495099" duration="3249000" />
+      <workItem from="1569416811131" duration="741000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335150000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.29211086" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32837301" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32936507" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32876712" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32837301" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.32837301" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32936078" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.32942432" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32942432" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29211086" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32837301" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32936507" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32876712" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32837301" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.32837301" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32936078" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.32942432" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32942432" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/info.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="102" selection-start-line="47" selection-start-column="8" selection-end-line="48" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generateProposal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/Inventory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18229" column="17" selection-start-line="18229" selection-start-column="17" selection-end-line="18229" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/changeAssignTo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/saveProposal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/saveQuote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/saveTitle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="89" selection-start-line="27" selection-start-column="89" selection-end-line="27" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/updateStatus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/customer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="69" column="27" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/saveRequestWorkshop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/ActivityLog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lead.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12852">
-          <caret line="756" column="23" selection-start-line="756" selection-start-column="23" selection-end-line="756" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/createRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getContacts.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/DB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getCustomers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/Request.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" lean-forward="true" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/scripts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="78" column="36" lean-forward="true" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/deleteNote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/Lead.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3264">
-          <caret line="192" column="60" selection-start-line="185" selection-start-column="12" selection-end-line="192" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/img/Eduscape.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/img/login-img.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/getNotes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/editNote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="56" selection-start-line="15" selection-start-column="12" selection-end-line="16" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/deleteRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="3" selection-end-line="38" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/addWorkshop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/Note.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="138" selection-start-line="75" selection-start-column="138" selection-end-line="75" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changepass.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/request.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9605">
-          <caret line="565" column="157" selection-start-line="565" selection-start-column="157" selection-end-line="565" selection-end-column="157" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/function/request/addNote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="45" lean-forward="true" selection-start-line="2" selection-end-line="2" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="70" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="10" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/client_secret.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/token.json" />
-    <entry file="file://$PROJECT_DIR$/sandbox/connect.php" />
-    <entry file="file://$PROJECT_DIR$/sandbox/quickstart.php" />
-    <entry file="file://$PROJECT_DIR$/sandbox/token.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="134" selection-end-column="337" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client_secret.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="184" column="9" selection-start-line="184" selection-start-column="9" selection-end-line="184" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calendar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/calendar/month.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="59" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/calendar/day.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="64" selection-start-line="64" selection-start-column="64" selection-end-line="64" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding>
-            <element signature="e#6#46#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/ini.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="94" column="33" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26537">
-          <caret line="1561" column="5" selection-start-line="1561" selection-start-column="5" selection-end-line="1561" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employees.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/calendar/week.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="348" column="10" selection-start-line="348" selection-start-column="10" selection-end-line="348" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

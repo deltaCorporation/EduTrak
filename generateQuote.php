@@ -138,29 +138,31 @@ if(Input::get('id')){
         </div>
         <table cellspacing="0">
             <tr class="table-header">
-                <td>Date</td>
-                <td>Requisitioner</td>
-                <td>Due Date</td>
+                <td colspan="2">Date</td>
+                <td width="40%" colspan="3">Requisitioner</td>
+                <td width="10%">Due Date</td>
             </tr>
             <tr>
-                <td class="align-center">'.date('m/d/Y').'</td>
-                <td class="align-center">'.$user->data()->firstName.' '.$user->data()->lastName.'</td>
+                <td class="align-center" colspan="2">'.date('m/d/Y').'</td>
+                <td class="align-center" colspan="3">'.$user->data()->firstName.' '.$user->data()->lastName.'</td>
                 <td class="align-center">net 30</td>
             </tr>
             <tr>
-                <td class="table-space" colspan="2"></td>
-                <td class="table-space"></td>
+                <td class="table-space" colspan="6"></td>
             </tr>
             <tr class="table-header">
-                <td colspan="2">DESCRIPTION</td>
+                <td width="10%">QTY</td>
+                <td colspan="3">DESCRIPTION</td>
+                <td width="10%">UNIT PRICE</td>
                 <td>TOTAL</td>
             </tr>
                  ';
 
-    foreach ($request->getRequestWorkshopsByID($request->data()->ID) as $workshop){
+    foreach ($request->getRequestWorkshopsForQuote($request->data()->ID) as $workshop){
 
         $html .= '<tr>';
-        $html .= '<td colspan="2" class="table-text">';
+        $html .= '<td class="align-center" >'.$workshop->count.'</td>';
+        $html .= '<td colspan="3" class="table-text">';
         $html .= '<h3>'.$workshop->workshopTitle.'</h3>';
         $html .= '<br>';
         $html .= '<h4>Description</h4>';
@@ -169,17 +171,44 @@ if(Input::get('id')){
         $html .= '<h4>Learner Outcomes</h4>';
         $html .= '<pre>'.$workshop->workshopLearnerOutcomes.'</pre>';
         $html .= '</td>';
-        $html .= '<td class="align-top align-center">$'.number_format((int)$workshop->workshopPrice, 2).'</td>';
+        $html .= '<td class="align-center">$'.number_format((int)$workshop->workshopPrice, 2).'</td>';
+        $html .= '<td class="align-top align-center">$'.number_format((int)$workshop->total, 2).'</td>';
         $html .= '</tr>';
 
         $total += (int)$workshop->workshopPrice;
     }
 
+    foreach ($request->getRequestItemsForQuote($request->data()->ID) as $item){
 
+        $html .= '<tr>';
+        $html .= '<td class="align-center" >'.$item->count.'</td>';
+        $html .= '<td colspan="3" class="table-text">';
+        $html .= '<h4>'.$item->itemName.'</h4>';
+        $html .= '</td>';
+        $html .= '<td class="align-center">$'.number_format((int)$item->price, 2).'</td>';
+        $html .= '<td class="align-top align-center">$'.number_format((int)$item->total, 2).'</td>';
+        $html .= '</tr>';
+
+        $total += (int)$item->price;
+
+    }
+
+    if($request->data()->shippingCoast !== null && $request->data()->shippingCoast !== ''){
+        $html .= '<tr>';
+        $html .= '<td class="align-center">1</td>';
+        $html .= '<td colspan="3" class="table-text">';
+        $html .= '<h4>Shipping</h4>';
+        $html .= '</td>';
+        $html .= '<td class="align-center">$'.number_format((int)$request->data()->shippingCoast, 2).'</td>';
+        $html .= '<td class="align-top align-center">$'.number_format((int)$request->data()->shippingCoast, 2).'</td>';
+        $html .= '</tr>';
+
+        $total += (int)$request->data()->shippingCoast;
+    }
                    
      $html .=      '
             <tr class="table-header">
-                <td  style="padding: 10px" align="right" colspan="2" class="align-center">TOTAL DUE :</td>
+                <td  style="padding: 10px" align="right" colspan="5" class="align-center">TOTAL DUE :</td>
                 <td class="align-center">$'.number_format($total, 2).'</td>
             </tr>
         </table>

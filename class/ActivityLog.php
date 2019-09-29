@@ -16,6 +16,7 @@ class ActivityLog{
     const STATUS = '<i class="activity-log-icon fas fa-sync-alt"></i>';
     const FOLLOWUP = '<i class="activity-log-icon fas fa-bell"></i>';
     CONST EVENT = '<i class="activity-log-icon fas fa-calendar"></i>';
+    CONST ITEM = '<i class="activity-log-icon fas fa-box"></i>';
 
     private $_db,
         $_data;
@@ -154,6 +155,9 @@ class ActivityLog{
                     case 'event':
                         $icon = self::EVENT;
                         break;
+                    case 'item':
+                        $icon = self::ITEM;
+                        break;
                 }
 
                 $logs[$date][$log->id] = [
@@ -290,6 +294,9 @@ class ActivityLog{
                         break;
                     case 'event':
                         $icon = self::EVENT;
+                        break;
+                    case 'item':
+                        $icon = self::ITEM;
                         break;
                 }
 

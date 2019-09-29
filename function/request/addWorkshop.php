@@ -32,7 +32,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $request->data()->customerID ? $request->data()->customerID : $request->data()->leadID,
                 'section' => 'workshop',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'added workshop '.$workshop->data()->titleOfOffering.' for request '.$request->data()->title.'.'
+                'text' => 'added workshop '.$workshop->data()->titleOfOffering.' in request '.$request->data()->title.'.'
             ]);
 
             echo json_encode(['status' => true]);

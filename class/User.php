@@ -228,8 +228,8 @@ class User{
         return $this->_db->results();
     }
 
-    public function getKanbanRequests($statusID, $userID){
-        $this->_db->query("SELECT r.*, l.company as leadCompany, c.name as customerCompany FROM requests r LEFT JOIN leads l ON r.leadID = l.id LEFT JOIN customers c ON c.id = r.customerID WHERE r.assignedTo = {$userID} AND r.statusID = {$statusID} AND r.deleted <> 1 ORDER BY r.ID DESC", array());
+    public function getKanbanRequests($statusID, $userID, $typeID){
+        $this->_db->query("SELECT r.*, l.company as leadCompany, c.name as customerCompany FROM requests r LEFT JOIN leads l ON r.leadID = l.id LEFT JOIN customers c ON c.id = r.customerID WHERE r.assignedTo = {$userID} AND r.statusID = {$statusID} AND r.deleted <> 1 AND r.typeID = {$typeID} ORDER BY r.ID DESC", array());
         return $this->_db->results();
     }
 

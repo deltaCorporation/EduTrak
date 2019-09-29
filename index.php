@@ -79,6 +79,7 @@ $inventory = new Inventory();
 $leads = new Lead();
 $log = new ActivityLog();
 $events = new Event();
+$request = new Request();
 
 $tagOptions = '';
 if($grups = $inventory->getFilterItems('workshopGroups')){
@@ -103,16 +104,20 @@ if($user->isLoggedIn()){
         <link href="view/css/reset.css" rel="stylesheet">
         <link href="view/css/style.css" rel="stylesheet">
         <link href="view/css/tagify.css" rel="stylesheet">
+        <link href="view/css/font-awesome/css/all.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<!--        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">-->
 
         <link href="view/css/remodal.css" rel="stylesheet">
         <link href="view/css/remodal-default-theme.css" rel="stylesheet">
+        <link href="view/css/Chart.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="view/js/jQuery.tagify.min.js"></script>
         <script src="view/js/tagify.js"></script>
         <script src="view/js/remodal.js"></script>
+        <script src="view/js/Chart.bundle.min.js"></script>
+        <script src="view/js/Chart.min.js"></script>
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
@@ -188,10 +193,22 @@ include_once __DIR__ . '/include/addSidebar.php';
             </div>
             <ul>
                 <li>
+                    <div>
+                        <span>Dashboard</span>
+                    </div>
                     <button data-link="main" type="button" onclick="changeDashboard('main', this)"><i class="fas fa-th-list"></i></button>
+                </li>
+                <li>
+                    <div>
+                        <span>Orders</span>
+                    </div>
+                    <button data-link="orders" type="button" onclick="changeDashboard('orders', this)"><i class="fas fa-truck-loading"></i></button>
                 </li>
                 <?php if($user->hasPermission('sales')): ?>
                     <li>
+                        <div>
+                            <span>Workshops</span>
+                        </div>
                         <button data-link="kanban" type="button" onclick="changeDashboard('kanban', this)"><i class="fab fa-trello"></i></button>
                     </li>
                 <?php endif; ?>
@@ -208,7 +225,7 @@ include_once __DIR__ . '/include/addSidebar.php';
                 <button class="kanban-new-request" data-kanban="new-request" data-request-status="<?php echo $column->ID ?>">
                     <i class="fas fa-plus"></i>
                 </button>
-                <?php foreach ($user->getKanbanRequests($column->ID, $user->data()->id) as $item): ?>
+                <?php foreach ($user->getKanbanRequests($column->ID, $user->data()->id, 1) as $item): ?>
                     <div id="<?php echo $item->ID ?>" data-kanban="item" draggable="true" ondragstart="drag(event)">
                         <a href="request.php?case=<?php echo $item->leadID ? 'lead' : 'customer' ?>&id=<?php echo $item->ID ?>">
                             <div data-kanban="item-header" ><?php echo $item->title ?></div>
@@ -222,6 +239,78 @@ include_once __DIR__ . '/include/addSidebar.php';
             </section>
 
             <?php endforeach; ?>
+        </section>
+
+        <section data-type="orders" id="orders-board" class="board">
+            <div>
+                <div class="index-sub-header">
+                    <h2>Orders Statistics</h2>
+                    <ul>
+                        <li id="default-sub-content" onclick="changeSubContent('stats', this)"><i class="far fa-chart-bar"></i></li>
+                        <li onclick="changeSubContent('kanban-orders', this)"><i class="fab fa-trello"></i></li>
+                    </ul>
+                </div>
+                <div data-sub-type="stats" class="orders-sub-content orders-stats">
+                    <div class="chart-wrapper order-block-l">
+                        <h3>In Stock</h3>
+                        <div data-chart="inStock" class="chart-box">
+                            <div class="chart"></div>
+                            <ul class="chart-info"></ul>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-l">
+                        <h3>Purchased</h3>
+                        <div data-chart="purchased" class="chart-box">
+                            <div class="chart"></div>
+                            <div class="chart-info"></div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-m">
+                        <h3>Demo</h3>
+                        <div data-chart="demo" class="chart-box">
+                            <div class="chart chart-small"></div>
+                            <div class="chart-info chart-small"></div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-m">
+                        <h3>Office Demo</h3>
+                        <div data-chart="officeDemo" class="chart-box">
+                            <div class="chart chart-small"></div>
+                            <div class="chart-info chart-small"></div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-m">
+                        <h3>Raffle Winner</h3>
+                        <div data-chart="raffleWinner" class="chart-box">
+                            <div class="chart chart-small"></div>
+                            <div class="chart-info chart-small"></div>
+                        </div>
+                    </div>
+                </div>
+                <div data-sub-type="kanban-orders" class="orders-sub-content">
+                    <?php foreach ($user->getKanbanColumns('Order') as $column): ?>
+
+                        <section data-id="<?php echo $column->ID ?>" data-kanban="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <h4 data-kanban="header"><?php echo $column->name ?></h4>
+                            <button class="kanban-new-request" data-kanban="new-request" data-request-status="<?php echo $column->ID ?>">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <?php foreach ($user->getKanbanRequests($column->ID, $user->data()->id, 2) as $item): ?>
+                                <div id="<?php echo $item->ID ?>" data-kanban="item" draggable="true" ondragstart="drag(event)">
+                                    <a href="request.php?case=<?php echo $item->leadID ? 'lead' : 'customer' ?>&id=<?php echo $item->ID ?>">
+                                        <div data-kanban="item-header" ><?php echo $item->title ?></div>
+                                        <div data-kanban="item-footer" >
+                                            <span><?php echo $item->leadCompany ? $item->leadCompany : $item->customerCompany ?></span>
+                                            <span><?php echo $item->leadCompany ? '<i class="far fa-dot-circle"></i>' : '<i class="fas fa-dollar-sign"></i>' ?></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </section>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </section>
 
         <section data-type="main" id="index-board" class="board">
@@ -469,11 +558,11 @@ include_once __DIR__ . '/include/addSidebar.php';
 
         include_once __DIR__ . '/include/newEvent.php';
 
+        include_once __DIR__ . '/include/newWorkshop.php';
+
         include_once __DIR__ . '/include/newItem.php';
 
         include_once __DIR__ . '/include/infoProfile.php';
-
-        include_once __DIR__ . '/include/newHardware.php';
 
     ?>
 
@@ -591,7 +680,6 @@ include_once __DIR__ . '/include/addSidebar.php';
     </section>
 
     </body>
-
     <script>
 
         function openCity(evt, cityName) {
@@ -611,10 +699,6 @@ include_once __DIR__ . '/include/addSidebar.php';
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
     </script>
-    
-    
-    
-
     </html>
 <?php
 include __DIR__ . '/include/scripts.php';

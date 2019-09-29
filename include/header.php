@@ -2,7 +2,7 @@
     <button id="open-nav" onclick="w3_open()">&#9776;</button>
     <li>
         <a id="home" href="index.php" class="tooltip">
-            <i class="fas fa-home"></i>
+            <i class="fa fa-home"></i>
             <span class="tooltiptext">Dashboard</span>
         </a>
         <a id="calendar" href="calendar.php" class="tooltip">
@@ -35,12 +35,12 @@
             <span class="tooltiptext">Customers</span>
         </a>
         <a id="inventory" href="inventory.php" class="tooltip">
-            <i class="fas fa-boxes"></i>
-            <span class="tooltiptext">Inventory</span>
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span class="tooltiptext">Workshops</span>
         </a>
-        <a id="hardware" href="hardware.php" class="tooltip">
-            <i class="fas fa-robot"></i>
-            <span class="tooltiptext">Hardware Inventory</span>
+        <a id="orders" href="orders.php" class="tooltip">
+            <i class="fas fa-folder-open"></i>
+            <span class="tooltiptext">Orders</span>
         </a>
     </li>
     <form class="search" action="#" method="get">

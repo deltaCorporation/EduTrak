@@ -215,13 +215,14 @@ if($user->isLoggedIn()){
 
         include_once __DIR__ . '/include/newEvent.php';
 
+        include_once __DIR__ . '/include/newWorkshop.php';
+
         include_once __DIR__ . '/include/newItem.php';
 
         include_once __DIR__ . '/include/infoProfile.php';
 
         include __DIR__ . '/include/scripts.php';
 
-        include_once __DIR__ . '/include/newHardware.php';
 
         ?>
 
