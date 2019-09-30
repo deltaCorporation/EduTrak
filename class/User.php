@@ -242,4 +242,8 @@ class User{
         $this->_db->query("SELECT gAPI_access_token FROM users WHERE users.id = {$userID}");
         return $this->_db->first();
     }
+
+    public function isSetup(){
+        return $this->_data->accActivated === null ? false : true;
+    }
 }

@@ -37,6 +37,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 #login{
@@ -74,7 +75,8 @@ body{
     color: #b1b1b1;
 }
 
-.login-submit input[type=submit]{
+.login-submit input[type=submit],
+.login-submit button{
     display: block;
     border-radius: 3px;
     padding: 5px 20px;
@@ -90,4 +92,16 @@ body{
     margin-top: 1vh;
     font-size: 1.9vh;
     color: rgba(0,0,0,.4);
+}
+
+.forgot-pass-link{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.forgot-pass-link:hover{
+    text-decoration: underline;
 }
