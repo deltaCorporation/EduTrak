@@ -48,8 +48,8 @@ $calendar = new Calendar($month, $year, $day);
         </div>
     </div>
     <div id="calendar-month-events">
-
         <?php
+
         if (isset($_SESSION['accessToken']))
         {
 

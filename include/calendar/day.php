@@ -31,17 +31,12 @@ $calendar = new Calendar($month, $year, $day);
     <div id="calendar-wrapper">
         <div id="calendar-header">
             <div class="calendar-title">
-                <div class="calendar-title-event"><?php echo $calendar->getFullMonth().' '.$calendar->getDay()?></div>
-                <div class="calendar-add-event">
-
-                </div>
+                <?php echo $calendar->getFullMonth().' '.$calendar->getDay()?>
             </div>
             <a href="?type=day&year=<?php echo $calendar->getPrevYearFromDay()?>&month=<?php echo $calendar->getPrevMonth($calendar->getDay())?>&day=<?php echo $calendar->getPrevDay() ?>">
                 <i class="fas fa-caret-left fa-2x white"></i>
             </a>
-            <h2><?php echo $calendar->getFullMonth() .' '. $calendar->getYear() ;
-
-                ?></h2>
+            <h2><?php echo $calendar->getFullMonth() .' '. $calendar->getYear();?></h2>
             <a href="?type=day&year=<?php echo $calendar->getNextYearFromDay()?>&month=<?php echo $calendar->getNextMonth($calendar->getDay())?>&day=<?php echo $calendar->getNextDay() ?>">
                 <i class="fas fa-caret-right fa-2x white"></i>
             </a>
@@ -52,8 +47,6 @@ $calendar = new Calendar($month, $year, $day);
                 <a href="calendar.php" class="">Month</a>
                 <a href="calendar.php?type=week" class="">Week</a>
                 <a href="calendar.php?type=day" class="current-view">Day</a>
-
-
             </div>
         </div>
         <div id="calendar-day-events">
@@ -79,21 +72,14 @@ $calendar = new Calendar($month, $year, $day);
                 if (count($results->getItems()) == 0) {
                     print "No upcoming events found.\n";
                 } else {
-
                     $i = 0;
-
                     foreach ($results->getItems() as $event) {
                         $start = $event->start->dateTime;
                         $start = substr($start,0, -15);
-
-
-
-
                         if (empty($start)) {
                             $start = $event->start->date;
 
                         }
-
                         if($calendar->getDay() < 10){
                             if($calendar->getMonth() >= 10){
                                 $todayDate = $calendar->getYear().'-'.$calendar->getMonth().'-0'.$calendar->getDay();
@@ -107,10 +93,6 @@ $calendar = new Calendar($month, $year, $day);
                                 $todayDate = $calendar->getYear().'-0'.$calendar->getMonth().'-'.$calendar->getDay();
                             }
                         }
-
-
-
-
                         if($start == $todayDate){
                             echo "
                             <div class=\"calendar-month-event\">";
@@ -118,17 +100,13 @@ $calendar = new Calendar($month, $year, $day);
                             if(is_numeric($event->getDescription())){
                                 echo "
 			
-			<a href='info.php?case=customer&id=".$event->getDescription()."' class=\"calendar-month-event-title\">
-				<i class=\"fas fa-calendar-alt\"></i>".$event->getSummary()."
-			</a>
+			<a href='info.php?case=customer&id=".$event->getDescription()."' class=\"calendar-month-event-title\">".$event->getSummary()."</a>
 			
 			";
                             }else{
                                 echo "
 			
-			<div class=\"calendar-month-event-title\">
-				<i class=\"fas fa-calendar-alt\"></i>".$event->getSummary()."
-			</div>
+			<div class=\"calendar-month-event-title\">".$event->getSummary()."</div>
 			
 			";
                             }
@@ -167,12 +145,12 @@ $calendar = new Calendar($month, $year, $day);
 
             ?>
         </div>
-        <div id="calendar-day-header">
-            <div class="calendar-day-day-title"><?php echo $calendar->getFullDay() ?></div>
-
-            <div class="calendar-day-day-num"><?php echo $calendar->getDay() ?></div>
-        </div>
-        <div id="calendar-day-content">
+        <div id="calendar-day-wrapper">
+            <div id="calendar-day-sub-header">
+                <span><?php echo $calendar->getDay() ?></span>
+                <span><?php echo $calendar->getFullDay() ?></span>
+            </div>
+            <div id="calendar-day-content">
             <div class="all-day-events">
 
                 <?php
@@ -270,6 +248,7 @@ $calendar = new Calendar($month, $year, $day);
             ?>
 
 
+        </div>
         </div>
     </div>
 
