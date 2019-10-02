@@ -34,13 +34,28 @@ $user = new User();
     <section class="right-sec">
         <div id="login">
             <h1 style="font-size: 30px" class="title">Reset your password</h1>
-            <form>
-                <div class="login-field">
-                    <input type="text" name="email" id="email" placeholder="Your email">
+            <p></p>
+            <div id="form-wrapper">
+                <form>
+                    <div class="login-field">
+                        <input type="text" name="email" id="email" placeholder="Your email">
+                        <div></div>
+                    </div>
+                    <div class="login-submit">
+                        <button id="submit-form" type="submit"><i class="fa-spin fas fa-spinner"></i>Reset</button>
+                    </div>
+                </form>
+            </div>
+            <form class="code-form">
+                <input maxlength="1" class="code-input" type="text">
+                <input maxlength="1" class="code-input" type="text">
+                <input maxlength="1" class="code-input" type="text">
+                <input maxlength="1" class="code-input" type="text">
+                <input maxlength="1" class="code-input" type="text">
+                <input maxlength="1" class="code-input" type="text">
+                <div>
+                    <i class="fa-spin fas fa-spinner"></i>
                     <div></div>
-                </div>
-                <div class="login-submit">
-                    <button id="submit-form" type="button">Reset</button>
                 </div>
             </form>
         </div>
@@ -50,20 +65,151 @@ $user = new User();
     </body>
     <script>
 
-        $(document).on('click', '#submit-form', function () {
+        let baseEmail = '';
 
+        /* Code Inputs */
+
+        let codeInputs = $('.code-input');
+        let firstCodeInput = $('.code-form :first-child');
+
+        firstCodeInput.focus();
+
+        $(codeInputs).on('keypress', function (e) {
+            let key   = e.keyCode ? e.keyCode : e.which;
+
+            if(key >= 48 && key <= 57){
+                $(this).next().focus();
+            }else{
+                return false;
+            }
+        });
+
+        $(codeInputs).on('keyup', function (e) {
+            let key   = e.keyCode ? e.keyCode : e.which;
+            if(key === 8 || key === 46){
+                $(this).prev().focus();
+            }
+
+            let ready = true;
+            let code = '';
+
+            $(codeInputs).each(function () {
+                if($(this).val() === ''){
+                    ready = false;
+                }else{
+                    code += $(this).val();
+                }
+            });
+
+            if(ready){
+
+
+                $.ajax({
+                    method: "POST",
+                    url: "function/email/checkCode.php",
+                    data: {
+                        email: baseEmail,
+                        code: parseInt(code)
+                    },
+                    beforeSend: function () {
+                        $(codeInputs).prop('disabled', true);
+                        $('.code-form div i').css('display', 'inline-block');
+                        $('.code-form div div').empty();
+
+                    },
+                    success: function (result) {
+
+                        let data = JSON.parse(result);
+
+                        if(data){
+                            switch (data.status) {
+
+                                case 200:
+
+                                    break;
+
+                                case 404:
+                                case 403:
+                                    msg.html('Email not found.');
+                                    break;
+
+                                case 500:
+                                    $(codeInputs).prop('disabled', false);
+                                    $('.code-form div i').css('display', 'none');
+                                    $('.code-form div div').html('<span>Wrong code</span>');
+                                    $('.code-form input:last-of-type').focus();
+                                    break;
+
+                                default:
+                                    msg.html('Error please try again.');
+                                    break;
+
+                            }
+                        }
+                    },
+                });
+            }
+        });
+
+        /* Submit Form */
+
+        $(document).on('submit', 'form', function (e) {
+            e.preventDefault();
 
             let email = $('#email').val();
+            baseEmail = email;
+            let msg = $('.login-field div');
 
             if(email !== ''){
                 if(validateEmail(email)){
-                    $('.login-field div').empty();
+                    $.ajax({
+                        method: "POST",
+                        url: "function/email/resetPassword.php",
+                        data: {
+                            email: email,
+                        },
+                        beforeSend: function () {
+                            $('.login-field div').empty();
+                            $('#submit-form').prop('disabled', true);
+                            $('#submit-form i').css('display','inline-block');
+                        },
+                        success: function (result) {
+                            $('#submit-form').prop('disabled', false);
+                            $('#submit-form i').css('display','none');
+
+                            let data = JSON.parse(result);
+
+                            if(data){
+
+                                switch (data.status) {
+
+                                    case 200:
+                                        $('#login h1').empty();
+                                        $('#login p').html('<a href="index.php" class="back-to-login">Back to login page</a>');
+                                        $('#form-wrapper').empty();
+                                        $('.code-form').css('display', 'grid');
+                                        $('.code-form input:first-of-type').focus();
+                                        break;
+
+                                    case 404:
+                                    case 403:
+                                        msg.html('Email not found.');
+                                        break;
+
+                                    default:
+                                        msg.html('Error please try again.');
+                                        break;
+
+                                }
+                            }
+                        },
+                    });
 
                 }else{
-                    $('.login-field div').html('Wrong email format.');
+                    msg.html('Wrong email format.');
                 }
             }else{
-                $('.login-field div').html('This field is required.');
+                msg.html('This field is required.');
             }
         });
 

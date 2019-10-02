@@ -243,6 +243,15 @@ class User{
         return $this->_db->first();
     }
 
+    public function checkResetCode($code){
+        $this->_db->query("SELECT * FROM users WHERE users.resetCode = {$code}");
+        if($this->_db->results()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function isSetup(){
         return $this->_data->accActivated === null ? false : true;
     }
