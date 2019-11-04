@@ -28,8 +28,6 @@ if($user->isLoggedIn()){
                     '48' => 'Alex Urrea',
                     '44' => 'Lanie Gordon',
                     '46' => 'Naa Okaine',
-                    '190627035028' => 'Katrina Keene',
-                    '190712061806' => 'Garrett Eastlake'
                 ];
 
                 ?>
