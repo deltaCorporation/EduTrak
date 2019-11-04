@@ -231,6 +231,11 @@ if($user->isLoggedIn()){
                                             <label>MSRP</label>
                                             <input name="data[<?php echo $workshop->ID ?>][price]" class="request-input-price"
                                                    value="<?php echo number_format((float)$workshop->workshopPrice, 2, '.', ',') ?>">
+                                            <br>
+                                            <br>
+                                            <label>Date</label>
+                                            <input type="date" name="data[<?php echo $workshop->ID ?>][date]" class="request-input-date"
+                                                   value="<?php echo $workshop->workshopDate ?>">
                                         </div>
                                     </div>
 

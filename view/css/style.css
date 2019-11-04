@@ -6170,6 +6170,11 @@ font-size: 2vh;
      background-size: 22px;
  }
 
+ .request-input-date{
+     padding: 10px !important;
+     width: 50% !important;
+ }
+
  .request-accordion:after {
      content: '\02795'; /* Unicode character for "plus" sign (+) */
      font-size: 13px;
