@@ -160,10 +160,15 @@ if(Input::get('id')){
 
     foreach ($request->getRequestWorkshopsForQuote($request->data()->ID) as $workshop){
 
+        $date = $workshop->workshopDate ? date_create($workshop->workshopDate)->format('m/d/y') : 'TBD';
+
         $html .= '<tr>';
         $html .= '<td class="align-center" >'.$workshop->count.'</td>';
         $html .= '<td colspan="3" class="table-text">';
         $html .= '<h3>'.$workshop->workshopTitle.'</h3>';
+        $html .= '<br>';
+        $html .= '<b>Date:</b> '.$date.'';
+        $html .= '<br>';
         $html .= '<br>';
         $html .= '<h4>Description</h4>';
         $html .= '<pre>'.$workshop->workshopDescription.'</pre>';
@@ -214,6 +219,7 @@ if(Input::get('id')){
         </table>
     </section>
     <p>Quote valid for 30 days</p>
+    <p>* workshops are recommended for 15 people, 20 max</p>
     <footer>
         <div class="yellow">Please make purchase order to:</div>
         <div class="yellow">Eduscape Partners LLC</div>
