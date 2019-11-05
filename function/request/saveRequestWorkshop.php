@@ -18,7 +18,7 @@ if($user->isLoggedIn()) {
                         'workshopLearnerOutcomes' => $workshop['learnerOutcomes'],
                         'workshopPrerequisites' => $workshop['prerequisites'],
                         'workshopPrice' => $workshop['price'],
-                        'workshopDate' => date_create($workshop['date'])->format('Y-m-d')
+                        'workshopDate' => $workshop['date'] !== '' ? date_create($workshop['date'])->format('Y-m-d') : null
                     ], $key);
                 }
 

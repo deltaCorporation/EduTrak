@@ -256,6 +256,11 @@ if($user->isLoggedIn()){
                                                 <label>MSRP</label>
                                                 <input name="data[<?php echo $workshop->ID ?>][price]" class="request-input-price"
                                                        value="<?php echo number_format((float)$workshop->workshopPrice, 2, '.', ',') ?>">
+                                                <br>
+                                                <br>
+                                                <label>Date</label>
+                                                <input type="date" name="data[<?php echo $workshop->ID ?>][date]" class="request-input-date"
+                                                       value="<?php echo $workshop->workshopDate ?>">
                                             </div>
                                         </div>
 
@@ -289,26 +294,6 @@ if($user->isLoggedIn()){
                                         <div class="request-panel-block">
                                             <label>Serial Number</label>
                                             <input name="data[<?php echo $item->ID ?>][serialNo]" value="<?php echo $item->serialNo ?>">
-                                        </div>
-                                        <div class="request-panel-block">
-                                            <label>Learner Outcomes</label>
-                                            <textarea
-                                                    name="data[<?php echo $workshop->ID ?>][learnerOutcomes]"><?php echo $workshop->workshopLearnerOutcomes ?></textarea>
-                                        </div>
-                                        <div class="request-panel-block">
-                                            <label>Prerequisites</label>
-                                            <textarea
-                                                    name="data[<?php echo $workshop->ID ?>][prerequisites]"><?php echo $workshop->workshopPrerequisites ?></textarea>
-                                        </div>
-                                        <div class="request-panel-block">
-                                            <label>MSRP</label>
-                                            <input name="data[<?php echo $workshop->ID ?>][price]" class="request-input-price"
-                                                   value="<?php echo number_format((float)$workshop->workshopPrice, 2, '.', ',') ?>">
-                                            <br>
-                                            <br>
-                                            <label>Date</label>
-                                            <input type="date" name="data[<?php echo $workshop->ID ?>][date]" class="request-input-date"
-                                                   value="<?php echo $workshop->workshopDate ?>">
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
