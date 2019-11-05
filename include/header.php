@@ -38,10 +38,10 @@
             <i class="fas fa-chalkboard-teacher"></i>
             <span class="tooltiptext">Workshops</span>
         </a>
-        <a id="orders" href="orders.php" class="tooltip">
-            <i class="fas fa-folder-open"></i>
-            <span class="tooltiptext">Orders</span>
-        </a>
+<!--        <a id="orders" href="orders.php" class="tooltip">-->
+<!--            <i class="fas fa-folder-open"></i>-->
+<!--            <span class="tooltiptext">Orders</span>-->
+<!--        </a>-->
     </li>
     <form class="search" action="#" method="get">
         <input id="txt1" class="search-input" type="text" name="search" placeholder="Search" onkeyup="showHint(this.value)">

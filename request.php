@@ -197,7 +197,7 @@ if($user->isLoggedIn()){
                             <div>
                                 <input id="request-tracking-no" class="request-shipping-info"  type="text" value="<?php echo $request->data()->trackingNo ?>" placeholder="-">
                             </div>
-                            <div>Shipping Coast</div>
+                            <div>Shipping Cost</div>
                             <div>
                                 <input id="request-shipping-coast" class="request-shipping-info"  type="text" value="<?php echo $request->data()->shippingCoast ?>" placeholder="-">
                             </div>
