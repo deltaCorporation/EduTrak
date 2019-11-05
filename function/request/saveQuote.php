@@ -24,7 +24,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $requests->data()->customerID ? $requests->data()->customerID : $requests->data()->leadID,
                 'section' => 'quote',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'updated quote for request '.$requests->data()->titlr.'.'
+                'text' => 'updated quote in request '.$requests->data()->titlr.'.'
             ]);
 
         }catch (Exception $e){

@@ -457,11 +457,12 @@ include_once __DIR__ . '/include/addSidebar.php';
 
        include_once __DIR__ . '/include/newEvent.php';
 
+       include_once __DIR__ . '/include/newWorkshop.php';
+
        include_once __DIR__ . '/include/newItem.php';
 
        include_once __DIR__ . '/include/infoProfile.php';
 
-       include_once __DIR__ . '/include/newHardware.php';
 
 
    

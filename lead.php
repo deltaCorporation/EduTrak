@@ -460,6 +460,7 @@
             <div class="request-table-header">
                 <div>ID</div>
                 <div>Request Title</div>
+                <div>Type</div>
                 <div>Status</div>
                 <div>Date</div>
                 <div></div>
@@ -473,8 +474,11 @@
                         <?php echo $request->title ?>
                     </div>
                     <div>
+                        <?php echo $request->typeName ?>
+                    </div>
+                    <div>
                         <select onchange="updateStatus(this, '<?php echo $request->ID ?>')" class="request-status <?php echo $request->colorClass ?>">
-                            <?php foreach ($requests->getStatuses() as $status): ?>
+                            <?php foreach ($requests->getStatuses($request->typeID) as $status): ?>
                                     <option <?php echo $request->statusID === $status->ID ? 'selected' : '' ?> value="<?php echo $status->ID ?>"><?php echo $status->name ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -753,11 +757,22 @@
         </div>
     </div>
     <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $lead->data()->id ?>&case=lead" method="post">
-        <label for="request-title">Request Title</label>
-        <input required id="request-title" type="text" name="title">
-
-        <div class="request-popup-footer">
-            <button type="submit">Create</button>
+        <div class="add-window-form-section-row">
+            <div class="add-window-form-section-cell form-x-12">
+                <label for="request-title">Request Title</label>
+                <input required id="request-title" type="text" name="title">
+            </div>
+            <div class="add-window-form-section-cell form-x-4">
+                <label>Request Type</label>
+                <select name="typeID">
+                    <?php foreach ($requests->getTypes() as $type): ?>
+                        <option value="<?php echo $type->ID ?>"><?php echo $type->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="request-popup-footer">
+                <button type="submit">Create</button>
+            </div>
         </div>
     </form>
 </div>

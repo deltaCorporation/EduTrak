@@ -25,7 +25,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $requests->data()->customerID ? $requests->data()->customerID : $requests->data()->leadID,
                 'section' => 'request',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'updated request title for request '.$requests->data()->title.'.'
+                'text' => 'updated request title in request '.$requests->data()->title.'.'
             ]);
 
             echo json_encode(['status' => true]);

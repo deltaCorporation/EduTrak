@@ -24,7 +24,8 @@ if($user->isLoggedIn()) {
 
             $requests->create([
                 'id' => $requestID,
-                'statusID' => Input::get('kanban') ? Input::get('statusID') : 1,
+                'typeID' => Input::get('typeID'),
+                'statusID' => Input::get('typeID') === 1 ? (Input::get('kanban') ? Input::get('statusID') : 1) : 7,
                 'insertDate' => date('Y-m-d'),
                 'createdBy' => $user->data()->id,
                 'leadID' => Input::get('case') === 'lead' ? $lead->data()->id : null,

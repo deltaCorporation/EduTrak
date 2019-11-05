@@ -24,7 +24,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $request->data()->customerID ? $request->data()->customerID : $request->data()->leadID,
                 'section' => 'note',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'deleted note for request '.$request->data()->title.'.'
+                'text' => 'deleted note in request '.$request->data()->title.'.'
             ]);
 
             echo json_encode(['status' => true]);

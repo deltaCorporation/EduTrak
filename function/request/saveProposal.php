@@ -27,7 +27,7 @@ if($user->isLoggedIn()) {
                 'caseID' => $requests->data()->customerID ? $requests->data()->customerID : $requests->data()->leadID,
                 'section' => 'proposal',
                 'time' => $date->format('Y-m-d G:i:s'),
-                'text' => 'updated proposal for request '.$requests->data()->title.'.'
+                'text' => 'updated proposal in request '.$requests->data()->title.'.'
             ]);
 
         }catch (Exception $e){

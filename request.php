@@ -27,7 +27,7 @@ if($user->isLoggedIn()){
                 $userList = [
                     '48' => 'Alex Urrea',
                     '44' => 'Lanie Gordon',
-                    '46' => 'Naa Okaine',
+                    '46' => 'Naa Okaine'
                 ];
 
                 ?>
@@ -54,6 +54,17 @@ if($user->isLoggedIn()){
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 
+                    <?php if((int)$request->data()->typeID === 1): ?>
+
+                        <style>
+
+                            .request-header-information{
+                                grid-template-columns: auto auto auto auto auto !important;
+                            }
+
+                        </style>
+
+                    <?php endif; ?>
                 </head>
                 <body>
 
@@ -140,6 +151,8 @@ if($user->isLoggedIn()){
                             </div>
                             <div>Request number</div>
                             <div><?php echo $request->data()->ID ?></div>
+                            <div>Request Type</div>
+                            <div><?php echo $request->data()->requestType ?></div>
                             <div>Company Name</div>
                             <div>
                                 <a href="info.php?case=<?php echo Input::get('case') ?>&id=<?php echo $request->data()->leadID ? $request->data()->leadID : $request->data()->customerID ?>">
@@ -153,7 +166,7 @@ if($user->isLoggedIn()){
                             <div>
                                 <select onchange="updateStatus(this, '<?php echo $request->data()->ID ?>')"
                                         class="request-page-status-select request-status <?php echo $request->data()->colorClass ?>">
-                                    <?php foreach ($requests->getStatuses() as $status): ?>
+                                    <?php foreach ($requests->getStatuses($request->data()->typeID) as $status): ?>
                                         <option <?php echo $request->data()->statusID === $status->ID ? 'selected' : '' ?>
                                                 value="<?php echo $status->ID ?>"><?php echo $status->name ?></option>
                                     <?php endforeach; ?>
@@ -176,16 +189,29 @@ if($user->isLoggedIn()){
                         </div>
 
                         <div class="request-sidebar-information-name">
-                            <div>Proposal Sent</div>
-                            <div>No</div>
-                            <div>Quote Sent</div>
-                            <div>No</div>
+                            <div>Shipping Carrier</div>
+                            <div>
+                                <input id="request-carrier" class="request-shipping-info-text"  type="text" value="<?php echo $request->data()->carrier ?>" placeholder="-">
+                            </div>
+                            <div>Tracking Number</div>
+                            <div>
+                                <input id="request-tracking-no" class="request-shipping-info"  type="text" value="<?php echo $request->data()->trackingNo ?>" placeholder="-">
+                            </div>
+                            <div>Shipping Cost</div>
+                            <div>
+                                <input id="request-shipping-coast" class="request-shipping-info"  type="text" value="<?php echo $request->data()->shippingCoast ?>" placeholder="-">
+                            </div>
                         </div>
                     </div>
                     <div class="request-header-information main-request-tab">
-                        <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-information', 'block')" id="defaultOpen">
-                            <i class="fas fa-chalkboard-teacher"></i>Workshops<?php echo $requests->getRequestWorkshopsByID($request->data()->ID) ? '' : '<i class="warning-icon fas fa-exclamation-circle"></i>' ?>
-                        </button>
+                        <?php if((int)$request->data()->typeID === 1): ?>
+                            <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-information', 'block')" id="defaultOpen">
+                                <i class="fas fa-chalkboard-teacher"></i>Workshops<?php echo $requests->getRequestWorkshopsByID($request->data()->ID) ? '' : '<i class="warning-icon fas fa-exclamation-circle"></i>' ?>
+                            </button>
+                        <?php endif; ?>
+                            <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-items', 'grid')" id="defaultOpen">
+                                <i class="fas fa-box"></i>Items<?php echo $requests->getRequestItemsByID($request->data()->ID) ? '' : '<i class="warning-icon fas fa-exclamation-circle"></i>' ?>
+                            </button>
                         <button class="main-request-tablinks" onclick="openRequestTab(event, 'request-notes', 'grid'), loadRequestNotes(<?php echo $requestID ?>)">
                             <i class="fas fa-sticky-note"></i>Notes
                         </button>
@@ -197,23 +223,72 @@ if($user->isLoggedIn()){
                         </button>
                     </div>
                     <!-- WORKSHOPS TAB CONTENT START -->
-                    <form class="request-form-information main-request-tabcontent" id="request-information">
-                        <div id="workshops">
+                    <?php if((int)$request->data()->typeID === 1): ?>
+                        <form class="request-form-information main-request-tabcontent" id="request-information">
+                            <div id="workshops">
+                                <div class="request-table-nav">
+                                    <button type="button" onclick="openWorkshopModal()">+ Add Workshop</button>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <input type="hidden" name="requestID" value="<?php echo $requestID ?>">
+                                <?php if($requests->getRequestWorkshopsByID($request->data()->ID)): ?>
+                                    <?php foreach ($requests->getRequestWorkshopsByID($request->data()->ID) as $workshop): ?>
+
+                                        <button type="button" class="request-accordion"><?php echo $workshop->workshopTitle ?></button>
+                                        <div class="request-panel">
+                                            <div class="request-panel-block">
+                                                <label>Description</label>
+                                                <textarea
+                                                        name="data[<?php echo $workshop->ID ?>][description]"><?php echo $workshop->workshopDescription ?></textarea>
+                                            </div>
+                                            <div class="request-panel-block">
+                                                <label>Learner Outcomes</label>
+                                                <textarea
+                                                        name="data[<?php echo $workshop->ID ?>][learnerOutcomes]"><?php echo $workshop->workshopLearnerOutcomes ?></textarea>
+                                            </div>
+                                            <div class="request-panel-block">
+                                                <label>Prerequisites</label>
+                                                <textarea
+                                                        name="data[<?php echo $workshop->ID ?>][prerequisites]"><?php echo $workshop->workshopPrerequisites ?></textarea>
+                                            </div>
+                                            <div class="request-panel-block">
+                                                <label>MSRP</label>
+                                                <input name="data[<?php echo $workshop->ID ?>][price]" class="request-input-price"
+                                                       value="<?php echo number_format((float)$workshop->workshopPrice, 2, '.', ',') ?>">
+                                            </div>
+                                        </div>
+
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+
+                                    <div class="no-workshops">
+                                        <i class="warning fas fa-exclamation-circle"></i>
+                                        <span>No Workshops</span>
+                                    </div>
+
+                                <?php endif; ?>
+                            </div>
+                        </form>
+                    <?php endif; ?>
+                    <!-- WORKSHOP TAB CONTENT END -->
+                    <!-- ITEMS TAB CONTENT START -->
+                    <form class="main-request-tabcontent" id="request-items">
+                        <div id="items">
                             <div class="request-table-nav">
-                                <button type="button" onclick="openWorkshopModal()">+ Add Workshop</button>
+                                <button type="button" onclick="openItemModal()">+ Add Item</button>
                                 <div class="clear"></div>
                             </div>
 
                             <input type="hidden" name="requestID" value="<?php echo $requestID ?>">
-                            <?php if($requests->getRequestWorkshopsByID($request->data()->ID)): ?>
-                                <?php foreach ($requests->getRequestWorkshopsByID($request->data()->ID) as $workshop): ?>
 
-                                    <button type="button" class="request-accordion"><?php echo $workshop->workshopTitle ?></button>
+                            <?php if($requests->getRequestItemsByID($request->data()->ID)): ?>
+                                <?php foreach ($requests->getRequestItemsByID($request->data()->ID) as $item): ?>
+                                    <button type="button" class="request-accordion"><?php echo $item->ID ?> - <?php echo $item->name ?></button>
                                     <div class="request-panel">
                                         <div class="request-panel-block">
-                                            <label>Description</label>
-                                            <textarea
-                                                    name="data[<?php echo $workshop->ID ?>][description]"><?php echo $workshop->workshopDescription ?></textarea>
+                                            <label>Serial Number</label>
+                                            <input name="data[<?php echo $item->ID ?>][serialNo]" value="<?php echo $item->serialNo ?>">
                                         </div>
                                         <div class="request-panel-block">
                                             <label>Learner Outcomes</label>
@@ -236,19 +311,18 @@ if($user->isLoggedIn()){
                                                    value="<?php echo $workshop->workshopDate ?>">
                                         </div>
                                     </div>
-
                                 <?php endforeach; ?>
                             <?php else: ?>
 
                                 <div class="no-workshops">
                                     <i class="warning fas fa-exclamation-circle"></i>
-                                    <span>No Workshops</span>
+                                    <span>No Items</span>
                                 </div>
 
                             <?php endif; ?>
                         </div>
                     </form>
-                    <!-- WORKSHOP TAB CONTENT END -->
+                    <!-- ITEMS TAB CONTENT END -->
                     <!-- NOTES TAB CONTENT START -->
                     <div class="main-request-tabcontent" id="request-notes">
                         <div class="request-notes-wrapper">
@@ -409,6 +483,39 @@ if($user->isLoggedIn()){
                 </div>
                 <!-- WORKSHOP MODAL END -->
 
+                <!-- WORKSHOP MODAL START -->
+                <div id="item-modal">
+                    <div class="item-popup-header">
+                        <h2>Add Item</h2>
+                        <div>
+                            <button class="item-popup-close"></button>
+                        </div>
+                    </div>
+                    <div class="items-menu-wrapper">
+                        <ul class="items-menu">
+                            <?php foreach ($requests->getItemTypes() as $item): ?>
+                                <li class="<?php echo (int)$item->stock === 0 ? '' : 'in-stock-border' ?>">
+                                    <span class="popup-item-name"><?php echo $item->name ?></span>
+                                    <div class="popup-item-availability">
+                                        <span class="<?php echo (int)$item->stock === 0 ? 'not-available-color' : 'in-stock-color' ?>"><?php echo (int)$item->stock === 0 ? 'Not available' : 'In stock' ?></span>
+                                        <span><?php echo $item->stock ?></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input class="qty-item" size="3" max="<?php echo $item->stock ?>" type="text" name="item-<?php echo $item->id ?>" placeholder="QTY" <?php echo (int)$item->stock !== 0 ?: 'disabled' ?>>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="item-popup-footer">
+                        <button id="add-items" type="button"><i class="fa-spin fas fa-spinner"></i>Add</button>
+                    </div>
+                    <form class="item-popup-content" method="post">
+
+                    </form>
+                </div>
+                <!-- WORKSHOP MODAL END -->
+
                 <!-- Remodals -->
 
                 <?php
@@ -423,17 +530,58 @@ if($user->isLoggedIn()){
 
                 include_once __DIR__ . '/include/newEvent.php';
 
+                include_once __DIR__ . '/include/newWorkshop.php';
+
                 include_once __DIR__ . '/include/newItem.php';
 
                 include_once __DIR__ . '/include/infoProfile.php';
 
-                include_once __DIR__ . '/include/newHardware.php';
 
 
                 ?>
 
                 </body>
                 <script>
+
+                    /* Item QTY validation */
+
+                    $(document).on('keypress', '.qty-item, .request-shipping-info', function (e) {
+                        let input = $(this);
+                        let key   = e.keyCode ? e.keyCode : e.which;
+                        let val = e.target.value + e.key;
+                        let stock = e.target.getAttribute('max');
+
+                        if(key >= 48 && key <= 57 || key == 46){
+                            if(parseInt(val) > parseInt(stock) ){
+                                return false;
+                            }
+                        }else{
+                            return false;
+                        }
+                    });
+
+                    /* Item Popup Select mwenu */
+
+                    //TOGGLING NESTED ul
+                    $(".item-drop-down .item-selected a").click(function() {
+                        $(".item-drop-down .item-options ul").toggle();
+                    });
+
+                    //SELECT OPTIONS AND HIDE OPTION AFTER SELECTION
+                    $(".item-drop-down .item-options ul li a").click(function() {
+                        var text = $(this).html();
+                        $(".item-drop-down .item-selected a span").html(text);
+                        $(".item-drop-down .item-options ul").hide();
+                    });
+
+                    //HIDE OPTIONS IF CLICKED ANYWHERE ELSE ON PAGE
+                    $(document).bind('click', function(e) {
+                        var $clicked = $(e.target);
+                        if (! $clicked.parents().hasClass("item-drop-down"))
+                            $(".item-drop-down .item-options ul").hide();
+                    });
+
+                    //---------------------------------------------------------------
 
                     $('div[contenteditable]').keydown(function(e) {
                         // trap the return key being pressed
@@ -694,6 +842,56 @@ if($user->isLoggedIn()){
                         });
                     });
 
+                    /* Add items */
+
+
+                    $('#add-items').on('click', function () {
+
+                        let items = {};
+                        $('.qty-item').each(function () {
+                           if($(this).val() !== '' && $(this).val() !== '0'){
+                               items[$(this).prop('name')] = $(this).val();
+                           }
+                        });
+
+                        $.ajax({
+                            url: "function/request/addItems.php",
+                            type: "POST",
+                            data: {
+                                items: items,
+                                requestID: <?php echo $requestID ?>
+                            },
+                            beforeSend: function (xhr) {
+                                $('#add-items .fa-spinner').css("display", "inline-block");
+                                $('#add-items').prop('disabled', true);
+                            },
+                            success: function (data) {
+
+                                let result = JSON.parse(data);
+                                $('#add-items').prop('disabled', false);
+
+                                if (result.status === true) {
+                                    location.reload();
+                                    $('#add-items .fa-spinner').css("display", "none");
+                                    $('.overlay').hide();
+                                    $('#item-modal').hide();
+                                    // $('.flash-msg').css('border-left', '4px solid #51c399');
+                                    // $('.flash-msg').html('<i class="far fa-check-circle"></i><span class="saving">Workshop Added</span>');
+                                    // $(".flash-msg").fadeIn();
+                                    // $(".flash-msg").delay(2500).fadeOut();
+                                } else {
+                                    $('.overlay').hide();
+                                    $('#item-modal').hide();
+                                    $('.flash-msg').css('border-left', '4px solid #CF4D4D');
+                                    $('.flash-msg').html('<i class="far fa-times-circle"></i><span class="saving">Error Please Try Again</span>');
+                                    $(".flash-msg").fadeIn();
+                                    $(".flash-msg").delay(2500).fadeOut();
+                                }
+
+                            },
+                        });
+                    });
+
                     $(document).ready(function() {
                         $('.js-example-basic-single').select2();
                     });
@@ -711,6 +909,22 @@ if($user->isLoggedIn()){
 
                     $('.overlay').on('click', function () {
                         $('#workshops-modal').hide();
+                        $('.overlay').hide();
+                    });
+
+                    /* Open Item Modal */
+                    function openItemModal() {
+                        $('.overlay').show();
+                        $('#item-modal').show();
+                    }
+
+                    $('.item-popup-close').on('click', function () {
+                        $('#item-modal').hide();
+                        $('.overlay').hide();
+                    });
+
+                    $('.overlay').on('click', function () {
+                        $('#item-modal').hide();
                         $('.overlay').hide();
                     });
 
@@ -865,6 +1079,50 @@ if($user->isLoggedIn()){
                         });
                     }
 
+                    /* Save Shipping Info */
+
+                    $('.request-shipping-info, .request-shipping-info-text').on('input propertychange change', function () {
+                        clearTimeout(timeoutId);
+                        timeoutId = setTimeout(function () {
+                            // Runs 1 second (1000 ms) after the last change
+                            updateShippingInfo();
+                        }, 1000);
+                    });
+
+                    function updateShippingInfo(){
+                        console.log('Saving to the db');
+                        $.ajax({
+                            url: "function/request/updateShippingInfo.php",
+                            type: "POST",
+                            data: {
+                                carrier: $('#request-carrier').val(),
+                                trackingNo: $('#request-tracking-no').val(),
+                                shippingCoast: $('#request-shipping-coast').val(),
+                                requestID: <?php echo $requestID ?>
+                            },
+                            beforeSend: function (xhr) {
+                                $('.flash-msg').css('border-left', '4px solid #51c399');
+                                $('.flash-msg').html('<i class="fas fa-spinner fa-spin"></i><span class="saving">Saving</span>');
+                                $('.flash-msg').fadeToggle();
+                            },
+                            success: function (data) {
+
+                                let result = JSON.parse(data);
+
+                                if (result.status === true) {
+                                    $('.flash-msg').css('border-left', '4px solid #51c399');
+                                    $('.flash-msg').html('<i class="far fa-check-circle"></i><span class="saving">Saved</span>');
+                                    $(".flash-msg").delay(2500).fadeToggle();
+                                } else {
+                                    $('.flash-msg').css('border-left', '4px solid #CF4D4D');
+                                    $('.flash-msg').html('<i class="far fa-times-circle"></i><span class="saving">Not saved please refresh your browser</span>');
+                                    $(".flash-msg").delay(2500).fadeToggle();
+                                }
+
+                            },
+                        });
+                    }
+
                     /* Save Workshop Information */
 
                     $('form input, form textarea').on('input propertychange change', function () {
@@ -879,9 +1137,9 @@ if($user->isLoggedIn()){
 
                     function saveToDB() {
                         console.log('Saving to the db');
-                        let form = $('#request-information');
+                        let form = <?php if((int)$request->data()->typeID === 1): ?>$('#request-information')<?php else: ?>$('#request-items')<?php endif; ?>;
                         $.ajax({
-                            url: "function/request/saveRequestWorkshop.php",
+                            url: <?php if((int)$request->data()->typeID === 1): ?>"function/request/saveRequestWorkshop.php"<?php else: ?>"function/request/saveRequestItem.php"<?php endif; ?>,
                             type: "POST",
                             data: form.serialize(), // serializes the form's elements.
                             beforeSend: function (xhr) {

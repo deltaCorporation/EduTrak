@@ -7,40 +7,6 @@
       <change beforePath="$PROJECT_DIR$/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/employees.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/google/vendor/composer/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/firebase/php-jwt/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/google/apiclient-services/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/google/auth/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/guzzlehttp/guzzle/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/guzzlehttp/promises/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/guzzlehttp/psr7/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/monolog/monolog/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/phpseclib/phpseclib/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/psr/cache/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/psr/http-message/" />
-    <ignored path="$PROJECT_DIR$/google/vendor/psr/log/" />
-    <ignored path="$PROJECT_DIR$/vendor/composer/" />
-    <ignored path="$PROJECT_DIR$/vendor/firebase/php-jwt/" />
-    <ignored path="$PROJECT_DIR$/vendor/google/apiclient/" />
-    <ignored path="$PROJECT_DIR$/vendor/google/apiclient-services/" />
-    <ignored path="$PROJECT_DIR$/vendor/google/auth/" />
-    <ignored path="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/" />
-    <ignored path="$PROJECT_DIR$/vendor/guzzlehttp/promises/" />
-    <ignored path="$PROJECT_DIR$/vendor/guzzlehttp/psr7/" />
-    <ignored path="$PROJECT_DIR$/vendor/markbaker/complex/" />
-    <ignored path="$PROJECT_DIR$/vendor/markbaker/matrix/" />
-    <ignored path="$PROJECT_DIR$/vendor/monolog/monolog/" />
-    <ignored path="$PROJECT_DIR$/vendor/mpdf/mpdf/" />
-    <ignored path="$PROJECT_DIR$/vendor/myclabs/deep-copy/" />
-    <ignored path="$PROJECT_DIR$/vendor/paragonie/random_compat/" />
-    <ignored path="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/" />
-    <ignored path="$PROJECT_DIR$/vendor/phpseclib/phpseclib/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/cache/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/http-message/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/log/" />
-    <ignored path="$PROJECT_DIR$/vendor/psr/simple-cache/" />
-    <ignored path="$PROJECT_DIR$/vendor/ralouphie/getallheaders/" />
-    <ignored path="$PROJECT_DIR$/vendor/setasign/fpdi/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,6 +238,7 @@
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
@@ -314,6 +281,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\EduTrak\view\css" />
       <recent name="C:\wamp64\www\EduTrak\sandbox" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -400,6 +368,24 @@
       <workItem from="1567063744381" duration="2658000" />
       <workItem from="1567672014779" duration="11259000" />
       <workItem from="1567967635974" duration="10468000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
       <workItem from="1572286855718" duration="1294000" />
       <workItem from="1572288641322" duration="823000" />
       <workItem from="1572467122162" duration="266000" />
