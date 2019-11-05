@@ -6310,7 +6310,8 @@ font-size: 2vh;
  }
 
  .request-title,
- .request-shipping-info{
+ .request-shipping-info,
+ .request-shipping-info-text{
      width: 100%;
      border: 1px solid transparent;
      margin-left: -4px;

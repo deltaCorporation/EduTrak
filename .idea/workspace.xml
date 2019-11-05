@@ -5,7 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/EduTrak.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EduTrak.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.php" afterDir="false" />
+=======
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -225,8 +228,14 @@
       <workItem from="1568977805254" duration="51202000" />
       <workItem from="1569398495099" duration="3249000" />
       <workItem from="1569416811131" duration="741000" />
+<<<<<<< Updated upstream
       <workItem from="1572966212594" duration="731000" />
       <workItem from="1572969998335" duration="54000" />
+=======
+      <workItem from="1570031508211" duration="1397000" />
+      <workItem from="1570605589439" duration="726000" />
+      <workItem from="1570636598116" duration="1267000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

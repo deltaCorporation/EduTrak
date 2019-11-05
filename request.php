@@ -191,7 +191,7 @@ if($user->isLoggedIn()){
                         <div class="request-sidebar-information-name">
                             <div>Shipping Carrier</div>
                             <div>
-                                <input id="request-carrier" class="request-shipping-info"  type="text" value="<?php echo $request->data()->carrier ?>" placeholder="-">
+                                <input id="request-carrier" class="request-shipping-info-text"  type="text" value="<?php echo $request->data()->carrier ?>" placeholder="-">
                             </div>
                             <div>Tracking Number</div>
                             <div>
@@ -1063,7 +1063,7 @@ if($user->isLoggedIn()){
 
                     /* Save Shipping Info */
 
-                    $('.request-shipping-info').on('input propertychange change', function () {
+                    $('.request-shipping-info, .request-shipping-info-text').on('input propertychange change', function () {
                         clearTimeout(timeoutId);
                         timeoutId = setTimeout(function () {
                             // Runs 1 second (1000 ms) after the last change
