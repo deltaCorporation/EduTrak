@@ -22,10 +22,11 @@ if($user->isLoggedIn()) {
 
             $requestID = date('dhms');
 
+
             $requests->create([
                 'id' => $requestID,
                 'typeID' => Input::get('typeID'),
-                'statusID' => Input::get('typeID') === 1 ? (Input::get('kanban') ? Input::get('statusID') : 1) : 7,
+                'statusID' => Input::get('kanban') ? Input::get('statusID') : 1,
                 'insertDate' => date('Y-m-d'),
                 'createdBy' => $user->data()->id,
                 'leadID' => Input::get('case') === 'lead' ? $lead->data()->id : null,

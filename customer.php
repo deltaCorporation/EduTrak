@@ -66,11 +66,22 @@ if ($customer->exists()) {
             </div>
         </div>
         <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $customer->data()->id ?>&case=customer" method="post">
-            <label for="request-title">Request Title</label>
-            <input required id="request-title" type="text" name="title">
-
-            <div class="request-popup-footer">
-                <button type="submit">Create</button>
+            <div class="add-window-form-section-row">
+                <div class="add-window-form-section-cell form-x-12">
+                    <label for="request-title">Request Title</label>
+                    <input required id="request-title" type="text" name="title">
+                </div>
+                <div class="add-window-form-section-cell form-x-4">
+                    <label>Request Type</label>
+                    <select name="typeID">
+                        <?php foreach ($requests->getTypes() as $type): ?>
+                            <option value="<?php echo $type->ID ?>"><?php echo $type->name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="request-popup-footer">
+                    <button type="submit">Create</button>
+                </div>
             </div>
         </form>
     </div>

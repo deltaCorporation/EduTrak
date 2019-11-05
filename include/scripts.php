@@ -16,7 +16,7 @@ $inventory = new Inventory();
         let statusID = this.dataset.requestStatus;
 
         $('.overlay').show();
-        $("div[data-kanban='new-request-popup'").show();
+        $("div[data-kanban='new-request-popup']").show();
         $("input[data-new-request='status']").val(statusID);
         $("input[data-new-request='title']").val('');
     });
@@ -110,7 +110,8 @@ $inventory = new Inventory();
                 id: companyID,
                 case: companyCase,
                 title: requestTitle,
-                kanban: 1
+                kanban: 1,
+                typeID: statusID <= 6 ? 1 : 2
             },
             beforeSend: function () {
                 $("div[data-kanban='new-request-popup'] .fa-spinner").css("display", "inline-block");
