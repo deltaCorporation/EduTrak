@@ -515,42 +515,48 @@
                         $noteUser = new User($note->userID);
 
                         echo "
-                    
-                        <div class='contact-notes-note'>
+                        
+                        <form action='updateNote.php' method='post' class='contact-notes-note'>
 	 			<div class='contact-notes-note-header'>
 	 				<img src='view/img/profile/" . $noteUser->data()->img . "'>
 	 				<h4>" . $noteUser->data()->firstName . " " . $noteUser->data()->lastName . "</h4>";
-	 				
-	 				if ($note->type == 'call') {
-		                            echo "<div><i class='fas fa-phone'></i></div>";
-		                        } else {
-		                            echo "<div></div>";
-		                        }
-	 				
-	 				if ($note->visibility == 'private') {
-		                            echo "<div><i class='fas fa-lock'></i></div>";
-		                        } else {
-		                            echo "<div><i class='fas fa-eye'></i></div>";
-		                        }
-		                        
-		                        
-		                        
-	 			echo "</div>	
+
+                                if ($note->type == 'call') {
+                                    echo "<div><i class='fas fa-phone'></i></div>";
+                                } else {
+                                    echo "<div></div>";
+                                }
+
+                                if ($note->visibility == 'private') {
+                                    echo "<div><i class='fas fa-lock'></i></div>";
+                                } else {
+                                    echo "<div><i class='fas fa-eye'></i></div>";
+                                }
+
+
+                                echo "</div>	
 	 			<div class='contact-notes-note-content'>
-	 				<h4>" . $note->title . "</h4>
-	 				<p>
-	 					" . $note->content . "
-	 				</p>
+<input name='noteTitle' id='editNoteTitle-" . $note->id . "' disabled type='text' value='" . $note->title . "'>
+<input type='hidden' name='case' value='" . $case . "'>
+        	<input type='hidden' name='id' value='" . $id . "'>
+	 				<input type='hidden' name='noteID' value='" . $note->id . "'>
+	 				<textarea name='noteContent' id='editNoteContent-" . $note->id . "' disabled rows='" . (count(preg_split('/\n|\r/', $note->content)) - 5) . "'>" . $note->content . "</textarea>
 	 				
 	 			</div>
 	 			<div class='contact-notes-note-date'>
 	 			
-	 			<span><a href='#'><i class='fas fa-edit'></i></a></span>
-	 			<span><a href='#deleteNote-". $note->id ."'><i class='fas fa-trash'></i></a></span>
-	 			<span></span>
+	 			
+	 			<span><a onclick='editNote(" . $note->id . ")' href='#'><i class='fas fa-edit'></i></a></span>
+	 			<span><a href='#deleteNote-" . $note->id . "'><i class='fas fa-trash'></i></a></span>
+<span><button type='submmit' id='editNoteIcon-" . $note->id . "' class='hide' href='#deleteNote-" . $note->id . "'><i class='fas fa-save'></i></button></span>
+	 			
 	 					<span>" . $note->createdOn . "</span>
 	 				</div>
-	 		</div>
+	 		</form>
+                        
+                        
+                    
+                        
 	 		
 	 		<!-- REmodal delete note -->
     
@@ -585,42 +591,46 @@
                         $noteUser = new User($note->userID);
 
                         echo "
-                    
-                        <div class='contact-notes-note'>
+                        
+                        <form action='updateNote.php' method='post' class='contact-notes-note'>
 	 			<div class='contact-notes-note-header'>
 	 				<img src='view/img/profile/" . $noteUser->data()->img . "'>
 	 				<h4>" . $noteUser->data()->firstName . " " . $noteUser->data()->lastName . "</h4>";
-	 				
-	 				if ($note->type == 'call') {
-		                            echo "<div><i class='fas fa-phone'></i></div>";
-		                        } else {
-		                            echo "<div></div>";
-		                        }
-	 				
-	 				if ($note->visibility == 'private') {
-		                            echo "<div><i class='fas fa-lock'></i></div>";
-		                        } else {
-		                            echo "<div><i class='fas fa-eye'></i></div>";
-		                        }
-	 				
-	 			
-	 			echo "</div>	
+
+                                if ($note->type == 'call') {
+                                    echo "<div><i class='fas fa-phone'></i></div>";
+                                } else {
+                                    echo "<div></div>";
+                                }
+
+                                if ($note->visibility == 'private') {
+                                    echo "<div><i class='fas fa-lock'></i></div>";
+                                } else {
+                                    echo "<div><i class='fas fa-eye'></i></div>";
+                                }
+
+
+                                echo "</div>	
 	 			<div class='contact-notes-note-content'>
-	 				<h4>" . $note->title . "</h4>
-	 				<p>
-	 					" . $note->content . "
-	 				</p>
+<input name='noteTitle' id='editNoteTitle-" . $note->id . "' disabled type='text' value='" . $note->title . "'>
+<input type='hidden' name='case' value='" . $case . "'>
+        	<input type='hidden' name='id' value='" . $id . "'>
+	 				<input type='hidden' name='noteID' value='" . $note->id . "'>
+	 				<textarea name='noteContent' id='editNoteContent-" . $note->id . "' disabled rows='" . (count(preg_split('/\n|\r/', $note->content)) - 5) . "'>" . $note->content . "</textarea>
 	 				
 	 			</div>
 	 			<div class='contact-notes-note-date'>
 	 			
 	 			
-	 			<span><a href='#'><i class='fas fa-edit'></i></a></span>
-	 			<span><a href='#deleteNote-". $note->id ."'><i class='fas fa-trash'></i></a></span>
-	 			<span></span>
+	 			<span><a onclick='editNote(" . $note->id . ")' href='#'><i class='fas fa-edit'></i></a></span>
+	 			<span><a href='#deleteNote-" . $note->id . "'><i class='fas fa-trash'></i></a></span>
+<span><button type='submmit' id='editNoteIcon-" . $note->id . "' class='hide' href='#deleteNote-" . $note->id . "'><i class='fas fa-save'></i></button></span>
+	 			
 	 					<span>" . $note->createdOn . "</span>
 	 				</div>
-	 		</div>
+	 		</form>
+                                           
+                        
                     
                     <!-- REmodal delete note -->
     
@@ -1012,6 +1022,12 @@
             eventNameInput.html('');
         }
     });
+
+    function editNote(noteID) {
+        document.getElementById("editNoteTitle-" + noteID).disabled = false;
+        document.getElementById("editNoteContent-" + noteID).disabled = false;
+        document.getElementById("editNoteIcon-" + noteID).style.display = "block";
+    }
 
 </script>
 
