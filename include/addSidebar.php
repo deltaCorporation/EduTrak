@@ -24,13 +24,13 @@
                 <i class="fas fa-calendar-alt"></i>
                 <div class="add-sidebar-element-name">Event</div>
             </article>
-            <article onclick="show('add-item-window', 'itemDefaultOpen')" class="add-sidebar-element">
-                <i class="fas fa-boxes"></i>
-                <div class="add-sidebar-element-name">Item</div>
+            <article onclick="show('add-workshop-window', 'itemDefaultOpen')" class="add-sidebar-element">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <div class="add-sidebar-element-name">Workshop</div>
             </article>
-            <article onclick="show('add-hardware-window', 'itemDefaultOpen')" class="add-sidebar-element">
-                <i class="fas fa-robot"></i>
-                <div class="add-sidebar-element-name">Hardware Item</div>
+            <article onclick="showModal('add-item-window', 'itemDefaultOpen')" class="add-sidebar-element">
+                <i class="fas fa-box"></i>
+                <div class="add-sidebar-element-name">Item</div>
             </article>
         </div>
     </aside>

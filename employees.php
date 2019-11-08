@@ -181,12 +181,13 @@ include_once __DIR__ . '/include/addSidebar.php';
 
       include_once __DIR__ . '/include/newEvent.php';
 
+      include_once __DIR__ . '/include/newWorkshop.php';
+
       include_once __DIR__ . '/include/newItem.php';
 
       include_once __DIR__ . '/include/infoProfile.php';
 
-      include_once __DIR__ . '/include/newHardware.php';
-   
+
     ?>
 
     </body>
@@ -311,8 +312,11 @@ include_once __DIR__ . '/include/addSidebar.php';
 
                         if(sort || checkedFilters){
                             if(result.length === 15) {
-                                console.log($('#load-more'))
-                                $('#load-more').append('<a onclick="loadMore(' + pageNo + ',\'' + sort + '\', this)">Load more employees</a>');
+                                if(sort){
+                                    $('#load-more').append('<a onclick="loadMore(' + pageNo + ',\'' + sort + '\', this)">Load more employees</a>');
+                                }else{
+                                    $('#load-more').append('<a onclick="loadMore(' + pageNo + ',' + sort + ', this)">Load more employees</a>');
+                                }
                             }
                             if(page === 0){
                                 $('#table-list-content').html(html);

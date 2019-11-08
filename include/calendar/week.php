@@ -347,5 +347,3 @@ $calendar = new Calendar($month, $year);
 
         </div>
     </div>
-
-<?php

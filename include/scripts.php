@@ -16,14 +16,83 @@ $inventory = new Inventory();
         let statusID = this.dataset.requestStatus;
 
         $('.overlay').show();
-        $("div[data-kanban='new-request-popup'").show();
+        $("div[data-kanban='new-request-popup']").show();
         $("input[data-new-request='status']").val(statusID);
         $("input[data-new-request='title']").val('');
     });
 
     $(document).on('click', '.overlay, .request-popup-close', function () {
-        $("div[data-kanban='new-request-popup'").hide();
+        $("div[data-kanban='new-request-popup']").hide();
         $(".overlay").hide();
+    });
+
+    $(document).on('click', '.overlay, .item-popup-close', function () {
+        $(".modal-window").hide();
+        $(".overlay").hide();
+    });
+
+    $(document).on('keypress', '.item-qty', function (e) {
+        let input = $(this);
+        let key   = e.keyCode ? e.keyCode : e.which;
+        let val = e.target.value + e.key;
+        let stock = e.target.getAttribute('max');
+
+        if(key >= 48 && key <= 57){
+            if(parseInt(val) > parseInt(stock) ){
+                return false;
+            }
+        }else{
+            return false;
+        }
+    });
+
+    $(document).on('click', '#add-new-items', function () {
+        let itemID = $('#add-item-window .item-name').val();
+        let qty = $('#add-item-window .item-qty').val();
+
+        if(qty !== ''){
+            $.ajax({
+                method: "POST",
+                url: "function/inventory/addItems.php",
+                data: {
+                    itemID: itemID,
+                    qty: qty
+                },
+                beforeSend: function () {
+                    $("#add-new-items .fa-spinner").css("display", "inline-block");
+                    $("#add-new-items").prop('disabled', true);
+                },
+                success: function (data) {
+
+                    $(".modal-window").hide();
+                    $(".overlay").hide();
+
+                    if(JSON.parse(data)){
+                        $("#add-request").prop('disabled', false);
+
+                        $('.flash-msg').css('border-left', '4px solid #51c399');
+                        $('.flash-msg').html('<i class="far fa-check-circle"></i><span class="saving">Items Added</span>');
+                        $(".flash-msg").fadeIn();
+                        $(".flash-msg").delay(2500).fadeOut();
+
+                        $('#add-item-window .item-name').val(1);
+                        $('#add-item-window .item-qty').val('');
+                        $('#add-item-window .item-qty').css('border', '1px solid rgba(0, 0, 0, 0.1)');
+                        $("#add-new-items .fa-spinner").css("display", "none");
+
+                    }else{
+                        $("div[data-kanban='new-request-popup']").hide();
+                        $(".overlay").hide();
+                        $('.flash-msg').css('border-left', '4px solid #CF4D4D');
+                        $('.flash-msg').html('<i class="far fa-times-circle"></i><span class="saving">Not saved please refresh your browser</span>');
+                        $(".flash-msg").delay(2500).fadeToggle();
+                    }
+
+                },
+            });
+        }else{
+            $('#add-item-window .item-qty').css('border', '1px solid indianred');
+        }
     });
 
     $(document).on('click', '#add-request', function () {
@@ -41,7 +110,8 @@ $inventory = new Inventory();
                 id: companyID,
                 case: companyCase,
                 title: requestTitle,
-                kanban: 1
+                kanban: 1,
+                typeID: statusID <= 6 ? 1 : 2
             },
             beforeSend: function () {
                 $("div[data-kanban='new-request-popup'] .fa-spinner").css("display", "inline-block");
@@ -53,7 +123,7 @@ $inventory = new Inventory();
                     $("#add-request").prop('disabled', false);
                     location.reload();
                 }else{
-                    $("div[data-kanban='new-request-popup'").hide();
+                    $("div[data-kanban='new-request-popup']").hide();
                     $(".overlay").hide();
                     $('.flash-msg').css('border-left', '4px solid #CF4D4D');
                     $('.flash-msg').html('<i class="far fa-times-circle"></i><span class="saving">Not saved please refresh your browser</span>');
@@ -71,6 +141,7 @@ $inventory = new Inventory();
 
         let board = $("section[data-type='"+type+"']");
         let boards = $(".board");
+        let titles = $("#index-board-header ul li div");
 
         $.each($('#index-board-header button'), function () {
             $(this).removeClass('board-active');
@@ -80,8 +151,56 @@ $inventory = new Inventory();
             $(this).hide();
         });
 
+        $.each(titles, function (){
+            $(this).css({'width':'0'});
+        });
+
+        autoWidthAnimate($(target).prev().first(), 100);
         board.css('display', 'grid');
         target.classList.add('board-active');
+
+        $('#default-sub-content').click();
+
+        if(type === 'orders'){
+            loadItemsChart('inStock', 1);
+            loadItemsChart('purchased', 2);
+            loadItemsChart('demo', 3);
+            loadItemsChart('officeDemo', 4);
+            loadItemsChart('raffleWinner', 5);
+        }
+    }
+
+    /* Change Subcontent */
+
+    function changeSubContent(type, target) {
+        let board = $("div[data-sub-type='"+type+"']");
+        let boards = $(".orders-sub-content");
+
+        $.each($('.index-sub-header li'), function () {
+            $(this).removeClass('sub-board-active');
+        });
+
+        $.each(boards, function () {
+            $(this).hide();
+        });
+        board.css('display', 'grid');
+        target.classList.add('sub-board-active');
+
+        switch (type) {
+            case 'stats':
+                $('#orders-board .index-sub-header h2').html('Orders Statistics');
+                break;
+            case 'kanban-orders':
+                $('#orders-board .index-sub-header h2').html('Orders Board');
+                break;
+        }
+    }
+
+    function autoWidthAnimate(element, time){
+        var curWidth = element.width(), // Get Default Height
+            autoWidth = element.css('width', 'auto').width(); // Get Auto Height
+        element.width(curWidth); // Reset to Default Height
+        element.stop().animate({ width: autoWidth }, time); // Animate to Auto Height
     }
 
     function allowDrop(ev) {
@@ -97,8 +216,6 @@ $inventory = new Inventory();
     function drop(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-
-        console.log(data, ev.target.dataset.id);
 
         $.ajax({
             method: "POST",
@@ -231,6 +348,15 @@ $inventory = new Inventory();
 
         document.getElementById(defaultTab).click();
     }
+
+    function showModal(link) {
+        $('.overlay').show();
+        $('#' + link).css('display', 'block');
+    }
+
+    $(document).on('click', '.modal-window-wrapper', function () {
+        $(this).css('display', 'none');
+    });
 
     var closeWindow = document.getElementsByClassName('window-close');
     for(var i = 0; i < closeWindow.length; i++){
@@ -602,5 +728,85 @@ $inventory = new Inventory();
         });
     }
 
+    /* Charts */
 
+    function loadItemsChart(status, statusID){
+
+        let chartHolder = $("div[data-chart='"+status+"'] .chart");
+        let infoHolder = $("div[data-chart='"+status+"'] .chart-info");
+
+        $.ajax({
+            method: "GET",
+            url: "function/charts/getChartItems.php",
+            data: {
+                statusID : statusID
+            },
+            beforeSend: function () {
+                infoHolder.html("<div class='chart-loader'><i class='fal fa-spin fa-spinner-third'></i></div>");
+                chartHolder.html("<div class='chart-loader'><i class='fal fa-spin fa-spinner-third'></i></div>");
+            },
+            success: function (result) {
+
+                let data = JSON.parse(result);
+
+                if(data){
+
+                    let html = '';
+                    let chartData = [];
+                    let chartLabels = [];
+                    let chartColors = [
+                        '#5899DA',
+                        '#E8743B',
+                        '#19A979',
+                        '#EE6868',
+                        '#945ECF',
+                        '#13A4B4',
+                        '#6C8893',
+                        '#2F6497'
+                    ];
+
+                    $.each(data, function (i, e) {
+
+                        let stock = e.count || 0;
+
+                        html +=
+                            "<li>" +
+                                "<span class='mark' style='background-color: " + chartColors[i] + "'></span>" +
+                                "<span class='name'>" + e.name + "</span>" +
+                                "<span class='qty'>" + stock + "</span>" +
+                            "</li>";
+
+                       chartData.push(e.count);
+                       chartLabels.push(e.name);
+                    });
+
+                    infoHolder.css('display', 'block');
+                    infoHolder.html(html);
+
+                    chartHolder.html("<canvas id='"+status+"'></canvas>");
+
+                    let ctx = document.getElementById(status).getContext('2d');
+                    let chart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: chartLabels,
+                            datasets: [{
+                                data: chartData,
+                                backgroundColor: chartColors,
+                                borderWidth: 5,
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            cutoutPercentage: 60
+                        }
+                    });
+                }else{
+                    console.log('das');
+                }
+            },
+        });
+    }
 </script>

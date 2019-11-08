@@ -14,7 +14,7 @@ if(Input::exists()){
 
             $note = new Note();
 
-$redirectLink = 'info.php?case='.Input::get('case').'&id='.Input::get('id').'';
+$redirectLink = 'info.php?case='.Input::get('case').'&id='.Input::get('id').'&tab=notes';
 
             try{
 

@@ -460,6 +460,7 @@
             <div class="request-table-header">
                 <div>ID</div>
                 <div>Request Title</div>
+                <div>Type</div>
                 <div>Status</div>
                 <div>Date</div>
                 <div></div>
@@ -473,8 +474,11 @@
                         <?php echo $request->title ?>
                     </div>
                     <div>
+                        <?php echo $request->typeName ?>
+                    </div>
+                    <div>
                         <select onchange="updateStatus(this, '<?php echo $request->ID ?>')" class="request-status <?php echo $request->colorClass ?>">
-                            <?php foreach ($requests->getStatuses() as $status): ?>
+                            <?php foreach ($requests->getStatuses($request->typeID) as $status): ?>
                                     <option <?php echo $request->statusID === $status->ID ? 'selected' : '' ?> value="<?php echo $status->ID ?>"><?php echo $status->name ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -511,42 +515,48 @@
                         $noteUser = new User($note->userID);
 
                         echo "
-                    
-                        <div class='contact-notes-note'>
+                        
+                        <form action='updateNote.php' method='post' class='contact-notes-note'>
 	 			<div class='contact-notes-note-header'>
 	 				<img src='view/img/profile/" . $noteUser->data()->img . "'>
 	 				<h4>" . $noteUser->data()->firstName . " " . $noteUser->data()->lastName . "</h4>";
-	 				
-	 				if ($note->type == 'call') {
-		                            echo "<div><i class='fas fa-phone'></i></div>";
-		                        } else {
-		                            echo "<div></div>";
-		                        }
-	 				
-	 				if ($note->visibility == 'private') {
-		                            echo "<div><i class='fas fa-lock'></i></div>";
-		                        } else {
-		                            echo "<div><i class='fas fa-eye'></i></div>";
-		                        }
-		                        
-		                        
-		                        
-	 			echo "</div>	
+
+                                if ($note->type == 'call') {
+                                    echo "<div><i class='fas fa-phone'></i></div>";
+                                } else {
+                                    echo "<div></div>";
+                                }
+
+                                if ($note->visibility == 'private') {
+                                    echo "<div><i class='fas fa-lock'></i></div>";
+                                } else {
+                                    echo "<div><i class='fas fa-eye'></i></div>";
+                                }
+
+
+                                echo "</div>	
 	 			<div class='contact-notes-note-content'>
-	 				<h4>" . $note->title . "</h4>
-	 				<p>
-	 					" . $note->content . "
-	 				</p>
+<input name='noteTitle' id='editNoteTitle-" . $note->id . "' disabled type='text' value='" . $note->title . "'>
+<input type='hidden' name='case' value='" . $case . "'>
+        	<input type='hidden' name='id' value='" . $id . "'>
+	 				<input type='hidden' name='noteID' value='" . $note->id . "'>
+	 				<textarea name='noteContent' id='editNoteContent-" . $note->id . "' disabled rows='" . (count(preg_split('/\n|\r/', $note->content)) - 5) . "'>" . $note->content . "</textarea>
 	 				
 	 			</div>
 	 			<div class='contact-notes-note-date'>
 	 			
-	 			<span><a href='#'><i class='fas fa-edit'></i></a></span>
-	 			<span><a href='#deleteNote-". $note->id ."'><i class='fas fa-trash'></i></a></span>
-	 			<span></span>
+	 			
+	 			<span><a onclick='editNote(" . $note->id . ")' href='#'><i class='fas fa-edit'></i></a></span>
+	 			<span><a href='#deleteNote-" . $note->id . "'><i class='fas fa-trash'></i></a></span>
+<span><button type='submmit' id='editNoteIcon-" . $note->id . "' class='hide' href='#deleteNote-" . $note->id . "'><i class='fas fa-save'></i></button></span>
+	 			
 	 					<span>" . $note->createdOn . "</span>
 	 				</div>
-	 		</div>
+	 		</form>
+                        
+                        
+                    
+                        
 	 		
 	 		<!-- REmodal delete note -->
     
@@ -581,42 +591,46 @@
                         $noteUser = new User($note->userID);
 
                         echo "
-                    
-                        <div class='contact-notes-note'>
+                        
+                        <form action='updateNote.php' method='post' class='contact-notes-note'>
 	 			<div class='contact-notes-note-header'>
 	 				<img src='view/img/profile/" . $noteUser->data()->img . "'>
 	 				<h4>" . $noteUser->data()->firstName . " " . $noteUser->data()->lastName . "</h4>";
-	 				
-	 				if ($note->type == 'call') {
-		                            echo "<div><i class='fas fa-phone'></i></div>";
-		                        } else {
-		                            echo "<div></div>";
-		                        }
-	 				
-	 				if ($note->visibility == 'private') {
-		                            echo "<div><i class='fas fa-lock'></i></div>";
-		                        } else {
-		                            echo "<div><i class='fas fa-eye'></i></div>";
-		                        }
-	 				
-	 			
-	 			echo "</div>	
+
+                                if ($note->type == 'call') {
+                                    echo "<div><i class='fas fa-phone'></i></div>";
+                                } else {
+                                    echo "<div></div>";
+                                }
+
+                                if ($note->visibility == 'private') {
+                                    echo "<div><i class='fas fa-lock'></i></div>";
+                                } else {
+                                    echo "<div><i class='fas fa-eye'></i></div>";
+                                }
+
+
+                                echo "</div>	
 	 			<div class='contact-notes-note-content'>
-	 				<h4>" . $note->title . "</h4>
-	 				<p>
-	 					" . $note->content . "
-	 				</p>
+<input name='noteTitle' id='editNoteTitle-" . $note->id . "' disabled type='text' value='" . $note->title . "'>
+<input type='hidden' name='case' value='" . $case . "'>
+        	<input type='hidden' name='id' value='" . $id . "'>
+	 				<input type='hidden' name='noteID' value='" . $note->id . "'>
+	 				<textarea name='noteContent' id='editNoteContent-" . $note->id . "' disabled rows='" . (count(preg_split('/\n|\r/', $note->content)) - 5) . "'>" . $note->content . "</textarea>
 	 				
 	 			</div>
 	 			<div class='contact-notes-note-date'>
 	 			
 	 			
-	 			<span><a href='#'><i class='fas fa-edit'></i></a></span>
-	 			<span><a href='#deleteNote-". $note->id ."'><i class='fas fa-trash'></i></a></span>
-	 			<span></span>
+	 			<span><a onclick='editNote(" . $note->id . ")' href='#'><i class='fas fa-edit'></i></a></span>
+	 			<span><a href='#deleteNote-" . $note->id . "'><i class='fas fa-trash'></i></a></span>
+<span><button type='submmit' id='editNoteIcon-" . $note->id . "' class='hide' href='#deleteNote-" . $note->id . "'><i class='fas fa-save'></i></button></span>
+	 			
 	 					<span>" . $note->createdOn . "</span>
 	 				</div>
-	 		</div>
+	 		</form>
+                                           
+                        
                     
                     <!-- REmodal delete note -->
     
@@ -753,11 +767,22 @@
         </div>
     </div>
     <form class="request-popup-content" action="function/request/createRequest.php?id=<?php echo $lead->data()->id ?>&case=lead" method="post">
-        <label for="request-title">Request Title</label>
-        <input required id="request-title" type="text" name="title">
-
-        <div class="request-popup-footer">
-            <button type="submit">Create</button>
+        <div class="add-window-form-section-row">
+            <div class="add-window-form-section-cell form-x-12">
+                <label for="request-title">Request Title</label>
+                <input required id="request-title" type="text" name="title">
+            </div>
+            <div class="add-window-form-section-cell form-x-4">
+                <label>Request Type</label>
+                <select name="typeID">
+                    <?php foreach ($requests->getTypes() as $type): ?>
+                        <option value="<?php echo $type->ID ?>"><?php echo $type->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="request-popup-footer">
+                <button type="submit">Create</button>
+            </div>
         </div>
     </form>
 </div>
@@ -997,6 +1022,12 @@
             eventNameInput.html('');
         }
     });
+
+    function editNote(noteID) {
+        document.getElementById("editNoteTitle-" + noteID).disabled = false;
+        document.getElementById("editNoteContent-" + noteID).disabled = false;
+        document.getElementById("editNoteIcon-" + noteID).style.display = "block";
+    }
 
 </script>
 

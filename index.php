@@ -79,6 +79,7 @@ $inventory = new Inventory();
 $leads = new Lead();
 $log = new ActivityLog();
 $events = new Event();
+$request = new Request();
 
 $tagOptions = '';
 if($grups = $inventory->getFilterItems('workshopGroups')){
@@ -180,6 +181,38 @@ if($user->isLoggedIn()){
                 </ul>
             </div>
             <!-- DASHBOARD HEADER END -->
+        <!-- DASHBOARD HEADER START -->
+        <div id="index-board-header" class="index-board-block block-1">
+            <div></div>
+            <div>
+                <span><?php echo date("l" ); ?></span>
+                <span><?php echo date("F j"); ?></span>
+                <span><?php echo date("S"); ?></span>
+            </div>
+            <ul>
+                <li>
+                    <div>
+                        <span>Dashboard</span>
+                    </div>
+                    <button data-link="main" type="button" onclick="changeDashboard('main', this)"><i class="fas fa-th-list"></i></button>
+                </li>
+                <li>
+                    <div>
+                        <span>Orders</span>
+                    </div>
+                    <button data-link="orders" type="button" onclick="changeDashboard('orders', this)"><i class="fas fa-truck-loading"></i></button>
+                </li>
+                <?php if($user->hasPermission('sales')): ?>
+                    <li>
+                        <div>
+                            <span>Workshops</span>
+                        </div>
+                        <button data-link="kanban" type="button" onclick="changeDashboard('kanban', this)"><i class="fab fa-trello"></i></button>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <!-- DASHBOARD HEADER END -->
 
             <section data-type="kanban" id="kanban-board" class="board">
 
@@ -205,11 +238,101 @@ if($user->isLoggedIn()){
                             </div>
                         <?php endforeach; ?>
                     </section>
+            <section data-id="<?php echo $column->ID ?>" data-kanban="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h4 data-kanban="header"><?php echo $column->name ?></h4>
+                <button class="kanban-new-request" data-kanban="new-request" data-request-status="<?php echo $column->ID ?>">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <?php foreach ($user->getKanbanRequests($column->ID, $user->data()->id, 1) as $item): ?>
+                    <div id="<?php echo $item->ID ?>" data-kanban="item" draggable="true" ondragstart="drag(event)">
+                        <a href="request.php?case=<?php echo $item->leadID ? 'lead' : 'customer' ?>&id=<?php echo $item->ID ?>">
+                            <div data-kanban="item-header" ><?php echo $item->title ?></div>
+                            <div data-kanban="item-footer" >
+                                <span><?php echo $item->leadCompany ? $item->leadCompany : $item->customerCompany ?></span>
+                                <span><?php echo $item->leadCompany ? '<i class="far fa-dot-circle"></i>' : '<i class="fas fa-dollar-sign"></i>' ?></span>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </section>
 
                 <?php endforeach; ?>
             </section>
 
             <section data-type="main" id="index-board" class="board">
+        <section data-type="orders" id="orders-board" class="board">
+            <div>
+                <div class="index-sub-header">
+                    <h2>Orders Statistics</h2>
+                    <ul>
+                        <li id="default-sub-content" onclick="changeSubContent('stats', this)"><i class="far fa-chart-bar"></i></li>
+                        <li onclick="changeSubContent('kanban-orders', this)"><i class="fab fa-trello"></i></li>
+                    </ul>
+                </div>
+                <div data-sub-type="stats" class="orders-sub-content orders-stats">
+                    <div class="chart-wrapper order-block-l">
+                        <h3>In Stock</h3>
+                        <div data-chart="inStock" class="chart-box">
+                            <div class="chart"></div>
+                            <ul class="chart-info"></ul>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-l">
+                        <h3>Purchased</h3>
+                        <div data-chart="purchased" class="chart-box">
+                            <div class="chart"></div>
+                            <div class="chart-info"></div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-m">
+                        <h3>Demo</h3>
+                        <div data-chart="demo" class="chart-box">
+                            <div class="chart chart-small"></div>
+                            <div class="chart-info chart-small"></div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-m">
+                        <h3>Office Demo</h3>
+                        <div data-chart="officeDemo" class="chart-box">
+                            <div class="chart chart-small"></div>
+                            <div class="chart-info chart-small"></div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper order-block-m">
+                        <h3>Raffle Winner</h3>
+                        <div data-chart="raffleWinner" class="chart-box">
+                            <div class="chart chart-small"></div>
+                            <div class="chart-info chart-small"></div>
+                        </div>
+                    </div>
+                </div>
+                <div data-sub-type="kanban-orders" class="orders-sub-content">
+                    <?php foreach ($user->getKanbanColumns('Order') as $column): ?>
+
+                        <section data-id="<?php echo $column->ID ?>" data-kanban="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <h4 data-kanban="header"><?php echo $column->name ?></h4>
+                            <button class="kanban-new-request" data-kanban="new-request" data-request-status="<?php echo $column->ID ?>">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <?php foreach ($user->getKanbanRequests($column->ID, $user->data()->id, 2) as $item): ?>
+                                <div id="<?php echo $item->ID ?>" data-kanban="item" draggable="true" ondragstart="drag(event)">
+                                    <a href="request.php?case=<?php echo $item->leadID ? 'lead' : 'customer' ?>&id=<?php echo $item->ID ?>">
+                                        <div data-kanban="item-header" ><?php echo $item->title ?></div>
+                                        <div data-kanban="item-footer" >
+                                            <span><?php echo $item->leadCompany ? $item->leadCompany : $item->customerCompany ?></span>
+                                            <span><?php echo $item->leadCompany ? '<i class="far fa-dot-circle"></i>' : '<i class="fas fa-dollar-sign"></i>' ?></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </section>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
+        <section data-type="main" id="index-board" class="board">
 
                 <!-- DASHBOARD ACTIVITY LOG START -->
                 <div id="index-board-log" class="index-board-block block-3">
@@ -460,6 +583,8 @@ if($user->isLoggedIn()){
 
         include_once __DIR__ . '/include/newEvent.php';
 
+        include_once __DIR__ . '/include/newWorkshop.php';
+
         include_once __DIR__ . '/include/newItem.php';
 
         include_once __DIR__ . '/include/infoProfile.php';
@@ -467,6 +592,7 @@ if($user->isLoggedIn()){
         include_once __DIR__ . '/include/newHardware.php';
 
         ?>
+    ?>
 
         </body>
         <?php include __DIR__ . '/include/scripts.php'; ?>
@@ -555,6 +681,25 @@ if($user->isLoggedIn()){
     </section>
 
     </body>
+    <script>
+
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "grid";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
     </html>
 <?php
 

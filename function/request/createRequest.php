@@ -22,8 +22,10 @@ if($user->isLoggedIn()) {
 
             $requestID = date('dhms');
 
+
             $requests->create([
                 'id' => $requestID,
+                'typeID' => Input::get('typeID'),
                 'statusID' => Input::get('kanban') ? Input::get('statusID') : 1,
                 'insertDate' => date('Y-m-d'),
                 'createdBy' => $user->data()->id,
