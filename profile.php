@@ -180,11 +180,14 @@ if($user->isLoggedIn()){
                         </div>
 
                         <div class="contact-form-information-row">
-                            <div class="contact-form-information-cell info-form-x-10">
+                            <div class="contact-form-information-cell info-form-x-3">
                                 <label>Role</label>
                                 <input type="text" name="role" value="<?php echo $employee->data()->role ?>">
                             </div>
-
+                            <div class="contact-form-information-cell info-form-x-5">
+                                <label>Password</label>
+                                <input type="password" name="password">
+                            </div>
                         </div>
 
 
@@ -195,7 +198,7 @@ if($user->isLoggedIn()){
                             </div>
 
                             <div class="contact-form-information-cell info-form-x-6">
-                                <label>Email</label>
+                                <label>Work Email</label>
                                 <input  type="email" name="email" value="<?php echo $employee->data()->email ?>">
                             </div>
                         </div>
@@ -385,10 +388,6 @@ if($user->isLoggedIn()){
                             <input type="hidden" name="case" value="employee">
                             <button type="submit"><i class="fas fa-plus"></i>Add</button>
                         </form>
-                    </div>
-
-                    <div id="contact-" class="contact-mails contact-tabcontent">
-                        <h3>Mails</h3>
                     </div>
 
                     <div id="contact-travelInfo" class="contact-mails contact-tabcontent">

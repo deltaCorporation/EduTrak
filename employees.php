@@ -135,7 +135,7 @@ include_once __DIR__ . '/include/addSidebar.php';
                     <th class="sort" onclick="loadMore(0, 'lastName', this)">Last name</th>
                     <th class="sort" onclick="loadMore(0, 'jobTitle', this)">Јob title</th>
                     <th class="sort" onclick="loadMore(0, 'phone', this)">Phone</th>
-                    <th class="sort" onclick="loadMore(0, 'email', this)">Email</th>
+                    <th class="sort" onclick="loadMore(0, 'email', this)">Work Email</th>
                 </tr>
                 </thead>
                 <tbody id="table-list-content">

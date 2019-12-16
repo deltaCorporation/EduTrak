@@ -379,9 +379,9 @@ include_once __DIR__ . '/include/addSidebar.php';
             <nav id="nav">
                 <input id="search" type="text" placeholder="Search inventory..." onkeyup="search()">
                 <div>
-                    <a href="#">
-                        <i class="fas fa-file-csv"></i> Export data
-                    </a>
+<!--                    <a href="#">-->
+<!--                        <i class="fas fa-file-csv"></i> Export data-->
+<!--                    </a>-->
                 </div>
             </nav>
 

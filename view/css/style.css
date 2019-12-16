@@ -4406,11 +4406,21 @@ text-align: center;
     margin-top: 20px;
 }
 
- #kanban-board,
+
  [data-sub-type='kanban-orders']{
      grid-column-gap: 20px;
      grid-row-gap: 20px;
      grid-template-columns: repeat(5, 1fr);
+     margin-top: 20px;
+     height: calc(100% - 70px);
+     overflow-y: auto;
+ }
+
+ #kanban-board,
+ [data-sub-type='kanban-orders']{
+     grid-column-gap: 20px;
+     grid-row-gap: 20px;
+     grid-template-columns: repeat(6, 1fr);
      margin-top: 20px;
      height: calc(100% - 70px);
      overflow-y: auto;
@@ -5714,6 +5724,10 @@ font-size: 2vh;
 
  /* Travel info employee table */
 
+ #contact-travelInfo{
+     height: 90vh;
+     padding: 3rem;
+ }
 
  .table{
      margin: 0;

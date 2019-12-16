@@ -14,11 +14,18 @@ if(Input::exists()){
         $user = new User();
         $employee = new User(Input::get('id'));
 
+        if(Input::get('password')){
+            $salt = Hash::salt(32);
+            $password = Hash::make(Input::get('password'), $salt);
+        }
+
         try{
 
             $employee->update(array(
                 'firstName' => Input::get('firstName'),
                 'lastName' => Input::get('lastName'),
+                'password' => $password ? $password : $employee->data()->password,
+                'salt' => $salt ? $salt : $employee->data()->salt,
                 'email' => Input::get('email'),
                 'gender' => Input::get('gender'),
                 'role' => Input::get('role'),
