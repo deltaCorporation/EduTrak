@@ -315,55 +315,11 @@ include_once __DIR__ . '/include/addSidebar.php';
 
         <section data-type="main" id="index-board" class="board">
 
-            <!-- DASHBOARD ACTIVITY LOG START -->
-            <div id="index-board-log" class="index-board-block block-3">
-                <h3>
-                    <div></div>
-                    <div>Activity Log</div>
-                </h3>
-                <div id="index-board-log-content">
-                    <?php if($boardLogs = $log->getBoardActivityLog()): ?>
-                        <?php foreach ($boardLogs as $key => $logs) : ?>
-
-                            <div class="activity-log-section-board">
-                                <h3><?php echo $key ?></h3>
-                                <div class="activity-log-content-board">
-                                    <?php foreach ($logs as $log): ?>
-
-                                        <?php
-
-                                        $date = new DateTime($log['time'], new DateTimeZone('UTC'));
-                                        $date->setTimezone(new DateTimeZone('America/New_York'));
-
-                                        ?>
-
-                                        <a href="info.php?case=<?php echo $log['case'] ?>&id=<?php echo $log['caseID'] ?>" class="activity-log-board">
-                                            <span><?php echo $date->format('g:ia'); ?></span>
-                                            <span style="background-color: #<?php echo $log['case'] === 'lead' ? '3e4a6e' : ($log['case'] === 'customer' ? 'e29a46' : '8ba65c') ?>"><?php echo $log['case'] ?></span>
-                                            <span><?php echo $log['icon'] ?></span>
-                                            <span><?php echo $log['userName'] ?></span>
-                                            <span><?php echo $log['text'] ?></span>
-                                            <span><?php echo $log['name'] ?></span>
-                                        </a>
-
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="dashboard-no-results">
-                            <span>No logs</span>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <!-- DASHBOARD ACTIVITY LOG END -->
-
             <!-- DASHBOARD FOLLOW UP START -->
             <div id="index-board-followUp" class="index-board-block block-5">
                 <h3>
                     <div></div>
-                    <div>Follow Up Companies/Schools</div>
+                    <div>TO DO list</div>
                 </h3>
                 <div id="index-board-followUp-content">
                     <?php if($companies = $leads->getFollowUpLeads()): ?>
@@ -380,12 +336,12 @@ include_once __DIR__ . '/include/addSidebar.php';
                         <?php endforeach ?>
                         <?php if($i === 0): ?>
                             <div class="dashboard-no-results">
-                                <span>No companies or schools to follow up</span>
+                                <span>List is empty</span>
                             </div>
                         <?php endif; ?>
                     <?php else: ?>
                         <div class="dashboard-no-results">
-                            <span>No companies or schools to follow up</span>
+                            <span>List is empty</span>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -393,7 +349,7 @@ include_once __DIR__ . '/include/addSidebar.php';
             <!-- DASHBOARD FOLLOW UP END -->
 
             <!-- DASHBOARD UPCOMING EVENTS START -->
-            <div id="index-board-upcoming-events" class="index-board-block block-4">
+            <div id="index-board-upcoming-events" class="index-board-block block-5">
                 <h3>
                     <div></div>
                     <div>Upcoming events</div>
@@ -445,7 +401,7 @@ include_once __DIR__ . '/include/addSidebar.php';
             <!-- DASHBOARD UPCOMING EVENTS END -->
 
             <!-- DASHBOARD LAST EVENTS START -->
-            <div id="index-board-last-events" class="index-board-block block-4">
+            <div id="index-board-last-events" class="index-board-block block-5">
                 <h3>
                     <div></div>
                     <div>Recently added events</div>
@@ -493,6 +449,49 @@ include_once __DIR__ . '/include/addSidebar.php';
             </div>
             <!-- DASHBOARD LAST EVENTS START -->
 
+            <!-- DASHBOARD ACTIVITY LOG START -->
+            <div id="index-board-log" class="index-board-block block-1">
+                <h3>
+                    <div></div>
+                    <div>Activity Log</div>
+                </h3>
+                <div id="index-board-log-content">
+                    <?php if($boardLogs = $log->getBoardActivityLog()): ?>
+                        <?php foreach ($boardLogs as $key => $logs) : ?>
+
+                            <div class="activity-log-section-board">
+                                <h3><?php echo $key ?></h3>
+                                <div class="activity-log-content-board">
+                                    <?php foreach ($logs as $log): ?>
+
+                                        <?php
+
+                                        $date = new DateTime($log['time'], new DateTimeZone('UTC'));
+                                        $date->setTimezone(new DateTimeZone('America/New_York'));
+
+                                        ?>
+
+                                        <a href="info.php?case=<?php echo $log['case'] ?>&id=<?php echo $log['caseID'] ?>" class="activity-log-board">
+                                            <span><?php echo $date->format('g:ia'); ?></span>
+                                            <span style="background-color: #<?php echo $log['case'] === 'lead' ? '3e4a6e' : ($log['case'] === 'customer' ? 'e29a46' : '8ba65c') ?>"><?php echo $log['case'] ?></span>
+                                            <span><?php echo $log['icon'] ?></span>
+                                            <span><?php echo $log['userName'] ?></span>
+                                            <span><?php echo $log['text'] ?></span>
+                                            <span><?php echo $log['name'] ?></span>
+                                        </a>
+
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="dashboard-no-results">
+                            <span>No logs</span>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <!-- DASHBOARD ACTIVITY LOG END -->
             <div></div>
         </section>
 

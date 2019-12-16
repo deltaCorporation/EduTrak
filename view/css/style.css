@@ -3641,7 +3641,7 @@ display: none;
 
  .request-table-header {
      display: grid;
-     grid-template-columns: 10% 40% 13% 20% 12% 5%;
+     grid-template-columns: 12% 43% 25% 15% 5%;
      font-size: 1.8vh;
      background-color: darkgray !important;
      border-top-left-radius: .5vh;
@@ -3669,7 +3669,7 @@ display: none;
 
  .request-table-row{
      display: grid;
-     grid-template-columns: 10% 40% 13% 20% 12% 5%;
+     grid-template-columns: 12% 43% 25% 15% 5%;
      border-bottom: 1px solid #eee;
  }
 
@@ -4416,7 +4416,15 @@ text-align: center;
      overflow-y: auto;
  }
 
- #kanban-board,
+ #kanban-board{
+     grid-column-gap: 20px;
+     grid-row-gap: 20px;
+     grid-template-columns: repeat(4, 1fr);
+     margin-top: 20px;
+     height: calc(100% - 70px);
+     overflow-y: auto;
+ }
+
  [data-sub-type='kanban-orders']{
      grid-column-gap: 20px;
      grid-row-gap: 20px;
